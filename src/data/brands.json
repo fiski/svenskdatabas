@@ -1,0 +1,329 @@
+{
+  "brands": [
+    {
+      "id": 1,
+      "varumärke": "All Blues",
+      "kategori": "Smycken",
+      "tillverkadISverige": "Ja",
+      "merInfo": {
+        "moderbolag": "All Blues AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Sverige"],
+        "koncernstruktur": "Oberoende svenskt företag, all tillverkning sker i Stockholm"
+      }
+    },
+    {
+      "id": 2,
+      "varumärke": "Hestra",
+      "kategori": "Handskar, Accessoarer",
+      "tillverkadISverige": "Delvis",
+      "merInfo": {
+        "moderbolag": "Hestra AB",
+        "ägare": "Familjeägt",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Sverige", "Estland"],
+        "koncernstruktur": "Familjeföretag sedan 1936, huvudsaklig tillverkning i Sverige och Estland"
+      }
+    },
+    {
+      "id": 3,
+      "varumärke": "Fjällräven",
+      "kategori": "Friluftskläder, Väskor",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Fenix Outdoor International AG",
+        "ägare": "Börsnoterat",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": ["Kina", "Vietnam", "Bangladesh"],
+        "koncernstruktur": "Del av Fenix Outdoor-koncernen, design i Sverige men tillverkning i Asien"
+      }
+    },
+    {
+      "id": 4,
+      "varumärke": "Woolpower",
+      "kategori": "Underkläder, Friluftskläder",
+      "tillverkadISverige": "Ja",
+      "merInfo": {
+        "moderbolag": "Ullfrotté AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Sverige"],
+        "koncernstruktur": "All produktion sker i Östersund sedan 1972"
+      }
+    },
+    {
+      "id": 5,
+      "varumärke": "Volvo Cars",
+      "kategori": "Fordon",
+      "tillverkadISverige": "Delvis",
+      "merInfo": {
+        "moderbolag": "Geely Holding Group",
+        "ägare": "Kinesiskt ägt",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Sverige", "Belgien", "Kina", "USA"],
+        "koncernstruktur": "Ägs av Geely sedan 2010, tillverkning i Göteborg och Torslanda samt globalt"
+      }
+    },
+    {
+      "id": 6,
+      "varumärke": "Absolut Vodka",
+      "kategori": "Mat och Dryck, Sprit",
+      "tillverkadISverige": "Ja",
+      "merInfo": {
+        "moderbolag": "Pernod Ricard",
+        "ägare": "Franskt ägt",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": ["Sverige"],
+        "koncernstruktur": "Tillverkas i Åhus, Skåne. Ägs av franska Pernod Ricard sedan 2008"
+      }
+    },
+    {
+      "id": 7,
+      "varumärke": "IKEA",
+      "kategori": "Möbler, Inredning, Bygg",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Ingka Holding",
+        "ägare": "Stiftelse",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Polen", "Kina", "Italien", "Tyskland"],
+        "koncernstruktur": "Design i Sverige, tillverkning hos leverantörer globalt"
+      }
+    },
+    {
+      "id": 8,
+      "varumärke": "H&M",
+      "kategori": "Kläder, Mode",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "H&M Group",
+        "ägare": "Börsnoterat, familjeägt",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": ["Bangladesh", "Kina", "Turkiet", "Indien"],
+        "koncernstruktur": "Design i Sverige, tillverkning hos externa leverantörer i Asien och Europa"
+      }
+    },
+    {
+      "id": 9,
+      "varumärke": "H&M Home",
+      "kategori": "Inredning, Textil",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "H&M Group",
+        "ägare": "Börsnoterat, familjeägt",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": ["Kina", "Indien", "Bangladesh", "Turkiet"],
+        "koncernstruktur": "Del av H&M Group, design i Sverige men tillverkning i Asien"
+      }
+    },
+    {
+      "id": 10,
+      "varumärke": "Nudie Jeans",
+      "kategori": "Kläder, Denim",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Nudie Jeans AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Italien", "Tunisien"],
+        "koncernstruktur": "Design i Göteborg, tillverkning i Italien och Tunisien"
+      }
+    },
+    {
+      "id": 11,
+      "varumärke": "Volvo Trucks",
+      "kategori": "Fordon, Lastbilar",
+      "tillverkadISverige": "Delvis",
+      "merInfo": {
+        "moderbolag": "Volvo Group",
+        "ägare": "Börsnoterat",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": ["Sverige", "Belgien", "USA", "Brasilien"],
+        "koncernstruktur": "Huvudkontor i Göteborg, tillverkning i Sverige och globalt"
+      }
+    },
+    {
+      "id": 12,
+      "varumärke": "Scania",
+      "kategori": "Fordon, Lastbilar",
+      "tillverkadISverige": "Delvis",
+      "merInfo": {
+        "moderbolag": "Traton Group (Volkswagen)",
+        "ägare": "Tyskt ägt",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": ["Sverige", "Nederländerna", "Polen", "Brasilien"],
+        "koncernstruktur": "Ägs av Volkswagen-koncernen, tillverkning i Södertälje och globalt"
+      }
+    },
+    {
+      "id": 13,
+      "varumärke": "Klättermusen",
+      "kategori": "Friluftskläder, Väskor",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Triaden AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Kina", "Vietnam", "Portugal"],
+        "koncernstruktur": "Design i Åre, tillverkning i Asien och Europa"
+      }
+    },
+    {
+      "id": 14,
+      "varumärke": "Hasselblad",
+      "kategori": "Kameror, Elektronik",
+      "tillverkadISverige": "Delvis",
+      "merInfo": {
+        "moderbolag": "DJI",
+        "ägare": "Kinesiskt ägt",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Sverige", "Kina"],
+        "koncernstruktur": "Design och viss montering i Göteborg, ägs av DJI sedan 2017"
+      }
+    },
+    {
+      "id": 15,
+      "varumärke": "Thule",
+      "kategori": "Transportlösningar, Friluftsutrustning",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Thule Group AB",
+        "ägare": "Börsnoterat",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": ["Polen", "Belgien", "USA"],
+        "koncernstruktur": "Huvudkontor i Malmö, tillverkning i Europa och USA"
+      }
+    },
+    {
+      "id": 16,
+      "varumärke": "Eton",
+      "kategori": "Kläder, Skjortor",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Eton AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Polen", "Rumänien"],
+        "koncernstruktur": "Design i Sverige, tillverkning i Östeuropa"
+      }
+    },
+    {
+      "id": 17,
+      "varumärke": "Filippa K",
+      "kategori": "Kläder, Mode",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Filippa K AB",
+        "ägare": "Investeringsbolag",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Portugal", "Turkiet", "Kina"],
+        "koncernstruktur": "Design i Stockholm, tillverkning i Europa och Asien"
+      }
+    },
+    {
+      "id": 18,
+      "varumärke": "Acne Studios",
+      "kategori": "Kläder, Mode, Accessoarer",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Acne Studios AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Italien", "Portugal", "Rumänien"],
+        "koncernstruktur": "Design i Stockholm, tillverkning främst i Europa"
+      }
+    },
+    {
+      "id": 19,
+      "varumärke": "Gant",
+      "kategori": "Kläder, Mode",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Gant Company AB",
+        "ägare": "Schweiziskt ägt",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Kina", "Turkiet", "Bangladesh"],
+        "koncernstruktur": "Svenskt varumärke, tillverkning i Asien"
+      }
+    },
+    {
+      "id": 20,
+      "varumärke": "Electrolux",
+      "kategori": "Vitvaror, Hushållsprodukter",
+      "tillverkadISverige": "Delvis",
+      "merInfo": {
+        "moderbolag": "Electrolux AB",
+        "ägare": "Börsnoterat",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": ["Sverige", "Polen", "Italien", "USA", "Kina"],
+        "koncernstruktur": "Global koncern med tillverkning i Motala samt globalt"
+      }
+    },
+    {
+      "id": 21,
+      "varumärke": "Husqvarna",
+      "kategori": "Trädgård, Maskiner",
+      "tillverkadISverige": "Delvis",
+      "merInfo": {
+        "moderbolag": "Husqvarna Group",
+        "ägare": "Börsnoterat",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": ["Sverige", "USA", "Kina", "Brasilien"],
+        "koncernstruktur": "Viss tillverkning i Sverige, huvudsakligen global produktion"
+      }
+    },
+    {
+      "id": 22,
+      "varumärke": "Sandqvist",
+      "kategori": "Väskor, Accessoarer",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Sandqvist AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Kina", "Vietnam"],
+        "koncernstruktur": "Design i Stockholm, tillverkning i Asien"
+      }
+    },
+    {
+      "id": 23,
+      "varumärke": "Axel Arigato",
+      "kategori": "Skor, Kläder",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Axel Arigato AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Portugal", "Italien"],
+        "koncernstruktur": "Design i Stockholm, tillverkning i Europa"
+      }
+    },
+    {
+      "id": 24,
+      "varumärke": "Oatly",
+      "kategori": "Mat och Dryck, Växtbaserat",
+      "tillverkadISverige": "Delvis",
+      "merInfo": {
+        "moderbolag": "Oatly Group AB",
+        "ägare": "Börsnoterat",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": ["Sverige", "Nederländerna", "USA", "Storbritannien"],
+        "koncernstruktur": "Tillverkning i Landskrona och globalt, ägs av internationella investerare"
+      }
+    },
+    {
+      "id": 25,
+      "varumärke": "Ericsson",
+      "kategori": "Telekom, Elektronik",
+      "tillverkadISverige": "Delvis",
+      "merInfo": {
+        "moderbolag": "Telefonaktiebolaget LM Ericsson",
+        "ägare": "Börsnoterat",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": ["Sverige", "Kina", "Estland", "Brasilien"],
+        "koncernstruktur": "Huvudkontor i Stockholm, global tillverkningskedja"
+      }
+    }
+  ]
+}
