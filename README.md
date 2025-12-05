@@ -1,2 +1,6 @@
 # svenskdatabas
 Made in Sweden
+
+I am is developing a manufacturing transparency database website that tracks Swedish brands and reveals where their products are actually manufactured. The project aims to create transparency around "Made in Sweden" claims by categorizing brands as "Yes," "No," or "Partially" manufactured in Sweden.
+
+more to be added.
