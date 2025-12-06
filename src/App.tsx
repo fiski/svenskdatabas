@@ -36,8 +36,8 @@ function App() {
             <Hero />
             <div className="search-wrapper">
               <Search value={searchQuery} onChange={setSearchQuery} />
-              <DataTable brands={filteredBrands} />
             </div>
+            <DataTable brands={filteredBrands} />
           </div>
         </div>
       </main>
