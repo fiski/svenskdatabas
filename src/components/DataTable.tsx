@@ -36,7 +36,7 @@ export default function DataTable({ brands }: DataTableProps) {
         return (
           <div key={brand.id}>
             {/* Main Row */}
-            <div className="table-row">
+            <div className={`table-row ${isExpanded ? 'expanded' : ''}`}>
               <div className="table-expand-cell">
                 <button
                   onClick={() => toggleRow(brand.id)}
