@@ -36,27 +36,33 @@ export default function DataTable({ brands }: DataTableProps) {
         return (
           <div key={brand.id}>
             {/* Main Row */}
-            <div className={`table-row ${isExpanded ? 'expanded' : ''}`}>
+            <div
+              className={`table-row ${isExpanded ? 'expanded' : ''}`}
+              onClick={() => toggleRow(brand.id)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  toggleRow(brand.id);
+                }
+              }}
+            >
               <div className="table-expand-cell">
-                <button
-                  onClick={() => toggleRow(brand.id)}
-                  className="expand-button"
-                  aria-label="Expandera rad"
+                <svg
+                  className={`expand-icon ${isExpanded ? 'expanded' : ''}`}
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  aria-hidden="true"
                 >
-                  <svg
-                    className={`expand-icon ${isExpanded ? 'expanded' : ''}`}
-                    viewBox="0 0 16 16"
-                    fill="none"
-                  >
-                    <path
-                      d="M4 6L8 10L12 6"
-                      stroke="#161616"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
+                  <path
+                    d="M4 6L8 10L12 6"
+                    stroke="#161616"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </div>
               <div className="table-cell">{brand.varumärke}</div>
               <div className="table-cell">{brand.kategori}</div>
@@ -64,12 +70,7 @@ export default function DataTable({ brands }: DataTableProps) {
                 <StatusBadge status={brand.tillverkadISverige} />
               </div>
               <div className="table-cell">
-                <button
-                  onClick={() => toggleRow(brand.id)}
-                  className="more-info-button"
-                >
-                  Visa mer info
-                </button>
+                <span className="more-info-text">Visa mer info</span>
               </div>
             </div>
 
