@@ -345,19 +345,12 @@ body {
   font-weight: 600;
 }
 
-/* More Info Button */
-.more-info-button {
-  background: none;
-  border: none;
-  cursor: pointer;
+/* More Info Text */
+.more-info-text {
   color: #525252;
   font-family: 'Sweden Sans', Arial, sans-serif;
   font-size: 16px;
   text-decoration: none;
-}
-
-.more-info-button:hover {
-  text-decoration: underline;
 }
 
 /* Expanded Details */
