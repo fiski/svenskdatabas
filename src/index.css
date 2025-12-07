@@ -267,6 +267,9 @@ body {
 .table-expand-cell {
   width: 48px;
   flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .table-row {
