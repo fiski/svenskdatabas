@@ -192,11 +192,18 @@ body {
   color: #959da8;
 }
 
+/* Search Chips Container */
+.search-chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 1rem;
+}
+
 /* Search Chip/Tag */
 .search-chip {
   display: inline-flex;
   align-items: center;
-  align-self: flex-start;
   gap: 8px;
   padding: 8px 12px;
   background-color: #ffffff;
@@ -205,7 +212,6 @@ body {
   font-size: 16px;
   color: #2c2c2c;
   font-weight: 400;
-  margin-top: 1rem;
 }
 
 .search-chip-text {

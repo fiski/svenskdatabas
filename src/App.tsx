@@ -6,26 +6,46 @@ import DataTable from './components/DataTable';
 import brandsData from './data/brands.json';
 
 function App() {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [currentInput, setCurrentInput] = useState('');
+  const [searchTags, setSearchTags] = useState<string[]>([]);
 
-  // Filter brands based on search query
+  const addSearchTag = (tag: string) => {
+    const trimmedTag = tag.trim();
+    if (trimmedTag && !searchTags.includes(trimmedTag)) {
+      setSearchTags([...searchTags, trimmedTag]);
+      setCurrentInput('');
+    }
+  };
+
+  const removeSearchTag = (tagToRemove: string) => {
+    setSearchTags(searchTags.filter(tag => tag !== tagToRemove));
+  };
+
+  const clearAllTags = () => {
+    setSearchTags([]);
+    setCurrentInput('');
+  };
+
+  // Filter brands based on search tags
   const filteredBrands = useMemo(() => {
-    if (!searchQuery.trim()) {
+    if (searchTags.length === 0) {
       return brandsData.brands;
     }
 
-    const query = searchQuery.toLowerCase();
-
     return brandsData.brands.filter((brand) => {
-      // Search in brand name
-      const matchesName = brand.varumärke.toLowerCase().includes(query);
+      // Brand must match ALL tags (AND logic)
+      return searchTags.every((tag) => {
+        const tagLower = tag.toLowerCase();
 
-      // Search in categories
-      const matchesCategory = brand.kategori.toLowerCase().includes(query);
+        // Each tag matches if found in name OR category OR status
+        const matchesName = brand.varumärke.toLowerCase().includes(tagLower);
+        const matchesCategory = brand.kategori.toLowerCase().includes(tagLower);
+        const matchesStatus = brand.tillverkadISverige.toLowerCase().includes(tagLower);
 
-      return matchesName || matchesCategory;
+        return matchesName || matchesCategory || matchesStatus;
+      });
     });
-  }, [searchQuery]);
+  }, [searchTags]);
 
   return (
     <div>
@@ -35,7 +55,14 @@ function App() {
           <div className="content">
             <Hero />
             <div className="search-wrapper">
-              <Search value={searchQuery} onChange={setSearchQuery} />
+              <Search
+                currentInput={currentInput}
+                onInputChange={setCurrentInput}
+                searchTags={searchTags}
+                onAddTag={addSearchTag}
+                onRemoveTag={removeSearchTag}
+                onClearAll={clearAllTags}
+              />
             </div>
             <DataTable brands={filteredBrands} />
           </div>
