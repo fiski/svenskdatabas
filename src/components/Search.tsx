@@ -1,20 +1,40 @@
 import { useRef } from 'react';
 
 interface SearchProps {
-  value: string;
-  onChange: (value: string) => void;
+  currentInput: string;
+  onInputChange: (value: string) => void;
+  searchTags: string[];
+  onAddTag: (tag: string) => void;
+  onRemoveTag: (tag: string) => void;
+  onClearAll: () => void;
 }
 
-export default function Search({ value, onChange }: SearchProps) {
+export default function Search({
+  currentInput,
+  onInputChange,
+  searchTags,
+  onAddTag,
+  onRemoveTag,
+  onClearAll
+}: SearchProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleClear = () => {
-    onChange('');
+    if (currentInput.trim()) {
+      onInputChange('');
+    } else {
+      onClearAll();
+    }
     inputRef.current?.focus();
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Escape') {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (currentInput.trim()) {
+        onAddTag(currentInput);
+      }
+    } else if (e.key === 'Escape') {
       handleClear();
     }
   };
@@ -38,22 +58,26 @@ export default function Search({ value, onChange }: SearchProps) {
           type="text"
           placeholder="Sök i registret"
           className="search-input"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
+          value={currentInput}
+          onChange={(e) => onInputChange(e.target.value)}
           onKeyDown={handleKeyDown}
         />
       </div>
-      {value.trim() && (
-        <div className="search-chip">
-          <span className="search-chip-text">{value}</span>
-          <button
-            className="search-chip-close"
-            onClick={handleClear}
-            aria-label="Clear search"
-            type="button"
-          >
-            ×
-          </button>
+      {searchTags.length > 0 && (
+        <div className="search-chips-container">
+          {searchTags.map((tag) => (
+            <div key={tag} className="search-chip">
+              <span className="search-chip-text">{tag}</span>
+              <button
+                className="search-chip-close"
+                onClick={() => onRemoveTag(tag)}
+                aria-label={`Ta bort sökning: ${tag}`}
+                type="button"
+              >
+                ×
+              </button>
+            </div>
+          ))}
         </div>
       )}
     </>
