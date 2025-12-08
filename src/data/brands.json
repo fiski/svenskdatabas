@@ -783,6 +783,74 @@
         "tillverkningsländer": ["Portugal", "Turkiet"],
         "koncernstruktur": "Design i Sverige, tillverkning i Europa"
       }
-    }
-  ]
+    },
+    {
+      "id": 61,
+      "varumärke": "Fractal Design",
+      "kategori": "Datorhårdvara, Gaming",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Fractal Gaming Group AB",
+        "ägare": "Börsnoterat",
+        "börsnoterat": "Ja (Nasdaq First North Premier)",
+        "tillverkningsländer": [
+          "Kina",
+          "Taiwan"
+        ],
+        "koncernstruktur": "Design och utveckling i Göteborg, tillverkning i Asien. Kontor i Sverige, USA, Kina och Taiwan"
+      }
+    },
+      {
+        "id": 62,
+        "varumärke": "Myrqvist",
+        "kategori": "Skor",
+        "tillverkadISverige": "Nej",
+        "merInfo": {
+          "moderbolag": "Myrqvist AB",
+          "ägare": "Privat ägd",
+          "börsnoterat": "Nej",
+          "tillverkningsländer": ["Portugal"],
+          "koncernstruktur": "Grundat 2016 av Sebastian Öhrn, design i Stockholm, handgjorda skor i Portugal med läder från Hermès-ägda Tannery du Puy (Frankrike)"
+        }
+      },
+      {
+        "id": 63,
+        "varumärke": "Morjas",
+        "kategori": "Skor",
+        "tillverkadISverige": "Nej",
+        "merInfo": {
+          "moderbolag": "Morjas & Co AB",
+          "ägare": "Privat ägd",
+          "börsnoterat": "Nej",
+          "tillverkningsländer": ["Spanien", "Italien", "Portugal"],
+          "koncernstruktur": "Grundat 2017, design i Stockholm, tillverkning i familjeägda ateljéer i Spanien (Elda), Italien (Padula) och Portugal"
+        }
+      },
+      {
+        "id": 64,
+        "varumärke": "Berg & Berg",
+        "kategori": "Kläder, Accessoarer",
+        "tillverkadISverige": "Nej",
+        "merInfo": {
+          "moderbolag": "Berg & Berg AB",
+          "ägare": "Privat ägd",
+          "börsnoterat": "Nej",
+          "tillverkningsländer": ["Portugal", "Italien", "Japan"],
+          "koncernstruktur": "Grundat 2009, design i Stockholm, tillverkning i Portugal (skjortor), tyger från Italien och Japan"
+        }
+      },
+      {
+        "id": 65,
+        "varumärke": "Rubato",
+        "kategori": "Kläder, Knitwear",
+        "tillverkadISverige": "Nej",
+        "merInfo": {
+          "moderbolag": "Rubato AB (Atempo Rubato)",
+          "ägare": "Privat ägd",
+          "börsnoterat": "Nej",
+          "tillverkningsländer": ["Japan"],
+          "koncernstruktur": "Grundat 2018 av Oliver Dannefalk och Carl Pers, design i Stockholm, tillverkning i Japan"
+        }
+      }
+    ]
 }
