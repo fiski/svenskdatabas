@@ -198,8 +198,7 @@ body {
 }
 
 .search-input:hover::placeholder {
-  color: #1a3050;
-  
+  color: #6e6e6e;
 }
 
 /* Search Chips Container */
