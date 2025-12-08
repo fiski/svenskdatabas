@@ -141,12 +141,16 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort }:
                   />
                 </svg>
               </div>
-              <div className="table-cell">{brand.varumärke}</div>
-              <div className="table-cell">{brand.kategori}</div>
-              <div className="table-cell">
+              <div className="table-cell" data-label="Varumärke">
+                {brand.varumärke}
+              </div>
+              <div className="table-cell" data-label="Kategori">
+                {brand.kategori}
+              </div>
+              <div className="table-cell" data-label="Tillverkad i Sverige">
                 <StatusBadge status={brand.tillverkadISverige} />
               </div>
-              <div className="table-cell">
+              <div className="table-cell" data-label="Mer info">
                 <span className="more-info-text">Visa mer info</span>
               </div>
             </div>

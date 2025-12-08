@@ -101,6 +101,15 @@ body {
   font-weight: 400;
 }
 
+/* Mobile: Header typography */
+@media (max-width: 599px) {
+  .header-title,
+  .header-link {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
 /* Main Content */
 .main {
   padding-bottom: 168px;
@@ -111,6 +120,39 @@ body {
   flex-direction: column;
   gap: 59px;
   padding-top: 6rem;
+}
+
+/* Mobile: Spacing adjustments */
+@media (max-width: 839px) {
+  .main {
+    padding-bottom: 64px;
+  }
+
+  .content {
+    gap: 32px;
+    padding-top: 3rem;
+  }
+
+  .search-wrapper {
+    margin-bottom: 32px;
+  }
+}
+
+/* Container margins for different mobile breakpoints */
+@media (max-width: 599px) {
+  .container {
+    max-width: calc(100vw - 32px); /* 16px margins */
+  }
+
+  .header-content {
+    padding: 1.25rem 0;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 839px) {
+  .container {
+    max-width: calc(100vw - 40px); /* 20px margins */
+  }
 }
 
 /* Hero */
@@ -134,6 +176,35 @@ body {
   font-weight: 300;
   line-height: 32px;
   max-width: 534px;
+}
+
+/* Mobile: Hero typography scaling */
+/* Extra small mobile */
+@media (max-width: 599px) {
+  .hero-title {
+    font-size: 36px;
+    letter-spacing: 1.5px;
+    line-height: 1.2;
+  }
+
+  .hero-description {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+
+/* Small tablet */
+@media (min-width: 600px) and (max-width: 839px) {
+  .hero-title {
+    font-size: 48px;
+    letter-spacing: 1.8px;
+    line-height: 1.2;
+  }
+
+  .hero-description {
+    font-size: 20px;
+    line-height: 28px;
+  }
 }
 
 /* Search */
@@ -267,6 +338,52 @@ body {
   max-width: 600px;
 }
 
+/* Mobile: Search typography scaling */
+/* Extra small mobile */
+@media (max-width: 599px) {
+  .search-input {
+    font-size: 24px;
+  }
+
+  .search-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .search {
+    gap: 16px;
+  }
+
+  .search-chip {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .search-chip-text {
+    max-width: 250px;
+  }
+
+  .search-helper-text {
+    font-size: 13px;
+  }
+}
+
+/* Small tablet */
+@media (min-width: 600px) and (max-width: 839px) {
+  .search-input {
+    font-size: 28px;
+  }
+
+  .search-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .search {
+    gap: 20px;
+  }
+}
+
 /* Data Table */
 .data-table {
   width: 100%;
@@ -354,6 +471,66 @@ body {
   color: #525252;
   line-height: 18px;
   letter-spacing: 0.16px;
+}
+
+/* Mobile: Hide table headers */
+@media (max-width: 839px) {
+  .table-header {
+    display: none;
+  }
+}
+
+/* Mobile: Grid-based row layout */
+@media (max-width: 839px) {
+  .table-row {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 4px 8px;
+    min-height: 64px;
+    padding: 12px 0;
+    align-items: start;
+  }
+
+  /* Expand icon: left column, spans both rows */
+  .table-expand-cell {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    align-self: center;
+    min-height: 44px; /* Touch target minimum */
+  }
+
+  /* Brand name: top row, middle column, prominent */
+  .table-cell:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 0 8px;
+    font-size: 18px;
+    color: #1a3050;
+  }
+
+  /* Category: bottom row, middle column, secondary */
+  .table-cell:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+    padding: 0 8px;
+    font-size: 14px;
+    color: #6e6e6e;
+  }
+
+  /* Status badge: top row, right column */
+  .table-cell:nth-child(4) {
+    grid-column: 3;
+    grid-row: 1;
+    padding: 0;
+    padding-right: 1rem;
+    align-self: start;
+  }
+
+  /* Hide "Mer info" text column */
+  .table-cell:nth-child(5) {
+    display: none;
+  }
 }
 
 .expand-button {
@@ -445,4 +622,20 @@ body {
   font-size: 14px;
   font-weight: 400;
   color: #525252;
+}
+
+/* Mobile: Single-column expanded details */
+@media (max-width: 839px) {
+  .expanded-details {
+    padding: 20px 16px; /* Reduced horizontal padding */
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr; /* Single column */
+    gap: 20px;
+  }
+
+  .detail-item.full-width {
+    grid-column: span 1; /* Already full width */
+  }
 }
