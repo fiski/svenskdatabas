@@ -11,3 +11,6 @@ export interface Brand {
     koncernstruktur: string;
   };
 }
+
+export type SortColumn = 'varumärke' | 'kategori' | 'tillverkadISverige' | null;
+export type SortDirection = 'asc' | 'desc' | null;
