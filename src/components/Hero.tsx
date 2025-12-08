@@ -9,7 +9,7 @@ export default function Hero({ brandCount }: HeroProps) {
         Svensk databas
       </h1>
       <p className="hero-description">
-        Den svenska databasen med {brandCount} märken och tillverkare. Svart på vitt med fokus på enkelhet.
+        Den svenska databasen med just nu {brandCount} märken och tillverkare. Svart på vitt med fokus på enkelhet.
       </p>
     </div>
   );
