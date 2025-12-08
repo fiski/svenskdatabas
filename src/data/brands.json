@@ -810,7 +810,7 @@
           "ägare": "Privat ägd",
           "börsnoterat": "Nej",
           "tillverkningsländer": ["Portugal"],
-          "koncernstruktur": "Grundat 2016 av Sebastian Öhrn, design i Stockholm, handgjorda skor i Portugal med läder från Hermès-ägda Tannery du Puy (Frankrike)"
+          "koncernstruktur": "Grundat 2016 av Sebastian Öhrn, design i Stockholm, handgjorda skor i Portugal"
         }
       },
       {
@@ -848,8 +848,8 @@
           "moderbolag": "Rubato AB (Atempo Rubato)",
           "ägare": "Privat ägd",
           "börsnoterat": "Nej",
-          "tillverkningsländer": ["Japan"],
-          "koncernstruktur": "Grundat 2018 av Oliver Dannefalk och Carl Pers, design i Stockholm, tillverkning i Japan"
+          "tillverkningsländer": ["Japan", "Italien", "Skottland"],
+          "koncernstruktur": "Grundat 2018 av Oliver Dannefalk och Carl Pers, design i Stockholm"
         }
       }
     ]
