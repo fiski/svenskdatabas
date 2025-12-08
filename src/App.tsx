@@ -26,26 +26,41 @@ function App() {
     setCurrentInput('');
   };
 
-  // Filter brands based on search tags
+  // Filter brands based on search tags and current input (hybrid live search)
   const filteredBrands = useMemo(() => {
-    if (searchTags.length === 0) {
-      return brandsData.brands;
+    let results = brandsData.brands;
+
+    // Step 1: Filter by tags (AND logic between tags)
+    if (searchTags.length > 0) {
+      results = results.filter((brand) => {
+        // Brand must match ALL tags (AND logic)
+        return searchTags.every((tag) => {
+          const tagLower = tag.toLowerCase();
+
+          // Each tag matches if found in name OR category OR status
+          const matchesName = brand.varumärke.toLowerCase().includes(tagLower);
+          const matchesCategory = brand.kategori.toLowerCase().includes(tagLower);
+          const matchesStatus = brand.tillverkadISverige.toLowerCase().includes(tagLower);
+
+          return matchesName || matchesCategory || matchesStatus;
+        });
+      });
     }
 
-    return brandsData.brands.filter((brand) => {
-      // Brand must match ALL tags (AND logic)
-      return searchTags.every((tag) => {
-        const tagLower = tag.toLowerCase();
-
-        // Each tag matches if found in name OR category OR status
-        const matchesName = brand.varumärke.toLowerCase().includes(tagLower);
-        const matchesCategory = brand.kategori.toLowerCase().includes(tagLower);
-        const matchesStatus = brand.tillverkadISverige.toLowerCase().includes(tagLower);
-
+    // Step 2: Filter by current input (live search)
+    const trimmedInput = currentInput.trim();
+    if (trimmedInput) {
+      const inputLower = trimmedInput.toLowerCase();
+      results = results.filter((brand) => {
+        const matchesName = brand.varumärke.toLowerCase().includes(inputLower);
+        const matchesCategory = brand.kategori.toLowerCase().includes(inputLower);
+        const matchesStatus = brand.tillverkadISverige.toLowerCase().includes(inputLower);
         return matchesName || matchesCategory || matchesStatus;
       });
-    });
-  }, [searchTags]);
+    }
+
+    return results;
+  }, [searchTags, currentInput]);
 
   return (
     <div>
