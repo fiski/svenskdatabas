@@ -157,6 +157,11 @@ body {
   padding: 16px 0;
   border-bottom: 1px solid #888888;
   background-color: #ededed;
+  transition: border-color 0.2s ease;
+}
+
+.search:focus-within {
+  border-bottom-color: #1a3050;
 }
 
 .search::before {
@@ -188,7 +193,13 @@ body {
 }
 
 .search-input::placeholder {
-  color: #959da8;
+  color: #a8959a;
+  transition: color 0.2s ease;
+}
+
+.search-input:hover::placeholder {
+  color: #1a3050;
+  
 }
 
 /* Search Chips Container */
