@@ -20,6 +20,8 @@ function App() {
   const [sortColumn, setSortColumn] = useState<SortColumn>(null);
   const [sortDirection, setSortDirection] = useState<SortDirection>(null);
 
+  const totalBrands = brandsData.brands.length;
+
   const addSearchTag = (tag: string) => {
     const trimmedTag = tag.trim();
     if (trimmedTag && !searchTags.includes(trimmedTag)) {
@@ -112,7 +114,7 @@ function App() {
       <main className="main">
         <div className="container">
           <div className="content">
-            <Hero />
+            <Hero brandCount={totalBrands} />
             <div className="search-wrapper">
               <Search
                 currentInput={currentInput}
