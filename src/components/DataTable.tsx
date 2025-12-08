@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ArrowUpDown, ArrowUpAZ, ArrowDownZA } from 'lucide-react';
 import StatusBadge from './StatusBadge';
 import { Brand, SortColumn, SortDirection } from '../types/brand';
 
@@ -23,21 +24,14 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort }:
   };
 
   const getSortIcon = (column: SortColumn) => {
-    if (sortColumn !== column) return null;
+    if (sortColumn !== column) {
+      return <ArrowUpDown className="sort-icon" size={16} aria-hidden="true" />;
+    }
 
-    return (
-      <svg
-        className="sort-icon"
-        viewBox="0 0 16 16"
-        fill="none"
-        aria-hidden="true"
-      >
-        {sortDirection === 'asc' ? (
-          <path d="M8 4L4 8H12L8 4Z" fill="#1a3050" />
-        ) : (
-          <path d="M8 12L12 8H4L8 12Z" fill="#1a3050" />
-        )}
-      </svg>
+    return sortDirection === 'asc' ? (
+      <ArrowUpAZ className="sort-icon" size={16} aria-hidden="true" />
+    ) : (
+      <ArrowDownZA className="sort-icon" size={16} aria-hidden="true" />
     );
   };
 
