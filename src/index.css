@@ -270,6 +270,38 @@ body {
   letter-spacing: 0.16px;
 }
 
+/* Sortable Table Headers */
+.table-header-cell.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.table-header-cell.sortable:hover {
+  background-color: #f0f0f0;
+}
+
+.table-header-cell.sortable:focus {
+  outline: 2px solid #1a3050;
+  outline-offset: -2px;
+}
+
+.table-header-cell.sortable.sorted {
+  color: #005D7F;
+  font-weight: 700;
+}
+
+/* Sort Icon */
+.sort-icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
 .table-expand-cell {
   width: 48px;
   flex-shrink: 0;
