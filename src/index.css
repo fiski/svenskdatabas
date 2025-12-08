@@ -125,7 +125,7 @@ body {
 .content {
   display: flex;
   flex-direction: column;
-  gap: 59px;
+  gap: 1rem;
   padding-top: 6rem;
 }
 
@@ -649,11 +649,11 @@ body {
 
 /* About Page */
 .about-page {
-  padding-bottom: 168px;
+  padding-bottom: 120px;
 }
 
 .about-section {
-  margin-bottom: 48px;
+  margin-bottom: 32px;
 }
 
 .about-section:last-child {
@@ -661,7 +661,7 @@ body {
 }
 
 .about-hero {
-  margin-bottom: 64px;
+  margin-bottom: 40px;
 }
 
 .about-title {
@@ -765,7 +765,7 @@ body {
 
 /* About Signature */
 .about-signature {
-  margin-top: 64px;
+  margin-top: 48px;
   font-size: 16px;
   font-weight: 400;
   color: #a8a8a8;
@@ -774,7 +774,7 @@ body {
 /* Mobile: About page typography scaling */
 @media (max-width: 599px) {
   .about-page {
-    padding-bottom: 64px;
+    padding-bottom: 48px;
   }
 
   .about-title {
@@ -798,15 +798,15 @@ body {
   }
 
   .about-section {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 
   .about-hero {
-    margin-bottom: 40px;
+    margin-bottom: 32px;
   }
 
   .about-signature {
-    margin-top: 48px;
+    margin-top: 32px;
     font-size: 14px;
   }
 }
