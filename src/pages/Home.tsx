@@ -40,13 +40,8 @@ export default function Home() {
 
   const handleSort = (column: SortColumn) => {
     if (sortColumn === column) {
-      // Same column: cycle through asc → desc → null
-      if (sortDirection === 'asc') {
-        setSortDirection('desc');
-      } else if (sortDirection === 'desc') {
-        setSortColumn(null);
-        setSortDirection(null);
-      }
+      // Same column: toggle between asc ↔ desc
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
     } else {
       // New column: start with ascending
       setSortColumn(column);

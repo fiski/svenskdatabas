@@ -13,4 +13,4 @@ export interface Brand {
 }
 
 export type SortColumn = 'varumärke' | 'kategori' | 'tillverkadISverige' | null;
-export type SortDirection = 'asc' | 'desc' | null;
+export type SortDirection = 'asc' | 'desc';
