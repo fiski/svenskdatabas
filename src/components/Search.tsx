@@ -63,6 +63,11 @@ export default function Search({
           onKeyDown={handleKeyDown}
         />
       </div>
+      {searchTags.length === 0 && (
+        <p className="search-helper-text">
+          Du kan söka och filtrera efter flera saker samtidigt, skriv t.ex "kläder" + enter och "ja" + enter för att enbart visa kategorin kläder som är tillverkade i Sverige.
+        </p>
+      )}
       {searchTags.length > 0 && (
         <div className="search-chips-container">
           {searchTags.map((tag) => (
