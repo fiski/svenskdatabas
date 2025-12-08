@@ -11,7 +11,7 @@ export default function About() {
           </section>
 
           <section className="about-section">
-            <h2 className="about-heading">Om Projektet</h2>
+            <h2 className="about-heading">Om projektet</h2>
 
             <p>
               Den här databasen samlar information om svenska varumärken och deras tillverkningsprocesser. Målet är inte att peka finger, utan att ge dig som konsument möjlighet att fatta informerade beslut baserade på fakta.
@@ -22,7 +22,7 @@ export default function About() {
           </section>
 
           <section className="about-section">
-            <h2 className="about-heading">Så Funkar Det</h2>
+            <h2 className="about-heading">Så funkar det</h2>
             <p>Varje varumärke kategoriseras enligt följande:</p>
 
             <div className="category-explanation">
@@ -48,7 +48,7 @@ export default function About() {
           </section>
 
           <section className="about-section">
-            <h2 className="about-heading">Upptäcker Du Att Något Är Fel?</h2>
+            <h2 className="about-heading">Upptäcker du att något är fel?</h2>
             <p>
               Företag förändras, produktionen flyttas, och ägare byts ut. Om du upptäcker att information i databasen är föråldrad eller felaktig, hör gärna av dig till <strong>[din e-postadress]</strong>.
             </p>
@@ -63,7 +63,7 @@ export default function About() {
           </section>
 
           <section className="about-section">
-            <h2 className="about-heading">Kommande Funktioner</h2>
+            <h2 className="about-heading">Kommande funktioner</h2>
             <p>Framtida funktioner inkluderar bland annat:</p>
             <ul className="about-list">
               <li>Tipsa om nya varumärken direkt på sidan</li>
@@ -75,7 +75,7 @@ export default function About() {
           </section>
 
           <section className="about-section">
-            <h2 className="about-heading">Transparens & Begränsningar</h2>
+            <h2 className="about-heading">Transparens & begränsningar</h2>
             <p>
               <strong>Detta är ett oberoende projekt</strong> som drivs av intresse för konsumenttransparens och svensk industri. Ingen information är sponsrad eller betald.
             </p>
