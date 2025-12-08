@@ -766,6 +766,43 @@ body {
   margin-bottom: 0;
 }
 
+/* Email Link */
+.email-link {
+  background-color: transparent;
+  color: inherit;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-weight: 500;
+}
+
+.email-link:hover {
+  background-color: #ffffff;
+  color: #005D7F;
+}
+
+.email-link:focus {
+  outline: 2px solid #1a3050;
+  outline-offset: 2px;
+}
+
+.email-link:active {
+  background-color: #f5f5f5;
+  color: #005D7F;
+}
+
+.copied-message {
+  display: block;
+  background-color: #2c2c2c;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 16px;
+  margin-top: 8px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
 /* About Signature */
 .about-signature {
   margin-top: 48px;

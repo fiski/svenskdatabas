@@ -1,4 +1,16 @@
+import { useState } from 'react';
+
 export default function About() {
+  const [copied, setCopied] = useState(false);
+
+  const handleEmailClick = () => {
+    navigator.clipboard.writeText('maximilian.relam@gmail.com');
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
+  };
+
   return (
     <div className="about-page">
       <div className="container">
@@ -50,8 +62,23 @@ export default function About() {
           <section className="about-section">
             <h2 className="about-heading">Upptäcker du att något är fel?</h2>
             <p>
-              Företag förändras, produktionen flyttas, och ägare byts ut. Om du upptäcker att information i databasen är föråldrad eller felaktig, hör gärna av dig till <strong>[din e-postadress]</strong>.
+              Företag förändras, produktionen flyttas, och ägare byts ut. Om du upptäcker att information i databasen är föråldrad eller felaktig, hör gärna av dig till{' '}
+              <span
+                className="email-link"
+                onClick={handleEmailClick}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleEmailClick();
+                  }
+                }}
+              >
+                maximilian.relam@gmail.com
+              </span>
             </p>
+            {copied && <span className="copied-message">E-postadress kopierad!</span>}
             <p>Jag tar gärna emot:</p>
             <ul className="about-list">
               <li>Rättelser av befintlig information</li>
