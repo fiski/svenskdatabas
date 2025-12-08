@@ -99,6 +99,13 @@ body {
   line-height: 30px;
   color: #6e6e6e;
   font-weight: 400;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.header-title:hover,
+.header-link:hover {
+  color: #1a3050;
 }
 
 /* Mobile: Header typography */
@@ -166,7 +173,7 @@ body {
 
 .hero-title {
   font-size: 80px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: normal;
   letter-spacing: 2.4px;
 }
@@ -637,5 +644,192 @@ body {
 
   .detail-item.full-width {
     grid-column: span 1; /* Already full width */
+  }
+}
+
+/* About Page */
+.about-page {
+  padding-bottom: 168px;
+}
+
+.about-section {
+  margin-bottom: 48px;
+}
+
+.about-section:last-child {
+  margin-bottom: 0;
+}
+
+.about-hero {
+  margin-bottom: 64px;
+}
+
+.about-title {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 1.8px;
+  color: #1a3050;
+  margin-bottom: 16px;
+}
+
+.about-intro {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 32px;
+  color: #525252;
+  max-width: 800px;
+}
+
+.about-heading {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a3050;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.about-section p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #525252;
+  margin-bottom: 16px;
+}
+
+.about-section p:last-child {
+  margin-bottom: 0;
+}
+
+.about-list {
+  margin: 16px 0;
+  padding-left: 24px;
+  list-style-type: disc;
+}
+
+.about-list li {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #525252;
+  margin-bottom: 8px;
+}
+
+.about-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Category Explanation */
+.category-explanation {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 24px 0;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.category-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.category-label.category-ja {
+  background-color: #99dec9;
+  color: #004530;
+}
+
+.category-label.category-nej {
+  background-color: #edb0ab;
+  color: #7e211a;
+}
+
+.category-label.category-delvis {
+  background-color: #99D5ED;
+  color: #005D7F;
+}
+
+.category-item p {
+  margin-bottom: 0;
+}
+
+/* About Signature */
+.about-signature {
+  margin-top: 64px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #a8a8a8;
+}
+
+/* Mobile: About page typography scaling */
+@media (max-width: 599px) {
+  .about-page {
+    padding-bottom: 64px;
+  }
+
+  .about-title {
+    font-size: 36px;
+    letter-spacing: 1.2px;
+  }
+
+  .about-intro {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .about-heading {
+    font-size: 24px;
+  }
+
+  .about-section p,
+  .about-list li {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .about-section {
+    margin-bottom: 32px;
+  }
+
+  .about-hero {
+    margin-bottom: 40px;
+  }
+
+  .about-signature {
+    margin-top: 48px;
+    font-size: 14px;
+  }
+}
+
+/* Small tablet */
+@media (min-width: 600px) and (max-width: 839px) {
+  .about-title {
+    font-size: 48px;
+    letter-spacing: 1.5px;
+  }
+
+  .about-intro {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .about-heading {
+    font-size: 28px;
+  }
+
+  .about-section p,
+  .about-list li {
+    font-size: 17px;
+    line-height: 26px;
   }
 }

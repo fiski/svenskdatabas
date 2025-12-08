@@ -1,14 +1,16 @@
+import { Link } from 'react-router-dom';
+
 export default function Header() {
   return (
     <header className="header">
       <div className="container">
         <div className="header-content">
-          <div className="header-title">
+          <Link to="/" className="header-title">
             Svensk Databas av Maximilian
-          </div>
-          <div className="header-link">
+          </Link>
+          <Link to="/om" className="header-link">
             Om
-          </div>
+          </Link>
         </div>
       </div>
     </header>
