@@ -4,7 +4,7 @@ import Hero from './components/Hero';
 import Search from './components/Search';
 import DataTable from './components/DataTable';
 import brandsData from './data/brands.json';
-import { SortColumn, SortDirection } from './types/brand';
+import { Brand, SortColumn, SortDirection } from './types/brand';
 
 // Swedish locale comparator for proper Å, Ä, Ö ordering
 const compareSwedish = (a: string, b: string): number => {
@@ -12,7 +12,7 @@ const compareSwedish = (a: string, b: string): number => {
 };
 
 // Status order for sorting
-const statusOrder = { 'Ja': 1, 'Delvis': 2, 'Nej': 3 };
+const statusOrder: Record<'Ja' | 'Nej' | 'Delvis', number> = { 'Ja': 1, 'Delvis': 2, 'Nej': 3 };
 
 function App() {
   const [currentInput, setCurrentInput] = useState('');
@@ -55,7 +55,7 @@ function App() {
 
   // Filter brands based on search tags and current input (hybrid live search)
   const filteredBrands = useMemo(() => {
-    let results = brandsData.brands;
+    let results = brandsData.brands as Brand[];
 
     // Step 1: Filter by tags (AND logic between tags)
     if (searchTags.length > 0) {
