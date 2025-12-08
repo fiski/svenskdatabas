@@ -324,6 +324,465 @@
         "tillverkningsländer": ["Sverige", "Kina", "Estland", "Brasilien"],
         "koncernstruktur": "Huvudkontor i Stockholm, global tillverkningskedja"
       }
+    },
+    {
+      "id": 26,
+      "varumärke": "Svenskt Tenn",
+      "kategori": "Inredning, Möbler, Textil",
+      "tillverkadISverige": "Ja",
+      "merInfo": {
+        "moderbolag": "Kjell och Märta Beijer AB",
+        "ägare": "Stiftelse (Kjell och Märta Beijers Stiftelse)",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Sverige"],
+        "koncernstruktur": "Ägs av stiftelse sedan 1975, större delen av sortimentet tillverkas i Sverige"
+      }
+    },
+    {
+      "id": 27,
+      "varumärke": "Kosta Boda",
+      "kategori": "Glas, Kristall",
+      "tillverkadISverige": "Delvis",
+      "merInfo": {
+        "moderbolag": "New Wave Group AB",
+        "ägare": "Börsnoterat",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": ["Sverige", "Europa"],
+        "koncernstruktur": "Del av New Wave Group sedan 2005, tillverkning i Kosta och glasbruk i Europa"
+      }
+    },
+    {
+      "id": 28,
+      "varumärke": "Orrefors",
+      "kategori": "Glas, Kristall",
+      "tillverkadISverige": "Delvis",
+      "merInfo": {
+        "moderbolag": "New Wave Group AB",
+        "ägare": "Börsnoterat",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": ["Sverige", "Europa"],
+        "koncernstruktur": "Del av Orrefors Kosta Boda AB under New Wave Group, tillverkning främst i Kosta"
+      }
+    },
+    {
+      "id": 29,
+      "varumärke": "Gustavsbergs Porslinsfabrik",
+      "kategori": "Porslin, Keramik",
+      "tillverkadISverige": "Ja",
+      "merInfo": {
+        "moderbolag": "Framtidens Porslin AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Sverige"],
+        "koncernstruktur": "Oberoende svenskt företag sedan 2019, all tillverkning i Gustavsberg"
+      }
+    },
+    {
+      "id": 30,
+      "varumärke": "Rörstrand",
+      "kategori": "Porslin, Keramik",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Iittala (Fiskars Group)",
+        "ägare": "Finskt ägt",
+        "börsnoterat": "Ja (del av Fiskars)",
+        "tillverkningsländer": ["Utomlands"],
+        "koncernstruktur": "Del av Iittala/Fiskars-koncernen, tillverkning nedlagd i Sverige"
+      }
+    },
+    {
+      "id": 31,
+      "varumärke": "Ankarsrum",
+      "kategori": "Kök, Hushåll, Köksmaskin",
+      "tillverkadISverige": "Ja",
+      "merInfo": {
+        "moderbolag": "Ankarsrum Kitchen/Ankarsrum Sweden",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Sverige"],
+        "koncernstruktur": "Svensk tillverkning och montering för hand i Ankarsrum sedan 1940"
+      }
+    },
+    {
+      "id": 32,
+      "varumärke": "Skultuna Messingsbruk",
+      "kategori": "Mässing, Inredning, Accessoarer",
+      "tillverkadISverige": "Delvis",
+      "merInfo": {
+        "moderbolag": "Skultuna Messingsbruk AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Sverige", "Globalt"],
+        "koncernstruktur": "Slutbearbetning i Skultuna, komponenter från underleverantörer i Sverige och globalt"
+      }
+    },
+    {
+      "id": 33,
+      "varumärke": "Höganäs Keramik",
+      "kategori": "Keramik, Porslin",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Iittala (Fiskars Group)",
+        "ägare": "Finskt ägt",
+        "börsnoterat": "Ja (del av Fiskars)",
+        "tillverkningsländer": ["Utomlands"],
+        "koncernstruktur": "Del av Iittala/Rörstrand, fabriken stängde 2008, produktion flyttad utomlands"
+      }
+    },
+    {
+      "id": 34,
+      "varumärke": "Klippan Yllefabrik",
+      "kategori": "Textil, Plädar, Filtar",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Klippan Yllefabrik AB",
+        "ägare": "Familjeägt",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Lettland"],
+        "koncernstruktur": "Svenskt familjeföretag sedan 1868, all tillverkning i egen fabrik i Lettland (Klippan-Saule)"
+      }
+    },
+    {
+      "id": 35,
+      "varumärke": "Tiger of Sweden",
+      "kategori": "Kläder, Mode",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "IC Group A/S",
+        "ägare": "Danskt ägt",
+        "börsnoterat": "Ja (del av IC Group)",
+        "tillverkningsländer": ["Europa", "Asien"],
+        "koncernstruktur": "Del av danska IC Group sedan 2003, design i Stockholm, tillverkning utomlands"
+      }
+    },
+    {
+      "id": 36,
+      "varumärke": "Morakniv",
+      "kategori": "Knivar, Verktyg",
+      "tillverkadISverige": "Ja",
+      "hållbarhetsFokus": "Cirkulär ekonomi, reparation",
+      "merInfo": {
+        "moderbolag": "Morakniv AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Sverige"],
+        "koncernstruktur": "All tillverkning i Mora sedan 1891"
+      }
+    },
+    {
+      "id": 37,
+      "varumärke": "Kasthall",
+      "kategori": "Mattor, Textil",
+      "tillverkadISverige": "Ja",
+      "merInfo": {
+        "moderbolag": "Kasthall AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Sverige"],
+        "koncernstruktur": "Tillverkning i Kinna sedan 1889"
+      }
+    },
+    {
+      "id": 38,
+      "varumärke": "Ekelund Linneväveri",
+      "kategori": "Textil, Linne",
+      "tillverkadISverige": "Ja",
+      "merInfo": {
+        "moderbolag": "Ekelund Linneväveri AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Sverige"],
+        "koncernstruktur": "Svenskt företag med tillverkning i Horred sedan 1692"
+      }
+    },
+    {
+      "id": 39,
+      "varumärke": "Skeppshult",
+      "kategori": "Kök, Gjutjärnspannor",
+      "tillverkadISverige": "Ja",
+      "merInfo": {
+        "moderbolag": "Skeppshult AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Sverige"],
+        "koncernstruktur": "All tillverkning i Skeppshult sedan 1906"
+      }
+    },
+    {
+      "id": 40,
+      "varumärke": "Gense",
+      "kategori": "Bestick, Kök",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Diverse ägarskifte genom åren",
+        "ägare": "Varierar",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Portugal", "Kina"],
+        "koncernstruktur": "Svensk design, tillverkning utomlands"
+      }
+    },
+    {
+      "id": 41,
+      "varumärke": "Iris Hantverk",
+      "kategori": "Borstar, Hantverk",
+      "tillverkadISverige": "Ja",
+      "hållbarhetsFokus": "Social hållbarhet, synskadade hantverkare",
+      "merInfo": {
+        "moderbolag": "Iris Hantverk AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Sverige", "Estland"],
+        "koncernstruktur": "Svenskt socialt företag, tillverkning i Sverige och Estland av synskadade hantverkare"
+      }
+    },
+    {
+      "id": 42,
+      "varumärke": "Tärnsjö Garveri",
+      "kategori": "Läder, Hantverk",
+      "tillverkadISverige": "Ja",
+      "hållbarhetsFokus": "Vegetabilgarvat läder, miljövänlig process",
+      "merInfo": {
+        "moderbolag": "Tärnsjö Garveri AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Sverige"],
+        "koncernstruktur": "Sveriges sista vegetabilgarveri, tillverkning i Tärnsjö sedan 1873"
+      }
+    },
+    {
+      "id": 43,
+      "varumärke": "Icebug",
+      "kategori": "Skor, Friluftsutrustning",
+      "tillverkadISverige": "Nej",
+      "hållbarhetsFokus": "Klimatkompensation, transparens, cirkulär ekonomi",
+      "merInfo": {
+        "moderbolag": "Icebug AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Kina", "Vietnam"],
+        "koncernstruktur": "Design i Sverige, tillverkning i Asien med starkt hållbarhetsfokus"
+      }
+    },
+    {
+      "id": 44,
+      "varumärke": "Stutterheim",
+      "kategori": "Regn kläder, Accessoarer",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Stutterheim AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Polen", "Portugal"],
+        "koncernstruktur": "Design i Stockholm, tillverkning i Europa"
+      }
+    },
+    {
+      "id": 45,
+      "varumärke": "Vagabond",
+      "kategori": "Skor",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Vagabond International AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Portugal", "Kina", "Vietnam"],
+        "koncernstruktur": "Design i Sverige, tillverkning främst i Portugal och Asien"
+      }
+    },
+    {
+      "id": 46,
+      "varumärke": "Daniel Wellington",
+      "kategori": "Klockor, Accessoarer",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Daniel Wellington AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Kina"],
+        "koncernstruktur": "Design i Sverige, tillverkning i Asien"
+      }
+    },
+    {
+      "id": 47,
+      "varumärke": "Tretorn",
+      "kategori": "Skor, Kläder",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Authentic Brands Group",
+        "ägare": "Amerikanskt ägt",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Asien"],
+        "koncernstruktur": "Svenskt varumärke, ägs av amerikanskt bolag, tillverkning i Asien"
+      }
+    },
+    {
+      "id": 48,
+      "varumärke": "Byarums Bruk",
+      "kategori": "Järnhantverk, Inredning",
+      "tillverkadISverige": "Ja",
+      "merInfo": {
+        "moderbolag": "Byarums Bruk AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Sverige"],
+        "koncernstruktur": "Tillverkning i Byarum sedan 1898"
+      }
+    },
+    {
+      "id": 49,
+      "varumärke": "Målerås Glasbruk",
+      "kategori": "Glas, Kristall",
+      "tillverkadISverige": "Ja",
+      "merInfo": {
+        "moderbolag": "Målerås Glasbruk AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Sverige"],
+        "koncernstruktur": "Tillverkning i Målerås sedan 1890"
+      }
+    },
+    {
+      "id": 50,
+      "varumärke": "Peak Performance",
+      "kategori": "Friluftskläder, Sport",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Amer Sports (tidigare)",
+        "ägare": "Internationellt ägt",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Asien", "Europa"],
+        "koncernstruktur": "Design i Sverige, tillverkning utomlands"
+      }
+    },
+    {
+      "id": 51,
+      "varumärke": "Haglöfs",
+      "kategori": "Friluftskläder, Väskor",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "ASICS Corporation",
+        "ägare": "Japanskt ägt",
+        "börsnoterat": "Del av ASICS",
+        "tillverkningsländer": ["Asien", "Europa"],
+        "koncernstruktur": "Ägs av ASICS sedan 2010, design i Sverige, tillverkning utomlands"
+      }
+    },
+    {
+      "id": 52,
+      "varumärke": "Craft",
+      "kategori": "Sport kläder, Funktionskläder",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "New Wave Group AB",
+        "ägare": "Börsnoterat",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": ["Asien", "Europa"],
+        "koncernstruktur": "Del av New Wave Group, design i Sverige, tillverkning utomlands"
+      }
+    },
+    {
+      "id": 53,
+      "varumärke": "Björn Borg",
+      "kategori": "Under kläder, Sport, Accessoarer",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Björn Borg AB",
+        "ägare": "Börsnoterat",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": ["Asien", "Europa"],
+        "koncernstruktur": "Design i Sverige, tillverkning utomlands"
+      }
+    },
+    {
+      "id": 54,
+      "varumärke": "Our Legacy",
+      "kategori": "Kläder, Mode",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Our Legacy AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Portugal", "Italien", "Turkiet"],
+        "koncernstruktur": "Design i Stockholm, tillverkning i Europa"
+      }
+    },
+    {
+      "id": 55,
+      "varumärke": "Weekday",
+      "kategori": "Kläder, Mode",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "H&M Group",
+        "ägare": "Börsnoterat, familjeägt",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": ["Asien", "Europa"],
+        "koncernstruktur": "Del av H&M Group, design i Sverige, tillverkning utomlands"
+      }
+    },
+    {
+      "id": 56,
+      "varumärke": "COS",
+      "kategori": "Kläder, Mode",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "H&M Group",
+        "ägare": "Börsnoterat, familjeägt",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": ["Asien", "Europa"],
+        "koncernstruktur": "Del av H&M Group, design i Sverige, tillverkning utomlands"
+      }
+    },
+    {
+      "id": 57,
+      "varumärke": "& Other Stories",
+      "kategori": "Kläder, Mode, Accessoarer",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "H&M Group",
+        "ägare": "Börsnoterat, familjeägt",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": ["Asien", "Europa"],
+        "koncernstruktur": "Del av H&M Group, design i Stockholm och Paris, tillverkning utomlands"
+      }
+    },
+    {
+      "id": 58,
+      "varumärke": "Monki",
+      "kategori": "Kläder, Mode",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "H&M Group",
+        "ägare": "Börsnoterat, familjeägt",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": ["Asien", "Europa"],
+        "koncernstruktur": "Del av H&M Group, design i Sverige, tillverkning utomlands"
+      }
+    },
+    {
+      "id": 59,
+      "varumärke": "ARKET",
+      "kategori": "Kläder, Inredning, Mode",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "H&M Group",
+        "ägare": "Börsnoterat, familjeägt",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": ["Asien", "Europa"],
+        "koncernstruktur": "Del av H&M Group, design i Sverige, tillverkning utomlands"
+      }
+    },
+    {
+      "id": 60,
+      "varumärke": "Resteröds",
+      "kategori": "Underkläder, Basplagg",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Resteröds AB",
+        "ägare": "Privat ägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": ["Portugal", "Turkiet"],
+        "koncernstruktur": "Design i Sverige, tillverkning i Europa"
+      }
     }
   ]
 }
