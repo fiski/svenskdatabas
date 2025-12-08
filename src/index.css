@@ -139,10 +139,6 @@ body {
     gap: 32px;
     padding-top: 3rem;
   }
-
-  .search-wrapper {
-    margin-bottom: 32px;
-  }
 }
 
 /* Container margins for different mobile breakpoints */
@@ -221,10 +217,17 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 72px;
+  margin-bottom: 32px;
   background-color: #ededed;
   z-index: 40;
   padding-bottom: 16px;
+}
+
+/* Desktop: Increased search wrapper spacing */
+@media (min-width: 840px) {
+  .search-wrapper {
+    margin-bottom: 72px;
+  }
 }
 
 .search {
