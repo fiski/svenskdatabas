@@ -16,8 +16,8 @@ const statusOrder: Record<'Ja' | 'Nej' | 'Delvis', number> = { 'Ja': 1, 'Delvis'
 export default function Home() {
   const [currentInput, setCurrentInput] = useState('');
   const [searchTags, setSearchTags] = useState<string[]>([]);
-  const [sortColumn, setSortColumn] = useState<SortColumn>(null);
-  const [sortDirection, setSortDirection] = useState<SortDirection>(null);
+  const [sortColumn, setSortColumn] = useState<SortColumn>('varumärke');
+  const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
 
   const totalBrands = brandsData.brands.length;
 
