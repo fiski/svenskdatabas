@@ -8,8 +8,8 @@
 /* Sweden Sans Font Face */
 @font-face {
   font-family: 'Sweden Sans';
-  src: url('/fonts/SwedenSans-Book.woff2') format('woff2'),
-       url('/fonts/SwedenSans-Book.woff') format('woff');
+  src: url('/fonts/SwedenSans_WEB/SwedenSansBook.woff2') format('woff2'),
+       url('/fonts/SwedenSans_WEB/SwedenSansBook.otf') format('opentype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -17,8 +17,8 @@
 
 @font-face {
   font-family: 'Sweden Sans';
-  src: url('/fonts/SwedenSans-Regular.woff2') format('woff2'),
-       url('/fonts/SwedenSans-Regular.woff') format('woff');
+  src: url('/fonts/SwedenSans_WEB/SwedenSansRegular.woff2') format('woff2'),
+       url('/fonts/SwedenSans_WEB/SwedenSansRegular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -26,8 +26,8 @@
 
 @font-face {
   font-family: 'Sweden Sans';
-  src: url('/fonts/SwedenSans-Semibold.woff2') format('woff2'),
-       url('/fonts/SwedenSans-Semibold.woff') format('woff');
+  src: url('/fonts/SwedenSans_WEB/SwedenSansSemiBold.woff2') format('woff2'),
+       url('/fonts/SwedenSans_WEB/SwedenSansSemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -35,8 +35,8 @@
 
 @font-face {
   font-family: 'Sweden Sans';
-  src: url('/fonts/SwedenSans-Bold.woff2') format('woff2'),
-       url('/fonts/SwedenSans-Bold.woff') format('woff');
+  src: url('/fonts/SwedenSans_WEB/SwedenSansBold.woff2') format('woff2'),
+       url('/fonts/SwedenSans_WEB/SwedenSansBold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
