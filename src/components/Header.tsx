@@ -6,7 +6,7 @@ export default function Header() {
       <div className="container">
         <div className="header-content">
           <Link to="/" className="header-title">
-            Svensk Databas av Maximilian
+            Svensk databas av Maximilian
           </Link>
           <Link to="/om" className="header-link">
             Om
