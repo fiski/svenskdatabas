@@ -1062,7 +1062,7 @@
       "tillverkadISverige": "Nej",
       "merInfo": {
         "moderbolag": "Satake Cutlery/Vikingsun (nordisk distributör)",
-        "ägare": "Osäker",
+        "ägare": "Japanskt ägt",
         "börsnoterat": "Nej",
         "tillverkningsländer": [
           "Japan",
@@ -1220,6 +1220,120 @@
           "Sverige"
         ],
         "koncernstruktur": "Microfabrik i Borås. All sömnad av jeans och kläder sker lokalt i Sverige. Småskalig produktion med fokus på lokal tillverkning. Beställningar sys upp inom 2-3 veckor."
+      }
+    },
+    {
+      "id": 77,
+      "varumärke": "ESAB (Elektriska Svetsnings-Aktiebolaget)",
+      "kategori": "Svetsutrustning, Industri",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "ESAB Corporation",
+        "ägare": "Börsnoterat (NYSE: ESAB)",
+        "börsnoterat": "Ja",
+        "tillverkningsländer": [
+          "USA",
+          "Europa",
+          "Asien",
+          "Sydamerika"
+        ],
+        "koncernstruktur": "Grundat 1904 i Göteborg av Oscar Kjellberg som uppfann världens första belagda svetselektrod. Revolutionerade svetsteknik globalt. Kontrollerades länge av Wallenberg via ASEA. Såldes till Charter International 1994, sedan Colfax Corporation 2012, avknoppades och börsnoterades på NYSE 2022. Huvudkontor i North Bethesda, Maryland, USA. I Sverige: 650 anställda i Göteborg (huvudkontor och R&D), Laxå, Perstorp och Stockholm. Sista svenska tillverkningen (elektroder) lades ned 2007. Design och produktutveckling fortfarande i Göteborg. Ca 9 000 anställda globalt med tillverkning i Europa, Nordamerika, Sydamerika, Asien och Indien."
+      }
+    }
+
+    ,
+    {
+      "id": 78,
+      "varumärke": "POC",
+      "kategori": "Sportskydd, Hjälmar, Cykel- och Skidutrust ning",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "POC Sweden AB (ägt av Investcorp)",
+        "ägare": "Investcorp",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": [
+          "Asien"
+        ],
+        "koncernstruktur": "Grundat 2005 i Stockholm av Stefan Ytterborn. Huvudkontor på Nackagatan 4, Stockholm. Design och produktutveckling i Sverige (POC Lab, WATTS Lab). Samarbetar med medicinska experter och forskare. Tillverkning hos externa leverantörer i Asien. Över 40 internationella priser för säkerhet, design och innovation. Pionjär inom MIPS rotationsskydd."
+      }
+    },
+    {
+      "id": 79,
+      "varumärke": "Felix",
+      "kategori": "Livsmedel, Färdigmat, Gurkinläggningar",
+      "tillverkadISverige": "Ja",
+      "merInfo": {
+        "moderbolag": "Orkla Foods Sverige AB",
+        "ägare": "Orkla ASA (Norge)",
+        "börsnoterat": "Ja (Orkla ASA på Oslo Börs)",
+        "tillverkningsländer": [
+          "Sverige"
+        ],
+        "koncernstruktur": "Grundat 1939 av Herbert Felix i Eslöv. 8 fabriker i Sverige: Eslöv (färdigmat, växtbaserat, gurkinläggningar), Fågelmara (ketchup), Kumla (saft, dryck), Tollarp (sylt), Vansbro (pizza, paj), Örebro (dessert), Kungshamn (sjömat). Huvudkontor Malmö. Del av Orkla Foods sedan 1995. Tillagar 190 000 ton mat/år i Sverige. 90% av mat som säljs i Sverige tillverkas också i Sverige."
+      }
+    },
+    {
+      "id": 80,
+      "varumärke": "Pripps",
+      "kategori": "Öl, Drycker",
+      "tillverkadISverige": "Ja",
+      "merInfo": {
+        "moderbolag": "Carlsberg Sverige AB",
+        "ägare": "Carlsberg Group (Danmark)",
+        "börsnoterat": "Ja (Carlsberg A/S på Köpenhamns Börs)",
+        "tillverkningsländer": [
+          "Sverige"
+        ],
+        "koncernstruktur": "Grundat 1828 i Göteborg av Johan Albrecht Pripp. Fusionerades med Carlsberg 2001 för att bilda Carlsberg Sverige. Tillverkning i Falkenberg och Ramlösa. Varumärken: Pripps Blå, Apotekarnes, Festis, Ramlösa. Äger också Falcon. Carlsberg Sverige har ~1200 anställda."
+      }
+    },
+    {
+      "id": 81,
+      "varumärke": "Rörstrand",
+      "kategori": "Porslin, Serviser",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Fiskars Group",
+        "ägare": "Fiskars Corporation (Finland)",
+        "börsnoterat": "Ja (Fiskars på Helsingfors Börs)",
+        "tillverkningsländer": [
+          "Sri Lanka",
+          "Ungern",
+          "Indonesien"
+        ],
+        "koncernstruktur": "Grundat 1726, Europas näst äldsta porslinsmärke. Tillverkning i Stockholm 1726-1926, Göteborg 1926-1936, Lidköping 1936-2005. Fabrik stängd i Lidköping 2005-12-30, produktion flyttad utomlands 2004. Ägs av Fiskars sedan 2007 tillsammans med Iittala, Hackman och Arabia."
+      }
+    },
+    {
+      "id": 82,
+      "varumärke": "Gustavsberg",
+      "kategori": "Sanitetsporslin, Hushållsporslin",
+      "tillverkadISverige": "Delvis",
+      "merInfo": {
+        "moderbolag": "Villeroy & Boch (sanitets), HPF i Gustavsberg AB (hushållsporslin)",
+        "ägare": "Villeroy & Boch Group (Tyskland)",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": [
+          "Sverige (begränsat)",
+          "Europa"
+        ],
+        "koncernstruktur": "Grundat 1825. Sanitetsporslin tillverkat i Gustavsberg 1937-2014, nu av Villeroy & Boch på andra orter. Hushållsporslin i mindre skala av HPF i Gustavsberg AB (personalägt, 9 anställda 1996). Var en gång Sveriges största porslinsfabrik."
+      }
+    },
+    {
+      "id": 83,
+      "varumärke": "Blåkläder",
+      "kategori": "Arbetskläder, Skyddsskor",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Blåkläder AB",
+        "ägare": "Familjeägt",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": [
+          "Sri Lanka",
+          "Myanmar"
+        ],
+        "koncernstruktur": "Grundat 1959 i Svenljunga med svensk produktion. Tillverkning flyttad utomlands: Vietnam 1992 (avvecklad), Sri Lanka 2006, Myanmar 2018. Producerar 4,5 miljoner plagg/år. 90% av plagg tillverkas i egna fabriker. 210 anställda 2019. SA 8000-certifierad produktion. En av Europas största tillverkare av arbetskläder."
       }
     }
   ]
