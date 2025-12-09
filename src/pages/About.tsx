@@ -16,7 +16,7 @@ export default function About() {
       <div className="container">
         <div className="content">
           <section className="about-section about-hero">
-            <h1 className="about-title">Made in Sweden?</h1>
+            <h1 className="about-title">Svensktillverkat?</h1>
             <p className="about-intro">
               Det är inte alltid så enkelt som det låter. Den här databasen skapar transparens kring svenska varumärken och var deras produkter faktiskt tillverkas.
             </p>
