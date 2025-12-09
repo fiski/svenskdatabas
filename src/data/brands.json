@@ -1335,6 +1335,24 @@
         ],
         "koncernstruktur": "Grundat 1959 i Svenljunga med svensk produktion. Tillverkning flyttad utomlands: Vietnam 1992 (avvecklad), Sri Lanka 2006, Myanmar 2018. Producerar 4,5 miljoner plagg/år. 90% av plagg tillverkas i egna fabriker. 210 anställda 2019. SA 8000-certifierad produktion. En av Europas största tillverkare av arbetskläder."
       }
+    },
+
+    {
+      "id": 84,
+      "varumärke": "Nocs",
+      "kategori": "Högtalare, Hörlurar",
+      "tillverkadISverige": "Delvis",
+      "merInfo": {
+        "moderbolag": "No Cynicism AB",
+        "ägare": "Svenskt privat ägt",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": [
+          "Sverige",
+          "Estland"
+        ],
+        "koncernstruktur": "Grundat 2003 av Daniel Alm. Design och utveckling i Lund, Sverige. Monolith-högtalare tillverkas och monteras i Sverige med lokalt virke. Mini-högtalare monteras i Estland med slutmontering i Sverige. Använder danska ScanSpeak-element. Flyttade produktion från Kina tillbaka till Sverige/Europa 2023."
+      }
     }
+  
   ]
 }
