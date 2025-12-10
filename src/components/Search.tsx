@@ -39,6 +39,27 @@ export default function Search({
     }
   };
 
+  const handleFocus = () => {
+    // On mobile, scroll search bar to top of viewport for better UX
+    if (inputRef.current) {
+      // Get the search wrapper element (parent of .search)
+      const searchWrapper = inputRef.current.closest('.search-wrapper');
+
+      if (searchWrapper) {
+        // Get position of search wrapper relative to document
+        const rect = searchWrapper.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const elementTop = rect.top + scrollTop;
+
+        // Smooth scroll to position where search bar sits at top
+        window.scrollTo({
+          top: elementTop,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+
   return (
     <>
       <div className="search">
@@ -61,6 +82,7 @@ export default function Search({
           value={currentInput}
           onChange={(e) => onInputChange(e.target.value)}
           onKeyDown={handleKeyDown}
+          onFocus={handleFocus}
         />
       </div>
       {searchTags.length === 0 && (
