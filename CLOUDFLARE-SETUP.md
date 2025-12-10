@@ -6,7 +6,7 @@ This guide walks you through setting up Cloudflare Pages for the `cloudflare-mig
 
 The following files are ready in this branch:
 - `.node-version` → Specifies Node.js 20
-- `public/_redirects` → SPA routing for HashRouter
+- `public/_redirects` → **Removed** (not needed for HashRouter)
 - `vite.config.ts` → Base path set to `/`
 - `public/CNAME` → **Removed** (GitHub Pages specific)
 - `CNAME` (root) → **Removed** (GitHub Pages specific)
