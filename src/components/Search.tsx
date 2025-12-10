@@ -19,6 +19,13 @@ export default function Search({
 }: SearchProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Detect if device is mobile (iOS or Android)
+  const isMobileDevice = () => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+  };
+
   const handleClear = () => {
     if (currentInput.trim()) {
       onInputChange('');
@@ -39,25 +46,22 @@ export default function Search({
     }
   };
 
-  const handleFocus = () => {
-    // On mobile, scroll search bar to top of viewport for better UX
-    if (inputRef.current) {
-      // Get the search wrapper element (parent of .search)
+  const handleSearchClick = () => {
+    // Only scroll on mobile devices - desktop doesn't need this behavior
+    if (isMobileDevice() && inputRef.current) {
       const searchWrapper = inputRef.current.closest('.search-wrapper');
 
       if (searchWrapper) {
-        // Get position of search wrapper relative to document
-        const rect = searchWrapper.getBoundingClientRect();
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const elementTop = rect.top + scrollTop;
-
-        // Smooth scroll to position where search bar sits at top
-        window.scrollTo({
-          top: elementTop,
-          behavior: 'smooth'
-        });
+        // Mobile: Instant scroll to top - reliable and avoids janky animation with keyboard
+        setTimeout(() => {
+          searchWrapper.scrollIntoView({
+            behavior: 'auto', // Instant scroll
+            block: 'start'
+          });
+        }, 100);
       }
     }
+    // Desktop: No scroll behavior (do nothing)
   };
 
   return (
@@ -82,7 +86,7 @@ export default function Search({
           value={currentInput}
           onChange={(e) => onInputChange(e.target.value)}
           onKeyDown={handleKeyDown}
-          onFocus={handleFocus}
+          onClick={handleSearchClick}
         />
       </div>
       {searchTags.length === 0 && (
