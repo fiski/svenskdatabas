@@ -1352,7 +1352,25 @@
         ],
         "koncernstruktur": "Grundat 2003 av Daniel Alm. Design och utveckling i Lund, Sverige. Monolith-högtalare tillverkas och monteras i Sverige med lokalt virke. Mini-högtalare monteras i Estland med slutmontering i Sverige. Använder danska ScanSpeak-element. Flyttade produktion från Kina tillbaka till Sverige/Europa 2023."
       }
+    },
+    {
+      "id": 85,
+      "varumärke": "Bahco",
+      "kategori": "Verktyg, Handsågar",
+      "tillverkadISverige": "Delvis",
+      "merInfo": {
+        "moderbolag": "SNA Europe (Snap-on Inc.)",
+        "ägare": "Amerikanskt ägt",
+        "börsnoterat": "Ja (Snap-on på NYSE)",
+        "tillverkningsländer": [
+          "Sverige",
+          "Portugal",
+          "Frankrike",
+          "Spanien"
+        ],
+        "koncernstruktur": "Grundat 1886 i Enköping av Berndt August Hjorth & Company (senare Bahco). Uppfann den justerbara skiftnyckeln 1892. Två fabriker fortfarande i Sverige. Större delen av tillverkningen sker i Europa (Portugal, Frankrike, Spanien). Ägs av amerikanska Snap-on sedan 1999."
+      }
     }
-  
+
   ]
 }
