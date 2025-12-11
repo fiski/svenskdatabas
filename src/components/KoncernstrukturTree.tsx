@@ -89,7 +89,7 @@ export default function KoncernstrukturTree({
 
                                     {/* Show status badge for Swedish sibling brands only (not main brand) */}
                                     {brand.land === 'SE' && !brand.ärHuvudvarumärke && brand.status && (
-                                      <StatusBadge status={brand.status} size="xs" />
+                                      <StatusBadge status={brand.status} variant="dot" />
                                     )}
                                   </div>
                                 ))}
