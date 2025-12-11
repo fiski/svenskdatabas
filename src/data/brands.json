@@ -45,7 +45,19 @@
           "Vietnam",
           "Bangladesh"
         ],
-        "koncernstruktur": "Del av Fenix Outdoor-koncernen, design i Sverige men tillverkning i Asien"
+        "koncernstruktur": {
+          "moderbolag": "Fenix Outdoor International AG",
+          "moderbolagLand": "CH",
+          "ägare": "Fenix Outdoor AB",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Fjällräven", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" },
+            { "namn": "Tierra", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "Hanwag", "land": "DE", "ärHuvudvarumärke": false },
+            { "namn": "Royal Robbins", "land": "US", "ärHuvudvarumärke": false },
+            { "namn": "Devold", "land": "NO", "ärHuvudvarumärke": false }
+          ]
+        }
       }
     },
     {
