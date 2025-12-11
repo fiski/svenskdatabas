@@ -12,6 +12,7 @@
         "tillverkningsländer": [
           "Sverige"
         ],
+        "intro": "Svensktillverkat smyckesvarumärke grundat i Stockholm som specialiserar sig på handgjorda smycken i ädelmetall. Varje smycke tillverkas i Sverige med fokus på hantverkskvalitet och tidlös design.",
         "koncernstruktur": {
           "moderbolag": "All Blues AB",
           "moderbolagLand": "SE",
@@ -36,6 +37,7 @@
           "Sverige",
           "Estland"
         ],
+        "intro": "Familjeägt företag som tillverkar högkvalitativa handskar sedan 1936. Delar av produktionen sker fortfarande i Sverige med traditionellt hantverk, medan övriga produkter tillverkas i Estland.",
         "koncernstruktur": {
           "moderbolag": "Hestra AB",
           "moderbolagLand": "SE",
@@ -61,6 +63,7 @@
           "Vietnam",
           "Bangladesh"
         ],
+        "intro": "Svenskt friluftsvarumärke känt för funktionella och hållbara friluftsprodukter, särskilt den ikoniska Kånken-ryggsäcken. Trots svenskt ursprung tillverkas produkterna numera utomlands med fokus på kvalitet och funktionalitet.",
         "koncernstruktur": {
           "moderbolag": "Fenix Outdoor International AG",
           "moderbolagLand": "CH", 

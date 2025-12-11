@@ -24,6 +24,7 @@ export interface Brand {
     börsnoterat: string;
     tillverkningsländer: string[];
     koncernstruktur: KoncernNode | string;  // Union type for migration
+    intro?: string;  // Optional brand description (2-3 sentences)
   };
 }
 

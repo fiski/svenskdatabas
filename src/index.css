@@ -649,6 +649,19 @@ body {
   color: #525252;
 }
 
+/* Brand Intro Section */
+.brand-intro {
+  margin-top: 8px;
+}
+
+.intro-text {
+  font-size: 16px;
+  font-weight: 400;
+  color: #525252;
+  line-height: 1.5;
+  max-width: 800px;
+}
+
 /* Mobile: Single-column expanded details */
 @media (max-width: 839px) {
   .expanded-details {
@@ -662,6 +675,15 @@ body {
 
   .detail-item.full-width {
     grid-column: span 1; /* Already full width */
+  }
+
+  .intro-text {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .brand-intro {
+    margin-top: 4px;
   }
 }
 
