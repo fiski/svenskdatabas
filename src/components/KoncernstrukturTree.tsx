@@ -42,36 +42,36 @@ export default function KoncernstrukturTree({
       {/* Render hierarchy only if there's structure */}
       {!isSingleBrand && (
         <div className="tree-hierarchy">
-          {/* Level 1: Moderbolag (if exists) */}
-          {moderbolag && (
+          {/* Level 1: Ägare (if exists) */}
+          {ägare && (
             <div className="tree-level-container">
               <div className="tree-level">
-                <div className="tree-node moderbolag-node">
-                  <div className="node-label">MODERBOLAG</div>
+                <div className="tree-node ägare-node">
+                  <div className="node-label">ÄGARE</div>
                   <div className="node-value">
-                    {moderbolag}
-                    {moderbolagLand && <Flag countryCode={moderbolagLand} />}
+                    {ägare}
+                    {ägareLand && <Flag countryCode={ägareLand} />}
                   </div>
                 </div>
               </div>
 
-              {/* Children of moderbolag */}
-              {(ägare || varumärken.length > 0) && (
+              {/* Children of ägare */}
+              {(moderbolag || varumärken.length > 0) && (
                 <div className="tree-children">
-                  {/* Level 2: Ägare (if exists) */}
-                  {ägare && (
+                  {/* Level 2: Moderbolag (if exists) */}
+                  {moderbolag && (
                     <div className="tree-level-container">
                       <div className="tree-level">
-                        <div className="tree-node ägare-node">
-                          <div className="node-label">ÄGARE</div>
+                        <div className="tree-node moderbolag-node">
+                          <div className="node-label">MODERBOLAG</div>
                           <div className="node-value">
-                            {ägare}
-                            {ägareLand && <Flag countryCode={ägareLand} />}
+                            {moderbolag}
+                            {moderbolagLand && <Flag countryCode={moderbolagLand} />}
                           </div>
                         </div>
                       </div>
 
-                      {/* Children of ägare */}
+                      {/* Children of moderbolag */}
                       {varumärken.length > 0 && (
                         <div className="tree-children">
                           {/* Level 3: Varumärken */}
@@ -101,8 +101,8 @@ export default function KoncernstrukturTree({
                     </div>
                   )}
 
-                  {/* If no ägare but has varumärken, render varumärken directly */}
-                  {!ägare && varumärken.length > 0 && (
+                  {/* If no moderbolag but has varumärken, render varumärken directly */}
+                  {!moderbolag && varumärken.length > 0 && (
                     <div className="tree-level-container">
                       <div className="tree-node varumärken-node">
                         <div className="node-label">VARUMÄRKE</div>
@@ -130,20 +130,20 @@ export default function KoncernstrukturTree({
             </div>
           )}
 
-          {/* If no moderbolag but has ägare */}
-          {!moderbolag && ägare && (
+          {/* If no ägare but has moderbolag */}
+          {!ägare && moderbolag && (
             <div className="tree-level-container">
               <div className="tree-level">
-                <div className="tree-node ägare-node">
-                  <div className="node-label">ÄGARE</div>
+                <div className="tree-node moderbolag-node">
+                  <div className="node-label">MODERBOLAG</div>
                   <div className="node-value">
-                    {ägare}
-                    {ägareLand && <Flag countryCode={ägareLand} />}
+                    {moderbolag}
+                    {moderbolagLand && <Flag countryCode={moderbolagLand} />}
                   </div>
                 </div>
               </div>
 
-              {/* Children of ägare */}
+              {/* Children of moderbolag */}
               {varumärken.length > 0 && (
                 <div className="tree-children">
                   <div className="tree-level-container">
@@ -172,8 +172,8 @@ export default function KoncernstrukturTree({
             </div>
           )}
 
-          {/* If no moderbolag and no ägare, only varumärken */}
-          {!moderbolag && !ägare && varumärken.length > 0 && (
+          {/* If no ägare and no moderbolag, only varumärken */}
+          {!ägare && !moderbolag && varumärken.length > 0 && (
             <div className="tree-level-container">
               <div className="tree-node varumärken-node">
                 <div className="node-label">VARUMÄRKE</div>

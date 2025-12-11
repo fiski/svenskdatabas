@@ -12,7 +12,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Oberoende svenskt företag, all tillverkning sker i Stockholm"
+        "koncernstruktur": {
+          "moderbolag": "All Blues AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "All Blues", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -28,7 +36,15 @@
           "Sverige",
           "Estland"
         ],
-        "koncernstruktur": "Familjeföretag sedan 1936, huvudsaklig tillverkning i Sverige och Estland"
+        "koncernstruktur": {
+          "moderbolag": "Hestra AB",
+          "moderbolagLand": "SE",
+          "ägare": "Familjeägt",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Hestra", "land": "SE", "ärHuvudvarumärke": true, "status": "Delvis" }
+          ]
+        }
       }
     },
     {
@@ -47,7 +63,7 @@
         ],
         "koncernstruktur": {
           "moderbolag": "Fenix Outdoor International AG",
-          "moderbolagLand": "CH",
+          "moderbolagLand": "CH", 
           "ägare": "Fenix Outdoor AB",
           "ägareLand": "SE",
           "varumärken": [
@@ -72,7 +88,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "All produktion sker i Östersund sedan 1972"
+        "koncernstruktur": {
+          "moderbolag": "Ulfrotté AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Woolpower", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -90,7 +114,16 @@
           "Kina",
           "USA"
         ],
-        "koncernstruktur": "Ägs av Geely sedan 2010, tillverkning i Göteborg och Torslanda samt globalt"
+        "koncernstruktur": {
+          "moderbolag": "Volvo Car Corporation",
+          "moderbolagLand": "SE",
+          "ägare": "Geely Holding Group",
+          "ägareLand": "CN",
+          "varumärken": [
+            { "namn": "Volvo Cars", "land": "SE", "ärHuvudvarumärke": true, "status": "Delvis" },
+            { "namn": "Polestar", "land": "SE", "ärHuvudvarumärke": false, "status": "Delvis" }
+          ]
+        }
       }
     },
     {
@@ -105,7 +138,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Tillverkas i Åhus, Skåne. Ägs av franska Pernod Ricard sedan 2008"
+        "koncernstruktur": {
+          "moderbolag": "The Absolut Company AB",
+          "moderbolagLand": "SE",
+          "ägare": "Pernod Ricard",
+          "ägareLand": "FR",
+          "varumärken": [
+            { "namn": "Absolut Vodka", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -123,7 +164,15 @@
           "Italien",
           "Tyskland"
         ],
-        "koncernstruktur": "Design i Sverige, tillverkning hos leverantörer globalt"
+        "koncernstruktur": {
+          "moderbolag": "Ingka Holding B.V.",
+          "moderbolagLand": "NL",
+          "ägare": "Stichting INGKA Foundation",
+          "ägareLand": "NL",
+          "varumärken": [
+            { "namn": "IKEA", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -141,7 +190,21 @@
           "Turkiet",
           "Indien"
         ],
-        "koncernstruktur": "Design i Sverige, tillverkning hos externa leverantörer i Asien och Europa"
+        "koncernstruktur": {
+          "moderbolag": "H & M Hennes & Mauritz AB",
+          "moderbolagLand": "SE",
+          "ägare": "Börsnoterat (Persson-familjen)",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "H&M", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" },
+            { "namn": "H&M Home", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "COS", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "Weekday", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "Monki", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "&Other Stories", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "ARKET", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -159,7 +222,21 @@
           "Bangladesh",
           "Turkiet"
         ],
-        "koncernstruktur": "Del av H&M Group, design i Sverige men tillverkning i Asien"
+        "koncernstruktur": {
+          "moderbolag": "H & M Hennes & Mauritz AB",
+          "moderbolagLand": "SE",
+          "ägare": "Börsnoterat (Persson-familjen)",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "H&M", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "H&M Home", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" },
+            { "namn": "COS", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "Weekday", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "Monki", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "&Other Stories", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "ARKET", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -175,7 +252,15 @@
           "Italien",
           "Tunisien"
         ],
-        "koncernstruktur": "Design i Göteborg, tillverkning i Italien och Tunisien"
+        "koncernstruktur": {
+          "moderbolag": "Nudie Jeans AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Nudie Jeans", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -193,7 +278,17 @@
           "USA",
           "Brasilien"
         ],
-        "koncernstruktur": "Huvudkontor i Göteborg, tillverkning i Sverige och globalt"
+        "koncernstruktur": {
+          "moderbolag": "AB Volvo",
+          "moderbolagLand": "SE",
+          "ägare": "Börsnoterat (Geely 19.88%, AMF Fonder 6.4%, Alecta 4.7%)",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Volvo Trucks", "land": "SE", "ärHuvudvarumärke": true, "status": "Delvis" },
+            { "namn": "Renault Trucks", "land": "FR", "ärHuvudvarumärke": false },
+            { "namn": "Mack Trucks", "land": "US", "ärHuvudvarumärke": false }
+          ]
+        }
       }
     },
     {
@@ -211,7 +306,15 @@
           "Polen",
           "Brasilien"
         ],
-        "koncernstruktur": "Ägs av Volkswagen-koncernen, tillverkning i Södertälje och globalt"
+        "koncernstruktur": {
+          "moderbolag": "Scania AB",
+          "moderbolagLand": "SE",
+          "ägare": "Traton SE (Volkswagen AG)",
+          "ägareLand": "DE",
+          "varumärken": [
+            { "namn": "Scania", "land": "SE", "ärHuvudvarumärke": true, "status": "Delvis" }
+          ]
+        }
       }
     },
     {
@@ -228,7 +331,15 @@
           "Vietnam",
           "Portugal"
         ],
-        "koncernstruktur": "Design i Åre, tillverkning i Asien och Europa"
+        "koncernstruktur": {
+          "moderbolag": "Klättermusen AB",
+          "moderbolagLand": "SE",
+          "ägare": "Triaden AB",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Klättermusen", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -244,7 +355,15 @@
           "Sverige",
           "Kina"
         ],
-        "koncernstruktur": "Design och viss montering i Göteborg, ägs av DJI sedan 2017"
+        "koncernstruktur": {
+          "moderbolag": "Hasselblad AB",
+          "moderbolagLand": "SE",
+          "ägare": "DJI",
+          "ägareLand": "CN",
+          "varumärken": [
+            { "namn": "Hasselblad", "land": "SE", "ärHuvudvarumärke": true, "status": "Delvis" }
+          ]
+        }
       }
     },
     {
@@ -261,7 +380,15 @@
           "Belgien",
           "USA"
         ],
-        "koncernstruktur": "Huvudkontor i Malmö, tillverkning i Europa och USA"
+        "koncernstruktur": {
+          "moderbolag": "Thule Group AB",
+          "moderbolagLand": "SE",
+          "ägare": "Börsnoterat (AMF 11.1%, Swedbank Robur 8.7%, Alecta 4.6%)",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Thule", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -277,7 +404,15 @@
           "Polen",
           "Rumänien"
         ],
-        "koncernstruktur": "Design i Sverige, tillverkning i Östeuropa"
+        "koncernstruktur": {
+          "moderbolag": "Eton AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Eton", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -294,7 +429,15 @@
           "Turkiet",
           "Kina"
         ],
-        "koncernstruktur": "Design i Stockholm, tillverkning i Europa och Asien"
+        "koncernstruktur": {
+          "moderbolag": "Filippa K AB",
+          "moderbolagLand": "SE",
+          "ägare": "Investeringsbolag",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Filippa K", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -311,7 +454,15 @@
           "Portugal",
           "Rumänien"
         ],
-        "koncernstruktur": "Design i Stockholm, tillverkning främst i Europa"
+        "koncernstruktur": {
+          "moderbolag": "Acne Studios AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Acne Studios", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -328,7 +479,15 @@
           "Turkiet",
           "Bangladesh"
         ],
-        "koncernstruktur": "Svenskt varumärke, tillverkning i Asien"
+        "koncernstruktur": {
+          "moderbolag": "Gant Company AB",
+          "moderbolagLand": "SE",
+          "ägare": "Maus Frères (Lacoste Group)",
+          "ägareLand": "CH",
+          "varumärken": [
+            { "namn": "Gant", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -347,7 +506,17 @@
           "USA",
           "Kina"
         ],
-        "koncernstruktur": "Global koncern med tillverkning i Motala samt globalt"
+        "koncernstruktur": {
+          "moderbolag": "Electrolux AB",
+          "moderbolagLand": "SE",
+          "ägare": "Börsnoterat (Investor AB/Wallenberg 28.4% röster, BlackRock, Vanguard)",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Electrolux", "land": "SE", "ärHuvudvarumärke": true, "status": "Delvis" },
+            { "namn": "AEG", "land": "DE", "ärHuvudvarumärke": false },
+            { "namn": "Zanussi", "land": "IT", "ärHuvudvarumärke": false }
+          ]
+        }
       }
     },
     {
@@ -365,7 +534,15 @@
           "Kina",
           "Brasilien"
         ],
-        "koncernstruktur": "Viss tillverkning i Sverige, huvudsakligen global produktion"
+        "koncernstruktur": {
+          "moderbolag": "Husqvarna Group AB",
+          "moderbolagLand": "SE",
+          "ägare": "Börsnoterat (Investor AB 17%, Robert Bosch GmbH 12%, L E Lundbergföretagen 7.6%)",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Husqvarna", "land": "SE", "ärHuvudvarumärke": true, "status": "Delvis" }
+          ]
+        }
       }
     },
     {
@@ -381,7 +558,15 @@
           "Kina",
           "Vietnam"
         ],
-        "koncernstruktur": "Design i Stockholm, tillverkning i Asien"
+        "koncernstruktur": {
+          "moderbolag": "Sandqvist AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Sandqvist", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -397,7 +582,15 @@
           "Portugal",
           "Italien"
         ],
-        "koncernstruktur": "Design i Stockholm, tillverkning i Europa"
+        "koncernstruktur": {
+          "moderbolag": "Axel Arigato AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Axel Arigato", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -415,7 +608,15 @@
           "USA",
           "Storbritannien"
         ],
-        "koncernstruktur": "Tillverkning i Landskrona och globalt, ägs av internationella investerare"
+        "koncernstruktur": {
+          "moderbolag": "Oatly Group AB",
+          "moderbolagLand": "SE",
+          "ägare": "Börsnoterat (China Resources Verlinvest 45%, övriga 13%, 1.4%)",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Oatly", "land": "SE", "ärHuvudvarumärke": true, "status": "Delvis" }
+          ]
+        }
       }
     },
     {
@@ -433,7 +634,15 @@
           "Estland",
           "Brasilien"
         ],
-        "koncernstruktur": "Huvudkontor i Stockholm, global tillverkningskedja"
+        "koncernstruktur": {
+          "moderbolag": "Telefonaktiebolaget LM Ericsson",
+          "moderbolagLand": "SE",
+          "ägare": "Börsnoterat (Investor AB/Wallenberg 8.7% kapital/24% röster, AB Industrivärden, Cevian 5%)",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Ericsson", "land": "SE", "ärHuvudvarumärke": true, "status": "Delvis" }
+          ]
+        }
       }
     },
     {
@@ -448,7 +657,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Ägs av stiftelse sedan 1975, större delen av sortimentet tillverkas i Sverige"
+        "koncernstruktur": {
+          "moderbolag": "Svenskt Tenn AB",
+          "moderbolagLand": "SE",
+          "ägare": "Kjell och Märta Beijers Stiftelse",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Svenskt Tenn", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -464,7 +681,16 @@
           "Sverige",
           "Europa"
         ],
-        "koncernstruktur": "Del av New Wave Group sedan 2005, tillverkning i Kosta och glasbruk i Europa"
+        "koncernstruktur": {
+          "moderbolag": "Orrefors Kosta Boda AB",
+          "moderbolagLand": "SE",
+          "ägare": "New Wave Group AB (börsnoterat: Torsten Jansson 33.6% kapital/82% röster, Svolder 15%, Handelsbanken Fonder)",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Kosta Boda", "land": "SE", "ärHuvudvarumärke": true, "status": "Delvis" },
+            { "namn": "Orrefors", "land": "SE", "ärHuvudvarumärke": false, "status": "Delvis" }
+          ]
+        }
       }
     },
     {
@@ -480,7 +706,16 @@
           "Sverige",
           "Europa"
         ],
-        "koncernstruktur": "Del av Orrefors Kosta Boda AB under New Wave Group, tillverkning främst i Kosta"
+        "koncernstruktur": {
+          "moderbolag": "Orrefors Kosta Boda AB",
+          "moderbolagLand": "SE",
+          "ägare": "New Wave Group AB (börsnoterat: Torsten Jansson 33.6% kapital/82% röster, Svolder 15%, Handelsbanken Fonder)",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Orrefors", "land": "SE", "ärHuvudvarumärke": true, "status": "Delvis" },
+            { "namn": "Kosta Boda", "land": "SE", "ärHuvudvarumärke": false, "status": "Delvis" }
+          ]
+        }
       }
     },
     {
@@ -495,7 +730,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Oberoende svenskt företag sedan 2019, all tillverkning i Gustavsberg"
+        "koncernstruktur": {
+          "moderbolag": "Gustavsbergs Porslinsfabrik AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Gustavsbergs", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -510,7 +753,18 @@
         "tillverkningsländer": [
           "Utomlands"
         ],
-        "koncernstruktur": "Del av Iittala/Fiskars-koncernen, tillverkning nedlagd i Sverige"
+        "koncernstruktur": {
+          "moderbolag": "Iittala Oy Ab",
+          "moderbolagLand": "FI",
+          "ägare": "Fiskars Group Oyj Abp",
+          "ägareLand": "FI",
+          "varumärken": [
+            { "namn": "Rörstrand", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" },
+            { "namn": "Höganäs Keramik", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "Iittala", "land": "FI", "ärHuvudvarumärke": false },
+            { "namn": "Arabia", "land": "FI", "ärHuvudvarumärke": false }
+          ]
+        }
       }
     },
     {
@@ -525,7 +779,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Svensk tillverkning och montering för hand i Ankarsrum sedan 1940"
+        "koncernstruktur": {
+          "moderbolag": "Ankarsrum Sweden AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Ankarsrum", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -541,7 +803,15 @@
           "Sverige",
           "Globalt"
         ],
-        "koncernstruktur": "Slutbearbetning i Skultuna, komponenter från underleverantörer i Sverige och globalt"
+        "koncernstruktur": {
+          "moderbolag": "Skultuna Messingsbruk AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Skultuna Messingsbruk", "land": "SE", "ärHuvudvarumärke": true, "status": "Delvis" }
+          ]
+        }
       }
     },
     {
@@ -556,7 +826,18 @@
         "tillverkningsländer": [
           "Utomlands"
         ],
-        "koncernstruktur": "Del av Iittala/Rörstrand, fabriken stängde 2008, produktion flyttad utomlands"
+        "koncernstruktur": {
+          "moderbolag": "Iittala Oy Ab",
+          "moderbolagLand": "FI",
+          "ägare": "Fiskars Group Oyj Abp",
+          "ägareLand": "FI",
+          "varumärken": [
+            { "namn": "Höganäs Keramik", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" },
+            { "namn": "Rörstrand", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "Iittala", "land": "FI", "ärHuvudvarumärke": false },
+            { "namn": "Arabia", "land": "FI", "ärHuvudvarumärke": false }
+          ]
+        }
       }
     },
     {
@@ -571,7 +852,15 @@
         "tillverkningsländer": [
           "Lettland"
         ],
-        "koncernstruktur": "Svenskt familjeföretag sedan 1868, all tillverkning i egen fabrik i Lettland (Klippan-Saule)"
+        "koncernstruktur": {
+          "moderbolag": "Klippan Yllefabrik AB",
+          "moderbolagLand": "SE",
+          "ägare": "Familjeägt",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Klippan Yllefabrik", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -587,7 +876,16 @@
           "Europa",
           "Asien"
         ],
-        "koncernstruktur": "Del av danska IC Group sedan 2003, design i Stockholm, tillverkning utomlands"
+        "koncernstruktur": {
+          "moderbolag": "Tiger of Sweden AB",
+          "moderbolagLand": "SE",
+          "ägare": "IC Group A/S",
+          "ägareLand": "DK",
+          "varumärken": [
+            { "namn": "Tiger of Sweden", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" },
+            { "namn": "By Malene Birger", "land": "DK", "ärHuvudvarumärke": false }
+          ]
+        }
       }
     },
     {
@@ -603,7 +901,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "All tillverkning i Mora sedan 1891"
+        "koncernstruktur": {
+          "moderbolag": "Morakniv AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Morakniv", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -618,7 +924,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Tillverkning i Kinna sedan 1889"
+        "koncernstruktur": {
+          "moderbolag": "Kasthall AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Kasthall", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -633,7 +947,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Svenskt företag med tillverkning i Horred sedan 1692"
+        "koncernstruktur": {
+          "moderbolag": "Ekelund Linneväveri AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Ekelund", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -648,7 +970,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "All tillverkning i Skeppshult sedan 1906"
+        "koncernstruktur": {
+          "moderbolag": "Skeppshult AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Skeppshult", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -664,7 +994,15 @@
           "Portugal",
           "Kina"
         ],
-        "koncernstruktur": "Svensk design, tillverkning utomlands"
+        "koncernstruktur": {
+          "moderbolag": "Gense AB",
+          "moderbolagLand": "SE",
+          "ägare": "F&H Group A/S",
+          "ägareLand": "DK",
+          "varumärken": [
+            { "namn": "Gense", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -681,7 +1019,15 @@
           "Sverige",
           "Estland"
         ],
-        "koncernstruktur": "Svenskt socialt företag, tillverkning i Sverige och Estland av synskadade hantverkare"
+        "koncernstruktur": {
+          "moderbolag": "Iris Hantverk AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Iris Hantverk", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -697,7 +1043,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Sveriges sista vegetabilgarveri, tillverkning i Tärnsjö sedan 1873"
+        "koncernstruktur": {
+          "moderbolag": "Tärnsjö Garveri AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Tärnsjö Garveri", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -714,7 +1068,15 @@
           "Kina",
           "Vietnam"
         ],
-        "koncernstruktur": "Design i Sverige, tillverkning i Asien med starkt hållbarhetsfokus"
+        "koncernstruktur": {
+          "moderbolag": "Icebug AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Icebug", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -730,7 +1092,15 @@
           "Polen",
           "Portugal"
         ],
-        "koncernstruktur": "Design i Stockholm, tillverkning i Europa"
+        "koncernstruktur": {
+          "moderbolag": "Stutterheim AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Stutterheim", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -747,7 +1117,15 @@
           "Kina",
           "Vietnam"
         ],
-        "koncernstruktur": "Design i Sverige, tillverkning främst i Portugal och Asien"
+        "koncernstruktur": {
+          "moderbolag": "Vagabond International AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Vagabond", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -762,7 +1140,15 @@
         "tillverkningsländer": [
           "Kina"
         ],
-        "koncernstruktur": "Design i Sverige, tillverkning i Asien"
+        "koncernstruktur": {
+          "moderbolag": "Daniel Wellington AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Daniel Wellington", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -777,7 +1163,15 @@
         "tillverkningsländer": [
           "Asien"
         ],
-        "koncernstruktur": "Svenskt varumärke, ägs av amerikanskt bolag, tillverkning i Asien"
+        "koncernstruktur": {
+          "moderbolag": "Tretorn AB",
+          "moderbolagLand": "SE",
+          "ägare": "Authentic Brands Group",
+          "ägareLand": "US",
+          "varumärken": [
+            { "namn": "Tretorn", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -792,7 +1186,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Tillverkning i Byarum sedan 1898"
+        "koncernstruktur": {
+          "moderbolag": "Byarums Bruk AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Byarums Bruk", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -807,7 +1209,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Tillverkning i Målerås sedan 1890"
+        "koncernstruktur": {
+          "moderbolag": "Målerås Glasbruk AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Målerås Glasbruk", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -816,14 +1226,22 @@
       "kategori": "Friluftsklä der, Sport",
       "tillverkadISverige": "Nej",
       "merInfo": {
-        "moderbolag": "Amer Sports (tidigare)",
-        "ägare": "Internationellt ägt",
+        "moderbolag": "Amer Sports, Inc.",
+        "ägare": "Anta Sports Products Limited (börsnoterat Hong Kong)",
         "börsnoterat": "Nej",
         "tillverkningsländer": [
           "Asien",
           "Europa"
         ],
-        "koncernstruktur": "Design i Sverige, tillverkning utomlands"
+        "koncernstruktur": {
+          "moderbolag": "Amer Sports, Inc.",
+          "moderbolagLand": "US",
+          "ägare": "Anta Sports Products Limited (börsnoterat Hong Kong)",
+          "ägareLand": "CN",
+          "varumärken": [
+            { "namn": "Peak Performance", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -839,7 +1257,15 @@
           "Asien",
           "Europa"
         ],
-        "koncernstruktur": "Ägs av ASICS sedan 2010, design i Sverige, tillverkning utomlands"
+        "koncernstruktur": {
+          "moderbolag": "Haglöfs Scandinavia AB",
+          "moderbolagLand": "SE",
+          "ägare": "ASICS Corporation",
+          "ägareLand": "JP",
+          "varumärken": [
+            { "namn": "Haglöfs", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -855,7 +1281,15 @@
           "Asien",
           "Europa"
         ],
-        "koncernstruktur": "Del av New Wave Group, design i Sverige, tillverkning utomlands"
+        "koncernstruktur": {
+          "moderbolag": "Craft Sportswear AB",
+          "moderbolagLand": "SE",
+          "ägare": "New Wave Group AB (börsnoterat: Torsten Jansson 33.6% kapital/82% röster, Svolder 15%, Handelsbanken Fonder)",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Craft", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -865,13 +1299,21 @@
       "tillverkadISverige": "Nej",
       "merInfo": {
         "moderbolag": "Björn Borg AB",
-        "ägare": "Börsnoterat",
+        "ägare": "Börsnoterat (NORDNET AB 15.06%, Julnie SA 9.94%, Martin Bjäringer 9.94%)",
         "börsnoterat": "Ja",
         "tillverkningsländer": [
           "Asien",
           "Europa"
         ],
-        "koncernstruktur": "Design i Sverige, tillverkning utomlands"
+        "koncernstruktur": {
+          "moderbolag": "Björn Borg AB",
+          "moderbolagLand": "SE",
+          "ägare": "Börsnoterat (NORDNET AB 15.06%, Julnie SA 9.94%, Martin Bjäringer 9.94%)",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Björn Borg", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -888,7 +1330,15 @@
           "Italien",
           "Turkiet"
         ],
-        "koncernstruktur": "Design i Stockholm, tillverkning i Europa"
+        "koncernstruktur": {
+          "moderbolag": "Our Legacy AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Our Legacy", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -904,7 +1354,21 @@
           "Asien",
           "Europa"
         ],
-        "koncernstruktur": "Del av H&M Group, design i Sverige, tillverkning utomlands"
+        "koncernstruktur": {
+          "moderbolag": "H & M Hennes & Mauritz AB",
+          "moderbolagLand": "SE",
+          "ägare": "Börsnoterat (Persson-familjen)",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Weekday", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" },
+            { "namn": "H&M", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "COS", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "Monki", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "&Other Stories", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "ARKET", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "H&M Home", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -920,7 +1384,21 @@
           "Asien",
           "Europa"
         ],
-        "koncernstruktur": "Del av H&M Group, design i Sverige, tillverkning utomlands"
+        "koncernstruktur": {
+          "moderbolag": "H & M Hennes & Mauritz AB",
+          "moderbolagLand": "SE",
+          "ägare": "Börsnoterat (Persson-familjen)",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "COS", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" },
+            { "namn": "H&M", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "Weekday", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "Monki", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "&Other Stories", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "ARKET", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "H&M Home", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -936,7 +1414,21 @@
           "Asien",
           "Europa"
         ],
-        "koncernstruktur": "Del av H&M Group, design i Stockholm och Paris, tillverkning utomlands"
+        "koncernstruktur": {
+          "moderbolag": "H & M Hennes & Mauritz AB",
+          "moderbolagLand": "SE",
+          "ägare": "Börsnoterat (Persson-familjen)",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "&Other Stories", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" },
+            { "namn": "H&M", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "COS", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "Weekday", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "Monki", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "ARKET", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "H&M Home", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -952,7 +1444,21 @@
           "Asien",
           "Europa"
         ],
-        "koncernstruktur": "Del av H&M Group, design i Sverige, tillverkning utomlands"
+        "koncernstruktur": {
+          "moderbolag": "H & M Hennes & Mauritz AB",
+          "moderbolagLand": "SE",
+          "ägare": "Börsnoterat (Persson-familjen)",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Monki", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" },
+            { "namn": "H&M", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "COS", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "Weekday", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "&Other Stories", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "ARKET", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "H&M Home", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -968,7 +1474,21 @@
           "Asien",
           "Europa"
         ],
-        "koncernstruktur": "Del av H&M Group, design i Sverige, tillverkning utomlands"
+        "koncernstruktur": {
+          "moderbolag": "H & M Hennes & Mauritz AB",
+          "moderbolagLand": "SE",
+          "ägare": "Börsnoterat (Persson-familjen)",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "ARKET", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" },
+            { "namn": "H&M", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "COS", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "Weekday", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "Monki", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "&Other Stories", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" },
+            { "namn": "H&M Home", "land": "SE", "ärHuvudvarumärke": false, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -984,7 +1504,15 @@
           "Portugal",
           "Turkiet"
         ],
-        "koncernstruktur": "Design i Sverige, tillverkning i Europa"
+        "koncernstruktur": {
+          "moderbolag": "Resteröds AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Resteröds", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -994,13 +1522,21 @@
       "tillverkadISverige": "Nej",
       "merInfo": {
         "moderbolag": "Fractal Gaming Group AB",
-        "ägare": "Börsnoterat",
+        "ägare": "Börsnoterat (Hannes Wallin 29.27%, Herenco 14.24%, Ramhill AB 6.34%)",
         "börsnoterat": "Ja (Nasdaq First North Premier)",
         "tillverkningsländer": [
           "Kina",
           "Taiwan"
         ],
-        "koncernstruktur": "Design och utveckling i Göteborg, tillverkning i Asien. Kontor i Sverige, USA, Kina och Taiwan"
+        "koncernstruktur": {
+          "moderbolag": "Fractal Gaming Group AB",
+          "moderbolagLand": "SE",
+          "ägare": "Börsnoterat (Hannes Wallin 29.27%, Herenco 14.24%, Ramhill AB 6.34%)",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Fractal Design", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -1015,7 +1551,15 @@
         "tillverkningsländer": [
           "Portugal"
         ],
-        "koncernstruktur": "Grundat 2016 av Sebastian Öhrn, design i Stockholm, handgjorda skor i Portugal med läder från Hermès-ägda Tannery du Puy (Frankrike)"
+        "koncernstruktur": {
+          "moderbolag": "Myrqvist AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Myrqvist", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -1032,7 +1576,15 @@
           "Italien",
           "Portugal"
         ],
-        "koncernstruktur": "Grundat 2017, design i Stockholm, tillverkning i familjeägda ateljéer i Spanien (Elda), Italien (Padula) och Portugal"
+        "koncernstruktur": {
+          "moderbolag": "Morjas & Co AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Morjas", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -1049,7 +1601,15 @@
           "Italien",
           "Japan"
         ],
-        "koncernstruktur": "Grundat 2009, design i Stockholm, tillverkning i Portugal (skjortor), tyger från Italien och Japan"
+        "koncernstruktur": {
+          "moderbolag": "Berg & Berg AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Berg & Berg", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -1064,7 +1624,15 @@
         "tillverkningsländer": [
           "Japan"
         ],
-        "koncernstruktur": "Grundat 2018 av Oliver Dannefalk och Carl Pers, design i Stockholm, tillverkning i Japan"
+        "koncernstruktur": {
+          "moderbolag": "Rubato AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Rubato", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -1081,7 +1649,15 @@
           "Asien",
           "Europa"
         ],
-        "koncernstruktur": "Japansk tillverkare grundad 1947. Lanserades för nordiska marknaden 1994, i Sverige 1998 genom Vikingsun. Tillverkning i Seki City (Japan), samt fabriker i andra asiatiska och europeiska länder. Design anpassad för nordiska kök med japansk tradition."
+        "koncernstruktur": {
+          "moderbolag": "Satake Cutlery Co., Ltd.",
+          "moderbolagLand": "JP",
+          "ägare": "Privatägd (Japan)",
+          "ägareLand": "JP",
+          "varumärken": [
+            { "namn": "Satake", "land": "JP", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -1096,7 +1672,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Grundat 1975. All tillverkning sker i Karesuando i svenska Lappland (ca 25 mil norr om polcirkeln). Handgjorda knivar med material från omgivningarna: renhorn, masurbjörk och bok. Följer lokala slöjdtraditioner."
+        "koncernstruktur": {
+          "moderbolag": "Karesuandokniven AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Karesuandokniven", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -1111,7 +1695,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Handgjorda knivar tillverkade i Sverige för både matentusiaster och professionella kockar. Fokus på hantverk och kvalitet."
+        "koncernstruktur": {
+          "moderbolag": "Steel by Lundbergs",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Steel by Lundbergs", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -1126,7 +1718,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Grundat 1929 av Yrjö Kero och Karl Wälivaara. Tillverkning i Sattajärvi, 2 mil söder om Pajala i svenska Tornedalen. Tillverkar knivar, näbbskor, ryggsäckar och annan vildmarksutrustning. Genuint hantverk enligt gamla traditioner."
+        "koncernstruktur": {
+          "moderbolag": "Kero Försäljning AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Kero", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -1141,7 +1741,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Grundat 1984 i Norrbotten med passion för jakt, fiske och friluftsliv. Mest kända kniven F1 används av svenska flygvapnet. Kunglig Hovleverantör. Tillverkar knivar i världsklass med fokus på styrka, säkerhet och premiumdesign."
+        "koncernstruktur": {
+          "moderbolag": "Fällkniven AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Fällkniven", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -1156,7 +1764,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Grundat 1883. Tillverkar friluftsknivar och hantverksknivar med skandinavisk slipning. Knivblad genomgår elektroforetisk ytbehandling. Kända för att kombinera styrka, användarvänlighet och prisvärda knivar."
+        "koncernstruktur": {
+          "moderbolag": "Hultafors Group AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Hultafors", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -1171,7 +1787,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Grundat 1882 i Eskilstuna. En av få kvarvarande av Eskilstunas cirka 200 historiska knivtillverkare. Kunglig Hovleverantör sedan 1990. Tillverkar fällknivar, slidknivar, yxor och sågar. Tre grundförutsättningar för kvalitetskniv: rejält stål, härdat knivblad, sylvass egg."
+        "koncernstruktur": {
+          "moderbolag": "EKA1882 AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "EKA", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -1186,7 +1810,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Förvaltar arvet efter möbeldesignern Bruno Mathsson (1907-1988) från Värnamo. Tillverkning i Värnamo enligt beprövad hantverkstradition. Kända möbler: fåtöljerna Jetson, Eva, Pernilla, Miranda, samt Superellipsbordet. Fokus på ergonomi, funktionalitet och svensk träkvalitet."
+        "koncernstruktur": {
+          "moderbolag": "Bruno Mathsson International AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Bruno Mathsson International", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -1201,7 +1833,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Grundat 1893 i byn Gärsnäs på Österlen, Skåne. Familjeägt sedan 2003 av Anna och Dag Klockby samt Åke Axelsson (inredningsarkitekt). All tillverkning sker i egen fabrik med cirka 50 anställda. Specialitet: bokträ från Skåne. Fokus på hållbarhet med renoverings- och återställningssystem. Showroom på Skeppsholmen, Stockholm."
+        "koncernstruktur": {
+          "moderbolag": "Gärsnäs AB",
+          "moderbolagLand": "SE",
+          "ägare": "Familjeägt (Klockby/Axelsson)",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Gärsnäs", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -1216,7 +1856,16 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Grundat 1907 i Smålandsstenar. All design, produktion, montering och verksamhet på samma plats än idag. Kända för björkmöbler i massivt trä. Mest kända: stolen Lilla Åland designad av Carl Malmsten 1942. Sedan 2016 inkluderar varumärket Albin (kläder och dynor tillverkas i Hyssna)."
+        "koncernstruktur": {
+          "moderbolag": "Stolab AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Stolab", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" },
+            { "namn": "Albin", "land": "SE", "ärHuvudvarumärke": false, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -1231,7 +1880,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Microfabrik i Borås. All sömnad av jeans och kläder sker lokalt i Sverige. Småskalig produktion med fokus på lokal tillverkning. Beställningar sys upp inom 2-3 veckor."
+        "koncernstruktur": {
+          "moderbolag": "Jeansverket",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Jeansverket", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -1249,11 +1906,17 @@
           "Asien",
           "Sydamerika"
         ],
-        "koncernstruktur": "Grundat 1904 i Göteborg av Oscar Kjellberg som uppfann världens första belagda svetselektrod. Revolutionerade svetsteknik globalt. Kontrollerades länge av Wallenberg via ASEA. Såldes till Charter International 1994, sedan Colfax Corporation 2012, avknoppades och börsnoterades på NYSE 2022. Huvudkontor i North Bethesda, Maryland, USA. I Sverige: 650 anställda i Göteborg (huvudkontor och R&D), Laxå, Perstorp och Stockholm. Sista svenska tillverkningen (elektroder) lades ned 2007. Design och produktutveckling fortfarande i Göteborg. Ca 9 000 anställda globalt med tillverkning i Europa, Nordamerika, Sydamerika, Asien och Indien."
+        "koncernstruktur": {
+          "moderbolag": "ESAB Corporation",
+          "moderbolagLand": "US",
+          "ägare": "Börsnoterat (Mitchell P. Rales 6.34%, JPMorgan Chase, Invesco Ltd.)",
+          "ägareLand": "US",
+          "varumärken": [
+            { "namn": "ESAB", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
-    }
-
-    ,
+    },
     {
       "id": 78,
       "varumärke": "POC",
@@ -1266,7 +1929,15 @@
         "tillverkningsländer": [
           "Asien"
         ],
-        "koncernstruktur": "Grundat 2005 i Stockholm av Stefan Ytterborn. Huvudkontor på Nackagatan 4, Stockholm. Design och produktutveckling i Sverige (POC Lab, WATTS Lab). Samarbetar med medicinska experter och forskare. Tillverkning hos externa leverantörer i Asien. Över 40 internationella priser för säkerhet, design och innovation. Pionjär inom MIPS rotationsskydd."
+        "koncernstruktur": {
+          "moderbolag": "POC Sweden AB",
+          "moderbolagLand": "SE",
+          "ägare": "Investcorp",
+          "ägareLand": "BH",
+          "varumärken": [
+            { "namn": "POC", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -1281,7 +1952,15 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Grundat 1939 av Herbert Felix i Eslöv. 8 fabriker i Sverige: Eslöv (färdigmat, växtbaserat, gurkinläggningar), Fågelmara (ketchup), Kumla (saft, dryck), Tollarp (sylt), Vansbro (pizza, paj), Örebro (dessert), Kungshamn (sjömat). Huvudkontor Malmö. Del av Orkla Foods sedan 1995. Tillagar 190 000 ton mat/år i Sverige. 90% av mat som säljs i Sverige tillverkas också i Sverige."
+        "koncernstruktur": {
+          "moderbolag": "Orkla Foods Sverige AB",
+          "moderbolagLand": "SE",
+          "ägare": "Orkla ASA",
+          "ägareLand": "NO",
+          "varumärken": [
+            { "namn": "Felix", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -1296,7 +1975,17 @@
         "tillverkningsländer": [
           "Sverige"
         ],
-        "koncernstruktur": "Grundat 1828 i Göteborg av Johan Albrecht Pripp. Fusionerades med Carlsberg 2001 för att bilda Carlsberg Sverige. Tillverkning i Falkenberg och Ramlösa. Varumärken: Pripps Blå, Apotekarnes, Festis, Ramlösa. Äger också Falcon. Carlsberg Sverige har ~1200 anställda."
+        "koncernstruktur": {
+          "moderbolag": "Carlsberg Sverige AB",
+          "moderbolagLand": "SE",
+          "ägare": "Carlsberg A/S",
+          "ägareLand": "DK",
+          "varumärken": [
+            { "namn": "Pripps", "land": "SE", "ärHuvudvarumärke": true, "status": "Ja" },
+            { "namn": "Falcon", "land": "SE", "ärHuvudvarumärke": false, "status": "Ja" },
+            { "namn": "Ramlösa", "land": "SE", "ärHuvudvarumärke": false, "status": "Ja" }
+          ]
+        }
       }
     },
     {
@@ -1313,7 +2002,15 @@
           "Ungern",
           "Indonesien"
         ],
-        "koncernstruktur": "Grundat 1726, Europas näst äldsta porslinsmärke. Tillverkning i Stockholm 1726-1926, Göteborg 1926-1936, Lidköping 1936-2005. Fabrik stängd i Lidköping 2005-12-30, produktion flyttad utomlands 2004. Ägs av Fiskars sedan 2007 tillsammans med Iittala, Hackman och Arabia."
+        "koncernstruktur": {
+          "moderbolag": "Fiskars Group",
+          "moderbolagLand": "FI",
+          "ägare": "Fiskars Corporation",
+          "ägareLand": "FI",
+          "varumärken": [
+            { "namn": "Rörstrand", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
     {
@@ -1329,7 +2026,15 @@
           "Sverige (begränsat)",
           "Europa"
         ],
-        "koncernstruktur": "Grundat 1825. Sanitetsporslin tillverkat i Gustavsberg 1937-2014, nu av Villeroy & Boch på andra orter. Hushållsporslin i mindre skala av HPF i Gustavsberg AB (personalägt, 9 anställda 1996). Var en gång Sveriges största porslinsfabrik."
+        "koncernstruktur": {
+          "moderbolag": "Villeroy & Boch AG",
+          "moderbolagLand": "DE",
+          "ägare": "Villeroy & Boch Group",
+          "ägareLand": "DE",
+          "varumärken": [
+            { "namn": "Gustavsberg", "land": "SE", "ärHuvudvarumärke": true, "status": "Delvis" }
+          ]
+        }
       }
     },
     {
@@ -1345,10 +2050,17 @@
           "Sri Lanka",
           "Myanmar"
         ],
-        "koncernstruktur": "Grundat 1959 i Svenljunga med svensk produktion. Tillverkning flyttad utomlands: Vietnam 1992 (avvecklad), Sri Lanka 2006, Myanmar 2018. Producerar 4,5 miljoner plagg/år. 90% av plagg tillverkas i egna fabriker. 210 anställda 2019. SA 8000-certifierad produktion. En av Europas största tillverkare av arbetskläder."
+        "koncernstruktur": {
+          "moderbolag": "Blåkläder AB",
+          "moderbolagLand": "SE",
+          "ägare": "Familjeägt",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Blåkläder", "land": "SE", "ärHuvudvarumärke": true, "status": "Nej" }
+          ]
+        }
       }
     },
-
     {
       "id": 84,
       "varumärke": "Nocs",
@@ -1362,7 +2074,15 @@
           "Sverige",
           "Estland"
         ],
-        "koncernstruktur": "Grundat 2003 av Daniel Alm. Design och utveckling i Lund, Sverige. Monolith-högtalare tillverkas och monteras i Sverige med lokalt virke. Mini-högtalare monteras i Estland med slutmontering i Sverige. Använder danska ScanSpeak-element. Flyttade produktion från Kina tillbaka till Sverige/Europa 2023."
+        "koncernstruktur": {
+          "moderbolag": "No Cynicism AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            { "namn": "Nocs", "land": "SE", "ärHuvudvarumärke": true, "status": "Delvis" }
+          ]
+        }
       }
     },
     {
@@ -1380,9 +2100,16 @@
           "Frankrike",
           "Spanien"
         ],
-        "koncernstruktur": "Grundat 1886 i Enköping av Berndt August Hjorth & Company (senare Bahco). Uppfann den justerbara skiftnyckeln 1892. Två fabriker fortfarande i Sverige. Större delen av tillverkningen sker i Europa (Portugal, Frankrike, Spanien). Ägs av amerikanska Snap-on sedan 1999."
+        "koncernstruktur": {
+          "moderbolag": "SNA Europe (Snap-on Inc.)",
+          "moderbolagLand": "US",
+          "ägare": "Snap-on Inc.",
+          "ägareLand": "US",
+          "varumärken": [
+            { "namn": "Bahco", "land": "SE", "ärHuvudvarumärke": true, "status": "Delvis" }
+          ]
+        }
       }
     }
-
   ]
 }

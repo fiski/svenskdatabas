@@ -14,7 +14,8 @@
       "Bash(tree:*)",
       "WebFetch(domain:developers.cloudflare.com)",
       "mcp__figma-remote-mcp__get_design_context",
-      "mcp__figma-remote-mcp__get_screenshot"
+      "mcp__figma-remote-mcp__get_screenshot",
+      "WebSearch"
     ],
     "deny": [],
     "ask": []
