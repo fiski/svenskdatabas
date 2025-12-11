@@ -585,6 +585,27 @@ body {
   font-weight: 600;
 }
 
+/* Status Badge - Dot Variant */
+.status-badge.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  padding: 0;
+  margin-left: 6px;
+}
+
+.status-badge.dot.ja {
+  background-color: #004530;
+}
+
+.status-badge.dot.nej {
+  background-color: #7e211a;
+}
+
+.status-badge.dot.delvis {
+  background-color: #005D7F;
+}
+
 /* More Info Text */
 .more-info-text {
   color: #525252;
