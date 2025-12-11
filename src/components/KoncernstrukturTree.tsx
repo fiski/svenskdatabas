@@ -10,8 +10,8 @@ interface KoncernstrukturTreeProps {
 
 export default function KoncernstrukturTree({
   koncernstruktur,
-  currentBrandName,
-  currentBrandStatus
+  currentBrandName: _currentBrandName,
+  currentBrandStatus: _currentBrandStatus
 }: KoncernstrukturTreeProps) {
   // Fallback for legacy string format
   if (typeof koncernstruktur === 'string') {
