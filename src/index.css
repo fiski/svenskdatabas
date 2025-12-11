@@ -677,7 +677,7 @@ body {
   font-weight: 600;
   color: #1a3050;
   letter-spacing: 0.28px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 /* Tree Hierarchy Container */
