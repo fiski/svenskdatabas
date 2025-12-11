@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowUpDown, ArrowUpAZ, ArrowDownZA } from 'lucide-react';
 import StatusBadge from './StatusBadge';
+import KoncernstrukturTree from './KoncernstrukturTree';
 import { Brand, SortColumn, SortDirection } from '../types/brand';
 
 interface DataTableProps {
@@ -178,8 +179,11 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort }:
                     </div>
                   </div>
                   <div className="detail-item full-width">
-                    <div className="detail-label">Koncernstruktur</div>
-                    <div className="detail-value">{brand.merInfo.koncernstruktur}</div>
+                    <KoncernstrukturTree
+                      koncernstruktur={brand.merInfo.koncernstruktur}
+                      currentBrandName={brand.varumärke}
+                      currentBrandStatus={brand.tillverkadISverige}
+                    />
                   </div>
                 </div>
               </div>

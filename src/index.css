@@ -564,6 +564,10 @@ body {
   font-weight: 400;
 }
 
+.status-badge-xs {
+  padding: 4px 8px;
+}
+
 .status-badge.ja {
   background-color: #99dec9;
   color: #004530;
@@ -637,6 +641,163 @@ body {
 
   .detail-item.full-width {
     grid-column: span 1; /* Already full width */
+  }
+}
+
+/* Koncernstruktur Tree */
+.koncernstruktur-tree {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.koncernstruktur-header {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a3050;
+  letter-spacing: 0.28px;
+  text-transform: uppercase;
+}
+
+/* Tree Hierarchy Container */
+.tree-hierarchy {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-left: 12px;
+}
+
+/* Tree Level Container - creates vertical line via border-left */
+.tree-level-container {
+  border-left: 1px solid #c6c6c6;
+  padding-left: 20px;
+  margin-top: 16px;
+}
+
+/* First level container (no margin-top) */
+.tree-level-container:first-child {
+  margin-top: 0;
+}
+
+/* Tree Level (each row in hierarchy) */
+.tree-level {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tree Children Container - just spacing */
+.tree-children {
+  margin-top: 24px;
+}
+
+/* Tree Node (each box in the tree) */
+.tree-node {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Node Labels (MODERBOLAG, FÖRETAG, VARUMÄRKE) */
+.node-label {
+  font-size: 12px;
+  font-weight: 400;
+  color: #1a3050;
+  text-transform: uppercase;
+  letter-spacing: 0.24px;
+}
+
+/* Node Value (company name + flag) */
+.node-value {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #525252;
+}
+
+/* Brand List */
+.brand-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.brand-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 300;
+  color: #525252;
+}
+
+/* Main brand (current brand being viewed) */
+.brand-item.main-brand .brand-name {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+/* Flag Styles */
+.flag-icon {
+  width: 24px;
+  height: auto;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.flag-icon.flag-small {
+  width: 20px;
+}
+
+.flag-icon.flag-medium {
+  width: 24px;
+}
+
+/* Single Brand Display (no hierarchy) */
+.single-brand-display {
+  padding: 8px 0;
+}
+
+.single-brand-display p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #525252;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Mobile: Reduce spacing */
+@media (max-width: 839px) {
+  .tree-hierarchy {
+    gap: 0;
+    padding-left: 8px;
+  }
+
+  .tree-level-container {
+    padding-left: 16px;
+    margin-top: 12px;
+  }
+
+  .tree-children {
+    margin-top: 16px;
+  }
+
+  .node-value {
+    font-size: 14px;
+  }
+
+  .brand-item {
+    font-size: 14px;
+  }
+
+  .brand-list {
+    gap: 12px;
+  }
+
+  .flag-icon {
+    width: 20px;
   }
 }
 
