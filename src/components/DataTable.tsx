@@ -161,14 +161,6 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort }:
               <div className="expanded-details">
                 <div className="details-grid">
                   <div className="detail-item">
-                    <div className="detail-label">Moderbolag</div>
-                    <div className="detail-value">{brand.merInfo.moderbolag}</div>
-                  </div>
-                  <div className="detail-item">
-                    <div className="detail-label">Ägare</div>
-                    <div className="detail-value">{brand.merInfo.ägare}</div>
-                  </div>
-                  <div className="detail-item">
                     <div className="detail-label">Börsnoterat</div>
                     <div className="detail-value">{brand.merInfo.börsnoterat}</div>
                   </div>
