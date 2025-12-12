@@ -1067,3 +1067,167 @@ body {
     line-height: 26px;
   }
 }
+
+/* ======================
+   Footer Component
+   ====================== */
+
+/* Footer Container */
+.footer {
+  background-color: #ededed;
+  /* border-top: 1px solid #c6c6c6; */
+  margin-top: 8rem;
+}
+
+/* Footer Content Grid */
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 4rem 0;
+  gap: 3rem;
+}
+
+/* Left Section: Brand */
+.footer-brand {
+  flex: 1;
+  max-width: 400px;
+}
+
+.footer-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a3050;
+  margin-bottom: 0.5rem;
+}
+
+.footer-description {
+  font-size: 14px;
+  font-weight: 300;
+  color: #6e6e6e;
+  line-height: 1.6;
+}
+
+/* Right Section: Links */
+.footer-links {
+  display: flex;
+  align-items: flex-start;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  position: relative;
+}
+
+.footer-link {
+  font-size: 16px;
+  font-weight: 400;
+  color: #6e6e6e;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.footer-link:hover {
+  color: #1a3050;
+}
+
+.footer-link:focus {
+  outline: 2px solid #1a3050;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Email Link Specific */
+.footer-email {
+  border-bottom: 1px dotted #6e6e6e;
+}
+
+.footer-email:hover {
+  border-bottom-color: #1a3050;
+}
+
+/* Copied Notification */
+.footer-copied {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background-color: #2c2c2c;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 4px;
+  white-space: nowrap;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ======================
+   Responsive Breakpoints
+   ====================== */
+
+/* Tablet (840-1199px) */
+@media (min-width: 840px) and (max-width: 1199px) {
+  .footer-content {
+    padding: 3rem 0;
+    gap: 2rem;
+  }
+
+  .footer-nav {
+    gap: 1.5rem;
+  }
+}
+
+/* Mobile (<840px) */
+@media (max-width: 839px) {
+  .footer {
+    margin-top: 4rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 0;
+    gap: 2rem;
+  }
+
+  .footer-brand {
+    max-width: 100%;
+  }
+
+  .footer-nav {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .footer-copied {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+}
+
+/* Mobile Small (<600px) */
+@media (max-width: 599px) {
+  .footer-title {
+    font-size: 18px;
+  }
+
+  .footer-description {
+    font-size: 13px;
+  }
+
+  .footer-link {
+    font-size: 14px;
+  }
+}
