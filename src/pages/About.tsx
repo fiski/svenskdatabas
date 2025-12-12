@@ -115,9 +115,9 @@ export default function About() {
             </ul>
           </section>
 
-          <div className="about-signature">
+          {/* <div className="about-signature">
             //Max
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
