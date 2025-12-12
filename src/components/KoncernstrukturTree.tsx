@@ -50,7 +50,6 @@ export default function KoncernstrukturTree({
                   <div className="node-label">ÄGARE</div>
                   <div className="node-value">
                     {ägare}
-                    {ägareLand && <Flag countryCode={ägareLand} />}
                   </div>
                 </div>
               </div>

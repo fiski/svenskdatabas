@@ -170,18 +170,18 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort }:
                       {brand.merInfo.tillverkningsländer.join(', ')}
                     </div>
                   </div>
-                  <div className="detail-item full-width brand-intro">
-                    <div className="detail-label">Om varumärket</div>
-                    <div className="detail-value intro-text">
-                      {brand.merInfo.intro || 'Ingen information att visa för tillfället'}
-                    </div>
-                  </div>
-                  <div className="detail-item full-width">
+                  <div className="detail-item">
                     <KoncernstrukturTree
                       koncernstruktur={brand.merInfo.koncernstruktur}
                       currentBrandName={brand.varumärke}
                       currentBrandStatus={brand.tillverkadISverige}
                     />
+                  </div>
+                  <div className="detail-item brand-intro">
+                    <div className="detail-label">Om varumärket</div>
+                    <div className="detail-value intro-text">
+                      {brand.merInfo.intro || 'Ingen information att visa för tillfället'}
+                    </div>
                   </div>
                 </div>
               </div>
