@@ -2923,6 +2923,184 @@
         },
         "intro": "Svenskt verktygsmärke grundat 1886 i Enköping, berömt för skiftnycklar, sågar och trädgårdsverktyg. Del av SNA Group med innovation och professionell kvalitet."
       }
+    },
+    {
+      "id": 86,
+      "varumärke": "Polarbröd",
+      "kategori": "Bröd, Bageri",
+      "tillverkadISverige": "Ja",
+      "merInfo": {
+        "moderbolag": "Polarbrödsgruppen AB",
+        "ägare": "Familjeägt",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": [
+          "Sverige"
+        ],
+        "koncernstruktur": {
+          "moderbolag": "Polarbrödsgruppen AB",
+          "moderbolagLand": "SE",
+          "ägare": "Familjeägt (Borgeryd/Bodin-familjerna)",
+          "ägareLand": "SE",
+          "varumärken": [
+            {
+              "namn": "Polarbröd",
+              "land": "SE",
+              "ärHuvudvarumärke": true,
+              "status": "Ja"
+            }
+          ]
+        },
+        "intro": "Familjeägt bageri grundat 1879 som bakar traditionellt norrländskt tunnbröd. Tredje största brödproducenten i Sverige med tre bagerier i norra Sverige."
+      }
+    },
+    {
+      "id": 87,
+      "varumärke": "Spendrups",
+      "kategori": "Bryggeri, Drycker",
+      "tillverkadISverige": "Ja",
+      "merInfo": {
+        "moderbolag": "Spendrup Invest AB",
+        "ägare": "Familjeägt",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": [
+          "Sverige"
+        ],
+        "koncernstruktur": {
+          "moderbolag": "Spendrup Invest AB",
+          "moderbolagLand": "SE",
+          "ägare": "Familjeägt (Spendrup-familjen)",
+          "ägareLand": "SE",
+          "varumärken": [
+            {
+              "namn": "Spendrups",
+              "land": "SE",
+              "ärHuvudvarumärke": true,
+              "status": "Ja"
+            }
+          ]
+        },
+        "intro": "Svenskt familjeägt bryggeri grundat 1897 som Grängesbergs Bryggeri. Fyra bryggerier i Sverige med cirka 900 anställda och en omsättning på cirka 3 miljarder kronor."
+      }
+    },
+    {
+      "id": 88,
+      "varumärke": "Trangia",
+      "kategori": "Friluftutrustning, Campingkök",
+      "tillverkadISverige": "Ja",
+      "merInfo": {
+        "moderbolag": "Trangia AB",
+        "ägare": "Familjeägt",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": [
+          "Sverige"
+        ],
+        "koncernstruktur": {
+          "moderbolag": "Trangia AB",
+          "moderbolagLand": "SE",
+          "ägare": "Familjeägt",
+          "ägareLand": "SE",
+          "varumärken": [
+            {
+              "namn": "Trangia",
+              "land": "SE",
+              "ärHuvudvarumärke": true,
+              "status": "Ja"
+            }
+          ]
+        },
+        "intro": "Svenskt familjeföretag grundat 1925 i Trångsviken som tillverkar stormkök och friluftsutrustning. Känt för sina ikoniska stormkök som fortfarande tillverkas i samma by där företaget grundades."
+      }
+    },
+    {
+      "id": 89,
+      "varumärke": "Polarn O. Pyret",
+      "kategori": "Barnkläder",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Polarn O. Pyret AB",
+        "ägare": "Procuritas",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": [
+          "Bangladesh",
+          "Kambodja",
+          "Vietnam"
+        ],
+        "koncernstruktur": {
+          "moderbolag": "Polarn O. Pyret AB",
+          "moderbolagLand": "SE",
+          "ägare": "Procuritas",
+          "ägareLand": "SE",
+          "varumärken": [
+            {
+              "namn": "Polarn O. Pyret",
+              "land": "SE",
+              "ärHuvudvarumärke": true,
+              "status": "Nej"
+            }
+          ]
+        },
+        "intro": "Svenskt barnklädesmärke grundat 1976 känt för funktionella och hållbara barnkläder. Trots att tyg vävs i Sverige tillverkas kläderna i Asien med fokus på hållbarhet och kvalitet."
+      }
+    },
+    {
+      "id": 90,
+      "varumärke": "A Day's March",
+      "kategori": "Kläder, Herrmode",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "A Day's March AB",
+        "ägare": "Privatägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": [
+          "Portugal"
+        ],
+        "koncernstruktur": {
+          "moderbolag": "A Day's March AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            {
+              "namn": "A Day's March",
+              "land": "SE",
+              "ärHuvudvarumärke": true,
+              "status": "Nej"
+            }
+          ]
+        },
+        "intro": "Svenskt herrmodemärke grundat 2014 i Stockholm med minimalistisk estetik. Producerar över 70% av sina kläder i Portugal med lokala tyger och material."
+      }
+    },
+    {
+      "id": 91,
+      "varumärke": "Totême",
+      "kategori": "Kläder, Mode",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Totême AB",
+        "ägare": "Elin Kling & Karl Lindman (Altor Fund V minoritet)",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": [
+          "Kina",
+          "Italien",
+          "Portugal"
+        ],
+        "koncernstruktur": {
+          "moderbolag": "Totême AB",
+          "moderbolagLand": "SE",
+          "ägare": "Grundare (majoritet) + Altor Fund V (minoritet)",
+          "ägareLand": "SE",
+          "varumärken": [
+            {
+              "namn": "Totême",
+              "land": "SE",
+              "ärHuvudvarumärke": true,
+              "status": "Nej"
+            }
+          ]
+        },
+        "intro": "Svenskt modemärke grundat 2014 av Elin Kling och Karl Lindman med global närvaro. Känt för minimalistisk skandinavisk design med produktion i Europa och Asien."
+      }
     }
   ]
 }
