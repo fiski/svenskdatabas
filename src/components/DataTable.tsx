@@ -13,6 +13,7 @@ interface DataTableProps {
 
 export default function DataTable({ brands, sortColumn, sortDirection, onSort }: DataTableProps) {
   const [expandedRows, setExpandedRows] = useState<Set<number>>(new Set());
+  let previousLetter = '';
 
   const toggleRow = (id: number) => {
     const newExpanded = new Set(expandedRows);
@@ -111,40 +112,53 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort }:
       {/* Table Body */}
       {brands.map((brand) => {
         const isExpanded = expandedRows.has(brand.id);
+
+        // Letter tracking for alphabetical indicators
+        const currentLetter = brand.varumärke.charAt(0).toUpperCase();
+        const showLetter = sortColumn === 'varumärke' && currentLetter !== previousLetter;
+        const letterToDisplay = showLetter ? currentLetter : '';
+        previousLetter = currentLetter;
+
         return (
-          <div key={brand.id}>
-            {/* Main Row */}
-            <div
-              className={`table-row ${isExpanded ? 'expanded' : ''}`}
-              onClick={() => toggleRow(brand.id)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  toggleRow(brand.id);
-                }
-              }}
-            >
-              <div className="table-expand-cell">
-                <svg
-                  className={`expand-icon ${isExpanded ? 'expanded' : ''}`}
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M4 6L8 10L12 6"
-                    stroke="#161616"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+          <div key={brand.id} className="row-container">
+            {sortColumn === 'varumärke' && (
+              <div className="letter-indicator-external">
+                {letterToDisplay && <span className="letter-indicator">{letterToDisplay}</span>}
               </div>
-              <div className="table-cell" data-label="Varumärke">
-                {brand.varumärke}
-              </div>
+            )}
+            <div className="row-content">
+              {/* Main Row */}
+              <div
+                className={`table-row ${isExpanded ? 'expanded' : ''}`}
+                onClick={() => toggleRow(brand.id)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleRow(brand.id);
+                  }
+                }}
+              >
+                <div className="table-expand-cell">
+                  <svg
+                    className={`expand-icon ${isExpanded ? 'expanded' : ''}`}
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M4 6L8 10L12 6"
+                      stroke="#161616"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+                <div className="table-cell" data-label="Varumärke">
+                  {brand.varumärke}
+                </div>
               <div className="table-cell" data-label="Kategori">
                 {brand.kategori}
               </div>
@@ -186,6 +200,7 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort }:
                 </div>
               </div>
             )}
+            </div>
           </div>
         );
       })}
