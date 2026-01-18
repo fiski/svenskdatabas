@@ -3101,6 +3101,35 @@
         },
         "intro": "Svenskt modemärke grundat 2014 av Elin Kling och Karl Lindman med global närvaro. Känt för minimalistisk skandinavisk design med produktion i Europa och Asien."
       }
+    },
+    {
+      "id": 92,
+      "varumärke": "Shepherd of Sweden",
+      "kategori": "Skor, Heminredning",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Shepherd of Sweden AB",
+        "ägare": "Privatägd",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": [
+          "Nordmakedonien"
+        ],
+        "koncernstruktur": {
+          "moderbolag": "Shepherd of Sweden AB",
+          "moderbolagLand": "SE",
+          "ägare": "Privatägd",
+          "ägareLand": "SE",
+          "varumärken": [
+            {
+              "namn": "Shepherd of Sweden",
+              "land": "SE",
+              "ärHuvudvarumärke": true,
+              "status": "Nej"
+            }
+          ]
+        },
+        "intro": "Svenskt företag grundat 1982 i Svenljunga specialiserat på fårskinn- och ullprodukter. Känt för sina handgjorda tofflor, skor och heminredning med fokus på kvalitet och hållbarhet. Tillverkar sedan över 40 år i samma fabrik i Nordmakedonien."
+      }
     }
   ]
 }
