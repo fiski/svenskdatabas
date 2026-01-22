@@ -1,7 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function About() {
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    document.title = 'Om projektet - Svensk Databas';
+  }, []);
 
   const handleEmailClick = () => {
     navigator.clipboard.writeText('maximilian.relam@gmail.com');
