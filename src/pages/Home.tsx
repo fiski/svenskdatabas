@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Hero from '../components/Hero';
 import Search from '../components/Search';
 import DataTable from '../components/DataTable';
@@ -20,6 +20,10 @@ export default function Home() {
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
 
   const totalBrands = brandsData.brands.length;
+
+  useEffect(() => {
+    document.title = 'Svenska varumärken och tillverkare - En Svensk databas';
+  }, []);
 
   const addSearchTag = (tag: string) => {
     const trimmedTag = tag.trim();
