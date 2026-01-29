@@ -3130,6 +3130,64 @@
         },
         "intro": "Svenskt företag grundat 1982 i Svenljunga specialiserat på fårskinn- och ullprodukter. Känt för sina handgjorda tofflor, skor och heminredning med fokus på kvalitet och hållbarhet. Tillverkar sedan över 40 år i samma fabrik i Nordmakedonien."
       }
+    },
+    {
+      "id": 93,
+      "varumärke": "Santa Maria",
+      "kategori": "Mat och Dryck",
+      "tillverkadISverige": "Nej",
+      "merInfo": {
+        "moderbolag": "Paulig Group",
+        "ägare": "Familjeägt",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": [
+          "Estland"
+        ],
+        "koncernstruktur": {
+          "moderbolag": "Paulig Group",
+          "moderbolagLand": "FI",
+          "ägare": "Familjeägt (familjen Paulig)",
+          "ägareLand": "FI",
+          "varumärken": [
+            {
+              "namn": "Santa Maria",
+              "land": "SE",
+              "ärHuvudvarumärke": true,
+              "status": "Nej"
+            }
+          ]
+        },
+        "intro": "Svenskt krydd- och matvarumärke grundat i Göteborg, känt för tex-mex produkter, kryddor och såser. Produktionen flyttas från Göteborg till Estland."
+      }
+    },
+    {
+      "id": 94,
+      "varumärke": "Kockens",
+      "kategori": "Mat och Dryck",
+      "tillverkadISverige": "Ja",
+      "merInfo": {
+        "moderbolag": "Culinar Sverige AB",
+        "ägare": "Kooperativt (Lyckeby Stärkelsen)",
+        "börsnoterat": "Nej",
+        "tillverkningsländer": [
+          "Sverige"
+        ],
+        "koncernstruktur": {
+          "moderbolag": "Culinar Sverige AB",
+          "moderbolagLand": "SE",
+          "ägare": "Lyckeby Stärkelsen (ca 1 000 potatisodlare)",
+          "ägareLand": "SE",
+          "varumärken": [
+            {
+              "namn": "Kockens",
+              "land": "SE",
+              "ärHuvudvarumärke": true,
+              "status": "Ja"
+            }
+          ]
+        },
+        "intro": "Svenskt kryddvarumärke grundat 1916, känt för torkade kryddor, smaksättning och potatismjöl. Tillverkas i Fjälkinge, Skåne sedan 2003. Ägs av bondekooperativet Lyckeby Stärkelsen och är en del av Culinar Sverige AB."
+      }
     }
   ]
 }
