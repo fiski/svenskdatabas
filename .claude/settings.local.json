@@ -22,7 +22,12 @@
       "Bash(cd /c/Users/maxim/Documents/Github/svenskdatabas && SANITY_WRITE_TOKEN=REDACTED_TOKEN_3 npx tsx studio/migrations/importFromJson.ts 2>&1)",
       "Bash(cd /c/Users/maxim/Documents/Github/svenskdatabas && npx tsc --noEmit 2>&1)",
       "mcp__Sanity__query_documents",
-      "Bash(cd /c/Users/maxim/Documents/Github/svenskdatabas && npm run build 2>&1)"
+      "Bash(cd /c/Users/maxim/Documents/Github/svenskdatabas && npm run build 2>&1)",
+      "WebFetch(domain:sv.wikipedia.org)",
+      "WebFetch(domain:satila.com)",
+      "WebFetch(domain:www.allabolag.se)",
+      "mcp__Sanity__create_documents_from_json",
+      "mcp__Sanity__publish_documents"
     ],
     "deny": [],
     "ask": []
