@@ -15,7 +15,14 @@
       "WebFetch(domain:developers.cloudflare.com)",
       "mcp__figma-remote-mcp__get_design_context",
       "mcp__figma-remote-mcp__get_screenshot",
-      "WebSearch"
+      "WebSearch",
+      "mcp__Sanity__list_projects",
+      "mcp__Sanity__create_project",
+      "mcp__Sanity__add_cors_origin",
+      "Bash(cd /c/Users/maxim/Documents/Github/svenskdatabas && SANITY_WRITE_TOKEN=REDACTED_TOKEN_3 npx tsx studio/migrations/importFromJson.ts 2>&1)",
+      "Bash(cd /c/Users/maxim/Documents/Github/svenskdatabas && npx tsc --noEmit 2>&1)",
+      "mcp__Sanity__query_documents",
+      "Bash(cd /c/Users/maxim/Documents/Github/svenskdatabas && npm run build 2>&1)"
     ],
     "deny": [],
     "ask": []

@@ -2,7 +2,8 @@ import { useState, useMemo, useEffect } from 'react';
 import Hero from '../components/Hero';
 import Search from '../components/Search';
 import DataTable from '../components/DataTable';
-import brandsData from '../data/brands.json';
+import { sanityClient } from '../lib/sanityClient';
+import { ALL_BRANDS_QUERY } from '../lib/queries';
 import { Brand, SortColumn, SortDirection } from '../types/brand';
 
 // Swedish locale comparator for proper Å, Ä, Ö ordering
@@ -14,16 +15,33 @@ const compareSwedish = (a: string, b: string): number => {
 const statusOrder: Record<'Ja' | 'Nej' | 'Delvis', number> = { 'Ja': 1, 'Delvis': 2, 'Nej': 3 };
 
 export default function Home() {
+  const [allBrands, setAllBrands] = useState<Brand[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [currentInput, setCurrentInput] = useState('');
   const [searchTags, setSearchTags] = useState<string[]>([]);
   const [sortColumn, setSortColumn] = useState<SortColumn>('varumärke');
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
 
-  const totalBrands = brandsData.brands.length;
-
   useEffect(() => {
     document.title = 'Svenska varumärken och tillverkare - En Svensk databas';
   }, []);
+
+  useEffect(() => {
+    sanityClient
+      .fetch<Brand[]>(ALL_BRANDS_QUERY)
+      .then((data) => {
+        setAllBrands(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error('Failed to fetch brands:', err);
+        setError('Kunde inte ladda varumärken. Försök igen senare.');
+        setLoading(false);
+      });
+  }, []);
+
+  const totalBrands = allBrands.length;
 
   const addSearchTag = (tag: string) => {
     const trimmedTag = tag.trim();
@@ -55,7 +73,7 @@ export default function Home() {
 
   // Filter brands based on search tags and current input (hybrid live search)
   const filteredBrands = useMemo(() => {
-    let results = brandsData.brands as Brand[];
+    let results = allBrands;
 
     // Step 1: Filter by tags (AND logic between tags)
     if (searchTags.length > 0) {
@@ -104,7 +122,33 @@ export default function Home() {
     }
 
     return results;
-  }, [searchTags, currentInput, sortColumn, sortDirection]);
+  }, [allBrands, searchTags, currentInput, sortColumn, sortDirection]);
+
+  if (loading) {
+    return (
+      <main className="main">
+        <div className="container">
+          <div className="content">
+            <Hero brandCount={0} />
+            <div className="loading-state">Laddar varumärken...</div>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="main">
+        <div className="container">
+          <div className="content">
+            <Hero brandCount={0} />
+            <div className="error-state">{error}</div>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="main">

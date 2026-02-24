@@ -7,9 +7,12 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "studio": "cd studio && npm run dev",
+    "studio:deploy": "cd studio && npm run deploy"
   },
   "dependencies": {
+    "@sanity/client": "^6.0.0",
     "flag-icons": "^7.5.0",
     "lucide-react": "^0.556.0",
     "react": "^18.3.1",

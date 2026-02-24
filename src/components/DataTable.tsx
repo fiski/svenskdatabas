@@ -12,10 +12,10 @@ interface DataTableProps {
 }
 
 export default function DataTable({ brands, sortColumn, sortDirection, onSort }: DataTableProps) {
-  const [expandedRows, setExpandedRows] = useState<Set<number>>(new Set());
+  const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
   let previousLetter = '';
 
-  const toggleRow = (id: number) => {
+  const toggleRow = (id: string) => {
     const newExpanded = new Set(expandedRows);
     if (newExpanded.has(id)) {
       newExpanded.delete(id);

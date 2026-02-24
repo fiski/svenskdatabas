@@ -10,11 +10,11 @@ export interface KoncernNode {
   moderbolagLand?: string;       // ISO country code (e.g., "CH")
   ägare?: string;                // e.g., "Fenix Outdoor AB"
   ägareLand?: string;            // ISO country code (e.g., "SE")
-  varumärken: BrandInHierarchy[];
+  varumärken?: BrandInHierarchy[];
 }
 
 export interface Brand {
-  id: number;
+  id: string;
   varumärke: string;
   kategori: string;
   tillverkadISverige: 'Ja' | 'Nej' | 'Delvis';
@@ -25,6 +25,7 @@ export interface Brand {
     tillverkningsländer: string[];
     koncernstruktur: KoncernNode | string;  // Union type for migration
     intro?: string;  // Optional brand description (2-3 sentences)
+    hallbarhetsFokus?: string;  // Optional sustainability focus
   };
 }
 

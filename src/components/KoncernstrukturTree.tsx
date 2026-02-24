@@ -23,10 +23,11 @@ export default function KoncernstrukturTree({
     );
   }
 
-  const { moderbolag, moderbolagLand, ägare, varumärken } = koncernstruktur;
+  const { moderbolag, moderbolagLand, ägare, varumärken: rawVarumärken } = koncernstruktur;
+  const varumärken = rawVarumärken ?? [];
 
-  // Determine if this is a single-brand company (no hierarchy)
-  const isSingleBrand = varumärken.length === 1 && !moderbolag && !ägare;
+  // Determine if this is a standalone brand (no Koncern) or single-brand company
+  const isSingleBrand = varumärken.length <= 1 && !moderbolag && !ägare;
 
   return (
     <div className="koncernstruktur-tree">

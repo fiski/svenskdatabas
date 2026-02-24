@@ -423,6 +423,10 @@ dist/
 dist-ssr/
 *.local
 
+# Environment variables (contains Sanity project credentials)
+.env.local
+.env*.local
+
 # Logs
 npm-debug.log*
 yarn-debug.log*
