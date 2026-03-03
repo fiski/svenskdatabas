@@ -6,3 +6,11 @@ export const sanityClient = createClient({
   useCdn: true,
   apiVersion: '2024-01-01',
 })
+
+export const sanityWriteClient = createClient({
+  projectId: import.meta.env.VITE_SANITY_PROJECT_ID as string,
+  dataset: (import.meta.env.VITE_SANITY_DATASET as string) ?? 'production',
+  useCdn: false,
+  apiVersion: '2024-01-01',
+  token: import.meta.env.VITE_SANITY_WRITE_TOKEN as string,
+})

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ArrowUpDown, ArrowUpAZ, ArrowDownZA } from 'lucide-react';
 import StatusBadge from './StatusBadge';
 import KoncernstrukturTree from './KoncernstrukturTree';
+import BrandSuggestionForm from './BrandSuggestionForm';
 import { Brand, SortColumn, SortDirection } from '../types/brand';
 
 interface DataTableProps {
@@ -13,12 +14,15 @@ interface DataTableProps {
 
 export default function DataTable({ brands, sortColumn, sortDirection, onSort }: DataTableProps) {
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
+  const [editingBrandId, setEditingBrandId] = useState<string | null>(null);
   let previousLetter = '';
 
   const toggleRow = (id: string) => {
     const newExpanded = new Set(expandedRows);
     if (newExpanded.has(id)) {
       newExpanded.delete(id);
+      // Close suggestion form if collapsing the row
+      if (editingBrandId === id) setEditingBrandId(null);
     } else {
       newExpanded.add(id);
     }
@@ -112,6 +116,7 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort }:
       {/* Table Body */}
       {brands.map((brand) => {
         const isExpanded = expandedRows.has(brand.id);
+        const isEditing = editingBrandId === brand.id;
 
         // Letter tracking for alphabetical indicators
         const currentLetter = brand.varumärke.charAt(0).toUpperCase();
@@ -170,35 +175,52 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort }:
               </div>
             </div>
 
-            {/* Expanded Details */}
+            {/* Expanded Section */}
             {isExpanded && (
-              <div className="expanded-details">
-                <div className="details-grid">
-                  <div className="detail-item">
-                    <div className="detail-label">Börsnoterat</div>
-                    <div className="detail-value">{brand.merInfo.börsnoterat}</div>
-                  </div>
-                  <div className="detail-item">
-                    <div className="detail-label">Tillverkningsländer</div>
-                    <div className="detail-value">
-                      {brand.merInfo.tillverkningsländer.join(', ')}
+              isEditing ? (
+                <BrandSuggestionForm
+                  brand={brand}
+                  onCancel={() => setEditingBrandId(null)}
+                  onSubmit={() => setEditingBrandId(null)}
+                />
+              ) : (
+                <div className="expanded-details">
+                  <div className="details-grid">
+                    <div className="detail-item">
+                      <div className="detail-label">Börsnoterat</div>
+                      <div className="detail-value">{brand.merInfo.börsnoterat}</div>
                     </div>
-                  </div>
-                  <div className="detail-item">
-                    <KoncernstrukturTree
-                      koncernstruktur={brand.merInfo.koncernstruktur}
-                      currentBrandName={brand.varumärke}
-                      currentBrandStatus={brand.tillverkadISverige}
-                    />
-                  </div>
-                  <div className="detail-item brand-intro">
-                    <div className="detail-label">Om varumärket</div>
-                    <div className="detail-value intro-text">
-                      {brand.merInfo.intro || 'Ingen information att visa för tillfället'}
+                    <div className="detail-item">
+                      <div className="detail-label">Tillverkningsländer</div>
+                      <div className="detail-value">
+                        {brand.merInfo.tillverkningsländer.join(', ')}
+                      </div>
+                    </div>
+                    <div className="detail-item">
+                      <KoncernstrukturTree
+                        koncernstruktur={brand.merInfo.koncernstruktur}
+                        currentBrandName={brand.varumärke}
+                        currentBrandStatus={brand.tillverkadISverige}
+                      />
+                    </div>
+                    <div className="detail-item brand-intro">
+                      <div className="detail-label">Om varumärket</div>
+                      <div className="detail-value intro-text">
+                        {brand.merInfo.intro || 'Ingen information att visa för tillfället'}
+                      </div>
+                    </div>
+                    <div className="detail-item suggest-change-item">
+                      <button
+                        className="suggest-change-btn"
+                        onClick={(e) => { e.stopPropagation(); setEditingBrandId(brand.id); }}
+                        type="button"
+                      >
+                        Föreslå ändring
+                      </button>
                     </div>
                   </div>
                 </div>
-              </div>
+              )
             )}
             </div>
           </div>

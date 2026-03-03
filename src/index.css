@@ -1038,6 +1038,278 @@ body {
   width: fit-content;
 }
 
+/* Suggest Change Button */
+.suggest-change-btn {
+  background: transparent;
+  border: 1px solid #c6c6c6;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-family: 'Sweden Sans', Arial, sans-serif;
+  color: #525252;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.suggest-change-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.suggest-change-item {
+  grid-column: 1 / -1;
+  padding-top: 4px;
+}
+
+.single-brand-display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Suggestion Form */
+.suggestion-form {
+  background: #fff;
+  padding: 24px 64px;
+  border-top: 1px solid #c6c6c6;
+}
+
+@media (max-width: 839px) {
+  .suggestion-form {
+    padding: 16px;
+  }
+}
+
+.suggestion-form-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a3050;
+  margin-bottom: 20px;
+}
+
+.suggestion-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+}
+
+@media (max-width: 839px) {
+  .suggestion-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.suggestion-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.suggestion-field-full {
+  grid-column: 1 / -1;
+}
+
+.suggestion-tree-display {
+  border: 1px solid #888888;
+  border-radius: 6px;
+  padding: 12px 16px;
+  background: #f9f9f9;
+  overflow-y: auto;
+  max-height: 320px;
+}
+
+.suggestion-tree-display .koncernstruktur-header {
+  display: none;
+}
+
+.suggestion-field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a3050;
+}
+
+.suggestion-required {
+  color: #c0392b;
+  margin-left: 2px;
+}
+
+.suggestion-helper-text {
+  font-size: 12px;
+  color: var(--tertiary-text);
+  margin-top: 4px;
+}
+
+.suggestion-field-error {
+  color: #7e211a;
+  background-color: #fdf0ef;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.suggestion-field input,
+.suggestion-field textarea {
+  width: 100%;
+  border: 1px solid #888888;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: 'Sweden Sans', Arial, sans-serif;
+  color: #2c2c2c;
+  background: #fff;
+  transition: border-color 0.15s ease;
+}
+
+.suggestion-field input:focus,
+.suggestion-field textarea:focus {
+  outline: none;
+  border-color: #1a3050;
+}
+
+.suggestion-field textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.suggestion-radio-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 4px 0;
+}
+
+.suggestion-radio-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #525252;
+  cursor: pointer;
+}
+
+.suggestion-radio-label input[type="radio"] {
+  width: auto;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.suggestion-countries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  border: 1px solid #888888;
+  border-radius: 6px;
+  padding: 6px 10px;
+  min-height: 40px;
+  background: #fff;
+}
+
+.suggestion-country-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #e8e8e8;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 13px;
+  color: #2c2c2c;
+}
+
+.suggestion-country-chip .chip-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #525252;
+  padding: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.suggestion-country-chip .chip-remove:hover {
+  color: #1a3050;
+}
+
+.suggestion-country-input {
+  border: none !important;
+  outline: none !important;
+  padding: 2px 4px !important;
+  font-size: 13px !important;
+  min-width: 120px;
+  flex: 1;
+  background: transparent !important;
+  color: #2c2c2c;
+  font-family: 'Sweden Sans', Arial, sans-serif;
+}
+
+.suggestion-form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.suggestion-submit-btn {
+  background-color: #1a3050;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-family: 'Sweden Sans', Arial, sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.suggestion-submit-btn:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.suggestion-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.suggestion-cancel-btn {
+  background: transparent;
+  border: 1px solid #888888;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-family: 'Sweden Sans', Arial, sans-serif;
+  color: #525252;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.suggestion-cancel-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.suggestion-success {
+  background-color: #e8f5ef;
+  color: #004530;
+  padding: 16px;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.suggestion-error {
+  color: #7e211a;
+  background-color: #fdf0ef;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 14px;
+  margin-top: 12px;
+}
+
 /* About Signature */
 .about-signature {
   margin-top: 48px;

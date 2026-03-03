@@ -1,4 +1,4 @@
-import { KoncernNode } from '../types/brand';
+import { BrandInHierarchy, KoncernNode } from '../types/brand';
 import Flag from './Flag';
 import StatusBadge from './StatusBadge';
 
@@ -11,7 +11,7 @@ interface KoncernstrukturTreeProps {
 export default function KoncernstrukturTree({
   koncernstruktur,
   currentBrandName: _currentBrandName,
-  currentBrandStatus: _currentBrandStatus
+  currentBrandStatus: _currentBrandStatus,
 }: KoncernstrukturTreeProps) {
   // Fallback for legacy string format
   if (typeof koncernstruktur === 'string') {
@@ -28,6 +28,22 @@ export default function KoncernstrukturTree({
 
   // Determine if this is a standalone brand (no Koncern) or single-brand company
   const isSingleBrand = varumärken.length <= 1 && !moderbolag && !ägare;
+
+  const renderBrandItem = (brand: BrandInHierarchy, index: number) => (
+    <div
+      key={index}
+      className={`brand-item ${brand.ärHuvudvarumärke ? 'main-brand' : ''}`}
+    >
+      <span className="brand-name">{brand.namn}</span>
+      {brand.land && <Flag countryCode={brand.land} />}
+
+      {/* Show status badge for Swedish sibling brands only (not main brand) */}
+      {brand.land === 'SE' && !brand.ärHuvudvarumärke && brand.status && (
+        <StatusBadge status={brand.status} variant="dot" />
+      )}
+
+    </div>
+  );
 
   return (
     <div className="koncernstruktur-tree">
@@ -79,20 +95,7 @@ export default function KoncernstrukturTree({
                             <div className="tree-node varumärken-node">
                               <div className="node-label">VARUMÄRKE</div>
                               <div className="brand-list">
-                                {varumärken.map((brand, index) => (
-                                  <div
-                                    key={index}
-                                    className={`brand-item ${brand.ärHuvudvarumärke ? 'main-brand' : ''}`}
-                                  >
-                                    <span className="brand-name">{brand.namn}</span>
-                                    {brand.land && <Flag countryCode={brand.land} />}
-
-                                    {/* Show status badge for Swedish sibling brands only (not main brand) */}
-                                    {brand.land === 'SE' && !brand.ärHuvudvarumärke && brand.status && (
-                                      <StatusBadge status={brand.status} variant="dot" />
-                                    )}
-                                  </div>
-                                ))}
+                                {varumärken.map((brand, index) => renderBrandItem(brand, index))}
                               </div>
                             </div>
                           </div>
@@ -107,20 +110,7 @@ export default function KoncernstrukturTree({
                       <div className="tree-node varumärken-node">
                         <div className="node-label">VARUMÄRKE</div>
                         <div className="brand-list">
-                          {varumärken.map((brand, index) => (
-                            <div
-                              key={index}
-                              className={`brand-item ${brand.ärHuvudvarumärke ? 'main-brand' : ''}`}
-                            >
-                              <span className="brand-name">{brand.namn}</span>
-                              {brand.land && <Flag countryCode={brand.land} />}
-
-                              {/* Show status badge for Swedish sibling brands only (not main brand) */}
-                              {brand.land === 'SE' && !brand.ärHuvudvarumärke && brand.status && (
-                                <StatusBadge status={brand.status} size="xs" />
-                              )}
-                            </div>
-                          ))}
+                          {varumärken.map((brand, index) => renderBrandItem(brand, index))}
                         </div>
                       </div>
                     </div>
@@ -150,20 +140,7 @@ export default function KoncernstrukturTree({
                     <div className="tree-node varumärken-node">
                       <div className="node-label">VARUMÄRKE</div>
                       <div className="brand-list">
-                        {varumärken.map((brand, index) => (
-                          <div
-                            key={index}
-                            className={`brand-item ${brand.ärHuvudvarumärke ? 'main-brand' : ''}`}
-                          >
-                            <span className="brand-name">{brand.namn}</span>
-                            {brand.land && <Flag countryCode={brand.land} />}
-
-                            {/* Show status badge for Swedish sibling brands only (not main brand) */}
-                            {brand.land === 'SE' && !brand.ärHuvudvarumärke && brand.status && (
-                              <StatusBadge status={brand.status} size="xs" />
-                            )}
-                          </div>
-                        ))}
+                        {varumärken.map((brand, index) => renderBrandItem(brand, index))}
                       </div>
                     </div>
                   </div>
@@ -178,20 +155,7 @@ export default function KoncernstrukturTree({
               <div className="tree-node varumärken-node">
                 <div className="node-label">VARUMÄRKE</div>
                 <div className="brand-list">
-                  {varumärken.map((brand, index) => (
-                    <div
-                      key={index}
-                      className={`brand-item ${brand.ärHuvudvarumärke ? 'main-brand' : ''}`}
-                    >
-                      <span className="brand-name">{brand.namn}</span>
-                      {brand.land && <Flag countryCode={brand.land} />}
-
-                      {/* Show status badge for Swedish sibling brands only (not main brand) */}
-                      {brand.land === 'SE' && !brand.ärHuvudvarumärke && brand.status && (
-                        <StatusBadge status={brand.status} size="xs" />
-                      )}
-                    </div>
-                  ))}
+                  {varumärken.map((brand, index) => renderBrandItem(brand, index))}
                 </div>
               </div>
             </div>
