@@ -1,4 +1,4 @@
-import React from 'react'
+import { Box, Card, Stack, Text, Flex, Badge } from '@sanity/ui'
 
 const FIELD_LABELS: Record<string, string> = {
   varumarke: 'Varumärke',
@@ -11,10 +11,24 @@ const FIELD_LABELS: Record<string, string> = {
   kommentarer: 'Eventuella kommentarer',
 }
 
+// These fields are plain comments — no diff styling, just readable text
+const COMMENT_FIELDS = new Set(['koncernNote', 'kommentarer'])
+
 function formatValue(value: unknown): string {
   if (Array.isArray(value)) return value.join(', ') || '(tom)'
   if (value === null || value === undefined || value === '') return '(tom)'
   return String(value)
+}
+
+function getStatusTone(status?: string): 'caution' | 'positive' | 'critical' {
+  switch (status) {
+    case 'approved':
+      return 'positive'
+    case 'rejected':
+      return 'critical'
+    default:
+      return 'caution'
+  }
 }
 
 interface SuggestionDocument {
@@ -36,7 +50,11 @@ export default function SuggestionDiffView({ document }: SuggestionDiffViewProps
   const doc = document.displayed
 
   if (!doc) {
-    return <div style={styles.container}>Inget dokument valt.</div>
+    return (
+      <Box padding={4}>
+        <Text>Inget dokument valt.</Text>
+      </Box>
+    )
   }
 
   const { brandName, email, submittedAt, status, suggestedChanges, originalValues } = doc
@@ -44,165 +62,82 @@ export default function SuggestionDiffView({ document }: SuggestionDiffViewProps
   const changedFields = Object.keys(suggestedChanges ?? {})
 
   return (
-    <div style={styles.container}>
-      <div style={styles.meta}>
-        <div style={styles.metaRow}>
-          <span style={styles.metaLabel}>Varumärke</span>
-          <span style={styles.metaValue}>{brandName ?? '—'}</span>
-        </div>
-        <div style={styles.metaRow}>
-          <span style={styles.metaLabel}>E-post</span>
-          <span style={styles.metaValue}>{email ?? '—'}</span>
-        </div>
-        <div style={styles.metaRow}>
-          <span style={styles.metaLabel}>Inskickat</span>
-          <span style={styles.metaValue}>
-            {submittedAt ? new Date(submittedAt).toLocaleString('sv-SE') : '—'}
-          </span>
-        </div>
-        <div style={styles.metaRow}>
-          <span style={styles.metaLabel}>Status</span>
-          <span style={{ ...styles.statusBadge, ...getStatusStyle(status) }}>
-            {status ?? '—'}
-          </span>
-        </div>
-      </div>
+    <Box padding={4} style={{ maxWidth: '720px' }}>
+      <Card tone="default" padding={4} radius={2} border marginBottom={5}>
+        <Stack space={3}>
+          <Flex gap={3} align="baseline">
+            <Text size={1} weight="semibold" muted style={{ minWidth: '100px' }}>Varumärke</Text>
+            <Text size={1}>{brandName ?? '—'}</Text>
+          </Flex>
+          <Flex gap={3} align="baseline">
+            <Text size={1} weight="semibold" muted style={{ minWidth: '100px' }}>E-post</Text>
+            <Text size={1}>{email ?? '—'}</Text>
+          </Flex>
+          <Flex gap={3} align="baseline">
+            <Text size={1} weight="semibold" muted style={{ minWidth: '100px' }}>Inskickat</Text>
+            <Text size={1}>
+              {submittedAt ? new Date(submittedAt).toLocaleString('sv-SE') : '—'}
+            </Text>
+          </Flex>
+          <Flex gap={3} align="center">
+            <Text size={1} weight="semibold" muted style={{ minWidth: '100px' }}>Status</Text>
+            <Badge tone={getStatusTone(status)} radius={5} padding={2}>
+              {status ?? '—'}
+            </Badge>
+          </Flex>
+        </Stack>
+      </Card>
 
-      <h3 style={styles.heading}>Föreslagna ändringar</h3>
+      <Box marginBottom={4}>
+        <Text size={2} weight="semibold">Föreslagna ändringar</Text>
+      </Box>
 
       {changedFields.length === 0 ? (
-        <p style={styles.emptyState}>Inga ändringar registrerade.</p>
+        <Text muted>Inga ändringar registrerade.</Text>
       ) : (
-        <div style={styles.diffList}>
+        <Stack space={4}>
           {changedFields.map((field) => {
             const label = FIELD_LABELS[field] ?? field
             const newVal = suggestedChanges?.[field]
             const oldVal = originalValues?.[field]
             const hasOriginal = originalValues != null && field in originalValues
+            const isComment = COMMENT_FIELDS.has(field)
 
             return (
-              <div key={field} style={styles.diffBlock}>
-                <div style={styles.fieldLabel}>{label}</div>
-                {hasOriginal && (
-                  <div style={styles.removedLine}>
-                    <span style={styles.diffMarker}>−</span>
-                    <span>{formatValue(oldVal)}</span>
-                  </div>
+              <Card key={field} radius={2} border overflow="hidden">
+                <Box padding={3} style={{ borderBottom: '1px solid var(--card-border-color)' }}>
+                  <Text size={1} weight="semibold" muted>{label}</Text>
+                </Box>
+
+                {isComment ? (
+                  <Box padding={3}>
+                    <Text size={1} style={{ whiteSpace: 'pre-wrap', lineHeight: 1.6 }}>
+                      {formatValue(newVal)}
+                    </Text>
+                  </Box>
+                ) : (
+                  <>
+                    {hasOriginal && (
+                      <Card tone="critical" padding={3}>
+                        <Flex gap={2} align="baseline">
+                          <Text size={1} weight="bold">−</Text>
+                          <Text size={1}>{formatValue(oldVal)}</Text>
+                        </Flex>
+                      </Card>
+                    )}
+                    <Card tone="positive" padding={3}>
+                      <Flex gap={2} align="baseline">
+                        <Text size={1} weight="bold">+</Text>
+                        <Text size={1}>{formatValue(newVal)}</Text>
+                      </Flex>
+                    </Card>
+                  </>
                 )}
-                <div style={styles.addedLine}>
-                  <span style={styles.diffMarker}>+</span>
-                  <span>{formatValue(newVal)}</span>
-                </div>
-              </div>
+              </Card>
             )
           })}
-        </div>
+        </Stack>
       )}
-    </div>
+    </Box>
   )
-}
-
-function getStatusStyle(status?: string): React.CSSProperties {
-  switch (status) {
-    case 'approved':
-      return { background: '#99dec9', color: '#004530' }
-    case 'rejected':
-      return { background: '#edb0ab', color: '#7e211a' }
-    default:
-      return { background: '#e8e8e8', color: '#444' }
-  }
-}
-
-const styles: Record<string, React.CSSProperties> = {
-  container: {
-    padding: '24px',
-    fontFamily: 'sans-serif',
-    maxWidth: '720px',
-  },
-  meta: {
-    background: '#f5f5f5',
-    border: '1px solid #ddd',
-    borderRadius: '8px',
-    padding: '16px',
-    marginBottom: '24px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '8px',
-  },
-  metaRow: {
-    display: 'flex',
-    gap: '12px',
-    alignItems: 'baseline',
-  },
-  metaLabel: {
-    fontWeight: 600,
-    fontSize: '13px',
-    color: '#555',
-    minWidth: '100px',
-  },
-  metaValue: {
-    fontSize: '14px',
-    color: '#222',
-  },
-  statusBadge: {
-    display: 'inline-block',
-    padding: '2px 10px',
-    borderRadius: '999px',
-    fontSize: '13px',
-    fontWeight: 600,
-  },
-  heading: {
-    fontSize: '16px',
-    fontWeight: 700,
-    marginBottom: '16px',
-    color: '#1a3050',
-  },
-  emptyState: {
-    color: '#888',
-    fontStyle: 'italic',
-  },
-  diffList: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '16px',
-  },
-  diffBlock: {
-    border: '1px solid #e0e0e0',
-    borderRadius: '6px',
-    overflow: 'hidden',
-  },
-  fieldLabel: {
-    background: '#f0f0f0',
-    padding: '6px 12px',
-    fontSize: '13px',
-    fontWeight: 600,
-    color: '#444',
-    borderBottom: '1px solid #e0e0e0',
-  },
-  removedLine: {
-    display: 'flex',
-    gap: '8px',
-    padding: '8px 12px',
-    background: '#fff5f5',
-    color: '#7e211a',
-    fontSize: '14px',
-    borderBottom: '1px solid #f5d0cd',
-    fontFamily: 'monospace',
-  },
-  addedLine: {
-    display: 'flex',
-    gap: '8px',
-    padding: '8px 12px',
-    background: '#f0fff8',
-    color: '#004530',
-    fontSize: '14px',
-    fontFamily: 'monospace',
-  },
-  diffMarker: {
-    fontWeight: 700,
-    fontSize: '16px',
-    lineHeight: 1,
-    userSelect: 'none',
-    minWidth: '12px',
-  },
 }
