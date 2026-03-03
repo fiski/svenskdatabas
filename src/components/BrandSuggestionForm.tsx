@@ -84,13 +84,25 @@ export default function BrandSuggestionForm({ brand, onCancel, onSubmit }: Brand
       hallbarhetsFokus: brand.merInfo.hallbarhetsFokus ?? '',
     };
 
+    const suggestedChanges: Record<string, unknown> = {};
+    if (formValues.varumarke !== brand.varumärke) suggestedChanges.varumarke = formValues.varumarke;
+    if (formValues.kategori !== brand.kategori) suggestedChanges.kategori = formValues.kategori;
+    if (formValues.tillverkadISverige !== brand.tillverkadISverige) suggestedChanges.tillverkadISverige = formValues.tillverkadISverige;
+    const origLands = JSON.stringify(brand.merInfo.tillverkningsländer ?? []);
+    const newLands = JSON.stringify(formValues.tillverkningslander);
+    if (origLands !== newLands) suggestedChanges.tillverkningslander = formValues.tillverkningslander;
+    if (formValues.intro !== (brand.merInfo.intro ?? '')) suggestedChanges.intro = formValues.intro;
+    if (formValues.hallbarhetsFokus !== (brand.merInfo.hallbarhetsFokus ?? '')) suggestedChanges.hallbarhetsFokus = formValues.hallbarhetsFokus;
+    if (formValues.koncernNote.trim()) suggestedChanges.koncernNote = formValues.koncernNote;
+    if (formValues.kommentarer.trim()) suggestedChanges.kommentarer = formValues.kommentarer;
+
     try {
       await sanityWriteClient.create({
         _type: 'suggestion',
         brandRef: { _type: 'reference', _ref: brand.id },
         brandName: brand.varumärke,
         email: email,
-        suggestedChanges: formValues,
+        suggestedChanges,
         originalValues,
         submittedAt: new Date().toISOString(),
         status: 'pending',
