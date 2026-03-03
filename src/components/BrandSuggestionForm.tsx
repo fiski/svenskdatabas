@@ -109,7 +109,8 @@ export default function BrandSuggestionForm({ brand, onCancel, onSubmit }: Brand
       });
       setSubmitted(true);
       setTimeout(() => onSubmit(), 2000);
-    } catch {
+    } catch (err) {
+      console.error('Suggestion submit failed:', err);
       setError('Något gick fel. Försök igen eller kontakta oss via e-post.');
       setSubmitting(false);
     }

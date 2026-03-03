@@ -179,6 +179,7 @@ function App() {
 VITE_SANITY_PROJECT_ID=kmjh3e1f
 VITE_SANITY_DATASET=production
 VITE_SANITY_WRITE_TOKEN=REDACTED_TOKEN_1
+VITE_SANITY_WRITE_TOKEN=REDACTED_TOKEN_2
 ```
 Both vars must also be set in Cloudflare Pages environment settings for production.
 

@@ -59,28 +59,34 @@ export default function SuggestionDiffView({ document }: SuggestionDiffViewProps
 
   const { brandName, email, submittedAt, status, suggestedChanges, originalValues } = doc
 
-  const changedFields = Object.keys(suggestedChanges ?? {})
+  const changedFields = Object.keys(suggestedChanges ?? {}).filter((field) => {
+    if (COMMENT_FIELDS.has(field)) return true
+    const newVal = suggestedChanges?.[field]
+    const oldVal = originalValues?.[field]
+    if (originalValues == null || !(field in originalValues)) return true
+    return formatValue(newVal) !== formatValue(oldVal)
+  })
 
   return (
     <Box padding={4} style={{ maxWidth: '720px' }}>
       <Card tone="default" padding={4} radius={2} border marginBottom={5}>
         <Stack space={3}>
           <Flex gap={3} align="baseline">
-            <Text size={1} weight="semibold" muted style={{ minWidth: '100px' }}>Varumärke</Text>
+            <Text size={1} weight="semibold" muted>Varumärke</Text>
             <Text size={1}>{brandName ?? '—'}</Text>
           </Flex>
           <Flex gap={3} align="baseline">
-            <Text size={1} weight="semibold" muted style={{ minWidth: '100px' }}>E-post</Text>
+            <Text size={1} weight="semibold" muted>E-post</Text>
             <Text size={1}>{email ?? '—'}</Text>
           </Flex>
           <Flex gap={3} align="baseline">
-            <Text size={1} weight="semibold" muted style={{ minWidth: '100px' }}>Inskickat</Text>
+            <Text size={1} weight="semibold" muted>Inskickat</Text>
             <Text size={1}>
               {submittedAt ? new Date(submittedAt).toLocaleString('sv-SE') : '—'}
             </Text>
           </Flex>
           <Flex gap={3} align="center">
-            <Text size={1} weight="semibold" muted style={{ minWidth: '100px' }}>Status</Text>
+            <Text size={1} weight="semibold" muted>Status</Text>
             <Badge tone={getStatusTone(status)} radius={5} padding={2}>
               {status ?? '—'}
             </Badge>
@@ -105,29 +111,24 @@ export default function SuggestionDiffView({ document }: SuggestionDiffViewProps
 
             return (
               <Card key={field} radius={2} border overflow="hidden">
-                <Box padding={3} style={{ borderBottom: '1px solid var(--card-border-color)' }}>
+                <Box padding={3}>
                   <Text size={1} weight="semibold" muted>{label}</Text>
                 </Box>
 
                 {isComment ? (
                   <Box padding={3}>
-                    <Text size={1} style={{ whiteSpace: 'pre-wrap', lineHeight: 1.6 }}>
-                      {formatValue(newVal)}
-                    </Text>
+                    <Text size={1}>{formatValue(newVal)}</Text>
                   </Box>
                 ) : (
                   <>
                     {hasOriginal && (
-                      <Card tone="critical" padding={3}>
-                        <Flex gap={2} align="baseline">
-                          <Text size={1} weight="bold">−</Text>
-                          <Text size={1}>{formatValue(oldVal)}</Text>
-                        </Flex>
-                      </Card>
+                      <Box padding={3}>
+                        <Text size={1} muted>{formatValue(oldVal)}</Text>
+                      </Box>
                     )}
                     <Card tone="positive" padding={3}>
                       <Flex gap={2} align="baseline">
-                        <Text size={1} weight="bold">+</Text>
+                        <Text size={1} weight="semibold" muted>Förslag</Text>
                         <Text size={1}>{formatValue(newVal)}</Text>
                       </Flex>
                     </Card>
