@@ -70,6 +70,11 @@ export const brandType = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'webbplats',
+      title: 'Webbplats',
+      type: 'url',
+    }),
+    defineField({
       name: 'koncern',
       title: 'Koncern',
       type: 'reference',

@@ -123,6 +123,22 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort, s
                   <div className="detail-value intro-text">
                     {brand.merInfo.intro || 'Ingen information att visa för tillfället'}
                   </div>
+                  {brand.merInfo.webbplats && (
+                    <>
+                      <div className="detail-label" style={{ marginTop: 8 }}>Länk till {brand.varumärke}</div>
+                      <div className="detail-value">
+                        <a
+                          href={brand.merInfo.webbplats}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="brand-website-link"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          {brand.merInfo.webbplats}
+                        </a>
+                      </div>
+                    </>
+                  )}
                 </div>
                 <div className="detail-item suggest-change-item">
                   <button

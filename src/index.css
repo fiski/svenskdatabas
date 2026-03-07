@@ -674,6 +674,17 @@ body {
   color: #525252;
 }
 
+/* Brand Website Link */
+.brand-website-link {
+  color: #1a3050;
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.brand-website-link:hover {
+  color: #005D7F;
+}
+
 /* Brand Intro Section */
 .brand-intro {
   margin-top: 8px;

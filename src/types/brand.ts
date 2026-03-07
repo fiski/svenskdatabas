@@ -26,6 +26,7 @@ export interface Brand {
     koncernstruktur: KoncernNode | string;  // Union type for migration
     intro?: string;  // Optional brand description (2-3 sentences)
     hallbarhetsFokus?: string;  // Optional sustainability focus
+    webbplats?: string;  // Optional website URL
   };
 }
 

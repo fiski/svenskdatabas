@@ -25,6 +25,7 @@ export const ALL_BRANDS_QUERY = `
       "tillverkningsländer": tillverkningslander,
       "intro": intro,
       "hallbarhetsFokus": hallbarhetsFokus,
+      "webbplats": webbplats,
       "koncernstruktur": {
         "moderbolag": koncern->moderbolag,
         "moderbolagLand": koncern->moderbolagLand,
