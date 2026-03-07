@@ -445,33 +445,28 @@ body {
   align-items: center;
 }
 
-/* Row container with external letter indicator */
-.row-container {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
+/* Letter section group wrapper */
+.letter-section {
+  position: relative;
 }
 
-.letter-indicator-external {
-  width: 40px;
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 23px; /* Aligns with table row content */
-}
-
-.letter-indicator {
+/* Sticky letter header */
+.letter-section-header {
+  position: sticky;
+  z-index: 10;
+  background-color: #ededed;
+  padding: 6px 0 4px 0;
   font-size: 20px;
   font-weight: 400;
   color: #909090;
   line-height: 1;
   user-select: none;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.row-content {
-  flex: 1;
-  min-width: 0; /* Prevents flex overflow */
+/* Row container */
+.row-container {
+  width: 100%;
 }
 
 .table-row {
@@ -561,14 +556,6 @@ body {
     display: none;
   }
 
-  /* Letter indicator on mobile */
-  .letter-indicator-external {
-    padding-top: 19px; /* Adjusted for mobile row height */
-  }
-
-  .letter-indicator {
-    font-size: 18px; /* Slightly smaller on mobile */
-  }
 }
 
 .expand-button {

@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import Hero from '../components/Hero';
 import Search from '../components/Search';
 import DataTable from '../components/DataTable';
@@ -22,6 +22,18 @@ export default function Home() {
   const [searchTags, setSearchTags] = useState<string[]>([]);
   const [sortColumn, setSortColumn] = useState<SortColumn>('varumärke');
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
+  const searchWrapperRef = useRef<HTMLDivElement>(null);
+  const [searchHeight, setSearchHeight] = useState(0);
+
+  useEffect(() => {
+    const el = searchWrapperRef.current;
+    if (!el) return;
+    const observer = new ResizeObserver(() => {
+      setSearchHeight(el.offsetHeight);
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [loading]);
 
   useEffect(() => {
     document.title = 'Svenska varumärken och tillverkare - En Svensk databas';
@@ -155,7 +167,7 @@ export default function Home() {
       <div className="container">
         <div className="content">
           <Hero brandCount={totalBrands} />
-          <div className="search-wrapper">
+          <div className="search-wrapper" ref={searchWrapperRef}>
             <Search
               currentInput={currentInput}
               onInputChange={setCurrentInput}
@@ -170,6 +182,7 @@ export default function Home() {
             sortColumn={sortColumn}
             sortDirection={sortDirection}
             onSort={handleSort}
+            stickyTop={searchHeight}
           />
         </div>
       </div>

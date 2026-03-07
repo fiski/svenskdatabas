@@ -28,7 +28,8 @@
       "WebFetch(domain:www.allabolag.se)",
       "mcp__Sanity__create_documents_from_json",
       "mcp__Sanity__publish_documents",
-      "mcp__Sanity__list_datasets"
+      "mcp__Sanity__list_datasets",
+      "Bash(npm run:*)"
     ],
     "deny": [],
     "ask": []
