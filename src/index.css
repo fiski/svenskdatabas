@@ -26,15 +26,6 @@
 
 @font-face {
   font-family: 'Sweden Sans';
-  src: url('/fonts/SwedenSans_WEB/SwedenSansSemiBold.woff2') format('woff2'),
-       url('/fonts/SwedenSans_WEB/SwedenSansSemiBold.otf') format('opentype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Sweden Sans';
   src: url('/fonts/SwedenSans_WEB/SwedenSansBold.woff2') format('woff2'),
        url('/fonts/SwedenSans_WEB/SwedenSansBold.otf') format('opentype');
   font-weight: 700;
@@ -312,7 +303,7 @@ body {
   padding: 0;
   color: #852221;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1;
   transition: opacity 0.2s;
   min-width: 24px;
@@ -400,7 +391,7 @@ body {
   flex: 1;
   padding: 16px;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
   color: #1a3050;
   line-height: 18px;
   letter-spacing: 0.16px;
@@ -596,7 +587,7 @@ body {
 .status-badge.ja {
   background-color: #99dec9;
   color: #004530;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .status-badge.nej {
@@ -607,7 +598,7 @@ body {
 .status-badge.delvis {
   background-color: #99D5ED;
   color: #005D7F;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* Status Badge - Dot Variant */
@@ -664,7 +655,7 @@ body {
 
 .detail-label {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   color: #1a3050;
 }
 
@@ -732,7 +723,7 @@ body {
 
 .koncernstruktur-header {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   color: #1a3050;
   letter-spacing: 0.28px;
   /* text-transform: uppercase; */
@@ -976,7 +967,7 @@ body {
   padding: 8px 16px;
   border-radius: 6px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   width: fit-content;
 }
 
@@ -1038,7 +1029,7 @@ body {
 
 /* Suggest Change Button */
 .suggest-change-btn {
-  background: transparent;
+  background: #EDEDED;
   border: 1px solid #c6c6c6;
   border-radius: 4px;
   padding: 4px 8px;
@@ -1081,7 +1072,7 @@ body {
 
 .suggestion-form-title {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   color: #1a3050;
   margin-bottom: 20px;
 }
@@ -1089,7 +1080,7 @@ body {
 .suggestion-form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px 24px;
+  gap: 24px 24px;
 }
 
 @media (max-width: 839px) {
@@ -1123,7 +1114,7 @@ body {
 
 .suggestion-field label {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   color: #1a3050;
 }
 
@@ -1134,7 +1125,8 @@ body {
 
 .suggestion-helper-text {
   font-size: 12px;
-  color: var(--tertiary-text);
+  color: #767676;
+  font-weight: 300;
   margin-top: 4px;
 }
 
@@ -1261,7 +1253,7 @@ body {
   padding: 10px 20px;
   font-size: 14px;
   font-family: 'Sweden Sans', Arial, sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: opacity 0.15s ease;
 }
@@ -1408,7 +1400,7 @@ body {
 
 .footer-title {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 700;
   color: #1a3050;
   margin-bottom: 0.5rem;
 }
@@ -1541,4 +1533,131 @@ body {
   .footer-link {
     font-size: 14px;
   }
+}
+
+/* ========================================
+   Add Brand Button & Drawer
+   ======================================== */
+
+.add-brand-bar {
+  margin-bottom: 16px;
+}
+
+.add-brand-btn {
+  background-color: #006AA7;
+  color: #FECC02;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.add-brand-btn:hover {
+  opacity: 0.88;
+}
+
+.add-brand-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 200;
+}
+
+.add-brand-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 480px;
+  max-width: 100vw;
+  background: #fff;
+  z-index: 201;
+  overflow-y: auto;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+.add-brand-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 24px 24px 24px;
+  flex-shrink: 0;
+}
+
+.add-brand-drawer-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a3050;
+  margin: 0;
+}
+
+.add-brand-drawer-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #525252;
+  padding: 4px;
+  line-height: 1;
+}
+
+.add-brand-drawer-close:hover {
+  color: #1a3050;
+}
+
+@media (max-width: 520px) {
+  .add-brand-drawer {
+    width: 100vw;
+  }
+}
+
+/* ========================================
+   Country Select Dropdown
+   ======================================== */
+
+.country-select-wrapper {
+  position: relative;
+}
+
+.country-select-input {
+  width: 100%;
+  cursor: pointer;
+}
+
+.country-select-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid var(--border-light, #c6c6c6);
+  border-radius: 6px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 300;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  margin-top: 2px;
+}
+
+.country-select-option {
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #525252;
+}
+
+.country-select-option:hover {
+  background: #f0f4f8;
+  color: #1a3050;
+}
+
+.country-select-option.selected {
+  font-weight: 600;
+  color: #1a3050;
 }

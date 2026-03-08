@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import Hero from '../components/Hero';
 import Search from '../components/Search';
 import DataTable from '../components/DataTable';
+import AddBrandForm from '../components/AddBrandForm';
 import { sanityClient } from '../lib/sanityClient';
 import { ALL_BRANDS_QUERY } from '../lib/queries';
 import { Brand, SortColumn, SortDirection } from '../types/brand';
@@ -22,6 +23,7 @@ export default function Home() {
   const [searchTags, setSearchTags] = useState<string[]>([]);
   const [sortColumn, setSortColumn] = useState<SortColumn>('varumärke');
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
+  const [showAddForm, setShowAddForm] = useState(false);
   const searchWrapperRef = useRef<HTMLDivElement>(null);
   const [searchHeight, setSearchHeight] = useState(0);
 
@@ -167,6 +169,21 @@ export default function Home() {
       <div className="container">
         <div className="content">
           <Hero brandCount={totalBrands} />
+          <div className="add-brand-bar">
+            <button
+              className="add-brand-btn"
+              onClick={() => setShowAddForm(true)}
+              type="button"
+            >
+              + Lägg till märke
+            </button>
+          </div>
+          {showAddForm && (
+            <AddBrandForm
+              onCancel={() => setShowAddForm(false)}
+              onSubmit={() => setShowAddForm(false)}
+            />
+          )}
           <div className="search-wrapper" ref={searchWrapperRef}>
             <Search
               currentInput={currentInput}
