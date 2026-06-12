@@ -30,7 +30,8 @@
       "mcp__Sanity__publish_documents",
       "mcp__Sanity__list_datasets",
       "Bash(npm run:*)",
-      "Bash(claude update *)"
+      "Bash(claude update *)",
+      "mcp__Sanity__create_documents"
     ],
     "deny": [],
     "ask": []

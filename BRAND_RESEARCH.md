@@ -2,6 +2,15 @@
 
 This guide documents the methodology for researching and adding brands to Svensk Databas. It is written as instructions for Claude-assisted sessions: follow the workflow in order, apply the decision rules exactly, and deliver data using the payload templates in §7.
 
+## Prerequisites
+
+Before starting any brand research, verify that the Sanity MCP server is authenticated and responsive:
+
+1. Call `mcp__Sanity__whoami` — if it returns a user identity, you're connected.
+2. If it fails or prompts for auth, complete the authentication flow first (open the provided URL, paste the redirect back). Do not begin research until this succeeds.
+
+Skipping this check risks completing full research and then being unable to write to Sanity.
+
 ## 1. Research Sources (priority order)
 
 ### Ownership & company structure
