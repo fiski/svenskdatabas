@@ -297,13 +297,13 @@ export default function AddBrandForm({ onCancel, onSubmit }: AddBrandFormProps) 
         </div>
 
         {submitted ? (
-          <div style={{ padding: '24px' }}>
+          <div className="add-brand-drawer-success">
             <div className="suggestion-success">
               Tack! Ditt förslag har skickats och kommer granskas inom kort.
             </div>
           </div>
         ) : (
-          <form className="suggestion-form" style={{ padding: '24px' }} onSubmit={handleSubmit} noValidate>
+          <form className="suggestion-form" onSubmit={handleSubmit} noValidate>
             <div className="suggestion-form-grid">
               <div className="suggestion-field">
                 <label htmlFor="add-varumarke">Varumärke</label>

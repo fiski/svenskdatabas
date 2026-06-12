@@ -7,6 +7,7 @@ interface SearchProps {
   onAddTag: (tag: string) => void;
   onRemoveTag: (tag: string) => void;
   onClearAll: () => void;
+  onTagAdded?: (tag: string) => void;
 }
 
 export default function Search({
@@ -15,7 +16,8 @@ export default function Search({
   searchTags,
   onAddTag,
   onRemoveTag,
-  onClearAll
+  onClearAll,
+  onTagAdded
 }: SearchProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -40,6 +42,7 @@ export default function Search({
       e.preventDefault();
       if (currentInput.trim()) {
         onAddTag(currentInput);
+        onTagAdded?.(currentInput.trim());
       }
     } else if (e.key === 'Escape') {
       handleClear();

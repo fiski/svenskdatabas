@@ -11,9 +11,10 @@ interface DataTableProps {
   sortDirection: SortDirection;
   onSort: (column: SortColumn) => void;
   stickyTop?: number;
+  onBrandExpand?: (brandId: string, brandName: string) => void;
 }
 
-export default function DataTable({ brands, sortColumn, sortDirection, onSort, stickyTop }: DataTableProps) {
+export default function DataTable({ brands, sortColumn, sortDirection, onSort, stickyTop, onBrandExpand }: DataTableProps) {
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
   const [editingBrandId, setEditingBrandId] = useState<string | null>(null);
 
@@ -25,6 +26,8 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort, s
       if (editingBrandId === id) setEditingBrandId(null);
     } else {
       newExpanded.add(id);
+      const brand = brands.find(b => b.id === id);
+      if (brand) onBrandExpand?.(brand.id, brand.varumärke);
     }
     setExpandedRows(newExpanded);
   };

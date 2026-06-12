@@ -3,8 +3,10 @@ import Hero from '../components/Hero';
 import Search from '../components/Search';
 import DataTable from '../components/DataTable';
 import AddBrandForm from '../components/AddBrandForm';
+import PopularStats from '../components/PopularStats';
 import { sanityClient } from '../lib/sanityClient';
-import { ALL_BRANDS_QUERY } from '../lib/queries';
+import { ALL_BRANDS_QUERY, TOP_VIEWED_BRANDS_QUERY, TOP_SEARCHED_TERMS_QUERY } from '../lib/queries';
+import { trackBrandView, trackSearch } from '../lib/analytics';
 import { Brand, SortColumn, SortDirection } from '../types/brand';
 
 // Swedish locale comparator for proper Å, Ä, Ö ordering
@@ -24,6 +26,10 @@ export default function Home() {
   const [sortColumn, setSortColumn] = useState<SortColumn>('varumärke');
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
   const [showAddForm, setShowAddForm] = useState(false);
+  const [stats, setStats] = useState<{
+    topViewed: { brandId: string; brandName: string; viewCount: number }[];
+    topSearched: { term: string; searchCount: number }[];
+  }>({ topViewed: [], topSearched: [] });
   const searchWrapperRef = useRef<HTMLDivElement>(null);
   const [searchHeight, setSearchHeight] = useState(0);
 
@@ -53,6 +59,15 @@ export default function Home() {
         setError('Kunde inte ladda varumärken. Försök igen senare.');
         setLoading(false);
       });
+  }, []);
+
+  useEffect(() => {
+    Promise.all([
+      sanityClient.fetch<{ brandId: string; brandName: string; viewCount: number }[]>(TOP_VIEWED_BRANDS_QUERY),
+      sanityClient.fetch<{ term: string; searchCount: number }[]>(TOP_SEARCHED_TERMS_QUERY),
+    ])
+      .then(([topViewed, topSearched]) => setStats({ topViewed, topSearched }))
+      .catch(() => {});
   }, []);
 
   const totalBrands = allBrands.length;
@@ -169,6 +184,7 @@ export default function Home() {
       <div className="container">
         <div className="content">
           <Hero brandCount={totalBrands} />
+          <PopularStats stats={stats} />
           <div className="add-brand-bar">
             <button
               className="add-brand-btn"
@@ -192,6 +208,7 @@ export default function Home() {
               onAddTag={addSearchTag}
               onRemoveTag={removeSearchTag}
               onClearAll={clearAllTags}
+              onTagAdded={trackSearch}
             />
           </div>
           <DataTable
@@ -200,6 +217,7 @@ export default function Home() {
             sortDirection={sortDirection}
             onSort={handleSort}
             stickyTop={searchHeight}
+            onBrandExpand={trackBrandView}
           />
         </div>
       </div>

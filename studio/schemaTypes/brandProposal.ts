@@ -35,4 +35,10 @@ export default defineType({
       initialValue: 'pending',
     }),
   ],
+  preview: {
+    select: {
+      title: 'varumarke',
+      subtitle: 'status',
+    },
+  },
 })
