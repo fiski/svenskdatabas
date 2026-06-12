@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Brand } from '../types/brand';
-import { sanityWriteClient } from '../lib/sanityClient';
+import { postApi } from '../lib/api';
 import KoncernstrukturTree from './KoncernstrukturTree';
 
 interface BrandSuggestionFormProps {
@@ -97,15 +97,12 @@ export default function BrandSuggestionForm({ brand, onCancel, onSubmit }: Brand
     if (formValues.kommentarer.trim()) suggestedChanges.kommentarer = formValues.kommentarer;
 
     try {
-      await sanityWriteClient.create({
-        _type: 'suggestion',
-        brandRef: { _type: 'reference', _ref: brand.id },
+      await postApi('/api/suggestion', {
+        brandId: brand.id,
         brandName: brand.varumärke,
-        email: email,
+        email,
         suggestedChanges,
         originalValues,
-        submittedAt: new Date().toISOString(),
-        status: 'pending',
       });
       setSubmitted(true);
       setTimeout(() => onSubmit(), 2000);

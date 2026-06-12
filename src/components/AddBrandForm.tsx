@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { sanityWriteClient } from '../lib/sanityClient';
+import { postApi } from '../lib/api';
 
 const COUNTRIES: { iso: string; name: string }[] = [
   { iso: 'SE', name: 'Sverige' },
@@ -249,6 +249,7 @@ export default function AddBrandForm({ onCancel, onSubmit }: AddBrandFormProps) 
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
   const [emailError, setEmailError] = useState('');
+  const [fieldErrors, setFieldErrors] = useState<{ varumarke?: string; kategori?: string; tillverkadISverige?: string }>({});
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -263,21 +264,23 @@ export default function AddBrandForm({ onCancel, onSubmit }: AddBrandFormProps) 
     setError('');
     setEmailError('');
 
+    const newFieldErrors: typeof fieldErrors = {};
+    if (!formValues.varumarke.trim()) newFieldErrors.varumarke = 'Ange varumärkets namn.';
+    if (!formValues.kategori.trim()) newFieldErrors.kategori = 'Ange en kategori.';
+    if (!formValues.tillverkadISverige) newFieldErrors.tillverkadISverige = 'Välj ett alternativ.';
+    setFieldErrors(newFieldErrors);
+
+    let hasError = Object.keys(newFieldErrors).length > 0;
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setEmailError('Ange en giltig e-postadress.');
-      return;
+      hasError = true;
     }
+    if (hasError) return;
 
     setSubmitting(true);
 
     try {
-      await sanityWriteClient.create({
-        _type: 'brandProposal',
-        ...formValues,
-        email,
-        submittedAt: new Date().toISOString(),
-        status: 'pending',
-      });
+      await postApi('/api/proposal', { ...formValues, email });
       setSubmitted(true);
       setTimeout(() => onSubmit(), 4000);
     } catch (err) {
@@ -306,7 +309,7 @@ export default function AddBrandForm({ onCancel, onSubmit }: AddBrandFormProps) 
           <form className="suggestion-form" onSubmit={handleSubmit} noValidate>
             <div className="suggestion-form-grid">
               <div className="suggestion-field">
-                <label htmlFor="add-varumarke">Varumärke</label>
+                <label htmlFor="add-varumarke">Varumärke <span className="suggestion-required">*</span></label>
                 <input
                   id="add-varumarke"
                   type="text"
@@ -314,10 +317,11 @@ export default function AddBrandForm({ onCancel, onSubmit }: AddBrandFormProps) 
                   onChange={(e) => setFormValues((prev) => ({ ...prev, varumarke: e.target.value }))}
                 />
                 <p className="suggestion-helper-text">Vad heter varumärket?</p>
+                {fieldErrors.varumarke && <p className="suggestion-field-error">{fieldErrors.varumarke}</p>}
               </div>
 
               <div className="suggestion-field">
-                <label htmlFor="add-kategori">Kategori</label>
+                <label htmlFor="add-kategori">Kategori <span className="suggestion-required">*</span></label>
                 <input
                   id="add-kategori"
                   type="text"
@@ -325,10 +329,11 @@ export default function AddBrandForm({ onCancel, onSubmit }: AddBrandFormProps) 
                   onChange={(e) => setFormValues((prev) => ({ ...prev, kategori: e.target.value }))}
                 />
                 <p className="suggestion-helper-text">T.ex. Kläder, Skor, Möbler, Elektronik</p>
+                {fieldErrors.kategori && <p className="suggestion-field-error">{fieldErrors.kategori}</p>}
               </div>
 
               <div className="suggestion-field">
-                <label>Tillverkad i Sverige</label>
+                <label>Tillverkad i Sverige <span className="suggestion-required">*</span></label>
                 <div className="suggestion-radio-group">
                   {(['Ja', 'Delvis', 'Nej'] as const).map((option) => (
                     <label key={option} className="suggestion-radio-label">
@@ -344,6 +349,7 @@ export default function AddBrandForm({ onCancel, onSubmit }: AddBrandFormProps) 
                   ))}
                 </div>
                 <p className="suggestion-helper-text">Tillverkas produkterna (åtminstone delvis) i Sverige?</p>
+                {fieldErrors.tillverkadISverige && <p className="suggestion-field-error">{fieldErrors.tillverkadISverige}</p>}
               </div>
 
               <div className="suggestion-field">

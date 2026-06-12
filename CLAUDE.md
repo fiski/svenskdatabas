@@ -178,10 +178,15 @@ function App() {
 ```
 VITE_SANITY_PROJECT_ID=kmjh3e1f
 VITE_SANITY_DATASET=production
-VITE_SANITY_WRITE_TOKEN=REDACTED_TOKEN_1
-VITE_SANITY_WRITE_TOKEN=REDACTED_TOKEN_2
 ```
 Both vars must also be set in Cloudflare Pages environment settings for production.
+
+**Write access:** The frontend never holds a write token. All writes (brandProposal, suggestion, brandStats, searchStats) go through Cloudflare Pages Functions in `functions/api/` (`/api/proposal`, `/api/suggestion`, `/api/track`). The functions require these server-side env vars (set as secrets in Cloudflare Pages, never with `VITE_` prefix):
+```
+SANITY_PROJECT_ID=kmjh3e1f
+SANITY_DATASET=production
+SANITY_WRITE_TOKEN=<secret — Cloudflare Pages only>
+```
 
 ### Sanity Client (`src/lib/sanityClient.ts`)
 ```typescript

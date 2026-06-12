@@ -12,21 +12,6 @@
  * all brands that reference the same koncern document appear as siblings.
  * `ärHuvudvarumärke` is true for the brand whose _id matches the outer brand.
  */
-export const TOP_VIEWED_BRANDS_QUERY = `
-  *[_type == "brandStats"] | order(viewCount desc) [0..4] {
-    brandId,
-    brandName,
-    viewCount
-  }
-`
-
-export const TOP_SEARCHED_TERMS_QUERY = `
-  *[_type == "searchStats"] | order(searchCount desc) [0..4] {
-    term,
-    searchCount
-  }
-`
-
 export const ALL_BRANDS_QUERY = `
   *[_type == "brand"] | order(varumarke asc) {
     "id": _id,
