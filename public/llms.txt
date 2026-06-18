@@ -1,0 +1,27 @@
+# Svensk Databas
+
+> A database showing where Swedish brands actually manufacture their products.
+
+Svensk Databas is an independent transparency project by Maximilian that helps consumers understand where Swedish brands truly produce their goods. Brands are categorized as **Yes**, **Partially**, or **No** based on whether production takes place in Sweden.
+
+The database covers 90+ brands across categories including clothing, furniture, electronics, food and beverages, vehicles, and jewelry. Data is sourced from annual reports, allabolag.se, the Swedish Companies Registration Office (Bolagsverket), and company websites.
+
+## Pages
+
+- [The Database](https://brandsfrom.se/): Searchable and sortable database of all brands -- filter by name, category, or manufacturing status.
+- [About the project](https://brandsfrom.se/om): Explains the status definitions (Yes/Partially/No), the project's purpose and limitations, and how to report inaccuracies.
+
+## Status definitions
+
+- **Yes (Ja)** -- all or essentially all production takes place in Sweden (requires positive evidence: label, factory address, explicit claim)
+- **Partially (Delvis)** -- some production in Sweden, some abroad (e.g. design and assembly in Sweden, sewing abroad)
+- **No (Nej)** -- production abroad, even if the brand is Swedish-owned and/or designed in Sweden
+
+## Optional
+
+- [Full content](https://brandsfrom.se/llms-full.txt): Complete inline version of all site content, no external links required.
+
+## Technical
+
+Data source: Sanity CMS. No sponsored or paid content. No personal data collected.
+Contact: maximilian.relam@gmail.com

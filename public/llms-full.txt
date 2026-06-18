@@ -1,0 +1,84 @@
+# Svensk Databas
+
+> A database showing where Swedish brands actually manufacture their products.
+
+Svensk Databas is an independent transparency project by Maximilian that helps consumers understand where Swedish brands truly produce their goods. Brands are categorized as Yes, Partially, or No based on whether production takes place in Sweden.
+
+The database covers 90+ brands across categories including clothing, furniture, electronics, food and beverages, vehicles, and jewelry. Data is sourced from annual reports, allabolag.se, the Swedish Companies Registration Office (Bolagsverket), and company websites.
+
+---
+
+## The Database (Home page)
+
+The home page contains a searchable and sortable table of all brands. Visitors can:
+
+- Search by brand name, category, or manufacturing status
+- Filter with multiple search tags (AND logic -- all tags must match)
+- Sort by brand name (alphabetical), category, or manufacturing status
+- Expand a row to see corporate structure, owner, parent company, manufacturing countries, and a short brand description
+
+Each brand entry shows:
+- Brand name
+- Category (e.g. Clothing, Furniture, Electronics)
+- Manufacturing status (Yes / Partially / No)
+- Country flag for the brand's home country
+
+Categories in the database: Jewelry (Smycken), Gloves (Handskar), Outdoor Clothing (Friluftsklaeder), Underwear (Underklader), Vehicles (Fordon), Food and Beverages (Mat och Dryck), Furniture (Mobler), Clothing (Klader), Electronics (Elektronik), Cleaning Products (Stadprodukter).
+
+---
+
+## About the project
+
+### What is Svensk Databas?
+
+Whether something is "Swedish-made" is not always straightforward. This database creates transparency around Swedish brands and where their products are actually manufactured.
+
+The goal is not to point fingers, but to give consumers the ability to make informed decisions based on facts.
+
+Some brands manufacture everything in Sweden. Others have moved production abroad while retaining their Swedish heritage in their marketing. Many fall somewhere in between, with certain product lines or components made in Sweden.
+
+### Status definitions
+
+**Yes (Ja)**
+Products are manufactured primarily in Sweden. This may mean all production takes place here, or that the most critical components and assembly are done in Sweden.
+
+**Partially (Delvis)**
+Part of the production takes place in Sweden, but significant portions are done abroad. This may mean some product lines are manufactured in Sweden while others are not, or that components come from different countries.
+
+**No (Nej)**
+Production takes place primarily abroad. The brand may be Swedish in origin or ownership, but manufacturing is located in other countries.
+
+### Data sources and methodology
+
+Information is collected from:
+- Company websites and official communications
+- Annual reports (arsredovisningar)
+- Press releases
+- allabolag.se and Bolagsverket (ownership and corporate structure)
+- Public sources and product labels
+
+The database aims to keep information current and accurate. Manufacturing information can change over time -- if you notice something is wrong, please get in touch.
+
+### Transparency and limitations
+
+This is an independent project driven by an interest in consumer transparency and Swedish industry. No information is sponsored or paid for.
+
+Limitations to keep in mind:
+- Manufacturing information can change over time
+- Complex corporate structures sometimes make it difficult to give a simple answer
+- "Made in Sweden" can mean different things for different products
+- The database is updated continuously but is not always real-time
+
+### Contact and feedback
+
+Companies change, production moves, and ownership shifts. If information in the database is outdated or incorrect, please get in touch.
+
+Contact: maximilian.relam@gmail.com
+
+We welcome:
+- Corrections to existing information
+- Suggestions for new brands to add
+- Updates about changes in production or ownership
+- Sources that can verify information
+
+All feedback helps make the database more useful for everyone.

@@ -51,6 +51,7 @@ export default function Footer() {
                 Kontakt
               </span>
               {copied && <span className="footer-copied">E-post kopierad!</span>}
+              <a href="/llms.txt" className="footer-link">För AI</a>
             </div>
           </div>
         </div>
