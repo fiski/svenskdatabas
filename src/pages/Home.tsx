@@ -2,7 +2,6 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import Hero from '../components/Hero';
 import Search from '../components/Search';
 import DataTable from '../components/DataTable';
-import AddBrandForm from '../components/AddBrandForm';
 import { sanityClient } from '../lib/sanityClient';
 import { ALL_BRANDS_QUERY } from '../lib/queries';
 import { trackBrandView, trackSearch } from '../lib/analytics';
@@ -16,12 +15,7 @@ const compareSwedish = (a: string, b: string): number => {
 // Status order for sorting
 const statusOrder: Record<'Ja' | 'Nej' | 'Delvis', number> = { 'Ja': 1, 'Delvis': 2, 'Nej': 3 };
 
-interface HomeProps {
-  showAddForm: boolean;
-  onCloseAddForm: () => void;
-}
-
-export default function Home({ showAddForm, onCloseAddForm }: HomeProps) {
+export default function Home() {
   const [allBrands, setAllBrands] = useState<Brand[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -174,12 +168,6 @@ export default function Home({ showAddForm, onCloseAddForm }: HomeProps) {
       <div className="container">
         <div className="content">
           <Hero brandCount={totalBrands} />
-          {showAddForm && (
-            <AddBrandForm
-              onCancel={onCloseAddForm}
-              onSubmit={onCloseAddForm}
-            />
-          )}
           <div className="search-wrapper" ref={searchWrapperRef}>
             <Search
               currentInput={currentInput}

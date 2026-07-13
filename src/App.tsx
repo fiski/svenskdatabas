@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
+import AddBrandForm from './components/AddBrandForm';
 
 function App() {
   const [showAddForm, setShowAddForm] = useState(false);
@@ -13,10 +14,16 @@ function App() {
       <div>
         <Header onAddBrand={() => setShowAddForm(true)} />
         <Routes>
-          <Route path="/" element={<Home showAddForm={showAddForm} onCloseAddForm={() => setShowAddForm(false)} />} />
+          <Route path="/" element={<Home />} />
           <Route path="/om" element={<About />} />
         </Routes>
         <Footer />
+        {showAddForm && (
+          <AddBrandForm
+            onCancel={() => setShowAddForm(false)}
+            onSubmit={() => setShowAddForm(false)}
+          />
+        )}
       </div>
     </Router>
   );
