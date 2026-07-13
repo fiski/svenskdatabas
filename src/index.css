@@ -84,6 +84,40 @@ body {
   padding: 2rem 0;
 }
 
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-add-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  line-height: 1.4;
+}
+
+/* Secondary button variant — transparent fill with a colored border.
+   Composes onto the button base, so it keeps the same box model.
+   Targets both classes so it out-specifies the later .add-brand-btn base. */
+.add-brand-btn.secondary-btn {
+  background: transparent;
+  border-color: #006AA7;
+  color: #006AA7;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.add-brand-btn.secondary-btn:hover {
+  background: #006AA7;
+  color: #fff;
+  opacity: 1;
+}
+
 .header-title,
 .header-link {
   font-size: 20px;
@@ -1547,7 +1581,7 @@ body {
 .add-brand-btn {
   background-color: #006AA7;
   color: #FECC02;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 6px;
   padding: 10px 20px;
   font-size: 15px;

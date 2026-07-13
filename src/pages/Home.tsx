@@ -16,7 +16,12 @@ const compareSwedish = (a: string, b: string): number => {
 // Status order for sorting
 const statusOrder: Record<'Ja' | 'Nej' | 'Delvis', number> = { 'Ja': 1, 'Delvis': 2, 'Nej': 3 };
 
-export default function Home() {
+interface HomeProps {
+  showAddForm: boolean;
+  onCloseAddForm: () => void;
+}
+
+export default function Home({ showAddForm, onCloseAddForm }: HomeProps) {
   const [allBrands, setAllBrands] = useState<Brand[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -24,7 +29,6 @@ export default function Home() {
   const [searchTags, setSearchTags] = useState<string[]>([]);
   const [sortColumn, setSortColumn] = useState<SortColumn>('varumärke');
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
-  const [showAddForm, setShowAddForm] = useState(false);
   const searchWrapperRef = useRef<HTMLDivElement>(null);
   const [searchHeight, setSearchHeight] = useState(0);
 
@@ -170,19 +174,10 @@ export default function Home() {
       <div className="container">
         <div className="content">
           <Hero brandCount={totalBrands} />
-          <div className="add-brand-bar">
-            <button
-              className="add-brand-btn"
-              onClick={() => setShowAddForm(true)}
-              type="button"
-            >
-              + Lägg till märke
-            </button>
-          </div>
           {showAddForm && (
             <AddBrandForm
-              onCancel={() => setShowAddForm(false)}
-              onSubmit={() => setShowAddForm(false)}
+              onCancel={onCloseAddForm}
+              onSubmit={onCloseAddForm}
             />
           )}
           <div className="search-wrapper" ref={searchWrapperRef}>
