@@ -423,6 +423,9 @@ dist/
 dist-ssr/
 *.local
 
+# TypeScript incremental build cache
+*.tsbuildinfo
+
 # Environment variables (contains Sanity project credentials)
 .env.local
 .env*.local
