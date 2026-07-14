@@ -31,7 +31,9 @@
       "mcp__Sanity__list_datasets",
       "Bash(npm run:*)",
       "Bash(claude update *)",
-      "mcp__Sanity__create_documents"
+      "mcp__Sanity__create_documents",
+      "Workflow(code-review)",
+      "mcp__Sanity__whoami"
     ],
     "deny": [],
     "ask": []

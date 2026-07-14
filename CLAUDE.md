@@ -481,6 +481,7 @@ VITE_SANITY_DATASET=production
 ### Key Files for Common Tasks
 
 **Adding/editing a brand:**
+- **Automated**: `/add-brand [name]`, `/discover-brands`, `/refresh-brands` — Claude Code skills that research via the `brand-researcher` subagent and stage unpublished drafts for your approval. See `BRAND_RESEARCH.md` → "Automated workflows".
 - Use Sanity Studio at `http://localhost:3333` (run `npm run studio`)
 - Or edit via sanity.io/manage → project `kmjh3e1f` → dataset `production`
 - Do NOT edit `brands.json` (legacy, unused)

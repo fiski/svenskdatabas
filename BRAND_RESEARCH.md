@@ -2,6 +2,16 @@
 
 This guide documents the methodology for researching and adding brands to Svensk Databas. It is written as instructions for Claude-assisted sessions: follow the workflow in order, apply the decision rules exactly, and deliver data using the payload templates in §7.
 
+## Automated workflows
+
+This guide is the single source of truth for the methodology. Three Claude Code skills operationalize it (they reference this file — they do not duplicate the rules):
+
+- **`/add-brand [name]`** — research and add one or more named brands.
+- **`/discover-brands [category|all]`** — find well-known Swedish brands still missing from the dataset, then research the ones you pick.
+- **`/refresh-brands [category|brand|all]`** — re-check existing brands for stale ownership, unsupported manufacturing claims, and missing fields.
+
+All three run the research core via the `brand-researcher` subagent (`.claude/agents/brand-researcher.md`). **They deliberately stop at an unpublished draft** and require your approval before publishing — unlike the manual §7 flow below, which publishes directly. When following this guide by hand, §7's publish step still applies.
+
 ## Prerequisites
 
 Before starting any brand research, verify that the Sanity MCP server is authenticated and responsive:
