@@ -86,7 +86,7 @@ body {
 
 .header-nav {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 16px;
 }
 
@@ -98,7 +98,6 @@ body {
   padding: 6px 14px;
   border-radius: 6px;
   border: 1px solid transparent;
-  line-height: 1.4;
 }
 
 /* Secondary button variant — transparent fill with a colored border.
