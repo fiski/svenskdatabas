@@ -16,6 +16,9 @@ export default function Header({ onAddBrand }: HeaderProps) {
             <button className="add-brand-btn header-add-btn" onClick={onAddBrand} type="button">
               + Föreslå märke
             </button>
+            <Link to="/data" className="add-brand-btn header-add-btn secondary-btn">
+              Data
+            </Link>
             <Link to="/om" className="add-brand-btn header-add-btn secondary-btn">
               Om
             </Link>

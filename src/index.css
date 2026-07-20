@@ -1705,3 +1705,458 @@ body {
   font-weight: 600;
   color: #1a3050;
 }
+
+/* ========================================
+   Data Page (charts / statistics)
+   ======================================== */
+
+.data-section {
+  margin-bottom: 48px;
+}
+
+.data-section:last-child {
+  margin-bottom: 0;
+}
+
+.data-hero {
+  margin-bottom: 40px;
+}
+
+.data-section > p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #525252;
+  margin-bottom: 24px;
+}
+
+/* Status donut */
+.status-donut {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 48px;
+}
+
+.status-donut-figure {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  flex-shrink: 0;
+}
+
+.status-donut-svg {
+  width: 240px;
+  height: 240px;
+  display: block;
+}
+
+.status-donut-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.status-donut-total {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  color: #1a3050;
+}
+
+.status-donut-total-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #6e6e6e;
+  margin-top: 4px;
+}
+
+.status-donut-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.status-donut-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-donut-swatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.status-donut-legend-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a3050;
+  min-width: 64px;
+}
+
+.status-donut-legend-value {
+  font-size: 18px;
+  font-weight: 400;
+  color: #525252;
+}
+
+.status-donut-legend-pct {
+  color: #6e6e6e;
+}
+
+/* Ownership bars */
+.ownership-bars {
+  max-width: 720px;
+}
+
+.ownership-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ownership-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 200px) 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.ownership-name {
+  font-size: 15px;
+  font-weight: 400;
+  color: #1a3050;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ownership-track {
+  width: 100%;
+}
+
+.ownership-fill {
+  background-color: #1a3050;
+  height: 26px;
+  border-radius: 0 4px 4px 0;
+  min-width: 2.4em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+  box-sizing: border-box;
+}
+
+.ownership-count {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.ownership-caption {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #6e6e6e;
+  margin-top: 20px;
+}
+
+.ownership-empty {
+  font-size: 16px;
+  color: #6e6e6e;
+}
+
+/* Country bars (manufacturing countries, foreign owners) */
+.country-bars {
+  max-width: 720px;
+}
+
+.country-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.country-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 220px) 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.country-name {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.country-name-text {
+  font-size: 15px;
+  font-weight: 400;
+  color: #1a3050;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.country-flag-placeholder {
+  width: 16px;
+  flex-shrink: 0;
+}
+
+.country-name .flag-icon {
+  flex-shrink: 0;
+}
+
+.country-track {
+  width: 100%;
+}
+
+.country-fill {
+  background-color: #1a3050;
+  height: 26px;
+  border-radius: 0 4px 4px 0;
+  min-width: 2.4em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+  box-sizing: border-box;
+}
+
+.country-count {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* Swedishness matrix (owner nationality x manufacturing status) */
+.matrix {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 760px;
+}
+
+.matrix-table-wrap {
+  overflow-x: auto;
+}
+
+.matrix-table {
+  border-collapse: separate;
+  border-spacing: 6px;
+  width: 100%;
+}
+
+.matrix-stub {
+  font-size: 13px;
+  font-weight: 600;
+  color: #6e6e6e;
+  text-align: left;
+  vertical-align: bottom;
+  padding: 0 8px 6px 0;
+}
+
+.matrix-grouphead {
+  font-size: 13px;
+  font-weight: 600;
+  color: #6e6e6e;
+  text-align: center;
+  padding-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+.matrix-colhead {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a3050;
+  text-align: center;
+  padding-bottom: 6px;
+}
+
+.matrix-total-head {
+  vertical-align: bottom;
+  padding-left: 8px;
+}
+
+.matrix-rowhead {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a3050;
+  text-align: right;
+  white-space: nowrap;
+  padding-right: 8px;
+}
+
+.matrix-cell {
+  text-align: center;
+  border-radius: 6px;
+  min-width: 72px;
+  height: 64px;
+  vertical-align: middle;
+}
+
+.matrix-count {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.matrix-total {
+  background-color: #f5f5f5;
+  color: #525252;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.matrix-grand {
+  color: #1a3050;
+}
+
+.matrix-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.matrix-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-light, #c6c6c6);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.matrix-card-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1a3050;
+  margin: 0 0 8px;
+}
+
+.matrix-card-text {
+  font-size: 14px;
+  line-height: 22px;
+  color: #525252;
+  margin: 0 0 14px;
+}
+
+.matrix-chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.matrix-chip {
+  font-size: 13px;
+  font-weight: 400;
+  color: #1a3050;
+  background-color: #ededed;
+  border-radius: 999px;
+  padding: 5px 12px;
+}
+
+.matrix-chip-more {
+  background-color: transparent;
+  color: #6e6e6e;
+  font-style: italic;
+}
+
+.matrix-owners {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.matrix-owner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.matrix-owner-name {
+  font-weight: 600;
+  color: #1a3050;
+}
+
+.matrix-owner-by {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6e6e6e;
+  text-align: right;
+}
+
+/* Mobile: data page */
+@media (max-width: 599px) {
+  .data-section {
+    margin-bottom: 32px;
+  }
+
+  .data-section > p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .status-donut {
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .ownership-row {
+    grid-template-columns: minmax(90px, 130px) 1fr;
+    gap: 10px;
+  }
+
+  .ownership-name {
+    font-size: 13px;
+  }
+
+  .country-row {
+    grid-template-columns: minmax(100px, 150px) 1fr;
+    gap: 10px;
+  }
+
+  .country-name-text {
+    font-size: 13px;
+  }
+
+  .matrix-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .matrix-cell {
+    min-width: 56px;
+    height: 56px;
+  }
+
+  .matrix-count {
+    font-size: 20px;
+  }
+}
