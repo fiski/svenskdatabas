@@ -32,9 +32,11 @@ The goal is to create transparency around "Made in Sweden" claims. Consumers des
 
 ## Future Plans
 
-- Visualize company structures and ownership hierarchies
-- Map relationships between brands, parent companies, and investors
-- Expand the database with more Swedish brands
+- ✓ Suggest new brands directly on the site
+- ✓ Report incorrect information with one click
+- ✓ Visualize company structures and ownership hierarchies
+- ✓ Map relationships between brands, parent companies, and investors
+- ✓ Expand the database with more Swedish brands
 - Add data visualization showing manufacturing distribution
 
 ## Tech Stack

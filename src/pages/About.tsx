@@ -97,8 +97,8 @@ export default function About() {
             <h2 className="about-heading">Kommande funktioner</h2>
             <p>Framtida funktioner inkluderar bland annat:</p>
             <ul className="about-list">
-              <li>Tipsa om nya varumärken direkt på sidan</li>
-              <li>Rapportera felaktig information med ett klick</li>
+              <li>✓ Tipsa om nya varumärken direkt på sidan</li>
+              <li>✓ Rapportera felaktig information med ett klick</li>
               <li>M.fl..</li>
 
             </ul>
