@@ -1,56 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { postApi } from '../lib/api';
-
-const COUNTRIES: { iso: string; name: string }[] = [
-  { iso: 'SE', name: 'Sverige' },
-  { iso: 'DE', name: 'Tyskland' },
-  { iso: 'FR', name: 'Frankrike' },
-  { iso: 'IT', name: 'Italien' },
-  { iso: 'ES', name: 'Spanien' },
-  { iso: 'PT', name: 'Portugal' },
-  { iso: 'GB', name: 'Storbritannien' },
-  { iso: 'NO', name: 'Norge' },
-  { iso: 'DK', name: 'Danmark' },
-  { iso: 'FI', name: 'Finland' },
-  { iso: 'NL', name: 'Nederländerna' },
-  { iso: 'BE', name: 'Belgien' },
-  { iso: 'CH', name: 'Schweiz' },
-  { iso: 'AT', name: 'Österrike' },
-  { iso: 'PL', name: 'Polen' },
-  { iso: 'CZ', name: 'Tjeckien' },
-  { iso: 'RO', name: 'Rumänien' },
-  { iso: 'HU', name: 'Ungern' },
-  { iso: 'TR', name: 'Turkiet' },
-  { iso: 'US', name: 'USA' },
-  { iso: 'CA', name: 'Kanada' },
-  { iso: 'MX', name: 'Mexiko' },
-  { iso: 'BR', name: 'Brasilien' },
-  { iso: 'AR', name: 'Argentina' },
-  { iso: 'CN', name: 'Kina' },
-  { iso: 'JP', name: 'Japan' },
-  { iso: 'KR', name: 'Sydkorea' },
-  { iso: 'IN', name: 'Indien' },
-  { iso: 'BD', name: 'Bangladesh' },
-  { iso: 'VN', name: 'Vietnam' },
-  { iso: 'ID', name: 'Indonesien' },
-  { iso: 'TH', name: 'Thailand' },
-  { iso: 'PK', name: 'Pakistan' },
-  { iso: 'MA', name: 'Marocko' },
-  { iso: 'ET', name: 'Etiopien' },
-  { iso: 'ZA', name: 'Sydafrika' },
-  { iso: 'AU', name: 'Australien' },
-  { iso: 'NZ', name: 'Nya Zeeland' },
-  { iso: 'LU', name: 'Luxemburg' },
-  { iso: 'IE', name: 'Irland' },
-  { iso: 'GR', name: 'Grekland' },
-  { iso: 'HR', name: 'Kroatien' },
-  { iso: 'SK', name: 'Slovakien' },
-  { iso: 'LT', name: 'Litauen' },
-  { iso: 'LV', name: 'Lettland' },
-  { iso: 'EE', name: 'Estland' },
-  { iso: 'UA', name: 'Ukraina' },
-  { iso: 'RU', name: 'Ryssland' },
-];
+import { COUNTRIES } from '../data/countries';
 
 interface CountrySelectProps {
   id: string;
@@ -65,8 +15,9 @@ function CountrySelect({ id, value, onChange, placeholder = 'Välj land...' }: C
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const selectedName = COUNTRIES.find((c) => c.iso === value)?.name ?? '';
-  const filtered = COUNTRIES.filter((c) =>
-    c.name.toLowerCase().includes(query.toLowerCase())
+  const q = query.toLowerCase();
+  const filtered = COUNTRIES.filter(
+    (c) => c.name.toLowerCase().includes(q) || c.iso.toLowerCase().includes(q)
   );
 
   useEffect(() => {
@@ -131,9 +82,10 @@ function CountryMultiSelect({ selected, onChange }: CountryMultiSelectProps) {
   const [query, setQuery] = useState('');
   const wrapperRef = useRef<HTMLDivElement>(null);
 
+  const q = query.toLowerCase();
   const filtered = COUNTRIES.filter(
     (c) =>
-      c.name.toLowerCase().includes(query.toLowerCase()) &&
+      (c.name.toLowerCase().includes(q) || c.iso.toLowerCase().includes(q)) &&
       !selected.includes(c.name)
   );
 
