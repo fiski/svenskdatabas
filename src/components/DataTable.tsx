@@ -152,36 +152,36 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort, s
                       </div>
                     </>
                   )}
+                  {((brand.merInfo.källor && brand.merInfo.källor.length > 0) || brand.merInfo.senastVerifierad) && (
+                    <div className="brand-sources">
+                      <div className="detail-label" style={{ marginTop: 8 }}>Källor</div>
+                      {brand.merInfo.källor && brand.merInfo.källor.length > 0 ? (
+                        <ul className="kalla-list">
+                          {brand.merInfo.källor.map((källa) => (
+                            <li key={källa.url}>
+                              <a
+                                href={källa.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="kalla-link"
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                {sourceLabel(källa)}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <div className="detail-value">Inga källor angivna ännu</div>
+                      )}
+                      {brand.merInfo.senastVerifierad && (
+                        <div className="senast-verifierad">
+                          Senast uppdaterad: {new Date(brand.merInfo.senastVerifierad).toLocaleDateString('sv-SE')}
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
-                {((brand.merInfo.källor && brand.merInfo.källor.length > 0) || brand.merInfo.senastVerifierad) && (
-                  <div className="detail-item brand-sources">
-                    <div className="detail-label">Källor</div>
-                    {brand.merInfo.källor && brand.merInfo.källor.length > 0 ? (
-                      <ul className="kalla-list">
-                        {brand.merInfo.källor.map((källa) => (
-                          <li key={källa.url}>
-                            <a
-                              href={källa.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="kalla-link"
-                              onClick={(e) => e.stopPropagation()}
-                            >
-                              {sourceLabel(källa)}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <div className="detail-value">Inga källor angivna ännu</div>
-                    )}
-                    {brand.merInfo.senastVerifierad && (
-                      <div className="senast-verifierad">
-                        Senast verifierad: {new Date(brand.merInfo.senastVerifierad).toLocaleDateString('sv-SE')}
-                      </div>
-                    )}
-                  </div>
-                )}
                 <div className="detail-item suggest-change-item">
                   <button
                     className="suggest-change-btn"
