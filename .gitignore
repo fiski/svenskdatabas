@@ -433,6 +433,9 @@ dist-ssr/
 # Claude Code local settings (may contain tokens)
 .claude/settings.local.json
 
+# Sanity auto-generated runtime (regenerated on `sanity dev`/`build`)
+.sanity/
+
 # Logs
 npm-debug.log*
 yarn-debug.log*
