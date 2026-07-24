@@ -23,13 +23,13 @@ Audit brands already in the database for staleness and gaps, then stage fixes be
    - **Ownership recency** — BRAND_RESEARCH.md §1 recency check: search "[brand] förvärv OR uppköpt OR säljs" and recent news. Flag if the current `koncern.moderbolag`/`agare` looks outdated.
    - **Manufacturing** — is `tillverkadISverige` still supported by current evidence? Flag contradictions.
    - **börsnoterat** — re-check across the ownership chain if ownership changed.
-   - **Gaps** — empty `tillverkningslander`, missing `hallbarhetsFokus` or `intro`, missing `brandLand`.
+   - **Gaps** — empty `tillverkningslander`, missing `hallbarhetsFokus` or `intro`, missing `brandLand`, empty `kallor` (no source citations).
 
 3. **Report.** Present a table of only the **flagged** brands:
    | Brand | Issue | Current value | Proposed value | Source |
    Say how many brands were checked and how many were clean. Do not change anything yet.
 
-4. **Stage fixes on approval.** For brands the user approves, create a **patched draft** — `mcp__Sanity__patch_documents` targeting `drafts.<id>` (creating the draft edit), NOT the published doc. If an ownership change means a different koncern, reuse-or-create it per BRAND_RESEARCH.md §5/§7 (as a draft) before repointing the reference. Keep the published version untouched until publish.
+4. **Stage fixes on approval.** For brands the user approves, create a **patched draft** — `mcp__Sanity__patch_documents` targeting `drafts.<id>` (creating the draft edit), NOT the published doc. If an ownership change means a different koncern, reuse-or-create it per BRAND_RESEARCH.md §5/§7 (as a draft) before repointing the reference. Keep the published version untouched until publish. Whenever you re-verify a brand, set `senastVerifierad` to today's date and add the sources you used to `kallor` (`{url, label}`) — this is how the "Senast verifierad" signal and citations stay current.
 
 5. **Publish on approval** — `mcp__Sanity__publish_documents` (koncern first if changed, then brand), then verify via §7 Step 4.
 

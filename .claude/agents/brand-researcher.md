@@ -31,6 +31,7 @@ If a required fact cannot be evidenced (especially manufacturing location or the
 3. **Reuse koncern before creating.** Run BRAND_RESEARCH.md §5 GROQ (`mcp__Sanity__query_documents`) to find an existing `koncern` for the same group by `moderbolag` and by `agare match`. Reuse its `_id` if it matches; only create a new koncern draft if the group is genuinely absent. Independent Swedish companies get no koncern (§3).
 4. **Category:** pick the exact string from BRAND_RESEARCH.md §5's category list. Only propose a new category if nothing fits, and say so in `flags`.
 5. **Create drafts** with `create_documents_from_json` using the payload shapes in BRAND_RESEARCH.md §7 (ASCII field names; `tillverkningslander` = Swedish country *names*; land fields = ISO codes). Capture the returned draft `_id`s.
+   - **Persist your sources.** The per-claim source URLs you recorded in step 2 are not just for the return summary — write them into the brand's `kallor` array as `{url, label}` (label = the claim, e.g. "Ägarstruktur", "Tillverkning", "Börsnotering"). Set `senastVerifierad` to today's date. Do not fabricate URLs; only include sources you actually consulted.
 6. **Return** the structured summary below. Do not publish; do not call the site.
 
 ## Return format

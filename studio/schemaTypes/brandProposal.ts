@@ -26,6 +26,10 @@ export default defineType({
     defineField({ name: 'agareLand', title: 'Ägarens land (ISO)', type: 'string' }),
     defineField({ name: 'intro', title: 'Om varumärket', type: 'text' }),
     defineField({ name: 'hallbarhetsFokus', title: 'Hållbarhetsfokus', type: 'string' }),
+    defineField({
+      name: 'kallor', title: 'Källor (länkar)', type: 'array',
+      of: [{ type: 'string' }],
+    }),
     defineField({ name: 'kommentarer', title: 'Kommentarer', type: 'text' }),
     defineField({ name: 'email', title: 'Avsändarens e-post', type: 'string' }),
     defineField({ name: 'submittedAt', title: 'Skickat', type: 'datetime' }),

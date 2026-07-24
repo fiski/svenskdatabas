@@ -41,6 +41,7 @@ export const onRequestPost = async ({ request, env }: Ctx): Promise<Response> =>
         agareLand: cleanString(body.agareLand, 2),
         intro: cleanString(body.intro),
         hallbarhetsFokus: cleanString(body.hallbarhetsFokus, 500),
+        kallor: cleanStringArray(body.kallor),
         kommentarer: cleanString(body.kommentarer),
         email,
         submittedAt: new Date().toISOString(),

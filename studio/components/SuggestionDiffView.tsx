@@ -7,6 +7,7 @@ const FIELD_LABELS: Record<string, string> = {
   tillverkningslander: 'Tillverkningsländer',
   intro: 'Om varumärket',
   hallbarhetsFokus: 'Hållbarhetsfokus',
+  kallor: 'Källor (länkar)',
   koncernNote: 'Notering om koncernstruktur',
   kommentarer: 'Eventuella kommentarer',
 }

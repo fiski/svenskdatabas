@@ -18,6 +18,7 @@ interface FormValues {
   hallbarhetsFokus: string;
   koncernNote: string;
   kommentarer: string;
+  kallor: string[];
 }
 
 export default function BrandSuggestionForm({ brand, onCancel, onSubmit }: BrandSuggestionFormProps) {
@@ -30,9 +31,11 @@ export default function BrandSuggestionForm({ brand, onCancel, onSubmit }: Brand
     hallbarhetsFokus: brand.merInfo.hallbarhetsFokus ?? '',
     koncernNote: '',
     kommentarer: '',
+    kallor: [],
   });
   const [email, setEmail] = useState('');
   const [countryInput, setCountryInput] = useState('');
+  const [kallaInput, setKallaInput] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
@@ -60,6 +63,28 @@ export default function BrandSuggestionForm({ brand, onCancel, onSubmit }: Brand
     if (e.key === 'Enter') {
       e.preventDefault();
       handleAddCountry();
+    }
+  };
+
+  const handleAddKalla = () => {
+    const trimmed = kallaInput.trim();
+    if (trimmed && !formValues.kallor.includes(trimmed)) {
+      setFormValues((prev) => ({ ...prev, kallor: [...prev.kallor, trimmed] }));
+    }
+    setKallaInput('');
+  };
+
+  const handleRemoveKalla = (kalla: string) => {
+    setFormValues((prev) => ({
+      ...prev,
+      kallor: prev.kallor.filter((k) => k !== kalla),
+    }));
+  };
+
+  const handleKallaKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleAddKalla();
     }
   };
 
@@ -95,6 +120,7 @@ export default function BrandSuggestionForm({ brand, onCancel, onSubmit }: Brand
     if (formValues.hallbarhetsFokus !== (brand.merInfo.hallbarhetsFokus ?? '')) suggestedChanges.hallbarhetsFokus = formValues.hallbarhetsFokus;
     if (formValues.koncernNote.trim()) suggestedChanges.koncernNote = formValues.koncernNote;
     if (formValues.kommentarer.trim()) suggestedChanges.kommentarer = formValues.kommentarer;
+    if (formValues.kallor.length > 0) suggestedChanges.kallor = formValues.kallor;
 
     try {
       await postApi('/api/suggestion', {
@@ -238,6 +264,35 @@ export default function BrandSuggestionForm({ brand, onCancel, onSubmit }: Brand
               }
               placeholder="Beskriv önskade ändringar i ägarstruktur..."
             />
+          </div>
+
+          <div className="suggestion-field">
+            <label>Källor (länkar)</label>
+            <div className="suggestion-countries">
+              {formValues.kallor.map((kalla) => (
+                <span key={kalla} className="suggestion-country-chip">
+                  {kalla}
+                  <button
+                    type="button"
+                    className="chip-remove"
+                    onClick={() => handleRemoveKalla(kalla)}
+                    aria-label={`Ta bort ${kalla}`}
+                  >
+                    ×
+                  </button>
+                </span>
+              ))}
+              <input
+                type="url"
+                className="suggestion-country-input"
+                placeholder="Lägg till länk..."
+                value={kallaInput}
+                onChange={(e) => setKallaInput(e.target.value)}
+                onKeyDown={handleKallaKeyDown}
+                onBlur={handleAddKalla}
+              />
+            </div>
+            <p className="suggestion-helper-text">Länkar som styrker ditt förslag (t.ex. årsredovisning, allabolag.se)</p>
           </div>
 
           <div className="suggestion-field">

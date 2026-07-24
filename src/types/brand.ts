@@ -27,6 +27,8 @@ export interface Brand {
     intro?: string;  // Optional brand description (2-3 sentences)
     hallbarhetsFokus?: string;  // Optional sustainability focus
     webbplats?: string;  // Optional website URL
+    källor?: { url: string; label?: string }[];  // Optional source citations
+    senastVerifierad?: string;  // Optional ISO date the facts were last verified
   };
 }
 

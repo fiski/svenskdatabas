@@ -57,6 +57,8 @@ Skipping this check risks completing full research and then being unable to writ
 | `tillverkningslander` | Company about page, press releases, product labels |
 | `intro` | Write 1–2 sentences: founded year, product type, location |
 | `hallbarhetsFokus` | Sustainability page on company website |
+| `kallor` | The source URL you used for each key claim (ownership, börsnoterat, manufacturing) — record as `{url, label}`, label = the claim |
+| `senastVerifierad` | Today's date (`YYYY-MM-DD`) — the day you verified the facts |
 | `koncern.moderbolag` | allabolag.se: "Moderbolag" under company info |
 | `koncern.moderbolagLand` | allabolag.se: country of moderbolag registration |
 | `koncern.agare` | allabolag.se: ultimate owner (topp i ägarkedjan) |
@@ -132,7 +134,7 @@ User-submitted proposals arrive as `brandProposal` documents (status `pending`) 
    ```groq
    *[_type == "brandProposal" && status == "pending"] | order(submittedAt asc)
    ```
-2. **Verify every claim independently** using §1–§4 — proposals are unverified user input. The `kommentarer` field may contain source links; check them.
+2. **Verify every claim independently** using §1–§4 — proposals are unverified user input. The `kallor` array (structured source links) and the free-text `kommentarer` field may contain sources; check them, and carry the ones that hold up into the brand's `kallor`.
 3. Note: proposal `tillverkningslander` contains Swedish country names (correct for brand), but proposal data has no koncern reference — research and create/reuse the koncern yourself.
 4. Create the brand + koncern per §7.
 5. Patch the proposal: set `status` to `applied` (or `rejected` if the claims don't hold up). Do not delete proposals — they are the audit trail.
@@ -174,6 +176,11 @@ mcp__Sanity__create_documents_from_json
     tillverkningslander: ["Sverige"],         // Swedish country NAMES
     intro: "...",                             // 1–2 sentences, plain text
     hallbarhetsFokus: "...",                  // omit if none found
+    kallor: [                                 // the sources you used, one per key claim
+      { url: "https://...", label: "Ägarstruktur" },
+      { url: "https://...", label: "Tillverkning" }
+    ],
+    senastVerifierad: "YYYY-MM-DD",           // today's date
     koncern: { _type: "reference", _ref: "<koncern-id>" }   // omit if independent
   }]
 ```

@@ -75,6 +75,49 @@ export const brandType = defineType({
       type: 'url',
     }),
     defineField({
+      name: 'kallor',
+      title: 'Källor',
+      description: 'Källhänvisningar som styrker uppgifterna (ägarskap, tillverkning m.m.)',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'url',
+              title: 'Länk',
+              type: 'url',
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: 'label',
+              title: 'Beskrivning',
+              description: 'Valfri etikett, t.ex. "Ägarstruktur" eller "Årsredovisning 2024". Visas annars domännamnet.',
+              type: 'string',
+            }),
+          ],
+          preview: {
+            select: {
+              title: 'label',
+              subtitle: 'url',
+            },
+            prepare({ title, subtitle }) {
+              return {
+                title: title || subtitle,
+                subtitle: title ? subtitle : undefined,
+              }
+            },
+          },
+        },
+      ],
+    }),
+    defineField({
+      name: 'senastVerifierad',
+      title: 'Senast verifierad',
+      description: 'Datum då uppgifterna senast kontrollerades mot källor.',
+      type: 'date',
+    }),
+    defineField({
       name: 'koncern',
       title: 'Koncern',
       type: 'reference',

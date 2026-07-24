@@ -20,6 +20,9 @@ function cleanChanges(value: unknown): Record<string, unknown> {
   if (obj.tillverkningslander !== undefined) {
     result.tillverkningslander = cleanStringArray(obj.tillverkningslander)
   }
+  if (obj.kallor !== undefined) {
+    result.kallor = cleanStringArray(obj.kallor)
+  }
   return result
 }
 

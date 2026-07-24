@@ -5,6 +5,16 @@ import KoncernstrukturTree from './KoncernstrukturTree';
 import BrandSuggestionForm from './BrandSuggestionForm';
 import { Brand, SortColumn, SortDirection } from '../types/brand';
 
+/** Display text for a source link: its label, or the bare hostname as a fallback. */
+function sourceLabel(source: { url: string; label?: string }): string {
+  if (source.label) return source.label;
+  try {
+    return new URL(source.url).hostname.replace(/^www\./, '');
+  } catch {
+    return source.url;
+  }
+}
+
 interface DataTableProps {
   brands: Brand[];
   sortColumn: SortColumn;
@@ -143,6 +153,35 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort, s
                     </>
                   )}
                 </div>
+                {((brand.merInfo.källor && brand.merInfo.källor.length > 0) || brand.merInfo.senastVerifierad) && (
+                  <div className="detail-item brand-sources">
+                    <div className="detail-label">Källor</div>
+                    {brand.merInfo.källor && brand.merInfo.källor.length > 0 ? (
+                      <ul className="kalla-list">
+                        {brand.merInfo.källor.map((källa) => (
+                          <li key={källa.url}>
+                            <a
+                              href={källa.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="kalla-link"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              {sourceLabel(källa)}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <div className="detail-value">Inga källor angivna ännu</div>
+                    )}
+                    {brand.merInfo.senastVerifierad && (
+                      <div className="senast-verifierad">
+                        Senast verifierad: {new Date(brand.merInfo.senastVerifierad).toLocaleDateString('sv-SE')}
+                      </div>
+                    )}
+                  </div>
+                )}
                 <div className="detail-item suggest-change-item">
                   <button
                     className="suggest-change-btn"

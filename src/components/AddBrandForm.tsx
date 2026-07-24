@@ -178,6 +178,7 @@ interface FormValues {
   intro: string;
   hallbarhetsFokus: string;
   kommentarer: string;
+  kallor: string[];
 }
 
 export default function AddBrandForm({ onCancel, onSubmit }: AddBrandFormProps) {
@@ -195,8 +196,10 @@ export default function AddBrandForm({ onCancel, onSubmit }: AddBrandFormProps) 
     intro: '',
     hallbarhetsFokus: '',
     kommentarer: '',
+    kallor: [],
   });
   const [email, setEmail] = useState('');
+  const [kallaInput, setKallaInput] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
@@ -210,6 +213,25 @@ export default function AddBrandForm({ onCancel, onSubmit }: AddBrandFormProps) 
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [onCancel]);
+
+  const handleAddKalla = () => {
+    const trimmed = kallaInput.trim();
+    if (trimmed && !formValues.kallor.includes(trimmed)) {
+      setFormValues((prev) => ({ ...prev, kallor: [...prev.kallor, trimmed] }));
+    }
+    setKallaInput('');
+  };
+
+  const handleRemoveKalla = (kalla: string) => {
+    setFormValues((prev) => ({ ...prev, kallor: prev.kallor.filter((k) => k !== kalla) }));
+  };
+
+  const handleKallaKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleAddKalla();
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -395,6 +417,35 @@ export default function AddBrandForm({ onCancel, onSubmit }: AddBrandFormProps) 
                   onChange={(e) => setFormValues((prev) => ({ ...prev, hallbarhetsFokus: e.target.value }))}
                 />
                 <p className="suggestion-helper-text">T.ex. certifieringar, återbruk, klimatmål (valfritt)</p>
+              </div>
+
+              <div className="suggestion-field suggestion-field-full">
+                <label>Källor (länkar)</label>
+                <div className="suggestion-countries">
+                  {formValues.kallor.map((kalla) => (
+                    <span key={kalla} className="suggestion-country-chip">
+                      {kalla}
+                      <button
+                        type="button"
+                        className="chip-remove"
+                        onClick={() => handleRemoveKalla(kalla)}
+                        aria-label={`Ta bort ${kalla}`}
+                      >
+                        ×
+                      </button>
+                    </span>
+                  ))}
+                  <input
+                    type="url"
+                    className="suggestion-country-input"
+                    placeholder="Lägg till länk..."
+                    value={kallaInput}
+                    onChange={(e) => setKallaInput(e.target.value)}
+                    onKeyDown={handleKallaKeyDown}
+                    onBlur={handleAddKalla}
+                  />
+                </div>
+                <p className="suggestion-helper-text">Länkar som styrker uppgifterna (t.ex. årsredovisning, allabolag.se)</p>
               </div>
 
               <div className="suggestion-field">

@@ -42,6 +42,12 @@ export const suggestionType = defineType({
         defineField({ name: 'intro', title: 'Om varumärket', type: 'text' }),
         defineField({ name: 'hallbarhetsFokus', title: 'Hållbarhetsfokus', type: 'string' }),
         defineField({
+          name: 'kallor',
+          title: 'Källor (länkar)',
+          type: 'array',
+          of: [{ type: 'string' }],
+        }),
+        defineField({
           name: 'koncernNote',
           title: 'Notering om koncernstruktur',
           type: 'text',

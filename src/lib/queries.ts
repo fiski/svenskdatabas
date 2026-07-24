@@ -7,6 +7,7 @@
  *   borsnoterat        → börsnoterat
  *   agare              → ägare
  *   agareLand          → ägareLand
+ *   kallor             → källor
  *
  * The `varumärken` list is computed automatically via inverse reference:
  * all brands that reference the same koncern document appear as siblings.
@@ -26,6 +27,8 @@ export const ALL_BRANDS_QUERY = `
       "intro": intro,
       "hallbarhetsFokus": hallbarhetsFokus,
       "webbplats": webbplats,
+      "källor": kallor[]{ url, label },
+      "senastVerifierad": senastVerifierad,
       "koncernstruktur": {
         "moderbolag": koncern->moderbolag,
         "moderbolagLand": koncern->moderbolagLand,
