@@ -12,6 +12,8 @@ This guide is the single source of truth for the methodology. Three Claude Code 
 
 All three run the research core via the `brand-researcher` subagent (`.claude/agents/brand-researcher.md`). **They deliberately stop at an unpublished draft** and require your approval before publishing — unlike the manual §7 flow below, which publishes directly. When following this guide by hand, §7's publish step still applies.
 
+**Resuming the database-wide source-citation sweep?** Go straight to **§9**. It records where the sweep stopped, the conventions in force, and the pass criteria — it is written for cold sessions picking the work back up after a pause.
+
 ## Prerequisites
 
 Before starting any brand research, verify that the Sanity MCP server is authenticated and responsive:
@@ -42,6 +44,25 @@ Skipping this check risks completing full research and then being unable to writ
 
 ### Recency check (always do this last)
 - **Google News** search "[brand] uppköpt OR förvärv OR säljs" — ownership changes happen often and stale data is worse than no data. If an acquisition closed recently, the new structure applies.
+
+### Source access reality (what actually works)
+
+The priority order above is by *authority*. This is by *reachability* — several top-priority sources cannot be fetched by an agent, so plan around it rather than rediscovering it every session.
+
+**Blocked to automated fetching** (403 / empty body): `allabolag.se`, `proff.se` (301-redirects to allabolag), `bolagsfakta.se`, `merinfo.se`, `ratsit.se`, `cision.com` (sometimes). Their content still surfaces in **search-result snippets** — usable, but say so.
+
+**Reachable substitutes that have worked:**
+| Need | Source |
+|---|---|
+| German entities & registry chains | `northdata.com` (also covers Swedish orgs; shows Handelsregister shareholders) |
+| Norwegian entities | `data.brreg.no/enhetsregisteret/api/enheter/<orgnr>` and `/roller` — open JSON API, no blocking |
+| M&A confirmation | The **advising law firms'** own news posts — they publish deal announcements and are fetchable |
+| Listed-company ownership | The company's own IR pages (`corporate.<brand>.com/data-shareholders`) — for a listed issuer this beats allabolag anyway |
+| Supplier/factory lists | The brand's sustainability page or a linked supplier-list PDF |
+
+**PDFs:** `WebFetch` returns them as raw binary and there is no local PDF renderer (no poppler). Image-based annual reports are effectively unreadable. Workaround that worked: the `r.jina.ai` text-extraction proxy on the same URL — run it twice and require identical output before trusting extracted tables.
+
+**Always label snippet-only claims.** A researcher must distinguish "I retrieved this page" from "I saw this in a search result". Ownership chains resting on snippets are publishable when corroborated by an independent route, but the caveat must reach the report.
 
 ---
 
@@ -117,6 +138,31 @@ Also search by owner in case the moderbolag name differs slightly:
 
 - **Reuse** existing koncern if it matches the same corporate group
 - **Create new** only if the brand belongs to a genuinely different group
+
+### Before EDITING a koncern, check how many brands share it
+
+A koncern document may be referenced by several brands. Patching one to fix a single brand silently rewrites the others:
+
+```groq
+*[_type == "koncern" && _id == "<id>"]{
+  _id, moderbolag, agare,
+  "antalVarumärken": count(*[_type == "brand" && references(^._id)]),
+  "varumärken": *[_type == "brand" && references(^._id)].varumarke
+}
+```
+
+- **1 brand** → safe to patch in place.
+- **Several brands** → the change must be true for all of them, or the brand needs its own koncern instead.
+- **A shared group koncern already exists** (e.g. `koncern-nod-group` for the NOD/Altor brands) → **repoint the brand's reference to it** rather than editing its private single-brand koncern. This is what makes the sibling list on the site correct. The abandoned single-brand koncern is then orphaned — harmless, leave it.
+
+### Known defect classes in existing koncern data
+
+Seen repeatedly; check for these whenever you touch a koncern:
+- **Self-referential `moderbolag`** — the parent is the brand's own AB (`Blåkläder AB` for Blåkläder). Conveys nothing; find the real parent.
+- **Fabricated entity names** — a plausible-looking `"<Brand> AB"` that is not registered anywhere (`Berg & Berg AB`). Always confirm the legal name exists.
+- **Placeholder `agare`** — `"Privatägd"`, `"Familjeägt"`. Acceptable only after a genuine attempt to name the owner. Because the field is this dirty, group by `moderbolag` (not `agare`) for any ownership chart or analysis.
+- **Prose stuffed into `agare`** — shareholder lists with percentages that go stale fast. Keep it short: `Börsnoterat (<largest owner>)`.
+- **Country code contradicting the entity** — `moderbolagLand: "US"` on something named "SNA Europe". If the name and the code disagree, one of them is wrong.
 
 ### Existing Categories (use these exact strings)
 
@@ -215,6 +261,99 @@ Before publishing, confirm:
 - [ ] Ownership data is current (recency check done)
 - [ ] `intro` is 1–2 plain-text sentences
 - [ ] Brand published (not left as draft) and verified via §7 Step 4
+
+---
+
+## 9. Re-verification sweeps (source citations for the whole database)
+
+An ongoing project: give **every** brand source citations (`kallor`) and a verification date (`senastVerifierad`), correcting facts along the way. Worked **alphabetically by brand name, one letter-group at a time**, because the database is large and the work spans many sessions separated by usage-limit pauses.
+
+This section exists so a cold session can resume without re-deriving anything.
+
+### Where did we stop?
+
+**Derive it from the data, not from memory.** `senastVerifierad` is the progress marker — anything unset has never been verified:
+
+```groq
+*[_type == "brand" && !defined(senastVerifierad)] | order(varumarke asc) {
+  varumarke, _id
+}
+```
+
+The first letter in that result is the next letter-group.
+
+> Snapshot as of **2026-07-25**: **34 of 132** brands verified — `&` and `A` (2026-07-24), `B`, `C`, `D`+`E` (2026-07-25). Next group is **`F`** (FOREO, Felix, Filippa K, Fjällräven, Fractal Design, Fällkniven). This line is a convenience only; the query above is authoritative and self-correcting.
+
+> **Small letter-groups can be batched.** `D` held a single brand, so it was run together with `E` as one 10-brand batch (two research waves of 5). Dispatching ~5 researchers at a time keeps web-search quality up; 10 at once degrades sourcing.
+
+To pull one group's full current state:
+
+```groq
+*[_type == "brand" && string::startsWith(lower(varumarke), "c")] | order(varumarke asc) {
+  _id, varumarke, kategori, tillverkadISverige, borsnoterat, brandLand,
+  tillverkningslander, intro, hallbarhetsFokus, senastVerifierad,
+  "antalKallor": count(kallor),
+  koncern->{_id, moderbolag, moderbolagLand, agare, agareLand}
+}
+```
+
+> **GROQ gotcha:** use `string::startsWith(lower(varumarke), "c")`. Do **not** use `varumarke match "C*"` — the tokenizer over-matches and pulls in unrelated brands.
+
+Narrative progress (what changed per brand, watch items carried forward) is kept in the session memory note `source-verification-progress`. The GROQ above is authoritative if the two ever disagree.
+
+### Sweep workflow
+
+1. **Preflight** — `mcp__Sanity__whoami`. Load `select:mcp__Sanity__query_documents,mcp__Sanity__patch_documents,mcp__Sanity__publish_documents,mcp__Sanity__create_documents,WebSearch,WebFetch`. Do not research first and discover the write path is closed.
+2. **Load the letter-group** with the query above. A group is typically 5–15 brands — one batch.
+3. **Dispatch one `brand-researcher` per brand, research-only.** They have no Sanity write tools. Give each agent: the brand's current field values verbatim, its known/suspected defects, and the output contract below. Stagger in waves of ~5 so parallel web search doesn't degrade into weak sourcing.
+4. **Batch report** — one table of flagged brands only: `| Brand | Field | Current | Proposed | Source |`, plus checked-vs-clean counts. **Change nothing yet.** Surface medium-confidence items as explicit questions rather than quietly applying or quietly dropping them.
+5. **Stage drafts on approval** — patch `drafts.<id>`, never the published doc. Koncern docs and brand docs can be staged in the same pass.
+6. **Publish koncern docs first, then brands.** Verify with the query in "Pass criteria" below.
+7. **Update the progress note** — per-brand one-liners, next letter, any new gotchas and watch items.
+
+### Researcher output contract
+
+Require exactly this shape back, or the batch report can't be assembled consistently:
+
+- **Verdict per field** — for *every* field, `CONFIRMED (no change)` or `CHANGE: <current> → <proposed>` with a one-line reason. An explicit "no change" is as valuable as a fix; without it you can't tell "checked and fine" from "didn't look".
+- **Exactly 3 sources**, one each for ownership / manufacturing / börsnotering.
+- **Confidence & caveats** — what was retrieved first-hand vs. seen in a snippet, and what could not be confirmed at all.
+- **Recency check result** — stated even when nothing was found.
+
+### Field conventions for a sweep
+
+- **`kallor`** — exactly **3** items, `_key` `k1`/`k2`/`k3`, stored as `{_type: "object", _key, url, label}`. One covers ownership, one manufacturing, one börsnotering.
+- **Label format** — `"Claim – detail"`, e.g. `"Ägarstruktur – Traction äger 100% via Ankarsrum Industries"`. En-dash. The label states *what the source proves*, not what the page is called.
+- **URLs must be human-browsable** — they render as links on the public site. Prefer a readable page over a `products.json` or raw API endpoint, even when the API was what you actually parsed.
+- **`senastVerifierad`** — the date you verified, `YYYY-MM-DD`. Set it on every brand you touch, including ones where nothing changed.
+- **`borsnoterat`** — strictly `"Ja"` or `"Nej"`. Never annotate (`"Ja (Snap-on på NYSE)"` breaks the schema enum and the UI filter). Put the reasoning in a `kallor` label.
+- **`tillverkningslander`** — Swedish country **names**. Never continents (`"Asien"`, `"Europa"` are defects, not values), never ISO codes.
+
+### Scope discipline
+
+- **In scope:** sources, verification date, fact corrections the research contradicts, structural defects (broken enums, fake/self-referential entities, wrong country codes, placeholder owners).
+- **Out of scope:** `kategori`. It is free-text multi-value in the live data (`"Verktyg, Handsågar"`) and has drifted from §5's canonical list. Normalizing one letter-group at a time would leave the database *more* inconsistent, not less — it needs one dedicated full-database pass.
+- **Never downgrade good data on weak evidence.** Flag "uncertain" and carry it as a watch item. A field that was right yesterday and is now blank is a regression.
+
+### Pass criteria
+
+```groq
+{
+  "fel_enum":      count(*[_type == "brand" && string::startsWith(lower(varumarke), "c") && !(borsnoterat in ["Ja","Nej"])]),
+  "fel_kallor":    count(*[_type == "brand" && string::startsWith(lower(varumarke), "c") && count(kallor) != 3]),
+  "fel_datum":     count(*[_type == "brand" && string::startsWith(lower(varumarke), "c") && !defined(senastVerifierad)]),
+  "fel_kontinent": count(*[_type == "brand" && string::startsWith(lower(varumarke), "c") && ("Asien" in tillverkningslander || "Europa" in tillverkningslander)]),
+  "fel_brutenRef": count(*[_type == "brand" && string::startsWith(lower(varumarke), "c") && defined(koncern) && !defined(koncern->moderbolag)])
+}
+```
+
+All five must be `0`, queried with `perspective: "published"`. Drafts passing is not the same as published passing.
+
+### Patch gotchas
+
+- A patch transaction is **per document, all-or-nothing** — a failure rolls back that document's entire `set`. On failure re-apply every intended field; never assume partial success.
+- A brand can only hold a **strong** reference to a **published** koncern. For a newly created koncern: stage the brand's ref as `_weak: true`, publish the koncern, then upgrade the ref to strong and publish the brand. (Not needed when reusing an already-published koncern.)
+- Patching `drafts.<id>` when no draft exists creates the draft from the published version — safe.
 
 ---
 
