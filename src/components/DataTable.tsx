@@ -15,6 +15,31 @@ function sourceLabel(source: { url: string; label?: string }): string {
   }
 }
 
+function sourceHost(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '');
+  } catch {
+    return 'Källa';
+  }
+}
+
+/**
+ * Källor are labelled "<Kategori> – <detalj>" (see BRAND_RESEARCH.md §9), e.g.
+ * "Ägarstruktur – Traction äger 100% via Ankarsrum Industries". Split that into the
+ * evidence category (rendered as a plain heading) and the detail (the link text).
+ * Labels that don't follow the convention fall back to the domain as the heading.
+ */
+function splitSource(source: { url: string; label?: string }): { tag: string; detail: string } {
+  const text = sourceLabel(source);
+  // Require whitespace around the dash so hyphenated names ("Snap-on") don't split,
+  // and cap the tag length so a stray dash mid-sentence can't become a giant tag.
+  const match = text.match(/^(.{2,40}?)\s[–—-]\s(.+)$/s);
+  if (match) return { tag: match[1].trim(), detail: match[2].trim() };
+
+  const host = sourceHost(source.url);
+  return { tag: host, detail: text === host ? '' : text };
+}
+
 interface DataTableProps {
   brands: Brand[];
   sortColumn: SortColumn;
@@ -157,19 +182,23 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort, s
                       <div className="detail-label" style={{ marginTop: 8 }}>Källor</div>
                       {brand.merInfo.källor && brand.merInfo.källor.length > 0 ? (
                         <ul className="kalla-list">
-                          {brand.merInfo.källor.map((källa) => (
-                            <li key={källa.url}>
-                              <a
-                                href={källa.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="kalla-link"
-                                onClick={(e) => e.stopPropagation()}
-                              >
-                                {sourceLabel(källa)}
-                              </a>
-                            </li>
-                          ))}
+                          {brand.merInfo.källor.map((källa) => {
+                            const { tag, detail } = splitSource(källa);
+                            return (
+                              <li key={källa.url} className="kalla-item">
+                                <div className="kalla-tag">{tag}</div>
+                                <a
+                                  href={källa.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="kalla-link"
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  {detail || sourceHost(källa.url)}
+                                </a>
+                              </li>
+                            );
+                          })}
                         </ul>
                       ) : (
                         <div className="detail-value">Inga källor angivna ännu</div>

@@ -698,15 +698,16 @@ body {
   color: #525252;
 }
 
-/* Brand Website Link */
+/* Brand Website Link — shares the källa link's hyperlink blue; the two blocks sit
+   adjacent in the expanded row and would clash otherwise. */
 .brand-website-link {
-  color: #1a3050;
+  color: #0067ff;
   text-decoration: underline;
   word-break: break-all;
 }
 
 .brand-website-link:hover {
-  color: #005D7F;
+  color: #0052cc;
 }
 
 /* Brand Intro Section */
@@ -733,17 +734,61 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 12px;
 }
 
-.kalla-link {
+/*
+ * Each källa reads as a plain evidence heading with the detail as the link below it,
+ * mirroring the "Länk till <varumärke>" label + link pattern directly above.
+ */
+.kalla-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* keeps the link's hover fill at text width, not row width */
+  gap: 2px;
+}
+
+.kalla-tag {
+  font-size: 14px;
+  font-weight: 500;
   color: #1a3050;
-  text-decoration: underline;
-  word-break: break-all;
 }
 
-.kalla-link:hover {
-  color: #005D7F;
+/*
+ * Padding is always present (background merely goes transparent) so the hover
+ * fill doesn't shift the row; the negative margin keeps the link's text edge
+ * flush with the heading above it.
+ */
+.kalla-link {
+  max-width: 100%;
+  padding: 1px 4px;
+  margin-left: -4px;
+  border-radius: 3px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #0067ff;
+  background-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  overflow-wrap: anywhere;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.kalla-link:hover,
+.kalla-link:focus-visible {
+  color: #ffffff;
+  background-color: #0067ff;
+}
+
+.kalla-link:focus-visible {
+  outline: 2px solid #1a3050;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kalla-link {
+    transition: none;
+  }
 }
 
 .senast-verifierad {
