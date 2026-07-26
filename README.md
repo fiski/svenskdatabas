@@ -1,4 +1,4 @@
-# Svensk Databas
+# brandsfrom.se
 
 **[brandsfrom.se](https://brandsfrom.se)**
 
@@ -6,7 +6,7 @@
 
 ## About
 
-Svensk Databas is a Swedish transparency project that investigates where Swedish brands actually manufacture their products. Many brands market themselves with Swedish heritage, but are their products really made in Sweden?
+brandsfrom.se is a Swedish transparency project that investigates where Swedish brands actually manufacture their products. Many brands market themselves with Swedish heritage, but are their products really made in Sweden?
 
 This database categorizes brands into three groups:
 

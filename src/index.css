@@ -117,25 +117,22 @@ body {
   opacity: 1;
 }
 
-.header-title,
-.header-link {
+.header-title {
   font-size: 20px;
   line-height: 30px;
-  color: #6e6e6e;
-  font-weight: 400;
+  color: #1a3050;
+  font-weight: 700;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.header-title:hover,
-.header-link:hover {
-  color: #1a3050;
+.header-title:hover {
+  color: #006AA7;
 }
 
 /* Mobile: Header typography */
 @media (max-width: 599px) {
-  .header-title,
-  .header-link {
+  .header-title {
     font-size: 16px;
     line-height: 24px;
   }
@@ -1521,6 +1518,14 @@ body {
   line-height: 1.6;
 }
 
+.footer-byline {
+  margin-top: 0.5rem;
+  font-size: 14px;
+  font-weight: 300;
+  color: #6e6e6e;
+  line-height: 1.6;
+}
+
 /* Right Section: Links */
 .footer-links {
   display: flex;
@@ -1635,7 +1640,8 @@ body {
     font-size: 18px;
   }
 
-  .footer-description {
+  .footer-description,
+  .footer-byline {
     font-size: 13px;
   }
 

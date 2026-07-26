@@ -37,7 +37,7 @@ export default function Home() {
   }, [loading]);
 
   useEffect(() => {
-    document.title = 'Svenska varumärken och tillverkare - En Svensk databas';
+    document.title = 'Var tillverkas svenska varumärken? – brandsfrom.se';
   }, []);
 
   useEffect(() => {

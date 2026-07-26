@@ -6,7 +6,7 @@ import SuggestionDiffView from './components/SuggestionDiffView'
 
 export default defineConfig({
   name: 'default',
-  title: 'Svensk Databas',
+  title: 'brandsfrom.se',
   projectId: 'kmjh3e1f',
   dataset: 'production',
   plugins: [

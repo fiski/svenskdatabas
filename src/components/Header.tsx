@@ -10,7 +10,7 @@ export default function Header({ onAddBrand }: HeaderProps) {
       <div className="container">
         <div className="header-content">
           <Link to="/" className="header-title">
-            Svensk databas av Maximilian
+            brandsfrom.se
           </Link>
           <div className="header-nav">
             <button className="add-brand-btn header-add-btn" onClick={onAddBrand} type="button">

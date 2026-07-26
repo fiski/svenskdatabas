@@ -4,7 +4,7 @@ export default function About() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    document.title = 'Om projektet - Svensk Databas';
+    document.title = 'Om projektet – brandsfrom.se';
   }, []);
 
   const handleEmailClick = () => {

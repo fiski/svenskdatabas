@@ -18,10 +18,11 @@ export default function Footer() {
         <div className="footer-content">
           {/* Left: Brand & Description */}
           <div className="footer-brand">
-            <h3 className="footer-title">Svensk databas</h3>
+            <h3 className="footer-title">brandsfrom.se</h3>
             <p className="footer-description">
               Transparens kring svenska varumärken och deras tillverkning
             </p>
+            <p className="footer-byline">Ett oberoende projekt av Maximilian</p>
           </div>
 
           {/* Right: Navigation Links */}
