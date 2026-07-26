@@ -59,6 +59,8 @@ The priority order above is by *authority*. This is by *reachability* — severa
 | M&A confirmation | The **advising law firms'** own news posts — they publish deal announcements and are fetchable |
 | Listed-company ownership | The company's own IR pages (`corporate.<brand>.com/data-shareholders`) — for a listed issuer this beats allabolag anyway |
 | Supplier/factory lists | The brand's sustainability page or a linked supplier-list PDF |
+| Country of origin for a device | The brand's own **product manual** (`/manuals/<product>`) — regulatory text names the actual factory even when marketing pages say nothing. FOREO's manual gives "VIS (Shanghai) Technology Co., Ltd." where foreo.com only says "born in Sweden" |
+| Ownership chain a wiki only asserts | The parent group's own **history/timeline page** — `fh-group.dk/en/about-us/history/` states the Canica subsidiary relationship outright |
 
 **PDFs:** `WebFetch` returns them as raw binary and there is no local PDF renderer (no poppler). Image-based annual reports are effectively unreadable. Workaround that worked: the `r.jina.ai` text-extraction proxy on the same URL — run it twice and require identical output before trusting extracted tables.
 
@@ -282,9 +284,11 @@ This section exists so a cold session can resume without re-deriving anything.
 
 The first letter in that result is the next letter-group.
 
-> Snapshot as of **2026-07-25**: **34 of 132** brands verified — `&` and `A` (2026-07-24), `B`, `C`, `D`+`E` (2026-07-25). Next group is **`F`** (FOREO, Felix, Filippa K, Fjällräven, Fractal Design, Fällkniven). This line is a convenience only; the query above is authoritative and self-correcting.
+> Snapshot as of **2026-07-25**: **45 of 132** brands verified — `&` and `A` (2026-07-24), `B`, `C`, `D`+`E`, `F`+`G` (2026-07-25). Next group is **`H`** (H&M, H&M Home, Haglöfs, Hasselblad, Hernö Gin, Hestra, Hultafors, Husqvarna, Hästens, Häxan, Höganäs Keramik). This line is a convenience only; the query above is authoritative and self-correcting.
 
-> **Small letter-groups can be batched.** `D` held a single brand, so it was run together with `E` as one 10-brand batch (two research waves of 5). Dispatching ~5 researchers at a time keeps web-search quality up; 10 at once degrades sourcing.
+> **Small letter-groups can be batched.** `D` held a single brand, so it was run together with `E` as one 10-brand batch (two research waves of 5); `F`+`G` ran the same way as 11 brands. Dispatching ~5 researchers at a time keeps web-search quality up; 10 at once degrades sourcing.
+
+> **Batch the write, too.** `patch_documents` silently truncates an oversized payload and fails with a JSON parse error — stage **at most 3 brands per call** when each carries 3 `kallor` plus an `intro` rewrite.
 
 To pull one group's full current state:
 
