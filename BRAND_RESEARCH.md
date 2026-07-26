@@ -63,6 +63,7 @@ The priority order above is by *authority*. This is by *reachability* — severa
 | Ownership chain a wiki only asserts | The parent group's own **history/timeline page** — `fh-group.dk/en/about-us/history/` states the Canica subsidiary relationship outright |
 | Who actually manufactures a Swedish consumer product | The **Svanen licence register**, `svanen.se/licensinnehavare/<company>` — registry-grade and names the licence *holder*, i.e. whoever controls formulation and production. Proved Häxan's goods are made by Cleano Production AB, not by Häxan itself |
 | Whether a claimed parent company still exists | The Finnish **PRH** open data / `northdata.com` name history. Two traps found at `H`: "Iittala Oy Ab" had been **deregistered since 2005**, and "Haglöfs Scandinavia AB" is a **former name of the same legal entity** as Haglöfs AB. Confirm a parent is *active* and *distinct*, not merely real |
+| **Who the Swedish parent company is** | **`hitta.se/företagsinformation/<bolag>/<orgnr>`** — fetchable where allabolag/proff/bolagsfakta all block, and it prints **"Koncernmoderbolag"** plus the full subsidiary tree. Resolved two self-referential `moderbolag` in one batch at `I`+`J` (Icebug → GtoG AB; Iris Hantverk → Edhäll Sparrenhök Holding AB). **Try this before northdata** when the question is specifically *who owns this Swedish company* |
 
 **PDFs:** `WebFetch` returns them as raw binary and there is no local PDF renderer (no poppler). Image-based annual reports are effectively unreadable. Workaround that worked: the `r.jina.ai` text-extraction proxy on the same URL — run it twice and require identical output before trusting extracted tables.
 
@@ -167,6 +168,7 @@ Seen repeatedly; check for these whenever you touch a koncern:
 - **Placeholder `agare`** — `"Privatägd"`, `"Familjeägt"`. Acceptable only after a genuine attempt to name the owner. Because the field is this dirty, group by `moderbolag` (not `agare`) for any ownership chart or analysis.
 - **Prose stuffed into `agare`** — shareholder lists with percentages that go stale fast. Keep it short: `Börsnoterat (<largest owner>)`.
 - **Country code contradicting the entity** — `moderbolagLand: "US"` on something named "SNA Europe". If the name and the code disagree, one of them is wrong.
+- **The wrong half of a split corporate structure** — the recorded parent is a real, active, correctly-named entity that simply isn't the one that owns the manufacturing. IKEA's koncern held **Ingka Holding B.V.** (the largest *franchisee*, which runs the stores) when the entity that owns the brand, the concept and the factories is **Inter IKEA**. Two separate groups, no common owner. For a manufacturing database, record the side that owns the factories — and expect the same trap on any franchise- or licence-built brand.
 
 ### Existing Categories (use these exact strings)
 
@@ -286,7 +288,11 @@ This section exists so a cold session can resume without re-deriving anything.
 
 The first letter in that result is the next letter-group.
 
-> Snapshot as of **2026-07-26**: **56 of 132** brands verified — `&` and `A` (2026-07-24), `B`, `C`, `D`+`E`, `F`+`G` (2026-07-25), `H` (2026-07-26). Next group is **`I`+`J`** (IKEA, Icebug, Iris Hantverk, Jeansverket — batchable as 4), then **`K`** (9). This line is a convenience only; the query above is authoritative and self-correcting.
+> Snapshot as of **2026-07-26**: **60 of 133** brands verified — `&` and `A` (2026-07-24), `B`, `C`, `D`+`E`, `F`+`G` (2026-07-25), `H`, `I`+`J` (2026-07-26). Next group is **`K`** (9). This line is a convenience only; the query above is authoritative and self-correcting.
+
+> **A verified brand is not necessarily a *passing* brand.** `& Other Stories` and `ARKET` carried `senastVerifierad` from the sources-only `A` batch but still failed `fel_kontinent` — the early letter-groups predate these pass criteria. Run the pass query over **already-verified** groups too, not just the current one.
+
+> **The brand count is 133, not 132** — there are **two published `Rörstrand` documents** (`brand-30`, `brand-81`) created 51 seconds apart in the February migration. They disagree on koncern and country list and both render on the live site. Merge at `R`.
 
 > **Small letter-groups can be batched.** `D` held a single brand, so it was run together with `E` as one 10-brand batch (two research waves of 5); `F`+`G` ran the same way as 11 brands. Dispatching ~5 researchers at a time keeps web-search quality up; 10 at once degrades sourcing.
 
