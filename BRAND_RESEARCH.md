@@ -61,6 +61,8 @@ The priority order above is by *authority*. This is by *reachability* — severa
 | Supplier/factory lists | The brand's sustainability page or a linked supplier-list PDF |
 | Country of origin for a device | The brand's own **product manual** (`/manuals/<product>`) — regulatory text names the actual factory even when marketing pages say nothing. FOREO's manual gives "VIS (Shanghai) Technology Co., Ltd." where foreo.com only says "born in Sweden" |
 | Ownership chain a wiki only asserts | The parent group's own **history/timeline page** — `fh-group.dk/en/about-us/history/` states the Canica subsidiary relationship outright |
+| Who actually manufactures a Swedish consumer product | The **Svanen licence register**, `svanen.se/licensinnehavare/<company>` — registry-grade and names the licence *holder*, i.e. whoever controls formulation and production. Proved Häxan's goods are made by Cleano Production AB, not by Häxan itself |
+| Whether a claimed parent company still exists | The Finnish **PRH** open data / `northdata.com` name history. Two traps found at `H`: "Iittala Oy Ab" had been **deregistered since 2005**, and "Haglöfs Scandinavia AB" is a **former name of the same legal entity** as Haglöfs AB. Confirm a parent is *active* and *distinct*, not merely real |
 
 **PDFs:** `WebFetch` returns them as raw binary and there is no local PDF renderer (no poppler). Image-based annual reports are effectively unreadable. Workaround that worked: the `r.jina.ai` text-extraction proxy on the same URL — run it twice and require identical output before trusting extracted tables.
 
@@ -284,11 +286,11 @@ This section exists so a cold session can resume without re-deriving anything.
 
 The first letter in that result is the next letter-group.
 
-> Snapshot as of **2026-07-25**: **45 of 132** brands verified — `&` and `A` (2026-07-24), `B`, `C`, `D`+`E`, `F`+`G` (2026-07-25). Next group is **`H`** (H&M, H&M Home, Haglöfs, Hasselblad, Hernö Gin, Hestra, Hultafors, Husqvarna, Hästens, Häxan, Höganäs Keramik). This line is a convenience only; the query above is authoritative and self-correcting.
+> Snapshot as of **2026-07-26**: **56 of 132** brands verified — `&` and `A` (2026-07-24), `B`, `C`, `D`+`E`, `F`+`G` (2026-07-25), `H` (2026-07-26). Next group is **`I`+`J`** (IKEA, Icebug, Iris Hantverk, Jeansverket — batchable as 4), then **`K`** (9). This line is a convenience only; the query above is authoritative and self-correcting.
 
 > **Small letter-groups can be batched.** `D` held a single brand, so it was run together with `E` as one 10-brand batch (two research waves of 5); `F`+`G` ran the same way as 11 brands. Dispatching ~5 researchers at a time keeps web-search quality up; 10 at once degrades sourcing.
 
-> **Batch the write, too.** `patch_documents` silently truncates an oversized payload and fails with a JSON parse error — stage **at most 3 brands per call** when each carries 3 `kallor` plus an `intro` rewrite.
+> **Batch the write, too — and the limit is BYTES, not brands.** `patch_documents` silently truncates an oversized payload and fails with a JSON parse error at roughly **4,5 KB**. The old "3 brands per call" rule broke at `H`, where each brand carried a rewritten `intro` **plus** `hallbarhetsFokus` **plus** 3 `kallor`. Use **one brand per call** for a full field set; koncern-only patches (2–4 short fields each) batch fine at 4 per call.
 
 To pull one group's full current state:
 
