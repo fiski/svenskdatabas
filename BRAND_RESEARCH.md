@@ -63,7 +63,15 @@ The priority order above is by *authority*. This is by *reachability* — severa
 | Ownership chain a wiki only asserts | The parent group's own **history/timeline page** — `fh-group.dk/en/about-us/history/` states the Canica subsidiary relationship outright |
 | Who actually manufactures a Swedish consumer product | The **Svanen licence register**, `svanen.se/licensinnehavare/<company>` — registry-grade and names the licence *holder*, i.e. whoever controls formulation and production. Proved Häxan's goods are made by Cleano Production AB, not by Häxan itself |
 | Whether a claimed parent company still exists | The Finnish **PRH** open data / `northdata.com` name history. Two traps found at `H`: "Iittala Oy Ab" had been **deregistered since 2005**, and "Haglöfs Scandinavia AB" is a **former name of the same legal entity** as Haglöfs AB. Confirm a parent is *active* and *distinct*, not merely real |
-| **Who the Swedish parent company is** | **`hitta.se/företagsinformation/<bolag>/<orgnr>`** — fetchable where allabolag/proff/bolagsfakta all block, and it prints **"Koncernmoderbolag"** plus the full subsidiary tree. Resolved two self-referential `moderbolag` in one batch at `I`+`J` (Icebug → GtoG AB; Iris Hantverk → Edhäll Sparrenhök Holding AB). **Try this before northdata** when the question is specifically *who owns this Swedish company* |
+| **Who the Swedish parent company is** | **`hitta.se/företagsinformation/<bolag>/<orgnr>`** — fetchable where allabolag/proff/bolagsfakta all block, and it prints **"Koncernmoderbolag"** plus the full subsidiary tree. Resolved two self-referential `moderbolag` in one batch at `I`+`J` (Icebug → GtoG AB; Iris Hantverk → Edhäll Sparrenhök Holding AB), and two more at `K`. **Try this before northdata** when the question is specifically *who owns this Swedish company* — **but see the staleness warning below** |
+
+> **hitta.se is fast, not fresh — it can lag a real transaction by years.** At `K` its Kasthall entry still named **K III Denmark K/S** (the Karnell fund vehicle) as koncernmoderbolag and grouped the company with Silva, though Karnell had sold Kasthall to Altor-owned NOD in **September 2023**. Following it blindly would have rewritten the koncern *backwards in time* — and worse, **Karnell Group AB listed on First North in December 2023**, so the stale chain would also have flipped `borsnoterat` to a wrong "Ja". Use hitta.se for stable family-owned companies; whenever a deal in the last ~3 years is even suspected, confirm against the **acquirer's own site or portfolio page**.
+
+> **A self-referential-looking `moderbolag` is an indication, not a verdict.** At `K`, three were genuine defects (Karesuandokniven, Klippan, Kero) but **Klättermusen AB really is the koncernmoderbolag** over six subsidiaries with no holding company above it. Before "fixing" the pattern, check whether the company is itself listed as group parent over other entities.
+
+> **Check which half of a corporate split you are looking at.** "Kero Holding AB" is real, active and almost the right name — but it owns the **tannery** (Kero Leather AB), not the boot maker (Kero Försäljning AB) that the brand entry is about; the two separated in 2005. Same trap class as IKEA's Ingka vs Inter IKEA. When a company's history contains a split, ask which branch makes *the product the entry is about*.
+
+> **`(publ)` is a Swedish company form, not a stock listing.** Koenigsegg Automotive AB became a *publikt* AB in August 2025 while preparing an IPO and remains unlisted. WebFetch's summariser misread the suffix as "publicly listed company" — a company must actually trade on a marketplace for `borsnoterat: "Ja"`.
 
 **PDFs:** `WebFetch` returns them as raw binary and there is no local PDF renderer (no poppler). Image-based annual reports are effectively unreadable. Workaround that worked: the `r.jina.ai` text-extraction proxy on the same URL — run it twice and require identical output before trusting extracted tables.
 
@@ -288,11 +296,13 @@ This section exists so a cold session can resume without re-deriving anything.
 
 The first letter in that result is the next letter-group.
 
-> Snapshot as of **2026-07-26**: **60 of 133** brands verified — `&` and `A` (2026-07-24), `B`, `C`, `D`+`E`, `F`+`G` (2026-07-25), `H`, `I`+`J` (2026-07-26). Next group is **`K`** (9). This line is a convenience only; the query above is authoritative and self-correcting.
+> Snapshot as of **2026-07-27**: **69 of 132** brands verified — `&` and `A` (2026-07-24), `B`, `C`, `D`+`E`, `F`+`G` (2026-07-25), `H`, `I`+`J` (2026-07-26), `K` (2026-07-27). Next group is **`L`** (3) — small, so batch it with `M` (9). This line is a convenience only; the query above is authoritative and self-correcting.
+
+> **Run the progress query with `perspective: "published"`.** The default `raw` perspective also counts unpublished drafts, and there is exactly one — a `Relam Holding` brand draft that was never published and does not render on the site. It is why `raw` reports 133 brands where `published` reports 132.
 
 > **A verified brand is not necessarily a *passing* brand.** `& Other Stories` and `ARKET` carried `senastVerifierad` from the sources-only `A` batch but still failed `fel_kontinent` — the early letter-groups predate these pass criteria. Run the pass query over **already-verified** groups too, not just the current one.
 
-> **The brand count is 133, not 132** — there are **two published `Rörstrand` documents** (`brand-30`, `brand-81`) created 51 seconds apart in the February migration. They disagree on koncern and country list and both render on the live site. Merge at `R`.
+> **The 132 includes a duplicate** — there are **two published `Rörstrand` documents** (`brand-30`, `brand-81`) created 51 seconds apart in the February migration. They disagree on koncern and country list and both render on the live site. Merge at `R`; the count drops to 131 when you do.
 
 > **Small letter-groups can be batched.** `D` held a single brand, so it was run together with `E` as one 10-brand batch (two research waves of 5); `F`+`G` ran the same way as 11 brands. Dispatching ~5 researchers at a time keeps web-search quality up; 10 at once degrades sourcing.
 
@@ -346,6 +356,7 @@ Require exactly this shape back, or the batch report can't be assembled consiste
 - **In scope:** sources, verification date, fact corrections the research contradicts, structural defects (broken enums, fake/self-referential entities, wrong country codes, placeholder owners).
 - **Out of scope:** `kategori`. It is free-text multi-value in the live data (`"Verktyg, Handsågar"`) and has drifted from §5's canonical list. Normalizing one letter-group at a time would leave the database *more* inconsistent, not less — it needs one dedicated full-database pass.
 - **Never downgrade good data on weak evidence.** Flag "uncertain" and carry it as a watch item. A field that was right yesterday and is now blank is a regression.
+- **Clearing a defect may mean removing a value without replacing it.** Kosta Boda's `"Europa"` had to go, but no source names a single foreign glassworks country — the company deliberately says only "carefully selected glassworks throughout Europe". The choice was `["Sverige"]` (true but incomplete) versus three Wikipedia-grade country names. **Take the honest gap and state the missing half in the `intro` instead.** A filterable field must not carry invented precision; prose can carry the caveat.
 
 ### Pass criteria
 
