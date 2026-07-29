@@ -23,7 +23,7 @@ export const ALL_BRANDS_QUERY = `
       "moderbolag": coalesce(koncern->moderbolag, ""),
       "ägare": coalesce(koncern->agare, ""),
       "börsnoterat": borsnoterat,
-      "tillverkningsländer": tillverkningslander,
+      "tillverkningsländer": coalesce(tillverkningslander, []),
       "intro": intro,
       "hallbarhetsFokus": hallbarhetsFokus,
       "webbplats": webbplats,

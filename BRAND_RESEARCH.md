@@ -412,6 +412,34 @@ Require exactly this shape back, or the batch report can't be assembled consiste
 - **Check every product category before concluding a brand has one production country.** Rubato's knitwear is made in Scotland and its shirts, trousers and denim in Japan; stopping at the first product page would have stored one of two true countries. And the material-origin trap still applies in a form where it *looks* resolved: the Irish linen trousers are sewn in Japan, and several models use Japanese woven cloth — fabric origin and assembly country coincide for one and not the other.
 - **Clearing a defect may mean removing a value without replacing it.** Kosta Boda's `"Europa"` had to go, but no source names a single foreign glassworks country — the company deliberately says only "carefully selected glassworks throughout Europe". The choice was `["Sverige"]` (true but incomplete) versus three Wikipedia-grade country names. **Take the honest gap and state the missing half in the `intro` instead.** A filterable field must not carry invented precision; prose can carry the caveat.
 
+### Full-database integrity audit
+
+The letter sweep cannot see cross-cutting defects. Run this in one call (`perspective: "published"`) at the start or end of a session; it costs almost nothing and it has found live bugs:
+
+```groq
+{
+  "ja_utan_sverige":       *[_type=="brand" && tillverkadISverige=="Ja" && !("Sverige" in tillverkningslander)]{varumarke, tillverkningslander},
+  "nej_med_sverige":       *[_type=="brand" && tillverkadISverige=="Nej" && "Sverige" in tillverkningslander]{varumarke},
+  "delvis_ett_land":       *[_type=="brand" && tillverkadISverige=="Delvis" && count(tillverkningslander)==1]{varumarke, tillverkningslander},
+  "tom_landlista":         *[_type=="brand" && (!defined(tillverkningslander) || count(tillverkningslander)==0)]{varumarke},
+  "status_enum_fel":       *[_type=="brand" && !(tillverkadISverige in ["Ja","Nej","Delvis"])]{varumarke, tillverkadISverige},
+  "borsnoterat_enum_fel":  *[_type=="brand" && !(borsnoterat in ["Ja","Nej"])]{varumarke, borsnoterat},
+  "brutna_koncernref":     *[_type=="brand" && defined(koncern) && !defined(koncern->moderbolag)]{varumarke},
+  "kallor_fel_antal":      *[_type=="brand" && defined(senastVerifierad) && count(kallor)!=3]{varumarke, "n": count(kallor)},
+  "kallor_utan_url":       *[_type=="brand" && count(kallor[!defined(url) || url == ""])>0]{varumarke},
+  "utan_intro":            *[_type=="brand" && (!defined(intro) || intro == "")].varumarke,
+  "koncern_platshallare":  *[_type=="koncern" && agare in ["Privatägd","Privatägt","Familjeägt","Familjeägd","Privat","Investeringsbolag"]]{_id, moderbolag, agare, "brands": *[_type=="brand" && references(^._id)].varumarke},
+  "alla_lander":           array::unique(*[_type=="brand"].tillverkningslander[]),
+  "brandLand_varden":      array::unique(*[_type=="brand"].brandLand)
+}
+```
+
+> **GROQ gotcha:** `string::length()` is **not available** in this dataset's GROQ version. To spot malformed country codes or non-country values, dump `array::unique(...)` of the field and read the list instead of filtering on length.
+
+Reading the two `array::unique` dumps is what catches **new** defect classes. `"Utomlands"` was found this way at `R`, and the audit on 2026-07-29 turned up `"Globalt"` (Skultuna Messingsbruk) — a value nobody had thought to look for. Do the same for `brandLand`: the only values are `SE` and one legitimate `JP` (Satake).
+
+**The audit found a live crash.** `DataTable.tsx` called `brand.merInfo.tillverkningsländer.join(', ')` unguarded while one published brand (Verso Skincare) has `tillverkningslander: null`, so expanding that row threw. Fixed in two places: `coalesce(tillverkningslander, [])` in `ALL_BRANDS_QUERY` (so every consumer gets an array) and a `?.length` guard in `DataTable.tsx` rendering `Uppgift saknas`. `BrandSuggestionForm.tsx` had already guarded with `?? []`, which is why nobody hit it there. **When the data can be null, fix it at the GROQ boundary, not only at the call site** — the TypeScript type says `string[]` and lied.
+
 ### Deferred full-database passes
 
 Work that is real but must not be done one letter-group at a time, because doing half the database leaves it *more* inconsistent than leaving it alone. Each needs its own dedicated pass:
@@ -419,7 +447,8 @@ Work that is real but must not be done one letter-group at a time, because doing
 - [ ] **`kallor` label dashes.** All **325** labels use the `"Claim – detail"` convention with an en dash, which the house style in §2 bans for brand copy. Not a find-and-replace: **64** labels already contain a colon in the detail (a blanket `–` → `:` swap gives them two colons and reads worse than the dash), and **35** use a *second* dash as genuine prose inside the detail, which is the actual violation. Do it in three parts: (1) clear the 35 prose dashes, defensible on their own and worth doing even if the rest is skipped; (2) swap the 261 clean separators to a colon; (3) reword the 64 double-colon cases individually. §9's `"Claim – detail"` convention changes with it. Count them with `count(*[_type=="brand"].kallor[length(string::split(label, " – ")) > 1])`.
 - [ ] **`kategori` normalization.** Free-text multi-value in the live data (`"Verktyg, Handsågar"`), drifted from §5's canonical list. See "Scope discipline" above. Also carries legacy values that are no longer true, e.g. Gustavsberg still lists "Hushållsporslin".
 - [ ] **`moderbolag` convention reconciliation.** The database is inconsistent about whether the field holds the Swedish operating entity or the real foreign parent. Decided per brand so far (Marabou and Pripps keep the Swedish entity because it is the declared supplier; Gense and Resteröds hold the foreign parent). One pass should pick a rule and apply it everywhere, or document the split deliberately.
-- [ ] **Re-run the pass criteria over the early letter-groups.** `&`, `A` and possibly `B` were verified before the criteria below existed. `& Other Stories` and `ARKET` already turned out to still carry `fel_kontinent` after being marked verified.
+- [ ] **Re-run the pass criteria over the early letter-groups.** `&`, `A` and possibly `B` were verified before the criteria below existed. `& Other Stories` and `ARKET` already turned out to still carry `fel_kontinent` after being marked verified. The integrity audit added three named cases: **A Day's March, Acne Studios and All Blues** all still hold the placeholder `agare: "Privatägd"` on a self-referential `moderbolag`, i.e. exactly the defect class the sweep now fixes on every brand it touches. Those three are the concrete work item; the other 14 placeholder koncerns sit in letter groups that have not been reached yet and will be caught in turn.
+- [ ] **Three known data defects waiting for their letter group** (found by the audit 2026-07-29, all still live): **Skultuna Messingsbruk** has `["Sverige","Globalt"]` where `"Globalt"` is not a country (`S`); **Tiger of Sweden** has `borsnoterat: "Ja (del av IC Group)"`, an enum break that also looks stale since IC Group no longer owns it (`T`); **Verso Skincare** has `tillverkningslander: null` while its intro says production is inside the EU, so no country is filterable (`V`). None can be fixed without research, so they were deliberately left rather than guessed.
 
 ### Pass criteria
 

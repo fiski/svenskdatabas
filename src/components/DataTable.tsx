@@ -146,7 +146,9 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort, s
                 <div className="detail-item">
                   <div className="detail-label">Tillverkningsländer</div>
                   <div className="detail-value">
-                    {brand.merInfo.tillverkningsländer.join(', ')}
+                    {brand.merInfo.tillverkningsländer?.length
+                      ? brand.merInfo.tillverkningsländer.join(', ')
+                      : 'Uppgift saknas'}
                   </div>
                 </div>
                 <div className="detail-item">
