@@ -406,6 +406,15 @@ Require exactly this shape back, or the batch report can't be assembled consiste
 - **Check every product category before concluding a brand has one production country.** Rubato's knitwear is made in Scotland and its shirts, trousers and denim in Japan; stopping at the first product page would have stored one of two true countries. And the material-origin trap still applies in a form where it *looks* resolved: the Irish linen trousers are sewn in Japan, and several models use Japanese woven cloth — fabric origin and assembly country coincide for one and not the other.
 - **Clearing a defect may mean removing a value without replacing it.** Kosta Boda's `"Europa"` had to go, but no source names a single foreign glassworks country — the company deliberately says only "carefully selected glassworks throughout Europe". The choice was `["Sverige"]` (true but incomplete) versus three Wikipedia-grade country names. **Take the honest gap and state the missing half in the `intro` instead.** A filterable field must not carry invented precision; prose can carry the caveat.
 
+### Deferred full-database passes
+
+Work that is real but must not be done one letter-group at a time, because doing half the database leaves it *more* inconsistent than leaving it alone. Each needs its own dedicated pass:
+
+- [ ] **`kallor` label dashes.** All **325** labels use the `"Claim – detail"` convention with an en dash, which the house style in §2 bans for brand copy. Not a find-and-replace: **64** labels already contain a colon in the detail (a blanket `–` → `:` swap gives them two colons and reads worse than the dash), and **35** use a *second* dash as genuine prose inside the detail, which is the actual violation. Do it in three parts: (1) clear the 35 prose dashes, defensible on their own and worth doing even if the rest is skipped; (2) swap the 261 clean separators to a colon; (3) reword the 64 double-colon cases individually. §9's `"Claim – detail"` convention changes with it. Count them with `count(*[_type=="brand"].kallor[length(string::split(label, " – ")) > 1])`.
+- [ ] **`kategori` normalization.** Free-text multi-value in the live data (`"Verktyg, Handsågar"`), drifted from §5's canonical list. See "Scope discipline" above. Also carries legacy values that are no longer true, e.g. Gustavsberg still lists "Hushållsporslin".
+- [ ] **`moderbolag` convention reconciliation.** The database is inconsistent about whether the field holds the Swedish operating entity or the real foreign parent. Decided per brand so far (Marabou and Pripps keep the Swedish entity because it is the declared supplier; Gense and Resteröds hold the foreign parent). One pass should pick a rule and apply it everywhere, or document the split deliberately.
+- [ ] **Re-run the pass criteria over the early letter-groups.** `&`, `A` and possibly `B` were verified before the criteria below existed. `& Other Stories` and `ARKET` already turned out to still carry `fel_kontinent` after being marked verified.
+
 ### Pass criteria
 
 ```groq
