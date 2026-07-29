@@ -89,14 +89,27 @@ The priority order above is by *authority*. This is by *reachability* — severa
 | `borsnoterat` | Check EVERY entity in the ownership chain for a stock listing |
 | `brandLand` | ISO 2-letter code of brand's home country (default `SE`) |
 | `tillverkningslander` | Company about page, press releases, product labels |
-| `intro` | Write 1–2 sentences: founded year, product type, location |
-| `hallbarhetsFokus` | Sustainability page on company website |
+| `intro` | Write 1–2 sentences: founded year, product type, location. **No em or en dashes** — see the house style rule below |
+| `hallbarhetsFokus` | Sustainability page on company website. **No em or en dashes** |
 | `kallor` | The source URL you used for each key claim (ownership, börsnoterat, manufacturing) — record as `{url, label}`, label = the claim |
 | `senastVerifierad` | Today's date (`YYYY-MM-DD`) — the day you verified the facts |
 | `koncern.moderbolag` | allabolag.se: "Moderbolag" under company info |
 | `koncern.moderbolagLand` | allabolag.se: country of moderbolag registration |
 | `koncern.agare` | allabolag.se: ultimate owner (topp i ägarkedjan) |
 | `koncern.agareLand` | allabolag.se: country of ultimate owner registration |
+
+### House style for `intro` and `hallbarhetsFokus`
+
+**Never use an em dash (`—`) or an en dash (`–`) in brand-facing copy.** Maximilian's ruling, applied across all 131 brands on 2026-07-29. Use a comma, a colon, a semicolon, parentheses, or a full stop instead, and a plain hyphen (`-`) where a dash is genuinely needed:
+
+- Parenthetical aside → commas or parentheses: `Naturmaterial utan syntetfyllning, som tagel, lin, bomull och ull, med stomme av svensk furu`
+- Explanation or list introduction → colon: `minskat e-avfall: enheterna är designade för flera års användning`
+- Two independent statements → full stop: `Bolaget har ingen egen fabrik. Produkterna utvecklas i Varberg`
+- Numeric ranges and scope numbers → hyphen: `scope 1-3`, `55-60 %`, `2004-2005`, `90-160 g`
+
+Two traps when clearing dashes:
+- **Don't silently alter a quotation.** Massproductions' `hallbarhetsFokus` quoted a product-page label containing a dash (`"CO2 Impact – Total Climate Footprint"`); the fix was to describe the label in prose rather than reword someone else's words inside quote marks.
+- **Find them with GROQ, not by reading.** `count(*[_type=="brand" && length(string::split(intro, "—")) > 1])` works; `intro match "*—*"` does not, because the tokenizer strips punctuation. Run it for both dash characters and both fields.
 
 ---
 
