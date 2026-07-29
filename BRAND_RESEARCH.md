@@ -309,7 +309,9 @@ This section exists so a cold session can resume without re-deriving anything.
 
 The first letter in that result is the next letter-group.
 
-> Snapshot as of **2026-07-29**: **97 of 131** brands verified — `&` and `A` (2026-07-24), `B`, `C`, `D`+`E`, `F`+`G` (2026-07-25), `H`, `I`+`J` (2026-07-26), `K` (2026-07-27), `L`+`M`, `N` (2026-07-28), `O`, `P`, `R` (2026-07-29). Next group is **`S`** (17 brands — the largest remaining group; run it in two waves). This line is a convenience only; the query above is authoritative and self-correcting.
+> Snapshot as of **2026-07-29**: **99 of 131** brands verified — `&` and `A` (2026-07-24), `B`, `C`, `D`+`E`, `F`+`G` (2026-07-25), `H`, `I`+`J` (2026-07-26), `K` (2026-07-27), `L`+`M`, `N` (2026-07-28), `O`, `P`, `R` and the first 2 of `S` (2026-07-29). Next is **`S` wave 2**, 15 brands. This line is a convenience only; the query above is authoritative and self-correcting.
+
+> **When the usage window is nearly spent, run a short wave and publish per brand.** With a third of a window left, opening all 17 of `S` would have risked a sixth cap-death with unstaged research. Two brands whose evidence was already in hand (Sätila of Sweden from the Nudie supplier list, String Furniture from the NOD/Altor siblings) were researched, staged and **published one at a time**, with the progress note updated straight after. Leave the multi-country industrials (Sandvik, Scania) and continent defects (Satake) for a full window — on those the country list *is* the job.
 
 > **A "next up" group can be half-finished, not un-started.** The session before `P`'s completion published five of the seven `P` brands and died before updating anything — the progress note still read "86/132, next up P (7)" while the data said 41 unverified, not 46, with `senastVerifierad` already set on five of the seven. **Run the progress query *and* the letter-group query before dispatching any research.** This is a separate check from the transcript-recovery rule below: that one looks for research that was never applied, this one looks for work that was already published.
 
