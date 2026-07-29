@@ -1,3 +1,71 @@
+/* ==========================================================================
+   Design tokens: colour
+   --------------------------------------------------------------------------
+   Naming follows the official Sweden brand palette:
+   sharingsweden.se/the-sweden-brand/brand-visual-identity/colour
+
+   Exact matches to the official palette keep the official name
+   (Dawn Blue, Pale Winter Grey 2, White). Values with no official
+   counterpart are named in the same style: greys on a numeric ramp, and
+   the specialty families (Green, Red, Blue) as tint / shade pairs, which
+   is how the official palette structures its seven steps per family.
+
+   Two deliberate deviations from the standard, kept because they are what
+   the site already shipped:
+     - --color-sweden-blue is the flag blue #006aa7, not
+       Sweden Blue Standard #005293 (also used as theme-color in index.html)
+     - --color-sweden-yellow is #fecc02, one step off
+       Sweden Yellow Standard #fecb00
+   ========================================================================== */
+:root {
+  /* Primary */
+  --color-sweden-blue: #006aa7;
+  --color-sweden-yellow: #fecc02;
+
+  /* Secondary A */
+  --color-dawn-blue: #1a3050;
+
+  /* Secondary B: greyscale. Pale Winter Grey 2 is an exact official match;
+     the ramp around it is site-specific and intentionally not consolidated,
+     so this block is a rename with no visual change. */
+  --color-white: #ffffff;
+  --color-grey-25: #f9f9f9;
+  --color-grey-50: #f5f5f5;
+  --color-grey-75: #f0f0f0;
+  --color-pale-winter-grey-2: #ededed;
+  --color-grey-150: #e8e8e8;
+  --color-grey-200: #e0e0e0;
+  --color-grey-300: #c6c6c6;
+  --color-grey-400: #a8a8a8;
+  --color-grey-500: #909090;
+  --color-grey-550: #888888;
+  --color-grey-600: #767676;
+  --color-grey-650: #6e6e6e;
+  --color-grey-700: #6b6b6b;
+  --color-grey-800: #525252;
+  --color-grey-900: #2c2c2c;
+
+  /* Specialty: Green. Carries status "Ja". */
+  --color-green-tint-pale: #e8f5ef;
+  --color-green-tint: #99dec9;
+  --color-green-shade: #004530;
+
+  /* Specialty: Red and Pink. Carries status "Nej" and error states. */
+  --color-red-tint-pale: #fdf0ef;
+  --color-red-tint: #edb0ab;
+  --color-red-shade: #7e211a;
+  --color-red-shade-2: #852221;
+  --color-red-error: #c0392b;
+  --color-mauve: #a8959a;
+
+  /* Specialty: Blue. Carries status "Delvis" and link colours. */
+  --color-blue-grey-pale: #f0f4f8;
+  --color-blue-tint: #99d5ed;
+  --color-blue-shade: #005d7f;
+  --color-link: #0067ff;
+  --color-link-hover: #0052cc;
+}
+
 /* Reset */
 * {
   margin: 0;
@@ -36,7 +104,7 @@
 /* Base Styles */
 body {
   font-family: 'Sweden Sans', Arial, sans-serif;
-  background-color: #ededed;
+  background-color: var(--color-pale-winter-grey-2);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -72,7 +140,7 @@ body {
 
 /* Header */
 .header {
-  background-color: #ededed;
+  background-color: var(--color-pale-winter-grey-2);
   position: relative;
   z-index: 50;
 }
@@ -105,29 +173,29 @@ body {
    Targets both classes so it out-specifies the later .add-brand-btn base. */
 .add-brand-btn.secondary-btn {
   background: transparent;
-  border-color: #006AA7;
-  color: #006AA7;
+  border-color: var(--color-sweden-blue);
+  color: var(--color-sweden-blue);
   text-decoration: none;
   transition: background 0.15s ease, color 0.15s ease;
 }
 
 .add-brand-btn.secondary-btn:hover {
-  background: #006AA7;
-  color: #fff;
+  background: var(--color-sweden-blue);
+  color: var(--color-white);
   opacity: 1;
 }
 
 .header-title {
   font-size: 20px;
   line-height: 30px;
-  color: #1a3050;
+  color: var(--color-dawn-blue);
   font-weight: 700;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .header-title:hover {
-  color: #006AA7;
+  color: var(--color-sweden-blue);
 }
 
 /* Mobile: Header typography */
@@ -184,7 +252,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  color: #1a3050;
+  color: var(--color-dawn-blue);
   
 }
 
@@ -239,7 +307,7 @@ body {
   flex-direction: column;
   width: 100%;
   margin-bottom: 32px;
-  background-color: #ededed;
+  background-color: var(--color-pale-winter-grey-2);
   z-index: 40;
   padding-top: 8px;
   padding-bottom: 16px;
@@ -258,13 +326,13 @@ body {
   gap: 24px;
   max-width: 595px;
   padding: 16px 0;
-  border-bottom: 1px solid #888888;
-  background-color: #ededed;
+  border-bottom: 1px solid var(--color-grey-550);
+  background-color: var(--color-pale-winter-grey-2);
   transition: border-color 0.2s ease;
 }
 
 .search:focus-within {
-  border-bottom-color: #1a3050;
+  border-bottom-color: var(--color-dawn-blue);
 }
 
 .search-icon {
@@ -280,17 +348,17 @@ body {
   outline: none;
   font-family: 'Sweden Sans', Arial, sans-serif;
   font-size: 32px;
-  color: #2c2c2c;
+  color: var(--color-grey-900);
   font-weight: 400;
 }
 
 .search-input::placeholder {
-  color: #a8959a;
+  color: var(--color-mauve);
   transition: color 0.2s ease;
 }
 
 .search-input:hover::placeholder {
-  color: #6e6e6e;
+  color: var(--color-grey-650);
 }
 
 /* Search Chips Container */
@@ -307,11 +375,11 @@ body {
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
-  background-color: #ffffff;
-  border: 1px solid #888888;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-grey-550);
   border-radius: 4px;
   font-size: 16px;
-  color: #2c2c2c;
+  color: var(--color-grey-900);
   font-weight: 400;
 }
 
@@ -331,7 +399,7 @@ body {
   border: none;
   cursor: pointer;
   padding: 0;
-  color: #852221;
+  color: var(--color-red-shade-2);
   font-size: 18px;
   font-weight: 700;
   line-height: 1;
@@ -345,7 +413,7 @@ body {
 }
 
 .search-chip-close:focus {
-  outline: 2px solid #888888;
+  outline: 2px solid var(--color-grey-550);
   outline-offset: 2px;
 }
 
@@ -354,7 +422,7 @@ body {
   margin-top: 12px;
   font-size: 14px;
   font-weight: 300;
-  color: #6e6e6e;
+  color: var(--color-grey-650);
   line-height: 1.5;
   max-width: 600px;
 }
@@ -422,7 +490,7 @@ body {
   padding: 16px;
   font-size: 18px;
   font-weight: 700;
-  color: #1a3050;
+  color: var(--color-dawn-blue);
   line-height: 18px;
   letter-spacing: 0.16px;
 }
@@ -438,16 +506,16 @@ body {
 }
 
 .table-header-cell.sortable:hover {
-  background-color: #f0f0f0;
+  background-color: var(--color-grey-75);
 }
 
 .table-header-cell.sortable:focus {
-  outline: 2px solid #1a3050;
+  outline: 2px solid var(--color-dawn-blue);
   outline-offset: -2px;
 }
 
 .table-header-cell.sortable.sorted {
-  color: #005D7F;
+  color: var(--color-blue-shade);
   font-weight: 700;
 }
 
@@ -475,14 +543,14 @@ body {
 .letter-section-header {
   position: sticky;
   z-index: 10;
-  background-color: #ededed;
+  background-color: var(--color-pale-winter-grey-2);
   padding: 6px 0 4px 0;
   font-size: 20px;
   font-weight: 400;
-  color: #909090;
+  color: var(--color-grey-500);
   line-height: 1;
   user-select: none;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--color-grey-200);
 }
 
 /* Row container */
@@ -495,17 +563,17 @@ body {
   align-items: center;
   width: 100%;
   min-height: 64px;
-  border-top: 1px solid #c6c6c6;
+  border-top: 1px solid var(--color-grey-300);
   transition: background-color 0.15s ease;
   cursor: pointer;
 }
 
 .table-row:hover {
-  background-color: #f5f5f5;
+  background-color: var(--color-grey-50);
 }
 
 .table-row.expanded {
-  background-color: #f5f5f5;
+  background-color: var(--color-grey-50);
 }
 
 .table-cell {
@@ -513,7 +581,7 @@ body {
   padding: 16px;
   font-size: 16px;
   font-weight: 400;
-  color: #525252;
+  color: var(--color-grey-800);
   line-height: 18px;
   letter-spacing: 0.16px;
 }
@@ -551,7 +619,7 @@ body {
     grid-row: 1;
     padding: 0 8px;
     font-size: 18px;
-    color: #1a3050;
+    color: var(--color-dawn-blue);
   }
 
   /* Category: bottom row, middle column, secondary */
@@ -560,7 +628,7 @@ body {
     grid-row: 2;
     padding: 0 8px;
     font-size: 14px;
-    color: #6e6e6e;
+    color: var(--color-grey-650);
   }
 
   /* Status badge: top row, right column */
@@ -615,19 +683,19 @@ body {
 }
 
 .status-badge.ja {
-  background-color: #99dec9;
-  color: #004530;
+  background-color: var(--color-green-tint);
+  color: var(--color-green-shade);
   font-weight: 700;
 }
 
 .status-badge.nej {
-  background-color: #edb0ab;
-  color: #7e211a;
+  background-color: var(--color-red-tint);
+  color: var(--color-red-shade);
 }
 
 .status-badge.delvis {
-  background-color: #99D5ED;
-  color: #005D7F;
+  background-color: var(--color-blue-tint);
+  color: var(--color-blue-shade);
   font-weight: 700;
 }
 
@@ -641,20 +709,20 @@ body {
 }
 
 .status-badge.dot.ja {
-  background-color: #004530;
+  background-color: var(--color-green-shade);
 }
 
 .status-badge.dot.nej {
-  background-color: #7e211a;
+  background-color: var(--color-red-shade);
 }
 
 .status-badge.dot.delvis {
-  background-color: #005D7F;
+  background-color: var(--color-blue-shade);
 }
 
 /* More Info Text */
 .more-info-text {
-  color: #525252;
+  color: var(--color-grey-800);
   font-family: 'Sweden Sans', Arial, sans-serif;
   font-size: 16px;
   text-decoration: none;
@@ -663,8 +731,8 @@ body {
 /* Expanded Details */
 .expanded-details {
   padding: 24px 64px;
-  background-color: #f5f5f5;
-  border-top: 1px solid #c6c6c6;
+  background-color: var(--color-grey-50);
+  border-top: 1px solid var(--color-grey-300);
 }
 
 .details-grid {
@@ -686,25 +754,25 @@ body {
 .detail-label {
   font-size: 14px;
   font-weight: 700;
-  color: #1a3050;
+  color: var(--color-dawn-blue);
 }
 
 .detail-value {
   font-size: 14px;
   font-weight: 400;
-  color: #525252;
+  color: var(--color-grey-800);
 }
 
 /* Brand Website Link — shares the källa link's hyperlink blue; the two blocks sit
    adjacent in the expanded row and would clash otherwise. */
 .brand-website-link {
-  color: #0067ff;
+  color: var(--color-link);
   text-decoration: underline;
   word-break: break-all;
 }
 
 .brand-website-link:hover {
-  color: #0052cc;
+  color: var(--color-link-hover);
 }
 
 /* Brand Intro Section */
@@ -715,7 +783,7 @@ body {
 .intro-text {
   font-size: 16px;
   font-weight: 400;
-  color: #525252;
+  color: var(--color-grey-800);
   line-height: 1.5;
   max-width: 800px;
 }
@@ -748,7 +816,7 @@ body {
 .kalla-tag {
   font-size: 14px;
   font-weight: 500;
-  color: #1a3050;
+  color: var(--color-dawn-blue);
 }
 
 /*
@@ -763,7 +831,7 @@ body {
   border-radius: 3px;
   font-size: 14px;
   line-height: 1.45;
-  color: #0067ff;
+  color: var(--color-link);
   background-color: transparent;
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -773,12 +841,12 @@ body {
 
 .kalla-link:hover,
 .kalla-link:focus-visible {
-  color: #ffffff;
-  background-color: #0067ff;
+  color: var(--color-white);
+  background-color: var(--color-link);
 }
 
 .kalla-link:focus-visible {
-  outline: 2px solid #1a3050;
+  outline: 2px solid var(--color-dawn-blue);
   outline-offset: 2px;
 }
 
@@ -791,7 +859,7 @@ body {
 .senast-verifierad {
   margin-top: 8px;
   font-size: 13px;
-  color: #6b6b6b;
+  color: var(--color-grey-700);
 }
 
 /* Mobile: Single-column expanded details */
@@ -829,7 +897,7 @@ body {
 .koncernstruktur-header {
   font-size: 14px;
   font-weight: 700;
-  color: #1a3050;
+  color: var(--color-dawn-blue);
   letter-spacing: 0.28px;
   /* text-transform: uppercase; */
 }
@@ -844,7 +912,7 @@ body {
 
 /* Tree Level Container - creates vertical line via border-left */
 .tree-level-container {
-  border-left: 1px solid #c6c6c6;
+  border-left: 1px solid var(--color-grey-300);
   padding-left: 20px;
   margin-top: 16px;
 }
@@ -876,7 +944,7 @@ body {
 .node-label {
   font-size: 12px;
   font-weight: 400;
-  color: #1a3050;
+  color: var(--color-dawn-blue);
   text-transform: uppercase;
   letter-spacing: 0.24px;
 }
@@ -888,7 +956,7 @@ body {
   gap: 8px;
   font-size: 16px;
   font-weight: 400;
-  color: #525252;
+  color: var(--color-grey-800);
   max-width: 45ch;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -907,7 +975,7 @@ body {
   gap: 8px;
   font-size: 16px;
   font-weight: 300;
-  color: #525252;
+  color: var(--color-grey-800);
 }
 
 /* Main brand (current brand being viewed) */
@@ -941,7 +1009,7 @@ body {
 .single-brand-display p {
   font-size: 14px;
   font-weight: 400;
-  color: #525252;
+  color: var(--color-grey-800);
   font-style: italic;
   margin: 0;
 }
@@ -1001,7 +1069,7 @@ body {
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: 1.8px;
-  color: #1a3050;
+  color: var(--color-dawn-blue);
   margin-bottom: 16px;
 }
 
@@ -1009,14 +1077,14 @@ body {
   font-size: 24px;
   font-weight: 300;
   line-height: 32px;
-  color: #525252;
+  color: var(--color-grey-800);
   max-width: 800px;
 }
 
 .about-heading {
   font-size: 32px;
   font-weight: 700;
-  color: #1a3050;
+  color: var(--color-dawn-blue);
   margin-bottom: 16px;
   line-height: 1.3;
 }
@@ -1025,7 +1093,7 @@ body {
   font-size: 18px;
   font-weight: 400;
   line-height: 28px;
-  color: #525252;
+  color: var(--color-grey-800);
   margin-bottom: 16px;
 }
 
@@ -1043,7 +1111,7 @@ body {
   font-size: 18px;
   font-weight: 400;
   line-height: 28px;
-  color: #525252;
+  color: var(--color-grey-800);
   margin-bottom: 8px;
 }
 
@@ -1077,18 +1145,18 @@ body {
 }
 
 .category-label.category-ja {
-  background-color: #99dec9;
-  color: #004530;
+  background-color: var(--color-green-tint);
+  color: var(--color-green-shade);
 }
 
 .category-label.category-nej {
-  background-color: #edb0ab;
-  color: #7e211a;
+  background-color: var(--color-red-tint);
+  color: var(--color-red-shade);
 }
 
 .category-label.category-delvis {
-  background-color: #99D5ED;
-  color: #005D7F;
+  background-color: var(--color-blue-tint);
+  color: var(--color-blue-shade);
 }
 
 .category-item p {
@@ -1106,24 +1174,24 @@ body {
 }
 
 .email-link:hover {
-  background-color: #ffffff;
-  color: #005D7F;
+  background-color: var(--color-white);
+  color: var(--color-blue-shade);
 }
 
 .email-link:focus {
-  outline: 2px solid #1a3050;
+  outline: 2px solid var(--color-dawn-blue);
   outline-offset: 2px;
 }
 
 .email-link:active {
-  background-color: #f5f5f5;
-  color: #005D7F;
+  background-color: var(--color-grey-50);
+  color: var(--color-blue-shade);
 }
 
 .copied-message {
   display: block;
-  background-color: #2c2c2c;
-  color: #ffffff;
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
   font-weight: 500;
   font-size: 16px;
   margin-top: 8px;
@@ -1134,20 +1202,20 @@ body {
 
 /* Suggest Change Button */
 .suggest-change-btn {
-  background: #EDEDED;
-  border: 1px solid #c6c6c6;
+  background: var(--color-pale-winter-grey-2);
+  border: 1px solid var(--color-grey-300);
   border-radius: 4px;
   padding: 4px 8px;
   font-size: 12px;
   font-family: 'Sweden Sans', Arial, sans-serif;
-  color: #525252;
+  color: var(--color-grey-800);
   cursor: pointer;
   transition: background-color 0.15s ease;
   white-space: nowrap;
 }
 
 .suggest-change-btn:hover {
-  background-color: #f0f0f0;
+  background-color: var(--color-grey-75);
 }
 
 .suggest-change-item {
@@ -1164,10 +1232,10 @@ body {
 
 /* Suggestion Form */
 .suggestion-form {
-  background: #fff;
+  background: var(--color-white);
   padding: 24px 64px;
   padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
-  border-top: 1px solid #c6c6c6;
+  border-top: 1px solid var(--color-grey-300);
 }
 
 @media (max-width: 839px) {
@@ -1179,7 +1247,7 @@ body {
 .suggestion-form-title {
   font-size: 16px;
   font-weight: 700;
-  color: #1a3050;
+  color: var(--color-dawn-blue);
   margin-bottom: 20px;
 }
 
@@ -1206,10 +1274,10 @@ body {
 }
 
 .suggestion-tree-display {
-  border: 1px solid #888888;
+  border: 1px solid var(--color-grey-550);
   border-radius: 6px;
   padding: 12px 16px;
-  background: #f9f9f9;
+  background: var(--color-grey-25);
   overflow-y: auto;
   max-height: 320px;
 }
@@ -1221,24 +1289,24 @@ body {
 .suggestion-field label {
   font-size: 14px;
   font-weight: 700;
-  color: #1a3050;
+  color: var(--color-dawn-blue);
 }
 
 .suggestion-required {
-  color: #c0392b;
+  color: var(--color-red-error);
   margin-left: 2px;
 }
 
 .suggestion-helper-text {
   font-size: 12px;
-  color: #767676;
+  color: var(--color-grey-600);
   font-weight: 400;
   margin-top: 4px;
 }
 
 .suggestion-field-error {
-  color: #7e211a;
-  background-color: #fdf0ef;
+  color: var(--color-red-shade);
+  background-color: var(--color-red-tint-pale);
   border-radius: 6px;
   padding: 8px 12px;
   font-size: 14px;
@@ -1248,20 +1316,20 @@ body {
 .suggestion-field input,
 .suggestion-field textarea {
   width: 100%;
-  border: 1px solid #888888;
+  border: 1px solid var(--color-grey-550);
   border-radius: 6px;
   padding: 10px 14px;
   font-size: 14px;
   font-family: 'Sweden Sans', Arial, sans-serif;
-  color: #2c2c2c;
-  background: #fff;
+  color: var(--color-grey-900);
+  background: var(--color-white);
   transition: border-color 0.15s ease;
 }
 
 .suggestion-field input:focus,
 .suggestion-field textarea:focus {
   outline: none;
-  border-color: #1a3050;
+  border-color: var(--color-dawn-blue);
 }
 
 .suggestion-field textarea {
@@ -1282,7 +1350,7 @@ body {
   gap: 6px;
   font-size: 14px;
   font-weight: 400;
-  color: #525252;
+  color: var(--color-grey-800);
   cursor: pointer;
 }
 
@@ -1298,22 +1366,22 @@ body {
   flex-wrap: wrap;
   gap: 6px;
   align-items: center;
-  border: 1px solid #888888;
+  border: 1px solid var(--color-grey-550);
   border-radius: 6px;
   padding: 6px 10px;
   min-height: 40px;
-  background: #fff;
+  background: var(--color-white);
 }
 
 .suggestion-country-chip {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  background: #e8e8e8;
+  background: var(--color-grey-150);
   border-radius: 4px;
   padding: 2px 8px;
   font-size: 13px;
-  color: #2c2c2c;
+  color: var(--color-grey-900);
 }
 
 .suggestion-country-chip .chip-remove {
@@ -1321,7 +1389,7 @@ body {
   border: none;
   cursor: pointer;
   font-size: 14px;
-  color: #525252;
+  color: var(--color-grey-800);
   padding: 0;
   line-height: 1;
   display: flex;
@@ -1329,7 +1397,7 @@ body {
 }
 
 .suggestion-country-chip .chip-remove:hover {
-  color: #1a3050;
+  color: var(--color-dawn-blue);
 }
 
 .suggestion-country-input {
@@ -1340,7 +1408,7 @@ body {
   min-width: 120px;
   flex: 1;
   background: transparent !important;
-  color: #2c2c2c;
+  color: var(--color-grey-900);
   font-family: 'Sweden Sans', Arial, sans-serif;
 }
 
@@ -1352,8 +1420,8 @@ body {
 }
 
 .suggestion-submit-btn {
-  background-color: #1a3050;
-  color: #fff;
+  background-color: var(--color-dawn-blue);
+  color: var(--color-white);
   border: none;
   border-radius: 6px;
   padding: 12px 24px;
@@ -1375,31 +1443,31 @@ body {
 
 .suggestion-cancel-btn {
   background: transparent;
-  border: 1px solid #888888;
+  border: 1px solid var(--color-grey-550);
   border-radius: 6px;
   padding: 12px 24px;
   font-size: 14px;
   font-family: 'Sweden Sans', Arial, sans-serif;
-  color: #525252;
+  color: var(--color-grey-800);
   cursor: pointer;
   transition: background-color 0.15s ease;
 }
 
 .suggestion-cancel-btn:hover {
-  background-color: #f0f0f0;
+  background-color: var(--color-grey-75);
 }
 
 .suggestion-success {
-  background-color: #e8f5ef;
-  color: #004530;
+  background-color: var(--color-green-tint-pale);
+  color: var(--color-green-shade);
   padding: 16px;
   border-radius: 6px;
   font-size: 15px;
 }
 
 .suggestion-error {
-  color: #7e211a;
-  background-color: #fdf0ef;
+  color: var(--color-red-shade);
+  background-color: var(--color-red-tint-pale);
   border-radius: 6px;
   padding: 12px;
   font-size: 14px;
@@ -1411,7 +1479,7 @@ body {
   margin-top: 48px;
   font-size: 16px;
   font-weight: 400;
-  color: #a8a8a8;
+  color: var(--color-grey-400);
   padding-left: 0.5rem;
 }
 
@@ -1484,8 +1552,8 @@ body {
 
 /* Footer Container */
 .footer {
-  background-color: #ededed;
-  border-top: 1px solid #c6c6c6;
+  background-color: var(--color-pale-winter-grey-2);
+  border-top: 1px solid var(--color-grey-300);
   margin-top: 8rem;
 }
 
@@ -1507,14 +1575,14 @@ body {
 .footer-title {
   font-size: 20px;
   font-weight: 700;
-  color: #1a3050;
+  color: var(--color-dawn-blue);
   margin-bottom: 0.5rem;
 }
 
 .footer-description {
   font-size: 14px;
   font-weight: 300;
-  color: #6e6e6e;
+  color: var(--color-grey-650);
   line-height: 1.6;
 }
 
@@ -1522,7 +1590,7 @@ body {
   margin-top: 0.5rem;
   font-size: 14px;
   font-weight: 300;
-  color: #6e6e6e;
+  color: var(--color-grey-650);
   line-height: 1.6;
 }
 
@@ -1542,29 +1610,29 @@ body {
 .footer-link {
   font-size: 16px;
   font-weight: 400;
-  color: #6e6e6e;
+  color: var(--color-grey-650);
   text-decoration: none;
   transition: color 0.2s ease;
   cursor: pointer;
 }
 
 .footer-link:hover {
-  color: #1a3050;
+  color: var(--color-dawn-blue);
 }
 
 .footer-link:focus {
-  outline: 2px solid #1a3050;
+  outline: 2px solid var(--color-dawn-blue);
   outline-offset: 2px;
   border-radius: 2px;
 }
 
 /* Email Link Specific */
 .footer-email {
-  border-bottom: 1px dotted #6e6e6e;
+  border-bottom: 1px dotted var(--color-grey-650);
 }
 
 .footer-email:hover {
-  border-bottom-color: #1a3050;
+  border-bottom-color: var(--color-dawn-blue);
 }
 
 /* Copied Notification */
@@ -1574,8 +1642,8 @@ body {
   right: 0;
   margin-top: 0.5rem;
   padding: 0.5rem 0.75rem;
-  background-color: #2c2c2c;
-  color: #ffffff;
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
   font-size: 12px;
   font-weight: 500;
   border-radius: 4px;
@@ -1659,8 +1727,8 @@ body {
 }
 
 .add-brand-btn {
-  background-color: #006AA7;
-  color: #FECC02;
+  background-color: var(--color-sweden-blue);
+  color: var(--color-sweden-yellow);
   border: 1px solid transparent;
   border-radius: 6px;
   padding: 10px 20px;
@@ -1689,7 +1757,7 @@ body {
   height: 100dvh;
   width: 480px;
   max-width: 100vw;
-  background: #fff;
+  background: var(--color-white);
   z-index: 201;
   overflow-y: auto;
   box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
@@ -1709,7 +1777,7 @@ body {
 .add-brand-drawer-title {
   font-size: 20px;
   font-weight: 700;
-  color: #1a3050;
+  color: var(--color-dawn-blue);
   margin: 0;
 }
 
@@ -1718,13 +1786,13 @@ body {
   border: none;
   font-size: 20px;
   cursor: pointer;
-  color: #525252;
+  color: var(--color-grey-800);
   padding: 8px;
   line-height: 1;
 }
 
 .add-brand-drawer-close:hover {
-  color: #1a3050;
+  color: var(--color-dawn-blue);
 }
 
 @media (max-width: 520px) {
@@ -1760,8 +1828,8 @@ body {
   top: 100%;
   left: 0;
   right: 0;
-  background: #fff;
-  border: 1px solid var(--border-light, #c6c6c6);
+  background: var(--color-white);
+  border: 1px solid var(--border-light, var(--color-grey-300));
   border-radius: 6px;
   max-height: 200px;
   overflow-y: auto;
@@ -1774,15 +1842,15 @@ body {
   padding: 8px 12px;
   font-size: 14px;
   cursor: pointer;
-  color: #525252;
+  color: var(--color-grey-800);
 }
 
 .country-select-option:hover {
-  background: #f0f4f8;
-  color: #1a3050;
+  background: var(--color-blue-grey-pale);
+  color: var(--color-dawn-blue);
 }
 
 .country-select-option.selected {
   font-weight: 600;
-  color: #1a3050;
+  color: var(--color-dawn-blue);
 }

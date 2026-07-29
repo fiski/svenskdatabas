@@ -54,6 +54,12 @@ Sanity schema fields use ASCII names; the GROQ query in `src/lib/queries.ts` map
 ```
 Verified: Kosta Boda ↔ Orrefors correctly list each other as siblings.
 
+## Frontend health
+
+Colour lives in **design tokens** at the top of `src/index.css` (`--color-*`), named after the official Sweden brand palette. Use a token; do not add raw hex to the stylesheet.
+
+Open structural/accessibility work (div-based data table, dialog semantics, breakpoint conventions, missing `og:image` and JSON-LD) is tracked in `FRONTEND_HEALTH.md`, loaded on demand rather than always.
+
 ## Data Structures
 
 **Gotcha:** `id` is a `string` (Sanity `_id`, e.g. `"brand-1"`), not a `number`. This is why `expandedRows` in `DataTable.tsx` is a `Set<string>`. See `src/types/brand.ts` for the full type definitions.
