@@ -19,6 +19,7 @@ Loaded on demand, like `BRAND_RESEARCH.md` — not part of always-on context.
 - [ ] **Decide on the two deviations from the official Sweden palette.** `--color-sweden-blue` is the flag blue `#006aa7` rather than Sweden Blue Standard `#005293` (also hardcoded as `theme-color` in `index.html`), and `--color-sweden-yellow` is `#fecc02` against the standard `#fecb00`. Either is defensible; right now the deviation is documented in `index.css` but unresolved.
 - [ ] **Unify the breakpoint conventions.** 25 media queries mix mobile-first (`min-width: 840px`) with desktop-first (`max-width: 839px`) and ranges, so overrides are order-dependent. Breakpoints cluster at 599/600, 839/840, 1199/1200 and 1600, with a one-off at **520px** that looks accidental. Tokens exist for colour now; breakpoints deserve the same treatment (a documented set, one direction).
 - [ ] **Tokenise the remaining non-colour values.** Three `rgba(0, 0, 0, …)` shadows, plus spacing and radii, are still literals. Colour was the worst offender and is done; shadows are the natural next step.
+- [ ] **`--color-link-hover` is now unused.** Its only consumer was `.brand-website-link:hover`, deleted on 2026-08-03 when both links moved to `.text-link` (which inverts the fill instead of darkening the text). The token is still defined at `index.css:66`. Either drop it or keep it as the reserved darker link blue for a future non-inverting link — a palette decision, so it is written down rather than guessed at.
 - [ ] Only **5 `!important`** in 1788 lines, which is healthy. No action.
 
 ## Open: `index.html`
@@ -30,6 +31,10 @@ Loaded on demand, like `BRAND_RESEARCH.md` — not part of always-on context.
 - [ ] The `<title>` contains an en dash, which is the character banned from brand copy on 2026-07-29. Site chrome was deliberately left alone — decide whether the ban extends here.
 
 ---
+
+## Done 2026-08-03
+
+- [x] **One canonical text link.** The expanded row rendered two adjacent external links with two unrelated classes: `.brand-website-link` (the `Länk till <varumärke>` anchor, added 2026-03-07) and `.kalla-link` (the `Källor` anchors, rewritten 2026-07-25). `bf67043` had retrofitted the older one's colour to `--color-link` so the two wouldn't clash side by side, but nothing else carried over, so they shared a blue and differed in everything else. Both are now the shared **`.text-link`** class, defined once where `.brand-website-link` used to sit. The `Källor` links are unchanged; the brand website link gains `text-underline-offset`, the inverted hover fill, `overflow-wrap: anywhere` in place of `word-break: break-all` (which breaks mid-word), the transition with its `prefers-reduced-motion` guard, and a **`:focus-visible` state it previously did not have at all** — it was the one link in the app with no visible keyboard focus. Link text is still the raw URL; no copy change.
 
 ## Done 2026-07-29
 

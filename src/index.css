@@ -763,16 +763,41 @@ body {
   color: var(--color-grey-800);
 }
 
-/* Brand Website Link — shares the källa link's hyperlink blue; the two blocks sit
-   adjacent in the expanded row and would clash otherwise. */
-.brand-website-link {
+/*
+ * The canonical text link. Padding is always present (the background merely goes
+ * transparent) so the hover fill doesn't shift the row; the negative margin keeps
+ * the link's text edge flush with the label above it.
+ */
+.text-link {
+  max-width: 100%;
+  padding: 1px 4px;
+  margin-left: -4px;
+  border-radius: 3px;
+  font-size: 14px;
+  line-height: 1.45;
   color: var(--color-link);
+  background-color: transparent;
   text-decoration: underline;
-  word-break: break-all;
+  text-underline-offset: 2px;
+  overflow-wrap: anywhere;
+  transition: color 0.15s ease, background-color 0.15s ease;
 }
 
-.brand-website-link:hover {
-  color: var(--color-link-hover);
+.text-link:hover,
+.text-link:focus-visible {
+  color: var(--color-white);
+  background-color: var(--color-link);
+}
+
+.text-link:focus-visible {
+  outline: 2px solid var(--color-dawn-blue);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-link {
+    transition: none;
+  }
 }
 
 /* Brand Intro Section */
@@ -817,43 +842,6 @@ body {
   font-size: 14px;
   font-weight: 500;
   color: var(--color-dawn-blue);
-}
-
-/*
- * Padding is always present (background merely goes transparent) so the hover
- * fill doesn't shift the row; the negative margin keeps the link's text edge
- * flush with the heading above it.
- */
-.kalla-link {
-  max-width: 100%;
-  padding: 1px 4px;
-  margin-left: -4px;
-  border-radius: 3px;
-  font-size: 14px;
-  line-height: 1.45;
-  color: var(--color-link);
-  background-color: transparent;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  overflow-wrap: anywhere;
-  transition: color 0.15s ease, background-color 0.15s ease;
-}
-
-.kalla-link:hover,
-.kalla-link:focus-visible {
-  color: var(--color-white);
-  background-color: var(--color-link);
-}
-
-.kalla-link:focus-visible {
-  outline: 2px solid var(--color-dawn-blue);
-  outline-offset: 2px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .kalla-link {
-    transition: none;
-  }
 }
 
 .senast-verifierad {

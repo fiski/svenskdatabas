@@ -171,7 +171,7 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort, s
                           href={brand.merInfo.webbplats}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="brand-website-link"
+                          className="text-link"
                           onClick={(e) => e.stopPropagation()}
                         >
                           {brand.merInfo.webbplats}
@@ -193,7 +193,7 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort, s
                                   href={källa.url}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="kalla-link"
+                                  className="text-link"
                                   onClick={(e) => e.stopPropagation()}
                                 >
                                   {detail || sourceHost(källa.url)}

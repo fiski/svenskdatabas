@@ -58,6 +58,8 @@ Verified: Kosta Boda ↔ Orrefors correctly list each other as siblings.
 
 Colour lives in **design tokens** at the top of `src/index.css` (`--color-*`), named after the official Sweden brand palette. Use a token; do not add raw hex to the stylesheet.
 
+External text links use the shared **`.text-link`** class in `src/index.css` (hyperlink blue, inverted fill on hover/`:focus-visible`, `prefers-reduced-motion` guard). Reuse it; do not hand-roll a new link class. Site chrome (`.header-title`, `.footer-link`, `.add-brand-btn`) is deliberately a separate lineage.
+
 Open structural/accessibility work (div-based data table, dialog semantics, breakpoint conventions, missing `og:image` and JSON-LD) is tracked in `FRONTEND_HEALTH.md`, loaded on demand rather than always.
 
 ## Data Structures
