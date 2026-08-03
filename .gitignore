@@ -436,6 +436,9 @@ dist-ssr/
 # Sanity auto-generated runtime (regenerated on `sanity dev`/`build`)
 .sanity/
 
+# Superpowers brainstorming mockups (local design scratch)
+.superpowers/
+
 # Logs
 npm-debug.log*
 yarn-debug.log*
