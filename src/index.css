@@ -805,6 +805,8 @@ body {
   margin-top: 8px;
 }
 
+/* Shared prose body copy in the expanded row: both `intro` and `hallbarhetsFokus`
+   are free text that can run to a full paragraph, so they read the same. */
 .intro-text {
   font-size: 16px;
   font-weight: 400;

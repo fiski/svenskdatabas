@@ -163,6 +163,12 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort, s
                   <div className="detail-value intro-text">
                     {brand.merInfo.intro || 'Ingen information att visa för tillfället'}
                   </div>
+                  {brand.merInfo.hallbarhetsFokus && (
+                    <>
+                      <div className="detail-label" style={{ marginTop: 8 }}>Hållbarhetsfokus</div>
+                      <div className="detail-value intro-text">{brand.merInfo.hallbarhetsFokus}</div>
+                    </>
+                  )}
                   {brand.merInfo.webbplats && (
                     <>
                       <div className="detail-label" style={{ marginTop: 8 }}>Länk till {brand.varumärke}</div>
