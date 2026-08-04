@@ -2,6 +2,9 @@
 
 **Date:** 2026-08-03
 **Status:** approved, not yet implemented
+**Revised:** 2026-08-04 after a code review of this document. Corrections are folded into the sections
+below. Two taxonomy questions could not be resolved without a decision and are collected under
+*Open questions*; they block the backfill, not the rendering work.
 
 ## Context
 
@@ -66,6 +69,47 @@ Ekelund, Woolpower, Byarums Bruk, Bruno Mathsson, Kero and others) but it would 
 `Tillverkad i Sverige`, sitting one column to the left, in different notation. Two columns asserting
 the same fact is worse than not having it.
 
+## Open questions — these block the backfill
+
+Both surfaced in the 2026-08-04 review and neither can be settled from the prose alone. The schema,
+GROQ, module, CSS and test work below is unaffected; the 102-brand tagging pass cannot start until
+these are answered, because the answer changes what a glyph asserts.
+
+### 1. Whose sustainability work do the tags describe?
+
+Nothing in this design separates a brand's own claims from its parent group's, and the prose routinely
+contains both. Malaco's value opens *"Inget Malaco-specifikt hållbarhetsarbete redovisas"* and then
+describes Cloetta's recyclable packaging and RSPO-certified palm oil. Höganäs Keramik says *"Inga
+varumärkesspecifika hållbarhetsmål finns"* and then lists Fiskars' scope 1-2 targets and circular
+product goal. Tagged literally from the glyph table below, both brands get two Dawn Blue glyphs
+asserting work their own text explicitly denies — the exact false attribution the `Inget redovisat`
+state was introduced to prevent, re-entering through parent-group text.
+
+Options:
+
+- **(a) Brand-level claims only.** Koncern programmes never earn a glyph. Honest reading of a column
+  headed by the brand's name, but it discards real information the prose contains.
+- **(b) Either counts.** The expanded row's prose carries the distinction. Cheapest to tag, and makes
+  the column mean "sustainability work in this brand's supply chain", not "by this brand".
+- **(c) Either counts, group-level tags marked.** Needs a second visual state per glyph, which the
+  uniform-colour decision has no room for.
+
+Whichever is chosen has to be written into the backfill instructions as a rule, or the 102-brand pass
+will not be reproducible.
+
+### 2. Does the `Inget redovisat` state survive that decision?
+
+All five brands cited under *Cell states* as proof of the state do match themes under this document's
+own glyph table. POC's *"Utfasning av PFAS/PFC-behandlingar"* is verbatim the `kemikalier` row, and
+its GRS-certified recycled polyester hits `certifiering` + `materialval`. Malaco's RSPO is listed by
+name under `certifiering`. Höganäs Keramik's scope 1-2 and scope 3 figures are `klimatmal`. Iris
+Hantverk's organic cotton and Svenskt Tenn's *"100 procent bomull eller lin"* are both `materialval`.
+So the claim that they "match zero themes" is false as written.
+
+Under option (a) the state is reachable and these five are plausibly its examples. Under (b) it is
+close to unreachable, and both the state and its test should be dropped rather than shipped dead. The
+justification currently reads as though (b) were chosen and (a) were true at the same time.
+
 ## Data model
 
 New field in `studio/schemaTypes/brand.ts`:
@@ -92,8 +136,26 @@ defineField({
 })
 ```
 
-`options.list` makes Studio render checkboxes and makes typos impossible. Slugs are ASCII, matching
-the schema convention.
+`options.list` makes Studio render checkboxes, but it does **not** make typos impossible: it is a
+Studio input affordance only. The Content Lake accepts any string, and the backfill below writes
+through `patch_documents`, bypassing Studio entirely — the same reason the existing `options.list`
+fields in this schema never constrained their values either. A slug mistyped during the 102-brand pass
+(`klimatmål` with å, `certifieringar`, `forpakning`) is stored happily, then silently dropped at
+render because the cell filters the canonical list rather than mapping the stored array. A brand whose
+slugs are all mistyped falls through to `Inget redovisat`, publicly asserting it reports nothing.
+
+So the field carries an explicit rule, which at least fails a Studio save:
+
+```ts
+validation: (Rule) =>
+  Rule.unique().custom((taggar) =>
+    (taggar ?? []).every((t) => HALLBARHET_SLUGS.includes(t)) || 'Okänd hållbarhetstagg'
+  ),
+```
+
+That still does not cover the API path, so the backfill gets a verification step: after each batch,
+query for documents holding a slug outside the nine and fix them before continuing. The unknown-slug
+render test covers the display side. Slugs are ASCII, matching the schema convention.
 
 **GROQ** (`src/lib/queries.ts`), next to the existing `hallbarhetsFokus` projection:
 
@@ -103,7 +165,9 @@ the schema convention.
 
 The `coalesce` is not optional. It follows the `coalesce(tillverkningslander, [])` precedent added
 when a `null` array crashed `DataTable` in production — the TypeScript type will declare
-`HallbarhetsTagg[]` and this is what makes that declaration true.
+`HallbarhetsTagg[]` and this is what makes it an array rather than `undefined`. It does not make the
+members valid: nothing at the type level or the query level constrains them to the nine slugs, which is
+what the schema `validation` rule and the render-time filter are for.
 
 **Type** (`src/types/brand.ts`), inside `merInfo`:
 
@@ -170,24 +234,50 @@ tags.length === 0 && hallbarhetsFokus  → "Inget redovisat"
 neither                                → "Uppgift saknas"
 ```
 
-The middle state matters. Several brands have prose whose content is precisely that nothing is
-reported — Svenskt Tenn (*"Bolaget redovisar inga egna klimatmål eller certifieringar"*), POC, Iris
-Hantverk, Malaco, Höganäs Keramik. Under a single presence marker they would have been marked as
-having sustainability work, the opposite of what their text says. Nine categories resolve this for
-free: they match zero themes, so "reports nothing" becomes a real, distinct state.
+The middle state was justified by five brands whose prose says precisely that nothing is reported —
+Svenskt Tenn (*"Bolaget redovisar inga egna klimatmål eller certifieringar"*), POC, Iris Hantverk,
+Malaco, Höganäs Keramik — on the argument that they match zero themes and so "reports nothing" becomes
+a real, distinct state. **That argument does not hold as written: all five match at least one theme
+under the glyph table below.** Whether the state is reachable at all depends on open question 1; see
+open question 2. Do not implement the middle branch, or its test, until that is decided.
 
 `Uppgift saknas` reuses the wording already used for missing `tillverkningsländer`.
 
 ### Markup
 
-Each icon is `<span role="img" aria-label="Certifiering">` wrapping the SVG, following the
-established `Flag.tsx` pattern. Not focusable, and `aria-hidden` on the inner SVG.
+The `Flag.tsx` pattern — `<span role="img" aria-label="…">` per glyph — does **not** transfer here.
+`Flag` only ever renders inside `expanded-details` via `KoncernstrukturTree`; this cell renders inside
+`.table-row`, which carries `role="button"` and `tabIndex={0}` (`DataTable.tsx:89-99`). ARIA treats a
+`button` as having presentational children, so nine `role="img"` descendants are not announced as nine
+labelled images: at best their labels are folded into the row's own accessible name, at worst dropped,
+and either way the reading is inconsistent between screen readers and unusably long on the richest
+rows.
+
+So the glyphs are `aria-hidden` and the cell carries one visually-hidden text alternative instead:
+
+```tsx
+<div className="table-cell" data-label="Hållbarhetsfokus">
+  <span className="visually-hidden">Hållbarhetsfokus: Certifiering, Materialval, Förnybar energi</span>
+  <span className="hallbarhet-icons" aria-hidden="true">{/* glyphs */}</span>
+</div>
+```
+
+One phrase, built from the same `HALLBARHET_TAGGAR` labels, that reads correctly as part of the row
+name. Nothing is focusable. `.visually-hidden` does not exist in `index.css` yet and comes with this
+work.
 
 ## Tooltip and legend
 
 **Tooltip:** pure CSS, `::after` carrying `content: attr(...)` plus a `::before` arrow, both
 `pointer-events: none`, revealed on `:hover`. No JS, no new tab stops. Needs a
 `prefers-reduced-motion` guard on the opacity transition, matching `.text-link`.
+
+It also needs an explicit **`z-index` above 10 and a positioned ancestor**. `.letter-section-header` is
+`position: sticky; z-index: 10` inside `.letter-section { position: relative }` (`index.css:538-554`),
+and the sticky `.search-wrapper` above the table is `z-index: 40` (`index.css:303-314`). A tooltip left
+at `z-index: auto` paints under the sticky letter header, so hovering an icon in the first row or two of
+any letter group — where users scan first — hides the label. The tooltip opens **downward** for the same
+reason; upward puts it straight under the sticky header.
 
 **Legend:** a native `<details>`/`<summary>` disclosure above the table — keyboard accessible, no JS,
 collapsed by default so it costs nothing on first paint. Summary reads
@@ -209,15 +299,43 @@ Hållbarhetsfokus
 This is also the accessible route to the labels for keyboard users, who cannot trigger the hover
 tooltip.
 
+**The gate has to widen.** That block currently renders only inside
+`{brand.merInfo.hallbarhetsFokus && (…)}` (`DataTable.tsx:166`), and tags are an independent Sanity
+field — the table cell keys off `tags.length > 0` regardless of prose. A brand that is tagged but has no
+prose (or whose prose an editor later clears in Studio) would show a row of unlabelled glyphs in the
+table and nothing at all on expanding, which with a hover-only tooltip leaves a touch user no route to
+the labels. The condition becomes `hallbarhetsFokus || tags.length > 0`, with the prose paragraph itself
+still conditional on `hallbarhetsFokus`.
+
 ## Responsive
 
 **Desktop** (`>839px`): `.table-row` is `display: flex` with `.table-cell { flex: 1 }`. A fifth
 content column takes each from 25% to 20%, roughly 230px at a 1200px container. `Kategori`'s longest
 values already wrap at 25%; they will wrap slightly more often, absorbed by `min-height: 64px`.
 
+**The header is a separate container and needs its own cell.** `.table-header` is an independent flex
+container (`index.css:481-486`) holding one 48px spacer plus exactly four `.table-header-cell { flex: 1 }`
+children (`DataTable.tsx:270-337`). Adding only the body cell leaves the header at four cells of 25%
+against body rows of five at 20%: every label drifts one column right of its data, so `Tillverkad i
+Sverige` sits over the icon column and `Mer info` over nothing, and because three of the four header
+cells are the sort controls, a click above `Kategori` sorts by `Varumärke`. Add
+`<div className="table-header-cell">Hållbarhetsfokus</div>` before the `Mer info` header, unsortable and
+matching the cell's position.
+
 **Mobile** (`≤839px`): the row is a `48px 1fr auto` two-row grid with cells positioned by
-`:nth-child()`. Column 3, row 2 — under the status badge — is currently empty, and the icon row goes
-there. No new layout needed.
+`:nth-child()` (`index.css:596-648`). Column 3, row 2 — under the status badge — is empty, and the icon
+row goes there. This does need new CSS, on two counts:
+
+- **Width.** Column 3 is `auto`, and the status badge already occupies column 3, row 1, so the track
+  sizes to whichever of the two is wider. Nine 16px glyphs plus gaps is roughly 180-200px; on a 360px
+  viewport that leaves the `1fr` name column around 110px, and long names (`EKA (Eskilstuna
+  Kniffabriks Aktiebolag)`, `Skultuna Messingsbruk`) wrap to three or four lines — worst on exactly the
+  richest rows the feature exists to show off. Either cap the strip (`flex-wrap: wrap` with a
+  `max-width`, or fewer glyphs per line) or move it to column 2, row 3 and accept a taller row. Decide
+  against a rendered mobile row, as with the colour decision.
+- **Padding.** After the renumbering below, the new cell is `:nth-child(5)` and has no mobile rule, so
+  it inherits the desktop base `padding: 16px` (`index.css:579-581`) while every sibling is overridden
+  to `0 8px` or `0`. It needs its own block: `grid-column`, `grid-row` and `padding: 0`.
 
 **The trap:** mobile positioning is `:nth-child()`-based, so inserting a cell renumbers everything
 after it. The rule at `index.css:644`, `.table-cell:nth-child(5) { display: none }`, currently hides
@@ -228,11 +346,21 @@ after it. The rule at `index.css:644`, `.table-cell:nth-child(5) { display: none
 
 No re-research needed; the existing prose is specific enough to tag from. Process:
 
+0. Settle open question 1 and write the answer into the tagging rule, so the pass is reproducible.
 1. Read all 102 values and propose tags per brand as a reviewable list.
 2. Maximilian corrects the list before anything is written.
 3. Patch in batches. `BRAND_RESEARCH.md` documents `patch_documents` truncating around 4.5 kB, but
    that was with full field sets including rewritten `intro` and three `kallor`. Tag-only patches are
    tiny, so 10-15 brands per call is safe.
+4. After each batch, query for slugs outside the nine (see *Data model*) and fix any before continuing.
+
+**The column ships after the backfill, not alongside it.** The cell's middle state renders
+`Inget redovisat` for any brand that has prose but no tags, so deploying the render before the batches
+finish makes the site state that Morakniv, Haglöfs and Peak Performance report no sustainability work
+while the expanded row directly below quotes their ISO 14001, bluesign and SBTi text — the same false
+claim the state exists to avoid, inverted, across up to 102 rows. The schema field and the backfill can
+land first and separately; the GROQ projection, cell, legend and header cell go in one commit after all
+102 are tagged and reviewed.
 
 The 29 brands with no `hallbarhetsFokus` need nothing and render `Uppgift saknas`.
 
@@ -245,7 +373,9 @@ was never installed. Add `vitest` here rather than as a separate chore. Cover:
 - canonical ordering: a brand tagged `['forpackning','certifiering']` renders Certifiering first
 - unknown slug in the array is ignored rather than crashing
 - the three cell states, including `[]` for tags, plus a defensive case for the field being absent
-  entirely (the `coalesce` should make that unreachable, and the test is what proves it)
+  entirely (the `coalesce` should make that unreachable, and the test is what proves it) — but the
+  middle state's test waits on open question 2; if that state goes, the test goes with it rather than
+  being written against a branch nothing reaches
 
 ## Known limitations
 
@@ -257,7 +387,11 @@ was never installed. Add `vitest` here rather than as a separate chore. Cover:
   conspicuous, which is an argument for a research pass, not against the column.
 - **The tooltip is hover-only.** Keyboard and touch users get the labels from the legend and the
   expanded row. Per-icon focus was rejected: five icons across 131 rows would add 400+ tab stops, and
-  focusable children inside a `role="button"` row are handled inconsistently by screen readers.
+  focusable children inside a `role="button"` row are handled inconsistently by screen readers. Note
+  this is not only a tooltip limitation — because the row is a `role="button"`, per-glyph ARIA labels
+  are not reliably announced either, which is why the cell carries one visually-hidden phrase instead
+  (see *Markup*). A screen reader user hears the themes as part of the row name, not as a scannable
+  list; the expanded row remains the place the labels are properly enumerated.
 - **Tag counts are not comparable between brands.** Five tags does not mean better than one. This is
   why the column does not sort, but nothing stops a reader inferring it anyway.
 

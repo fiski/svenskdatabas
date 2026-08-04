@@ -439,6 +439,9 @@ dist-ssr/
 # Superpowers brainstorming mockups (local design scratch)
 .superpowers/
 
+# Superpowers worktrees (nested checkouts of this repo)
+.claude/worktrees/
+
 # Logs
 npm-debug.log*
 yarn-debug.log*
