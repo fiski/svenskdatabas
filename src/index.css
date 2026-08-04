@@ -64,6 +64,12 @@
   --color-blue-shade: #005d7f;
   --color-link: #0067ff;
   --color-link-hover: #0052cc;
+
+  /* Type: fluid display headings. Tuned so the 36px floor holds at and below 600px
+     and the 64px ceiling lands at 1400px, which keeps the longest heading on one
+     line from 600px up. The rem term keeps the reader's browser font-size setting
+     effective, which a bare vw value would ignore. */
+  --font-size-display: clamp(2.25rem, 0.9375rem + 3.5vw, 4rem);
 }
 
 /* Reset */
@@ -257,10 +263,10 @@ body {
 }
 
 .hero-title {
-  font-size: 80px;
+  font-size: var(--font-size-display);
   font-weight: 700;
-  line-height: normal;
-  letter-spacing: 2.4px;
+  line-height: 1.2;
+  letter-spacing: 0.035em;
 }
 
 .hero-description {
@@ -273,12 +279,6 @@ body {
 /* Mobile: Hero typography scaling */
 /* Extra small mobile */
 @media (max-width: 599px) {
-  .hero-title {
-    font-size: 36px;
-    letter-spacing: 1.5px;
-    line-height: 1.2;
-  }
-
   .hero-description {
     font-size: 18px;
     line-height: 26px;
@@ -287,12 +287,6 @@ body {
 
 /* Small tablet */
 @media (min-width: 600px) and (max-width: 839px) {
-  .hero-title {
-    font-size: 48px;
-    letter-spacing: 1.8px;
-    line-height: 1.2;
-  }
-
   .hero-description {
     font-size: 20px;
     line-height: 28px;
@@ -1055,10 +1049,10 @@ body {
 }
 
 .about-title {
-  font-size: 64px;
+  font-size: var(--font-size-display);
   font-weight: 700;
   line-height: 1.2;
-  letter-spacing: 1.8px;
+  letter-spacing: 0.035em;
   color: var(--color-dawn-blue);
   margin-bottom: 16px;
 }
@@ -1479,11 +1473,6 @@ body {
     padding-bottom: 48px;
   }
 
-  .about-title {
-    font-size: 36px;
-    letter-spacing: 1.2px;
-  }
-
   .about-intro {
     font-size: 18px;
     line-height: 26px;
@@ -1515,11 +1504,6 @@ body {
 
 /* Small tablet */
 @media (min-width: 600px) and (max-width: 839px) {
-  .about-title {
-    font-size: 48px;
-    letter-spacing: 1.5px;
-  }
-
   .about-intro {
     font-size: 20px;
     line-height: 28px;
