@@ -37,7 +37,7 @@ export default function Home() {
   }, [loading]);
 
   useEffect(() => {
-    document.title = 'Var tillverkas svenska varumärken? – brandsfrom.se';
+    document.title = 'Var tillverkas svenska varumärken? - brandsfrom.se';
   }, []);
 
   useEffect(() => {

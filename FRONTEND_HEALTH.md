@@ -15,6 +15,7 @@ Loaded on demand, like `BRAND_RESEARCH.md` — not part of always-on context.
 
 ## Open: CSS
 
+- [ ] **The page overflows horizontally at 320px, on every route.** Found 2026-08-04 while checking the widened home `<h1>`, via Chrome headless screenshots at `320x760`. Content is clipped at the right edge: the header's `+ Föreslå märke` button is cut mid-word, and so is body copy on both `/` and `/om`. **It is not the data table** — `/om` contains no table and clips identically, which isolates it to site chrome. Prime suspect is the header row, where the `brandsfrom.se` wordmark plus the filled and outlined buttons need more than the `calc(100vw - 32px)` = 288px the container allows at that width; the exact offending element was not pinned down. Note the smallest explicit breakpoint is `max-width: 599px`, so nothing in the stylesheet targets the 320-360px band that real small phones still occupy. Renders correctly at 599px and above. Related to the breakpoint item below, and worth measuring `document.documentElement.scrollWidth` per route before fixing.
 - [ ] **Consolidate the grey ramp.** The token block now names 15 distinct greys (`--color-grey-25` … `--color-grey-900`) because tokenising was deliberately 1:1 with no visual change. Several are within one or two steps of each other (`#888888` / `#909090`, `#6b6b6b` / `#6e6e6e`, `#7e211a` / `#852221`) and almost certainly want merging. That *is* a visual change, so it needs a design decision per pair.
 - [ ] **Decide on the two deviations from the official Sweden palette.** `--color-sweden-blue` is the flag blue `#006aa7` rather than Sweden Blue Standard `#005293` (also hardcoded as `theme-color` in `index.html`), and `--color-sweden-yellow` is `#fecc02` against the standard `#fecb00`. Either is defensible; right now the deviation is documented in `index.css` but unresolved.
 - [ ] **Unify the breakpoint conventions.** 25 media queries mix mobile-first (`min-width: 840px`) with desktop-first (`max-width: 839px`) and ranges, so overrides are order-dependent. Breakpoints cluster at 599/600, 839/840, 1199/1200 and 1600, with a one-off at **520px** that looks accidental. Tokens exist for colour now; breakpoints deserve the same treatment (a documented set, one direction).
@@ -28,7 +29,13 @@ Loaded on demand, like `BRAND_RESEARCH.md` — not part of always-on context.
 - [ ] **No JSON-LD structured data.** For a searchable manufacturing database, `WebSite` + `Dataset` markup is what makes the content usable by AI answer surfaces. See the `seo-aeo-best-practices` skill.
 - [ ] **The cookieyes script sits above `<meta charset>`** and loads synchronously in `<head>`. Charset should be inside the first 1024 bytes, and a third-party blocking script in `<head>` delays first paint. Move the meta up and defer the script.
 - [ ] Twitter tags use `property=` where the spec expects `name=`. Works in practice; cosmetic.
-- [ ] The `<title>` contains an en dash, which is the character banned from brand copy on 2026-07-29. Site chrome was deliberately left alone — decide whether the ban extends here.
+
+---
+
+## Done 2026-08-04
+
+- [x] **The dash ban extends to site chrome.** The open question here was whether the en dash banned from brand copy on 2026-07-29 also applied to titles. Maximilian's ruling: it does. All five title strings now use a plain hyphen: `index.html:12,13,21,29` (`<title>`, `meta name="title"`, `og:title`, `twitter:title`) plus the two runtime `document.title` calls at `src/pages/Home.tsx:40` and `src/pages/About.tsx:7`. Wording was left untouched, so the `varumärken` (title tag) vs `märken` (hero) vocabulary split still stands as a separate open question.
+- [x] **Home `<h1>` widened to `Svenska märken och tillverkare`** (`src/components/Hero.tsx:9`). It read `Svenska märken`, a leftover the 2026-07-26 `brandsfrom.se` rename missed, which was narrower than its own subhead (`märken och tillverkare`) and hardcoded the `svensk` the rename had deliberately dropped from the wordmark directly above it. The subhead lost its redundant third `märken`. The About `<h1>` went from `Svensktillverkat?` to `Vad betyder svensktillverkat?` so it no longer reads as a fourth site name. **Still open:** the stale-count problem is structural, not fixed — `index.html:14,22,30` and `public/llms*.txt` hold a hand-maintained `135+` floor because static files cannot read the live count the hero gets from Sanity. Bump it when the dataset grows meaningfully.
 
 ---
 
