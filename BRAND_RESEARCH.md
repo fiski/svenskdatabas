@@ -128,6 +128,10 @@ Two traps when clearing dashes:
 ### `koncern` reference (when is one needed?)
 - **Independent Swedish company** (owns itself, no parent above it): no koncern reference, `borsnoterat` usually `Nej`.
 - **Part of a group**: koncern reference required. `moderbolag` = direct parent; `agare` = top of the chain (ultimate owner). If they are the same entity, use the same name in both fields.
+- **Member-owned cooperative (`ekonomisk förening`)**: it depends on *where the förening sits*, and the two cases look alike from the outside.
+  - The förening **is** the operating entity that processes and sells the product, with nothing above it → **no koncern reference**. This is the independent-company rule; a koncern doc here could only hold a self-referential `moderbolag` plus a placeholder `agare` (`"Mjölkbönder i Norrland"`), which are the two defect classes §5 tells you not to create. Applied to **Norrmejerier** and **Falköpings Mejeri** (2026-08-04). The site rendering "Oberoende" is factually right for member ownership. Note that such a förening is often itself a *koncernmoder* over subsidiaries, which is not the same thing as having a parent.
+  - A real **AB sits between** brand and förening → koncern required, with the AB as `moderbolag` and the förening as `agare`. This is **Kockens**: `moderbolag` Culinar Sverige AB, `agare` "Lyckeby Group ek. för. (kooperativ, ca 600 medlemmar)". **Arla** is the same shape with a foreign top: Arla Foods AB (SE) is a subsidiary, so the koncern holds `moderbolag` Arla Foods amba (DK) with the farmer base as `agare`.
+  - A cooperative that **sold the brand** keeps existing as a milk- or crop-supplier association and owns nothing. Do not record it as `agare`. **Skånemejerier ekonomisk förening** (716439-3949, Hörby) still exists and still supplies the milk, while Skånemejerier AB has been Lactalis-owned since 2012.
 
 ### Country fields
 - `brandLand`, `moderbolagLand`, `agareLand`: **ISO 3166-1 alpha-2** codes (`SE`, `CH`, `US`)
@@ -196,6 +200,8 @@ Seen repeatedly; check for these whenever you touch a koncern:
 > Smycken, Handskar, Friluftskläder, Underkläder, Fordon, Mat och Dryck, Möbler, Kläder, Elektronik, Städprodukter
 
 Only introduce a new category if nothing fits; keep it short, Swedish, plural where natural.
+
+**`Mat och Dryck` takes a qualifier after a comma**, and the live data has drifted well past the bare string above: `Mat och Dryck, Bryggeri` (Spendrups), `Mat och Dryck, Bröd` (Polarbröd), `Mat och Dryck, Sprit` (Absolut), `Mat och Dryck, Öl` (Pripps), `Mat och Dryck, Färdigmat` (Felix), `Mat och Dryck, Växtbaserat` (Oatly) and **`Mat och Dryck, Mejeri`**, added 2026-08-04 with Arla, Skånemejerier, Norrmejerier and Falköpings Mejeri. Reuse `Mejeri` verbatim for any further dairy. Do not read the one-line list above as exhaustive; query `array::unique(*[_type=="brand"].kategori)` before inventing a string. The deferred `kategori` normalization pass in §9 owns reconciling all of this.
 
 ---
 
