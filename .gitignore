@@ -457,3 +457,6 @@ lerna-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Local-only research notes
+BRAND_QUEUE.local.md
