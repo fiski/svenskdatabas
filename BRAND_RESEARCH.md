@@ -545,6 +545,35 @@ Ten brands were researched and published on 2026-08-05, chosen to span the decis
 
 ---
 
+## 11. Field findings from the 2026-08-12 batch of five
+
+Five brands published 2026-08-12, 146 → 151, chosen for koncern leverage rather than spread: **Wetterlings** (Ja), **Didriksons** (Delvis), and the Vitamin Well Group trio **Vitamin Well**, **NOCCO** and **Barebells** (all Nej). Two clusters cleared in one pass. All five carry three `kallor` and `senastVerifierad: 2026-08-12`; every integrity query returned 0.
+
+> **Research-only subagents plus main-session writes worked cleanly at five-wide.** All five `brand-researcher` dispatches were prompted to make no Sanity calls at all and to return a full field payload instead; the main session ran every koncern-reuse query and every write. No agent died, and koncern dedup happened once centrally rather than three times in parallel, which is exactly what the Vitamin Well trio needed.
+
+**Writing and publishing:**
+
+- **Sanity rejects a strong reference to an unpublished koncern.** Creating a brand draft that points at a koncern still sitting in `drafts.` fails the whole mutation with `references non-existent document`. Two ways through: publish the koncern first, or stage the brand with `{"_weak": true}` on the reference and **patch it back to strong after the koncern is published**, before publishing the brand. The second is what preserves a genuine approval gate, since it lets the whole batch sit unpublished for review. Verify afterwards with `defined(koncern._weak)` returning `false` on every new brand, or the weak ref silently becomes permanent.
+- **Count the dataset with an explicit `perspective`.** A default `raw` count includes unpublished drafts. It reported 147 brands where the published total was 146, because an unrelated stray draft was sitting in the dataset. Use `perspective: "published"` for any number that will be quoted.
+
+**Ownership and koncern:**
+
+- **A listed minority holder that does not consolidate is still `Nej`.** Bridgepoint Group plc is LSE-listed and retains a significant minority of Vitamin Well Group, while control passed to unlisted Cinven in 2024. §3's PE clause resolves this without a judgement call, but all three sibling brands must be decided **once and identically**, or the koncern acquires an internal contradiction.
+- **`hitta.se` runs one deal behind on private-equity chains.** It still printed the Bridgepoint-era `Rixile 3 AB` / `Rixile Holding 2 AB` from Dec-2024 data, while the Cinven acquisition vehicle `Vital Holdco AB` (reg. 2024-07-18, same box address) is the current group parent. When a registry parent belongs to the *previous* owner's structure, the chain is stale, not wrong. Same class as the §1 staleness trap, but the tell is the vehicle's registration date sitting *after* the deal.
+- **One koncern can legitimately carry three different `kategori` qualifiers.** Vitamin Well (`Funktionsdryck`), NOCCO (`Energidryck`) and Barebells (`Proteinprodukter`) share `koncern-vital-holdco-ab`. Sharing a parent constrains ownership fields only, never taxonomy.
+
+**Manufacturing and the verdict:**
+
+- **A paused factory is not foreign production.** Wetterlings stopped forging in October 2025 and let all ten staff go, but the machines are maintained for a restart and nothing moved abroad, so it stays `Ja` with `["Sverige"]` and the pause goes in the `intro`. Record the present state; an idle Swedish smithy is not a foreign one. A brand that currently makes nothing is a disclosure problem, not a verdict problem.
+- **New trap class: a supplier's customer case study describes the SUPPLIER's production, not the brand's.** A packaging firm's case page saying Vitamin Well "centralised production in southern Sweden" refers to that firm's own display manufacturing. Taken at face value it would have flipped the brand from `Nej` to `Ja`. When a manufacturing claim appears on a **vendor's** site, ask whose factory the sentence is actually about.
+- **Supplier-declared retailer PIM beats undated promotional copy, and it scales.** Vitamin Well's `Nej` rests on `Tillverkningsland: Nederländerna` across six SKUs on two independent retailers, against a Business Sweden page claiming "everything from production to new developments are made locally in Sweden". Regulatory fields carry a named responsible party; third-party promo copy names no facility. Same class as the FOREO "born in Sweden" trap.
+- **A single foreign retailer's origin field can be reporting the sales subsidiary, not the filler.** NOCCO's Austrian listing gives `Hergestellt in: Österreich`, but the responsible food business on that market is an Austrian *sales* GmbH. With no second Austrian route obtainable, Austria was kept **out** of `tillverkningslander` and named in the `intro` instead. Require the same two-independent-sources bar you would apply at home before adding a country on one foreign listing.
+- **A licensed product line made by another group stays out of `tillverkningslander`.** Barebells ice cream is produced and supplied by Unilever in Slovenia under trademark licence, so Slovenia is named in the `intro` and excluded from the field. Extends the Tretorn/IKEA split class from ownership to production.
+- **A pending acquisition of your own contract manufacturer changes nothing yet.** Vitamin Well Group agreed in July 2026 to buy EMPWR, which already makes all Barebells bars. Countries are unaffected either way; per the Oatly/Polestar rule the deal stays out until it closes, but the word "kontraktstillverkaren" in the `intro` becomes wrong on closing. Flag wording that a known future event will falsify.
+- **`Delvis` on one supplier row out of eighteen is consistent with precedent, not generous.** Didriksons publishes a per-country supplier count in which a single supplier knits and does most of its production in Sweden while sewing in Poland. Both the Nudie/Sätila and Kavat/Brasko precedents gave `Delvis` on exactly this shape. Where a sustainability report prints a supplier-count table, that table is the country list.
+
+---
+
 ## Notes
 
 - **ASCII field names** in Sanity schema (e.g. `varumarke`, `agare`) — the GROQ query in `src/lib/queries.ts` maps these to Swedish display names
