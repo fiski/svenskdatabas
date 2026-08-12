@@ -43,17 +43,6 @@ Sanity schema fields use ASCII names; the GROQ query in `src/lib/queries.ts` map
 | `agareLand` | `ägareLand` |
 | `brandLand` | `land` (in BrandInHierarchy) |
 
-### GROQ Sibling Pattern
-```groq
-"varumärken": *[_type == "brand" && references(^.koncern._ref)] | order(varumarke asc) {
-  "namn": varumarke,
-  "land": brandLand,
-  "ärHuvudvarumärke": _id == ^._id,   // ^ = outer brand document
-  "status": tillverkadISverige
-}
-```
-Verified: Kosta Boda ↔ Orrefors correctly list each other as siblings.
-
 ## Frontend health
 
 Colour lives in **design tokens** at the top of `src/index.css` (`--color-*`), named after the official Sweden brand palette. Use a token; do not add raw hex to the stylesheet.
@@ -76,43 +65,14 @@ Open structural/accessibility work (div-based data table, dialog semantics, brea
 - Or edit via sanity.io/manage → project `kmjh3e1f` → dataset `production`
 - Do NOT edit `brands.json` (legacy, unused)
 
-**Modifying GROQ query:**
-- File: `src/lib/queries.ts`
-- Remember ASCII field names in Sanity schema; map to Swedish in projections
-
 **Editing Sanity schema:**
-- Files: `studio/schemaTypes/brand.ts`, `studio/schemaTypes/koncern.ts`
-- After editing, redeploy: `npm run studio:deploy`
+- After editing `studio/schemaTypes/`, redeploy: `npm run studio:deploy`
 - Local schema files are source of truth
-
-**Adding/editing pages:**
-- New pages: Create in `src/pages/`
-- Update routes: Edit `src/App.tsx` Routes section
-
-**Modifying search/filter logic:**
-- File: `src/pages/Home.tsx`
-- `filteredBrands` useMemo depends on `allBrands` (Sanity state), not static JSON
-
-**Type definitions:**
-- File: `src/types/brand.ts`
-- Update when adding new Sanity fields or GROQ projections
 
 ### Deployment Checklist
 1. Add `VITE_SANITY_PROJECT_ID` + `VITE_SANITY_DATASET` to Cloudflare Pages env vars
 2. `npm run studio:deploy` to deploy Studio to `*.sanity.studio`
 3. Add production domain to CORS in sanity.io/manage → `kmjh3e1f` → API
-
-## Future Enhancements
-
-### Planned/Suggested
-- [ ] **Brand Detail Pages**: Individual pages per brand with full history
-- [ ] **Advanced Filters**: Multi-select filters (status, category, owner type)
-- [ ] **Report Form**: Direct feedback form for corrections
-- [ ] **Export Functionality**: Download filtered results as CSV/JSON
-- [ ] **Pagination**: Handle large datasets efficiently
-- [ ] **Data Visualization**: Charts showing manufacturing distribution
-- [ ] **Source Citations**: Link to sources for each brand's information
-- [ ] **Brand Comparison**: Side-by-side comparison of multiple brands
 
 ## Swedish Terms Reference
 
@@ -129,16 +89,3 @@ Open structural/accessibility work (div-based data table, dialog semantics, brea
 - **Mer info**: More information
 - **Sök i registret**: Search the registry
 - **Oberoende**: Independent
-
-## Accessibility
-
-- ARIA labels on buttons ("Expandera rad", "Clear search")
-- Semantic HTML structure (header, main, footer)
-- Keyboard support (ESC key, tab navigation)
-- Focus states with visible outlines
-- Proper heading hierarchy
-- `role="img"` + `aria-label` on Flag component
-
----
-
-**Maintained By**: Maximilian with Claude Code assistance

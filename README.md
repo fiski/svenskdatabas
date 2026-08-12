@@ -38,6 +38,12 @@ The goal is to create transparency around "Made in Sweden" claims. Consumers des
 - ✓ Map relationships between brands, parent companies, and investors
 - ✓ Expand the database with more Swedish brands
 - Add data visualization showing manufacturing distribution
+- Give each brand its own page with full ownership history
+- Filter by several statuses, categories and owner types at once
+- Link the sources behind every brand's information
+- Compare brands side by side
+- Download filtered results as CSV or JSON
+- Paginate the registry so large result sets stay fast
 
 ## Tech Stack
 
