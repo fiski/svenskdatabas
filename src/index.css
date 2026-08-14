@@ -367,8 +367,10 @@ body {
 .search-chip {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
+  gap: 0;
+  /* No vertical or right padding: the close button stretches to own the chip's
+     full height and right edge, which is what carries its 44px touch target. */
+  padding: 0 0 0 12px;
   background-color: var(--color-white);
   border: 1px solid var(--color-grey-550);
   border-radius: 4px;
@@ -389,26 +391,31 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  align-self: stretch;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
   color: var(--color-red-shade-2);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 1;
-  transition: opacity 0.2s;
-  min-width: 24px;
-  min-height: 24px;
+  transition: background-color 0.2s;
+  /* Touch target minimum. Held at every breakpoint, and sized to sit entirely
+     inside the chip border so it never overlaps a neighbouring chip. */
+  min-width: 44px;
+  min-height: 44px;
+  /* Chip radius (4px) minus its 1px border, so the fill sits flush in the corner. */
+  border-radius: 0 3px 3px 0;
 }
 
 .search-chip-close:hover {
-  opacity: 0.7;
+  background-color: var(--color-red-tint-pale);
 }
 
-.search-chip-close:focus {
-  outline: 2px solid var(--color-grey-550);
-  outline-offset: 2px;
+.search-chip-close:focus-visible {
+  outline: 2px solid var(--color-dawn-blue);
+  outline-offset: -2px;
 }
 
 /* Search Helper Text */
@@ -439,7 +446,7 @@ body {
 
   .search-chip {
     font-size: 14px;
-    padding: 6px 10px;
+    padding: 0 0 0 10px;
   }
 
   .search-chip-text {
