@@ -380,7 +380,11 @@ body {
 }
 
 .search-chip-text {
-  line-height: 1;
+  /* Not line-height: 1. The content box would then be exactly font-size tall and
+     `overflow: hidden` below would clip whatever falls outside it: descenders (j, g)
+     and the diaeresis on ä/ö. The overflow is needed for the ellipsis, so the line
+     box has to be the thing that grows. */
+  line-height: 1.5;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
