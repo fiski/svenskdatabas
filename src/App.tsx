@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
+import Data from './pages/Data';
 import AddBrandForm from './components/AddBrandForm';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Header onAddBrand={() => setShowAddForm(true)} />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/data" element={<Data />} />
           <Route path="/om" element={<About />} />
         </Routes>
         <Footer />
