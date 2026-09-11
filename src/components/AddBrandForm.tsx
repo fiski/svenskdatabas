@@ -206,12 +206,44 @@ export default function AddBrandForm({ onCancel, onSubmit }: AddBrandFormProps) 
   const [emailError, setEmailError] = useState('');
   const [fieldErrors, setFieldErrors] = useState<{ varumarke?: string; kategori?: string; tillverkadISverige?: string }>({});
 
+  const drawerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const focusableSelector =
+      'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+    const getFocusable = () =>
+      drawerRef.current
+        ? Array.from(drawerRef.current.querySelectorAll<HTMLElement>(focusableSelector))
+        : [];
+
+    getFocusable()[0]?.focus();
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onCancel();
+      if (e.key === 'Escape') {
+        onCancel();
+        return;
+      }
+      if (e.key === 'Tab') {
+        const focusable = getFocusable();
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
+
     document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      previouslyFocused?.focus();
+    };
   }, [onCancel]);
 
   const handleAddKalla = () => {
@@ -267,9 +299,9 @@ export default function AddBrandForm({ onCancel, onSubmit }: AddBrandFormProps) 
   return (
     <>
       <div className="add-brand-backdrop" onClick={onCancel} />
-      <div className="add-brand-drawer">
+      <div className="add-brand-drawer" ref={drawerRef} role="dialog" aria-modal="true" aria-labelledby="add-brand-drawer-title">
         <div className="add-brand-drawer-header">
-          <h2 className="add-brand-drawer-title">Lägg till märke</h2>
+          <h2 className="add-brand-drawer-title" id="add-brand-drawer-title">Lägg till märke</h2>
           <button className="add-brand-drawer-close" onClick={onCancel} aria-label="Stäng">✕</button>
         </div>
 
