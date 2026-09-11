@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { ArrowUpDown, ArrowUpAZ, ArrowDownZA } from 'lucide-react';
 import StatusBadge from './StatusBadge';
 import KoncernstrukturTree from './KoncernstrukturTree';
@@ -82,63 +82,66 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort, s
   const renderRow = (brand: Brand) => {
     const isExpanded = expandedRows.has(brand.id);
     const isEditing = editingBrandId === brand.id;
+    const detailsId = `brand-details-${brand.id}`;
 
     return (
-      <div key={brand.id} className="row-container">
-        {/* Main Row */}
-        <div
+      <Fragment key={brand.id}>
+        <tr
           className={`table-row ${isExpanded ? 'expanded' : ''}`}
           onClick={() => toggleRow(brand.id)}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              toggleRow(brand.id);
-            }
-          }}
         >
-          <div className="table-expand-cell">
-            <svg
-              className={`expand-icon ${isExpanded ? 'expanded' : ''}`}
-              viewBox="0 0 16 16"
-              fill="none"
-              aria-hidden="true"
+          <td className="table-expand-cell">
+            <button
+              type="button"
+              className="expand-button"
+              aria-expanded={isExpanded}
+              aria-controls={detailsId}
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleRow(brand.id);
+              }}
             >
-              <path
-                d="M4 6L8 10L12 6"
-                stroke="#161616"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <div className="table-cell" data-label="Varumärke">
-            {brand.varumärke}
-          </div>
-          <div className="table-cell" data-label="Kategori">
-            {brand.kategori}
-          </div>
-          <div className="table-cell" data-label="Tillverkad i Sverige">
+              <svg
+                className={`expand-icon ${isExpanded ? 'expanded' : ''}`}
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 6L8 10L12 6"
+                  stroke="#161616"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span className="sr-only">
+                {isExpanded ? `Dölj detaljer om ${brand.varumärke}` : `Visa detaljer om ${brand.varumärke}`}
+              </span>
+            </button>
+          </td>
+          <td className="table-cell">{brand.varumärke}</td>
+          <td className="table-cell">{brand.kategori}</td>
+          <td className="table-cell">
             <StatusBadge status={brand.tillverkadISverige} />
-          </div>
-          <div className="table-cell" data-label="Mer info">
+          </td>
+          <td className="table-cell">
             <span className="more-info-text">Visa mer info</span>
-          </div>
-        </div>
+          </td>
+        </tr>
 
         {/* Expanded Section */}
         {isExpanded && (
-          isEditing ? (
-            <BrandSuggestionForm
-              brand={brand}
-              onCancel={() => setEditingBrandId(null)}
-              onSubmit={() => setEditingBrandId(null)}
-            />
-          ) : (
-            <div className="expanded-details">
-              <div className="details-grid">
+          <tr>
+            <td className={isEditing ? undefined : 'expanded-details'} colSpan={5} id={detailsId}>
+              {isEditing ? (
+                <BrandSuggestionForm
+                  brand={brand}
+                  onCancel={() => setEditingBrandId(null)}
+                  onSubmit={() => setEditingBrandId(null)}
+                />
+              ) : (
+                <div className="details-grid">
                 <div className="detail-item">
                   <div className="detail-label">Börsnoterat</div>
                   <div className="detail-value">{brand.merInfo.börsnoterat}</div>
@@ -229,10 +232,11 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort, s
                   </button>
                 </div>
               </div>
-            </div>
-          )
+              )}
+            </td>
+          </tr>
         )}
-      </div>
+      </Fragment>
     );
   };
 
@@ -252,92 +256,85 @@ export default function DataTable({ brands, sortColumn, sortDirection, onSort, s
     }
 
     return groups.map(({ letter, brands: groupBrands }) => (
-      <div key={letter} className="letter-section">
-        <div
-          className="letter-section-header"
-          style={{ top: stickyTop ?? 0 }}
-        >
-          {letter}
-        </div>
+      <Fragment key={letter}>
+        <tr>
+          <th
+            scope="rowgroup"
+            colSpan={5}
+            className="letter-section-header"
+            style={{ top: stickyTop ?? 0 }}
+          >
+            {letter}
+          </th>
+        </tr>
         {groupBrands.map((brand) => renderRow(brand))}
-      </div>
+      </Fragment>
     ));
   };
 
+  const sortAriaLabel = (column: SortColumn, label: string) =>
+    `Sortera efter ${label} ${
+      sortColumn === column
+        ? sortDirection === 'asc' ? '(stigande)' : '(fallande)'
+        : ''
+    }`;
+
+  const sortAriaSort = (column: SortColumn): 'ascending' | 'descending' | 'none' =>
+    sortColumn === column ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none';
+
   return (
-    <div className="data-table">
-      {/* Table Header */}
-      <div className="table-header">
-        <div className="table-expand-cell"></div>
+    <table className="data-table">
+      <caption className="sr-only">
+        Svenska varumärken: kategori, tillverkningsland och ägarstruktur
+      </caption>
+      <thead>
+        <tr className="table-header">
+          <th scope="col" className="table-expand-cell">
+            <span className="sr-only">Expandera rad</span>
+          </th>
 
-        <div
-          className={`table-header-cell sortable ${sortColumn === 'varumärke' ? 'sorted' : ''}`}
-          onClick={() => onSort('varumärke')}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              onSort('varumärke');
-            }
-          }}
-          aria-label={`Sortera efter varumärke ${
-            sortColumn === 'varumärke'
-              ? sortDirection === 'asc' ? '(stigande)' : '(fallande)'
-              : ''
-          }`}
-        >
-          <span>Varumärke</span>
-          {getSortIcon('varumärke')}
-        </div>
+          <th scope="col" className="table-header-th" aria-sort={sortAriaSort('varumärke')}>
+            <button
+              type="button"
+              className={`table-header-cell sortable ${sortColumn === 'varumärke' ? 'sorted' : ''}`}
+              onClick={() => onSort('varumärke')}
+              aria-label={sortAriaLabel('varumärke', 'varumärke')}
+            >
+              <span>Varumärke</span>
+              {getSortIcon('varumärke')}
+            </button>
+          </th>
 
-        <div
-          className={`table-header-cell sortable ${sortColumn === 'kategori' ? 'sorted' : ''}`}
-          onClick={() => onSort('kategori')}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              onSort('kategori');
-            }
-          }}
-          aria-label={`Sortera efter kategori ${
-            sortColumn === 'kategori'
-              ? sortDirection === 'asc' ? '(stigande)' : '(fallande)'
-              : ''
-          }`}
-        >
-          <span>Kategori</span>
-          {getSortIcon('kategori')}
-        </div>
+          <th scope="col" className="table-header-th" aria-sort={sortAriaSort('kategori')}>
+            <button
+              type="button"
+              className={`table-header-cell sortable ${sortColumn === 'kategori' ? 'sorted' : ''}`}
+              onClick={() => onSort('kategori')}
+              aria-label={sortAriaLabel('kategori', 'kategori')}
+            >
+              <span>Kategori</span>
+              {getSortIcon('kategori')}
+            </button>
+          </th>
 
-        <div
-          className={`table-header-cell sortable ${sortColumn === 'tillverkadISverige' ? 'sorted' : ''}`}
-          onClick={() => onSort('tillverkadISverige')}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              onSort('tillverkadISverige');
-            }
-          }}
-          aria-label={`Sortera efter tillverkad i Sverige ${
-            sortColumn === 'tillverkadISverige'
-              ? sortDirection === 'asc' ? '(stigande)' : '(fallande)'
-              : ''
-          }`}
-        >
-          <span>Tillverkad i Sverige</span>
-          {getSortIcon('tillverkadISverige')}
-        </div>
+          <th scope="col" className="table-header-th" aria-sort={sortAriaSort('tillverkadISverige')}>
+            <button
+              type="button"
+              className={`table-header-cell sortable ${sortColumn === 'tillverkadISverige' ? 'sorted' : ''}`}
+              onClick={() => onSort('tillverkadISverige')}
+              aria-label={sortAriaLabel('tillverkadISverige', 'tillverkad i Sverige')}
+            >
+              <span>Tillverkad i Sverige</span>
+              {getSortIcon('tillverkadISverige')}
+            </button>
+          </th>
 
-        <div className="table-header-cell">Mer info</div>
-      </div>
+          <th scope="col" className="table-header-cell">Mer info</th>
+        </tr>
+      </thead>
 
       {/* Table Body */}
-      {renderRows()}
-    </div>
+      <tbody>{renderRows()}</tbody>
+    </table>
   );
 }

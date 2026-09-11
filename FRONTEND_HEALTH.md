@@ -8,7 +8,6 @@ Loaded on demand, like `BRAND_RESEARCH.md` — not part of always-on context.
 
 ## Open: HTML structure and accessibility
 
-- [ ] **The data table is not a table.** `DataTable.tsx` is built entirely from `<div>`s with `data-label` attributes — there is no `<table>`, `<thead>`, `<th scope>`, or `<caption>` anywhere in `src/`. It looks right, but screen readers get no row/column relationships and the sortable columns announce nothing. On a site whose entire purpose is a queryable dataset, this is the biggest semantic gap. `CLAUDE.md`'s "semantic HTML structure" claim holds for header/main/footer and not for the table. A real `<table>` with `scope` and `aria-sort` would also keep the responsive card layout if the `data-label` pattern moves to `td::before`.
 - [ ] **The modal is not announced as a dialog.** `AddBrandForm` handles `Escape` and has a click-to-dismiss backdrop, but no `role="dialog"`, `aria-modal="true"`, `aria-labelledby`, or focus trap, so keyboard users can tab into the page behind it and screen readers do not learn that a dialog opened.
 - [ ] **Group labels use `<label>` where `<fieldset>`/`<legend>` belongs.** `BrandSuggestionForm` has 12 `<label>` for 7 `htmlFor` and `AddBrandForm` has 16 for 10. The unmatched ones label *groups* of controls (`Tillverkad i Sverige`, `Tillverkningsländer`, `Källor (länkar)`, `Nuvarande koncernstruktur`), so they point at nothing. A bare `<label>` with no `for` is inert.
 - [ ] **Heading level skip on the home page.** `h1` in `Hero`, then the footer's `h3`, with no `h2` between. `About.tsx` is correctly nested, so this is home-only.
@@ -31,6 +30,10 @@ Loaded on demand, like `BRAND_RESEARCH.md` — not part of always-on context.
 - [ ] Twitter tags use `property=` where the spec expects `name=`. Works in practice; cosmetic.
 
 ---
+
+## Done 2026-09-11
+
+- [x] **The data table is now a real `<table>`.** `DataTable.tsx` was entirely `<div>`s with inert `data-label` attributes (nothing in CSS ever read them — the responsive card layout is actually done with CSS Grid + `nth-child`, not `data-label`/`::before` as originally guessed above). Converted to `<table>`/`<thead>`/`<tbody>`/`<th scope="col">` with `aria-sort` on the sortable headers (each now a real `<button>` inside the `<th>`, not a `<div role="button">`), a visually-hidden `<caption>` (new `.sr-only` utility in `index.css`), and `<th scope="rowgroup" colSpan={5}>` for the A/B/C letter dividers — `rowgroup` is the spec-defined scope value for a header that introduces the rows below it. The expand/collapse toggle is now a real `<button aria-expanded aria-controls>` in the first cell; the row `<tr>` keeps its `onClick` for click-anywhere convenience, with the button calling `stopPropagation` so it doesn't double-fire. Expanded content became a sibling `<tr><td colSpan={5}>` instead of a floating div. All existing class names were kept and re-targeted onto the real elements, so the CSS (including the mobile grid layout) needed no rewriting beyond that. Verified with `tsc`, `npm run build`, and Chrome-headless DOM dump + screenshots at desktop and 390px widths — layout is pixel-identical to before. Dropped in the same pass: the dead `data-label` attributes and the now-unnecessary `.row-container`/`.letter-section` wrapper divs. Not touched: dialog semantics, fieldset/legend, and everything else below.
 
 ## Done 2026-08-04
 

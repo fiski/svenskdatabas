@@ -79,6 +79,20 @@
   box-sizing: border-box;
 }
 
+/* Visually hidden but present for screen readers (e.g. table captions,
+   icon-only button labels) — the standard clip-based sr-only pattern. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Sweden Sans Font Face */
 @font-face {
   font-family: 'Sweden Sans';
@@ -481,6 +495,7 @@ body {
 /* Data Table */
 .data-table {
   width: 100%;
+  border-collapse: collapse;
 }
 
 .table-header {
@@ -492,7 +507,12 @@ body {
 
 .table-header-cell {
   flex: 1;
+  width: 100%;
   padding: 16px;
+  border: 0;
+  background: none;
+  font: inherit;
+  text-align: left;
   font-size: 18px;
   font-weight: 700;
   color: var(--color-dawn-blue);
@@ -500,7 +520,17 @@ body {
   letter-spacing: 0.16px;
 }
 
-/* Sortable Table Headers */
+/* Wraps a sortable header's inner <button class="table-header-cell">; the
+   <th> carries the flex sizing so it lines up with the <td> columns below,
+   while the button inside carries the padding/typography, unchanged from
+   when this was a single clickable div. */
+.table-header-th {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Sortable Table Headers. The sortable state (aria-sort) lives on the
+   <th> itself; this class styles the <button> that fills it. */
 .table-header-cell.sortable {
   cursor: pointer;
   user-select: none;
@@ -514,7 +544,7 @@ body {
   background-color: var(--color-grey-75);
 }
 
-.table-header-cell.sortable:focus {
+.table-header-cell.sortable:focus-visible {
   outline: 2px solid var(--color-dawn-blue);
   outline-offset: -2px;
 }
@@ -539,28 +569,25 @@ body {
   align-items: center;
 }
 
-/* Letter section group wrapper */
-.letter-section {
-  position: relative;
+.table-expand-cell .expand-button {
+  width: 100%;
+  height: 100%;
 }
 
-/* Sticky letter header */
+/* Sticky letter header (a <th scope="rowgroup"> introducing the rows below) */
 .letter-section-header {
   position: sticky;
   z-index: 10;
+  width: 100%;
   background-color: var(--color-pale-winter-grey-2);
   padding: 6px 0 4px 0;
   font-size: 20px;
   font-weight: 400;
   color: var(--color-grey-500);
   line-height: 1;
+  text-align: left;
   user-select: none;
   border-bottom: 1px solid var(--color-grey-200);
-}
-
-/* Row container */
-.row-container {
-  width: 100%;
 }
 
 .table-row {
