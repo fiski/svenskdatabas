@@ -70,6 +70,27 @@ export const brandType = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'hallbarhetsTaggar',
+      title: 'Hållbarhetstaggar',
+      description:
+        'Teman som varumärkets hållbarhetsarbete faktiskt omfattar, enligt texten i Hållbarhetsfokus. Visas som ikoner i tabellen.',
+      type: 'array',
+      of: [{ type: 'string' }],
+      options: {
+        list: [
+          { title: 'Certifiering', value: 'certifiering' },
+          { title: 'Materialval', value: 'materialval' },
+          { title: 'Klimatmål', value: 'klimatmal' },
+          { title: 'Cirkularitet', value: 'cirkularitet' },
+          { title: 'Förnybar energi', value: 'energi' },
+          { title: 'Spårbarhet', value: 'sparbarhet' },
+          { title: 'Kemikalier', value: 'kemikalier' },
+          { title: 'Djurvälfärd', value: 'djurvalfard' },
+          { title: 'Förpackning', value: 'forpackning' },
+        ],
+      },
+    }),
+    defineField({
       name: 'webbplats',
       title: 'Webbplats',
       type: 'url',

@@ -91,6 +91,8 @@ The priority order above is by *authority*. This is by *reachability* — severa
 | `tillverkningslander` | Company about page, press releases, product labels |
 | `intro` | Write 1–2 sentences: founded year, product type, location. **No em or en dashes** — see the house style rule below |
 | `hallbarhetsFokus` | Sustainability page on company website. **No em or en dashes** |
+| `hallbarhetsTaggar` | Fixed list only (see below) — pick the themes `hallbarhetsFokus` actually supports; omit if `hallbarhetsFokus` is omitted |
+| `webbplats` | The brand's own website (home page, not a specific product page) |
 | `kallor` | The source URL you used for each key claim (ownership, börsnoterat, manufacturing) — record as `{url, label}`, label = the claim |
 | `senastVerifierad` | Today's date (`YYYY-MM-DD`) — the day you verified the facts |
 | `koncern.moderbolag` | allabolag.se: "Moderbolag" under company info |
@@ -110,6 +112,9 @@ The priority order above is by *authority*. This is by *reachability* — severa
 Two traps when clearing dashes:
 - **Don't silently alter a quotation.** Massproductions' `hallbarhetsFokus` quoted a product-page label containing a dash (`"CO2 Impact – Total Climate Footprint"`); the fix was to describe the label in prose rather than reword someone else's words inside quote marks.
 - **Find them with GROQ, not by reading.** `count(*[_type=="brand" && length(string::split(intro, "—")) > 1])` works; `intro match "*—*"` does not, because the tokenizer strips punctuation. Run it for both dash characters and both fields.
+
+### `hallbarhetsTaggar`
+Fixed list only — do not invent new values: `certifiering`, `materialval`, `klimatmal`, `cirkularitet`, `energi`, `sparbarhet`, `kemikalier`, `djurvalfard`, `forpackning`. Each tag must be directly supported by a claim in `hallbarhetsFokus` — don't tag a theme the text doesn't actually make.
 
 ---
 
@@ -268,6 +273,8 @@ mcp__Sanity__create_documents_from_json
     tillverkningslander: ["Sverige"],         // Swedish country NAMES
     intro: "...",                             // 1–2 sentences, plain text
     hallbarhetsFokus: "...",                  // omit if none found
+    hallbarhetsTaggar: ["energi", "forpackning"], // omit if hallbarhetsFokus omitted; values from the fixed list above
+    webbplats: "https://brand-site.se",       // the brand's own website
     kallor: [                                 // the sources you used, one per key claim
       { url: "https://...", label: "Ägarstruktur" },
       { url: "https://...", label: "Tillverkning" }
@@ -306,6 +313,8 @@ Before publishing, confirm:
 - [ ] Existing koncern search performed (§5) — no duplicate created
 - [ ] Ownership data is current (recency check done)
 - [ ] `intro` is 1–2 plain-text sentences
+- [ ] `webbplats` set to the brand's own site
+- [ ] `hallbarhetsTaggar` only set when `hallbarhetsFokus` is set, and only tags it actually supports
 - [ ] Brand published (not left as draft) and verified via §7 Step 4
 
 ---
