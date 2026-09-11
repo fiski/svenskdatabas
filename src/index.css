@@ -65,6 +65,69 @@
   --color-link: #0067ff;
   --color-link-hover: #0052cc;
 
+  /* ==========================================================================
+     Semantic colour tokens
+     --------------------------------------------------------------------------
+     Role-first aliases over the primitive palette above. Every value here
+     resolves to a primitive already declared above; this layer exists so
+     call sites say what a colour *means* (text-primary, border-focus,
+     status-error-bg) rather than which palette swatch it happens to use.
+     Several primitives serve more than one role depending on the property
+     or selector they appear on (--color-dawn-blue is both heading text and
+     a focus ring; --color-white is both a raised surface and text-on-color);
+     each such role gets its own semantic token so re-colouring one role can
+     never accidentally re-colour the other.
+     ========================================================================== */
+
+  /* Text */
+  --color-text-primary: var(--color-grey-900);
+  --color-text-secondary: var(--color-grey-800);
+  --color-text-tertiary: var(--color-grey-700);
+  --color-text-muted: var(--color-grey-650);
+  --color-text-subtle: var(--color-grey-600);
+  --color-text-faint: var(--color-grey-500);
+  --color-text-caption: var(--color-grey-400);
+  --color-text-placeholder: var(--color-mauve);
+  --color-text-emphasis: var(--color-dawn-blue);
+  --color-text-brand: var(--color-sweden-blue);
+  --color-text-accent: var(--color-blue-shade);
+  --color-text-danger: var(--color-red-shade-2);
+  --color-text-required: var(--color-red-error);
+  --color-text-link: var(--color-link);
+  --color-text-on-color: var(--color-white);
+  --color-text-on-brand: var(--color-sweden-yellow);
+
+  /* Border */
+  --color-border-strong: var(--color-grey-650);
+  --color-border-default: var(--color-grey-550);
+  --color-border-subtle: var(--color-grey-300);
+  --color-border-faint: var(--color-grey-200);
+  --color-border-brand: var(--color-sweden-blue);
+  --color-border-focus: var(--color-dawn-blue);
+  --color-border-active: var(--color-dawn-blue);
+
+  /* Surface */
+  --color-surface-page: var(--color-pale-winter-grey-2);
+  --color-surface-raised: var(--color-white);
+  --color-surface-hover: var(--color-grey-75);
+  --color-surface-sunken: var(--color-grey-50);
+  --color-surface-inset: var(--color-grey-25);
+  --color-surface-chip: var(--color-grey-150);
+  --color-surface-hover-accent: var(--color-blue-grey-pale);
+  --color-surface-inverse: var(--color-grey-900);
+  --color-surface-brand: var(--color-sweden-blue);
+  --color-surface-emphasis: var(--color-dawn-blue);
+
+  /* Status: Ja = success, Nej = error, Delvis = partial */
+  --color-status-success-text: var(--color-green-shade);
+  --color-status-success-bg: var(--color-green-tint);
+  --color-status-success-bg-subtle: var(--color-green-tint-pale);
+  --color-status-error-text: var(--color-red-shade);
+  --color-status-error-bg: var(--color-red-tint);
+  --color-status-error-bg-subtle: var(--color-red-tint-pale);
+  --color-status-partial-text: var(--color-blue-shade);
+  --color-status-partial-bg: var(--color-blue-tint);
+
   /* Type: fluid display headings. Tuned so the 36px floor holds at and below 600px
      and the 64px ceiling lands at 1400px, which keeps the longest heading on one
      line from 600px up. The rem term keeps the reader's browser font-size setting
@@ -124,7 +187,7 @@
 /* Base Styles */
 body {
   font-family: 'Sweden Sans', Arial, sans-serif;
-  background-color: var(--color-pale-winter-grey-2);
+  background-color: var(--color-surface-page);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -160,7 +223,7 @@ body {
 
 /* Header */
 .header {
-  background-color: var(--color-pale-winter-grey-2);
+  background-color: var(--color-surface-page);
   position: relative;
   z-index: 50;
 }
@@ -193,29 +256,29 @@ body {
    Targets both classes so it out-specifies the later .add-brand-btn base. */
 .add-brand-btn.secondary-btn {
   background: transparent;
-  border-color: var(--color-sweden-blue);
-  color: var(--color-sweden-blue);
+  border-color: var(--color-border-brand);
+  color: var(--color-text-brand);
   text-decoration: none;
   transition: background 0.15s ease, color 0.15s ease;
 }
 
 .add-brand-btn.secondary-btn:hover {
-  background: var(--color-sweden-blue);
-  color: var(--color-white);
+  background: var(--color-surface-brand);
+  color: var(--color-text-on-color);
   opacity: 1;
 }
 
 .header-title {
   font-size: 20px;
   line-height: 30px;
-  color: var(--color-dawn-blue);
+  color: var(--color-text-emphasis);
   font-weight: 700;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .header-title:hover {
-  color: var(--color-sweden-blue);
+  color: var(--color-text-brand);
 }
 
 /* Mobile: Header typography */
@@ -272,8 +335,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  color: var(--color-dawn-blue);
-  
+  color: var(--color-text-emphasis);
+
 }
 
 .hero-title {
@@ -315,7 +378,7 @@ body {
   flex-direction: column;
   width: 100%;
   margin-bottom: 32px;
-  background-color: var(--color-pale-winter-grey-2);
+  background-color: var(--color-surface-page);
   z-index: 40;
   padding-top: 8px;
   padding-bottom: 16px;
@@ -334,13 +397,13 @@ body {
   gap: 24px;
   max-width: 595px;
   padding: 16px 0;
-  border-bottom: 1px solid var(--color-grey-550);
-  background-color: var(--color-pale-winter-grey-2);
+  border-bottom: 1px solid var(--color-border-default);
+  background-color: var(--color-surface-page);
   transition: border-color 0.2s ease;
 }
 
 .search:focus-within {
-  border-bottom-color: var(--color-dawn-blue);
+  border-bottom-color: var(--color-border-focus);
 }
 
 .search-icon {
@@ -356,17 +419,17 @@ body {
   outline: none;
   font-family: 'Sweden Sans', Arial, sans-serif;
   font-size: 32px;
-  color: var(--color-grey-900);
+  color: var(--color-text-primary);
   font-weight: 400;
 }
 
 .search-input::placeholder {
-  color: var(--color-mauve);
+  color: var(--color-text-placeholder);
   transition: color 0.2s ease;
 }
 
 .search-input:hover::placeholder {
-  color: var(--color-grey-650);
+  color: var(--color-text-muted);
 }
 
 /* Search Chips Container */
@@ -385,11 +448,11 @@ body {
   /* No vertical or right padding: the close button stretches to own the chip's
      full height and right edge, which is what carries its 44px touch target. */
   padding: 0 0 0 12px;
-  background-color: var(--color-white);
-  border: 1px solid var(--color-grey-550);
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border-default);
   border-radius: 4px;
   font-size: 16px;
-  color: var(--color-grey-900);
+  color: var(--color-text-primary);
   font-weight: 400;
 }
 
@@ -414,7 +477,7 @@ body {
   border: none;
   cursor: pointer;
   padding: 0;
-  color: var(--color-red-shade-2);
+  color: var(--color-text-danger);
   font-size: 20px;
   font-weight: 700;
   line-height: 1;
@@ -428,11 +491,11 @@ body {
 }
 
 .search-chip-close:hover {
-  background-color: var(--color-red-tint-pale);
+  background-color: var(--color-status-error-bg-subtle);
 }
 
 .search-chip-close:focus-visible {
-  outline: 2px solid var(--color-dawn-blue);
+  outline: 2px solid var(--color-border-focus);
   outline-offset: -2px;
 }
 
@@ -441,7 +504,7 @@ body {
   margin-top: 12px;
   font-size: 14px;
   font-weight: 300;
-  color: var(--color-grey-650);
+  color: var(--color-text-muted);
   line-height: 1.5;
   max-width: 600px;
 }
@@ -515,7 +578,7 @@ body {
   text-align: left;
   font-size: 18px;
   font-weight: 700;
-  color: var(--color-dawn-blue);
+  color: var(--color-text-emphasis);
   line-height: 18px;
   letter-spacing: 0.16px;
 }
@@ -541,16 +604,16 @@ body {
 }
 
 .table-header-cell.sortable:hover {
-  background-color: var(--color-grey-75);
+  background-color: var(--color-surface-hover);
 }
 
 .table-header-cell.sortable:focus-visible {
-  outline: 2px solid var(--color-dawn-blue);
+  outline: 2px solid var(--color-border-focus);
   outline-offset: -2px;
 }
 
 .table-header-cell.sortable.sorted {
-  color: var(--color-blue-shade);
+  color: var(--color-text-accent);
   font-weight: 700;
 }
 
@@ -579,15 +642,15 @@ body {
   position: sticky;
   z-index: 10;
   width: 100%;
-  background-color: var(--color-pale-winter-grey-2);
+  background-color: var(--color-surface-page);
   padding: 6px 0 4px 0;
   font-size: 20px;
   font-weight: 400;
-  color: var(--color-grey-500);
+  color: var(--color-text-faint);
   line-height: 1;
   text-align: left;
   user-select: none;
-  border-bottom: 1px solid var(--color-grey-200);
+  border-bottom: 1px solid var(--color-border-faint);
 }
 
 .table-row {
@@ -595,17 +658,17 @@ body {
   align-items: center;
   width: 100%;
   min-height: 64px;
-  border-top: 1px solid var(--color-grey-300);
+  border-top: 1px solid var(--color-border-subtle);
   transition: background-color 0.15s ease;
   cursor: pointer;
 }
 
 .table-row:hover {
-  background-color: var(--color-grey-50);
+  background-color: var(--color-surface-sunken);
 }
 
 .table-row.expanded {
-  background-color: var(--color-grey-50);
+  background-color: var(--color-surface-sunken);
 }
 
 .table-cell {
@@ -613,7 +676,7 @@ body {
   padding: 16px;
   font-size: 16px;
   font-weight: 400;
-  color: var(--color-grey-800);
+  color: var(--color-text-secondary);
   line-height: 18px;
   letter-spacing: 0.16px;
 }
@@ -651,7 +714,7 @@ body {
     grid-row: 1;
     padding: 0 8px;
     font-size: 18px;
-    color: var(--color-dawn-blue);
+    color: var(--color-text-emphasis);
   }
 
   /* Category: bottom row, middle column, secondary */
@@ -660,7 +723,7 @@ body {
     grid-row: 2;
     padding: 0 8px;
     font-size: 14px;
-    color: var(--color-grey-650);
+    color: var(--color-text-muted);
   }
 
   /* Status badge: top row, right column */
@@ -715,19 +778,19 @@ body {
 }
 
 .status-badge.ja {
-  background-color: var(--color-green-tint);
-  color: var(--color-green-shade);
+  background-color: var(--color-status-success-bg);
+  color: var(--color-status-success-text);
   font-weight: 700;
 }
 
 .status-badge.nej {
-  background-color: var(--color-red-tint);
-  color: var(--color-red-shade);
+  background-color: var(--color-status-error-bg);
+  color: var(--color-status-error-text);
 }
 
 .status-badge.delvis {
-  background-color: var(--color-blue-tint);
-  color: var(--color-blue-shade);
+  background-color: var(--color-status-partial-bg);
+  color: var(--color-status-partial-text);
   font-weight: 700;
 }
 
@@ -741,20 +804,20 @@ body {
 }
 
 .status-badge.dot.ja {
-  background-color: var(--color-green-shade);
+  background-color: var(--color-status-success-text);
 }
 
 .status-badge.dot.nej {
-  background-color: var(--color-red-shade);
+  background-color: var(--color-status-error-text);
 }
 
 .status-badge.dot.delvis {
-  background-color: var(--color-blue-shade);
+  background-color: var(--color-status-partial-text);
 }
 
 /* More Info Text */
 .more-info-text {
-  color: var(--color-grey-800);
+  color: var(--color-text-secondary);
   font-family: 'Sweden Sans', Arial, sans-serif;
   font-size: 16px;
   text-decoration: none;
@@ -763,8 +826,8 @@ body {
 /* Expanded Details */
 .expanded-details {
   padding: 24px 64px;
-  background-color: var(--color-grey-50);
-  border-top: 1px solid var(--color-grey-300);
+  background-color: var(--color-surface-sunken);
+  border-top: 1px solid var(--color-border-subtle);
 }
 
 .details-grid {
@@ -786,13 +849,13 @@ body {
 .detail-label {
   font-size: 14px;
   font-weight: 700;
-  color: var(--color-dawn-blue);
+  color: var(--color-text-emphasis);
 }
 
 .detail-value {
   font-size: 14px;
   font-weight: 400;
-  color: var(--color-grey-800);
+  color: var(--color-text-secondary);
 }
 
 /*
@@ -807,7 +870,7 @@ body {
   border-radius: 3px;
   font-size: 14px;
   line-height: 1.45;
-  color: var(--color-link);
+  color: var(--color-text-link);
   background-color: transparent;
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -817,12 +880,12 @@ body {
 
 .text-link:hover,
 .text-link:focus-visible {
-  color: var(--color-white);
-  background-color: var(--color-link);
+  color: var(--color-text-on-color);
+  background-color: var(--color-text-link);
 }
 
 .text-link:focus-visible {
-  outline: 2px solid var(--color-dawn-blue);
+  outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
 }
 
@@ -842,7 +905,7 @@ body {
 .intro-text {
   font-size: 16px;
   font-weight: 400;
-  color: var(--color-grey-800);
+  color: var(--color-text-secondary);
   line-height: 1.5;
   max-width: 800px;
 }
@@ -875,13 +938,13 @@ body {
 .kalla-tag {
   font-size: 14px;
   font-weight: 500;
-  color: var(--color-dawn-blue);
+  color: var(--color-text-emphasis);
 }
 
 .senast-verifierad {
   margin-top: 8px;
   font-size: 13px;
-  color: var(--color-grey-700);
+  color: var(--color-text-tertiary);
 }
 
 /* Mobile: Single-column expanded details */
@@ -919,7 +982,7 @@ body {
 .koncernstruktur-header {
   font-size: 14px;
   font-weight: 700;
-  color: var(--color-dawn-blue);
+  color: var(--color-text-emphasis);
   letter-spacing: 0.28px;
   /* text-transform: uppercase; */
 }
@@ -934,7 +997,7 @@ body {
 
 /* Tree Level Container - creates vertical line via border-left */
 .tree-level-container {
-  border-left: 1px solid var(--color-grey-300);
+  border-left: 1px solid var(--color-border-subtle);
   padding-left: 20px;
   margin-top: 16px;
 }
@@ -966,7 +1029,7 @@ body {
 .node-label {
   font-size: 12px;
   font-weight: 400;
-  color: var(--color-dawn-blue);
+  color: var(--color-text-emphasis);
   text-transform: uppercase;
   letter-spacing: 0.24px;
 }
@@ -978,7 +1041,7 @@ body {
   gap: 8px;
   font-size: 16px;
   font-weight: 400;
-  color: var(--color-grey-800);
+  color: var(--color-text-secondary);
   max-width: 45ch;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -997,7 +1060,7 @@ body {
   gap: 8px;
   font-size: 16px;
   font-weight: 300;
-  color: var(--color-grey-800);
+  color: var(--color-text-secondary);
 }
 
 /* Main brand (current brand being viewed) */
@@ -1031,7 +1094,7 @@ body {
 .single-brand-display p {
   font-size: 14px;
   font-weight: 400;
-  color: var(--color-grey-800);
+  color: var(--color-text-secondary);
   font-style: italic;
   margin: 0;
 }
@@ -1091,7 +1154,7 @@ body {
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: 0.035em;
-  color: var(--color-dawn-blue);
+  color: var(--color-text-emphasis);
   margin-bottom: 16px;
 }
 
@@ -1099,14 +1162,14 @@ body {
   font-size: 24px;
   font-weight: 300;
   line-height: 32px;
-  color: var(--color-grey-800);
+  color: var(--color-text-secondary);
   max-width: 800px;
 }
 
 .about-heading {
   font-size: 32px;
   font-weight: 700;
-  color: var(--color-dawn-blue);
+  color: var(--color-text-emphasis);
   margin-bottom: 16px;
   line-height: 1.3;
 }
@@ -1115,7 +1178,7 @@ body {
   font-size: 18px;
   font-weight: 400;
   line-height: 28px;
-  color: var(--color-grey-800);
+  color: var(--color-text-secondary);
   margin-bottom: 16px;
 }
 
@@ -1133,7 +1196,7 @@ body {
   font-size: 18px;
   font-weight: 400;
   line-height: 28px;
-  color: var(--color-grey-800);
+  color: var(--color-text-secondary);
   margin-bottom: 8px;
 }
 
@@ -1167,18 +1230,18 @@ body {
 }
 
 .category-label.category-ja {
-  background-color: var(--color-green-tint);
-  color: var(--color-green-shade);
+  background-color: var(--color-status-success-bg);
+  color: var(--color-status-success-text);
 }
 
 .category-label.category-nej {
-  background-color: var(--color-red-tint);
-  color: var(--color-red-shade);
+  background-color: var(--color-status-error-bg);
+  color: var(--color-status-error-text);
 }
 
 .category-label.category-delvis {
-  background-color: var(--color-blue-tint);
-  color: var(--color-blue-shade);
+  background-color: var(--color-status-partial-bg);
+  color: var(--color-status-partial-text);
 }
 
 .category-item p {
@@ -1196,24 +1259,24 @@ body {
 }
 
 .email-link:hover {
-  background-color: var(--color-white);
-  color: var(--color-blue-shade);
+  background-color: var(--color-surface-raised);
+  color: var(--color-text-accent);
 }
 
 .email-link:focus {
-  outline: 2px solid var(--color-dawn-blue);
+  outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
 }
 
 .email-link:active {
-  background-color: var(--color-grey-50);
-  color: var(--color-blue-shade);
+  background-color: var(--color-surface-sunken);
+  color: var(--color-text-accent);
 }
 
 .copied-message {
   display: block;
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
+  background-color: var(--color-surface-inverse);
+  color: var(--color-text-on-color);
   font-weight: 500;
   font-size: 16px;
   margin-top: 8px;
@@ -1224,20 +1287,20 @@ body {
 
 /* Suggest Change Button */
 .suggest-change-btn {
-  background: var(--color-pale-winter-grey-2);
-  border: 1px solid var(--color-grey-300);
+  background: var(--color-surface-page);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 4px;
   padding: 4px 8px;
   font-size: 12px;
   font-family: 'Sweden Sans', Arial, sans-serif;
-  color: var(--color-grey-800);
+  color: var(--color-text-secondary);
   cursor: pointer;
   transition: background-color 0.15s ease;
   white-space: nowrap;
 }
 
 .suggest-change-btn:hover {
-  background-color: var(--color-grey-75);
+  background-color: var(--color-surface-hover);
 }
 
 .suggest-change-item {
@@ -1254,10 +1317,10 @@ body {
 
 /* Suggestion Form */
 .suggestion-form {
-  background: var(--color-white);
+  background: var(--color-surface-raised);
   padding: 24px 64px;
   padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
-  border-top: 1px solid var(--color-grey-300);
+  border-top: 1px solid var(--color-border-subtle);
 }
 
 @media (max-width: 839px) {
@@ -1269,7 +1332,7 @@ body {
 .suggestion-form-title {
   font-size: 16px;
   font-weight: 700;
-  color: var(--color-dawn-blue);
+  color: var(--color-text-emphasis);
   margin-bottom: 20px;
 }
 
@@ -1296,10 +1359,10 @@ body {
 }
 
 .suggestion-tree-display {
-  border: 1px solid var(--color-grey-550);
+  border: 1px solid var(--color-border-default);
   border-radius: 6px;
   padding: 12px 16px;
-  background: var(--color-grey-25);
+  background: var(--color-surface-inset);
   overflow-y: auto;
   max-height: 320px;
 }
@@ -1311,24 +1374,24 @@ body {
 .suggestion-field label {
   font-size: 14px;
   font-weight: 700;
-  color: var(--color-dawn-blue);
+  color: var(--color-text-emphasis);
 }
 
 .suggestion-required {
-  color: var(--color-red-error);
+  color: var(--color-text-required);
   margin-left: 2px;
 }
 
 .suggestion-helper-text {
   font-size: 12px;
-  color: var(--color-grey-600);
+  color: var(--color-text-subtle);
   font-weight: 400;
   margin-top: 4px;
 }
 
 .suggestion-field-error {
-  color: var(--color-red-shade);
-  background-color: var(--color-red-tint-pale);
+  color: var(--color-status-error-text);
+  background-color: var(--color-status-error-bg-subtle);
   border-radius: 6px;
   padding: 8px 12px;
   font-size: 14px;
@@ -1338,20 +1401,20 @@ body {
 .suggestion-field input,
 .suggestion-field textarea {
   width: 100%;
-  border: 1px solid var(--color-grey-550);
+  border: 1px solid var(--color-border-default);
   border-radius: 6px;
   padding: 10px 14px;
   font-size: 14px;
   font-family: 'Sweden Sans', Arial, sans-serif;
-  color: var(--color-grey-900);
-  background: var(--color-white);
+  color: var(--color-text-primary);
+  background: var(--color-surface-raised);
   transition: border-color 0.15s ease;
 }
 
 .suggestion-field input:focus,
 .suggestion-field textarea:focus {
   outline: none;
-  border-color: var(--color-dawn-blue);
+  border-color: var(--color-border-focus);
 }
 
 .suggestion-field textarea {
@@ -1372,7 +1435,7 @@ body {
   gap: 6px;
   font-size: 14px;
   font-weight: 400;
-  color: var(--color-grey-800);
+  color: var(--color-text-secondary);
   cursor: pointer;
 }
 
@@ -1388,22 +1451,22 @@ body {
   flex-wrap: wrap;
   gap: 6px;
   align-items: center;
-  border: 1px solid var(--color-grey-550);
+  border: 1px solid var(--color-border-default);
   border-radius: 6px;
   padding: 6px 10px;
   min-height: 40px;
-  background: var(--color-white);
+  background: var(--color-surface-raised);
 }
 
 .suggestion-country-chip {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  background: var(--color-grey-150);
+  background: var(--color-surface-chip);
   border-radius: 4px;
   padding: 2px 8px;
   font-size: 13px;
-  color: var(--color-grey-900);
+  color: var(--color-text-primary);
 }
 
 .suggestion-country-chip .chip-remove {
@@ -1411,7 +1474,7 @@ body {
   border: none;
   cursor: pointer;
   font-size: 14px;
-  color: var(--color-grey-800);
+  color: var(--color-text-secondary);
   padding: 0;
   line-height: 1;
   display: flex;
@@ -1419,7 +1482,7 @@ body {
 }
 
 .suggestion-country-chip .chip-remove:hover {
-  color: var(--color-dawn-blue);
+  color: var(--color-text-emphasis);
 }
 
 .suggestion-country-input {
@@ -1430,7 +1493,7 @@ body {
   min-width: 120px;
   flex: 1;
   background: transparent !important;
-  color: var(--color-grey-900);
+  color: var(--color-text-primary);
   font-family: 'Sweden Sans', Arial, sans-serif;
 }
 
@@ -1442,8 +1505,8 @@ body {
 }
 
 .suggestion-submit-btn {
-  background-color: var(--color-dawn-blue);
-  color: var(--color-white);
+  background-color: var(--color-surface-emphasis);
+  color: var(--color-text-on-color);
   border: none;
   border-radius: 6px;
   padding: 12px 24px;
@@ -1465,31 +1528,31 @@ body {
 
 .suggestion-cancel-btn {
   background: transparent;
-  border: 1px solid var(--color-grey-550);
+  border: 1px solid var(--color-border-default);
   border-radius: 6px;
   padding: 12px 24px;
   font-size: 14px;
   font-family: 'Sweden Sans', Arial, sans-serif;
-  color: var(--color-grey-800);
+  color: var(--color-text-secondary);
   cursor: pointer;
   transition: background-color 0.15s ease;
 }
 
 .suggestion-cancel-btn:hover {
-  background-color: var(--color-grey-75);
+  background-color: var(--color-surface-hover);
 }
 
 .suggestion-success {
-  background-color: var(--color-green-tint-pale);
-  color: var(--color-green-shade);
+  background-color: var(--color-status-success-bg-subtle);
+  color: var(--color-status-success-text);
   padding: 16px;
   border-radius: 6px;
   font-size: 15px;
 }
 
 .suggestion-error {
-  color: var(--color-red-shade);
-  background-color: var(--color-red-tint-pale);
+  color: var(--color-status-error-text);
+  background-color: var(--color-status-error-bg-subtle);
   border-radius: 6px;
   padding: 12px;
   font-size: 14px;
@@ -1501,7 +1564,7 @@ body {
   margin-top: 48px;
   font-size: 16px;
   font-weight: 400;
-  color: var(--color-grey-400);
+  color: var(--color-text-caption);
   padding-left: 0.5rem;
 }
 
@@ -1564,8 +1627,8 @@ body {
 
 /* Footer Container */
 .footer {
-  background-color: var(--color-pale-winter-grey-2);
-  border-top: 1px solid var(--color-grey-300);
+  background-color: var(--color-surface-page);
+  border-top: 1px solid var(--color-border-subtle);
   margin-top: 8rem;
 }
 
@@ -1587,14 +1650,14 @@ body {
 .footer-title {
   font-size: 20px;
   font-weight: 700;
-  color: var(--color-dawn-blue);
+  color: var(--color-text-emphasis);
   margin-bottom: 0.5rem;
 }
 
 .footer-description {
   font-size: 14px;
   font-weight: 300;
-  color: var(--color-grey-650);
+  color: var(--color-text-muted);
   line-height: 1.6;
 }
 
@@ -1602,7 +1665,7 @@ body {
   margin-top: 0.5rem;
   font-size: 14px;
   font-weight: 300;
-  color: var(--color-grey-650);
+  color: var(--color-text-muted);
   line-height: 1.6;
 }
 
@@ -1622,29 +1685,29 @@ body {
 .footer-link {
   font-size: 16px;
   font-weight: 400;
-  color: var(--color-grey-650);
+  color: var(--color-text-muted);
   text-decoration: none;
   transition: color 0.2s ease;
   cursor: pointer;
 }
 
 .footer-link:hover {
-  color: var(--color-dawn-blue);
+  color: var(--color-text-emphasis);
 }
 
 .footer-link:focus {
-  outline: 2px solid var(--color-dawn-blue);
+  outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
   border-radius: 2px;
 }
 
 /* Email Link Specific */
 .footer-email {
-  border-bottom: 1px dotted var(--color-grey-650);
+  border-bottom: 1px dotted var(--color-border-strong);
 }
 
 .footer-email:hover {
-  border-bottom-color: var(--color-dawn-blue);
+  border-bottom-color: var(--color-border-active);
 }
 
 /* Copied Notification */
@@ -1654,8 +1717,8 @@ body {
   right: 0;
   margin-top: 0.5rem;
   padding: 0.5rem 0.75rem;
-  background-color: var(--color-grey-900);
-  color: var(--color-white);
+  background-color: var(--color-surface-inverse);
+  color: var(--color-text-on-color);
   font-size: 12px;
   font-weight: 500;
   border-radius: 4px;
@@ -1739,8 +1802,8 @@ body {
 }
 
 .add-brand-btn {
-  background-color: var(--color-sweden-blue);
-  color: var(--color-sweden-yellow);
+  background-color: var(--color-surface-brand);
+  color: var(--color-text-on-brand);
   border: 1px solid transparent;
   border-radius: 6px;
   padding: 10px 20px;
@@ -1769,7 +1832,7 @@ body {
   height: 100dvh;
   width: 480px;
   max-width: 100vw;
-  background: var(--color-white);
+  background: var(--color-surface-raised);
   z-index: 201;
   overflow-y: auto;
   box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
@@ -1782,14 +1845,14 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 20px 24px;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--color-border-subtle);
   flex-shrink: 0;
 }
 
 .add-brand-drawer-title {
   font-size: 20px;
   font-weight: 700;
-  color: var(--color-dawn-blue);
+  color: var(--color-text-emphasis);
   margin: 0;
 }
 
@@ -1798,13 +1861,13 @@ body {
   border: none;
   font-size: 20px;
   cursor: pointer;
-  color: var(--color-grey-800);
+  color: var(--color-text-secondary);
   padding: 8px;
   line-height: 1;
 }
 
 .add-brand-drawer-close:hover {
-  color: var(--color-dawn-blue);
+  color: var(--color-text-emphasis);
 }
 
 @media (max-width: 520px) {
@@ -1840,8 +1903,8 @@ body {
   top: 100%;
   left: 0;
   right: 0;
-  background: var(--color-white);
-  border: 1px solid var(--border-light, var(--color-grey-300));
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 6px;
   max-height: 200px;
   overflow-y: auto;
@@ -1854,15 +1917,15 @@ body {
   padding: 8px 12px;
   font-size: 14px;
   cursor: pointer;
-  color: var(--color-grey-800);
+  color: var(--color-text-secondary);
 }
 
 .country-select-option:hover {
-  background: var(--color-blue-grey-pale);
-  color: var(--color-dawn-blue);
+  background: var(--color-surface-hover-accent);
+  color: var(--color-text-emphasis);
 }
 
 .country-select-option.selected {
   font-weight: 600;
-  color: var(--color-dawn-blue);
+  color: var(--color-text-emphasis);
 }
