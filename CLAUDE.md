@@ -31,6 +31,13 @@ SANITY_DATASET=production
 SANITY_WRITE_TOKEN=<secret — Cloudflare Pages only>
 ```
 
+**Email notifications:** `/api/proposal` and `/api/suggestion` email a summary (with a Studio link) via Resend after a successful write (`functions/_lib/notify.ts`). Optional, skipped silently if unset:
+```
+RESEND_API_KEY=<secret>
+NOTIFY_EMAIL=<recipient>
+NOTIFY_FROM=Brandsfrom <notiser@brandsfrom.se>   # defaults to onboarding@resend.dev until the domain is verified in Resend
+```
+
 ### Field Name Mapping (Sanity → TypeScript)
 Sanity schema fields use ASCII names; the GROQ query in `src/lib/queries.ts` maps them to Swedish display names. This mapping is easy to get wrong:
 

@@ -1,9 +1,10 @@
 import { Ctx, json, mutate, cleanString, cleanStringArray, isValidEmail } from '../_lib/sanity'
+import { sendNotification } from '../_lib/notify'
 
 const STATUS_VALUES = ['Ja', 'Nej', 'Delvis']
 const BORSNOTERAT_VALUES = ['Ja', 'Nej']
 
-export const onRequestPost = async ({ request, env }: Ctx): Promise<Response> => {
+export const onRequestPost = async ({ request, env, waitUntil }: Ctx): Promise<Response> => {
   let body: Record<string, unknown>
   try {
     body = await request.json()
@@ -25,28 +26,52 @@ export const onRequestPost = async ({ request, env }: Ctx): Promise<Response> =>
 
   const borsnoterat = cleanString(body.borsnoterat, 10)
 
-  return mutate(env, [
-    {
-      create: {
-        _type: 'brandProposal',
-        varumarke,
-        kategori,
-        tillverkadISverige,
-        borsnoterat: BORSNOTERAT_VALUES.includes(borsnoterat) ? borsnoterat : '',
-        brandLand: cleanString(body.brandLand, 2),
-        tillverkningslander: cleanStringArray(body.tillverkningslander),
-        moderbolag: cleanString(body.moderbolag, 200),
-        moderbolagLand: cleanString(body.moderbolagLand, 2),
-        agare: cleanString(body.agare, 200),
-        agareLand: cleanString(body.agareLand, 2),
-        intro: cleanString(body.intro),
-        hallbarhetsFokus: cleanString(body.hallbarhetsFokus, 500),
-        kallor: cleanStringArray(body.kallor),
-        kommentarer: cleanString(body.kommentarer),
-        email,
-        submittedAt: new Date().toISOString(),
-        status: 'pending',
-      },
-    },
-  ])
+  const proposal = {
+    _id: crypto.randomUUID(),
+    _type: 'brandProposal',
+    varumarke,
+    kategori,
+    tillverkadISverige,
+    borsnoterat: BORSNOTERAT_VALUES.includes(borsnoterat) ? borsnoterat : '',
+    brandLand: cleanString(body.brandLand, 2),
+    tillverkningslander: cleanStringArray(body.tillverkningslander),
+    moderbolag: cleanString(body.moderbolag, 200),
+    moderbolagLand: cleanString(body.moderbolagLand, 2),
+    agare: cleanString(body.agare, 200),
+    agareLand: cleanString(body.agareLand, 2),
+    intro: cleanString(body.intro),
+    hallbarhetsFokus: cleanString(body.hallbarhetsFokus, 500),
+    kallor: cleanStringArray(body.kallor),
+    kommentarer: cleanString(body.kommentarer),
+    email,
+    submittedAt: new Date().toISOString(),
+    status: 'pending',
+  }
+
+  const res = await mutate(env, [{ create: proposal }])
+  if (res.ok) {
+    waitUntil(
+      sendNotification(env, {
+        subject: `Nytt varumärkesförslag: ${varumarke}`,
+        heading: `Nytt varumärke föreslaget: ${varumarke}`,
+        docId: proposal._id,
+        docType: 'brandProposal',
+        replyTo: email,
+        rows: [
+          ['Kategori', proposal.kategori],
+          ['Tillverkad i Sverige', proposal.tillverkadISverige],
+          ['Tillverkningsländer', proposal.tillverkningslander],
+          ['Moderbolag', proposal.moderbolag],
+          ['Ägare', proposal.agare],
+          ['Börsnoterat', proposal.borsnoterat],
+          ['Om varumärket', proposal.intro],
+          ['Hållbarhetsfokus', proposal.hallbarhetsFokus],
+          ['Källor', proposal.kallor],
+          ['Kommentarer', proposal.kommentarer],
+          ['Skickat av', email],
+        ],
+      }),
+    )
+  }
+  return res
 }

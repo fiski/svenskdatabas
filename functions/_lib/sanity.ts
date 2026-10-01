@@ -2,11 +2,15 @@ export interface Env {
   SANITY_PROJECT_ID: string
   SANITY_DATASET: string
   SANITY_WRITE_TOKEN: string
+  RESEND_API_KEY?: string
+  NOTIFY_EMAIL?: string
+  NOTIFY_FROM?: string
 }
 
 export interface Ctx {
   request: Request
   env: Env
+  waitUntil: (promise: Promise<unknown>) => void
 }
 
 export function json(data: unknown, status = 200): Response {

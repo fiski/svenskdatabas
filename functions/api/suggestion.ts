@@ -1,4 +1,5 @@
 import { Ctx, json, mutate, cleanString, cleanStringArray, isValidEmail } from '../_lib/sanity'
+import { sendNotification } from '../_lib/notify'
 
 const CHANGE_KEYS = [
   'varumarke',
@@ -9,6 +10,26 @@ const CHANGE_KEYS = [
   'koncernNote',
   'kommentarer',
 ] as const
+
+// Free-text additions with no original value to diff against.
+const NOTE_KEYS = ['koncernNote', 'kommentarer', 'kallor']
+
+const FIELD_LABELS: Record<string, string> = {
+  varumarke: 'Varumärke',
+  kategori: 'Kategori',
+  tillverkadISverige: 'Tillverkad i Sverige',
+  tillverkningslander: 'Tillverkningsländer',
+  intro: 'Om varumärket',
+  hallbarhetsFokus: 'Hållbarhetsfokus',
+  koncernNote: 'Koncern',
+  kommentarer: 'Kommentarer',
+  kallor: 'Källor',
+}
+
+function display(value: unknown): string {
+  if (Array.isArray(value)) return value.join(', ')
+  return typeof value === 'string' && value ? value : '(tomt)'
+}
 
 function cleanChanges(value: unknown): Record<string, unknown> {
   const result: Record<string, unknown> = {}
@@ -26,7 +47,7 @@ function cleanChanges(value: unknown): Record<string, unknown> {
   return result
 }
 
-export const onRequestPost = async ({ request, env }: Ctx): Promise<Response> => {
+export const onRequestPost = async ({ request, env, waitUntil }: Ctx): Promise<Response> => {
   let body: Record<string, unknown>
   try {
     body = await request.json()
@@ -45,18 +66,41 @@ export const onRequestPost = async ({ request, env }: Ctx): Promise<Response> =>
     return json({ error: 'Ogiltig e-postadress.' }, 400)
   }
 
-  return mutate(env, [
+  const suggestedChanges = cleanChanges(body.suggestedChanges)
+  const originalValues = cleanChanges(body.originalValues)
+  const docId = crypto.randomUUID()
+
+  const res = await mutate(env, [
     {
       create: {
+        _id: docId,
         _type: 'suggestion',
         brandRef: { _type: 'reference', _ref: brandId },
         brandName,
         email,
-        suggestedChanges: cleanChanges(body.suggestedChanges),
-        originalValues: cleanChanges(body.originalValues),
+        suggestedChanges,
+        originalValues,
         submittedAt: new Date().toISOString(),
         status: 'pending',
       },
     },
   ])
+  if (res.ok) {
+    const changeRows = Object.entries(suggestedChanges).map(([key, value]): [string, string] =>
+      NOTE_KEYS.includes(key)
+        ? [FIELD_LABELS[key], display(value)]
+        : [FIELD_LABELS[key] ?? key, `${display(originalValues[key])}\n→ ${display(value)}`],
+    )
+    waitUntil(
+      sendNotification(env, {
+        subject: `Ändringsförslag: ${brandName}`,
+        heading: `Ändringsförslag för ${brandName}`,
+        docId,
+        docType: 'suggestion',
+        replyTo: email,
+        rows: [...changeRows, ['Skickat av', email]],
+      }),
+    )
+  }
+  return res
 }
