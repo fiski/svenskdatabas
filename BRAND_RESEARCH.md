@@ -202,26 +202,41 @@ Seen repeatedly; check for these whenever you touch a koncern:
 - **Country code contradicting the entity** — `moderbolagLand: "US"` on something named "SNA Europe". If the name and the code disagree, one of them is wrong.
 - **The wrong half of a split corporate structure** — the recorded parent is a real, active, correctly-named entity that simply isn't the one that owns the manufacturing. IKEA's koncern held **Ingka Holding B.V.** (the largest *franchisee*, which runs the stores) when the entity that owns the brand, the concept and the factories is **Inter IKEA**. Two separate groups, no common owner. For a manufacturing database, record the side that owns the factories — and expect the same trap on any franchise- or licence-built brand.
 
-### Existing Categories (use these exact strings)
+### Categories (use these exact strings)
 
-> Smycken, Handskar, Friluftskläder, Underkläder, Fordon, Mat och Dryck, Möbler, Kläder, Elektronik, Städprodukter
+`kategori` is free text in the schema, but since the normalization pass on 2026-10-09 it follows one format: **`<Huvudkategori>` or `<Huvudkategori>, <Underkategori>`**. The main category comes first and there is at most one qualifier. The pass took the dataset from 88 distinct strings to 57.
 
-Only introduce a new category if nothing fits; keep it short, Swedish, plural where natural.
+| Huvudkategori | Allowed qualifiers |
+|---|---|
+| `Accessoarer` | `Glasögon`, `Handskar`, `Huvudbonader`, `Klockor`, `Slipsar`, `Väskor` |
+| `Badrum` | none |
+| `Barnprodukter` | none |
+| `Elektronik` | `Datorer`, `Kameror`, `Ljud` |
+| `Fordon` | none, `Lastbilar` |
+| `Friluftsutrustning` | none |
+| `Hushåll` | `Bestick`, `Borstar`, `Köksmaskiner`, `Köksredskap och kökstillbehör`, `Städprodukter`, `Vitvaror` |
+| `Hälsa` | none |
+| `Industri` | none |
+| `Inredning` | none, `Belysning`, `Glas`, `Porslin`, `Textil` |
+| `Kläder` | none, `Arbetskläder`, `Barnkläder`, `Friluftskläder`, `Jeans`, `Regnkläder`, `Skjortor`, `Sport`, `Underkläder` |
+| `Knivar` | none |
+| `Leksaker` | none |
+| `Läder` | `Accessoarer` |
+| `Mat och Dryck` | none, `Bröd`, `Cider`, `Energidryck`, `Godis`, `Kaffe`, `Kryddor`, `Sprit`, `Öl` |
+| `Möbler` | none, `Kontorsmöbler` |
+| `Skor` | none |
+| `Skönhet` | none |
+| `Smycken` | none |
+| `Teknik` | none |
+| `Trädgård` | none |
+| `Verktyg` | none, `Yxor` |
 
-**`Mat och Dryck` takes a qualifier after a comma**, and the live data has drifted well past the bare string above: `Mat och Dryck, Bryggeri` (Spendrups), `Mat och Dryck, Bröd` (Polarbröd), `Mat och Dryck, Sprit` (Absolut), `Mat och Dryck, Öl` (Pripps), `Mat och Dryck, Färdigmat` (Felix), `Mat och Dryck, Växtbaserat` (Oatly), **`Mat och Dryck, Mejeri`**, added 2026-08-04 with Arla, Skånemejerier, Norrmejerier and Falköpings Mejeri, **`Mat och Dryck, Juice`**, added 2026-08-05 with Brämhults, and **`Mat och Dryck, Sjömat`**, added 2026-08-05 with Abba. Reuse `Mejeri`, `Juice` and `Sjömat` verbatim for any further dairy, juice or seafood brand (God Morgon and Bravo are the obvious next `Juice` candidates, and both belong to the same group, so they must **reuse `koncern-eckes-granini-international`**). Do not read the one-line list above as exhaustive; query `array::unique(*[_type=="brand"].kategori)` before inventing a string. The deferred `kategori` normalization pass in §9 owns reconciling all of this.
-
-**The qualifier pattern is not confined to `Mat och Dryck`** — the live data applies it across most bases (`Textil, Linne`, `Knivar, Yxor`, `Verktyg, Handsågar`, `Möbler, Inredning, Bygg`). Four more were added with the batch of ten on 2026-08-05 (§10):
-
-| New string | Added with | Reuse it for |
-|---|---|---|
-| `Verktyg, Yxor` | Gränsfors Bruk | Wetterlings. Chosen over the existing `Knivar, Yxor` (Karesuandokniven) because Gränsfors makes axes and wrecking bars, no knives. |
-| `Möbler, Kontorsmöbler` | Kinnarps | Källemo, Lammhults, Offecct, Abstracta, EFG, Materia, Skandiform. Deliberately narrower than the bare `Möbler` used by Hästens, Stolab, Gärsnäs and Swedese, because Sweden has a whole cluster of office-furniture makers still to add. |
-| `Mat och Dryck, Sjömat` | Abba | Kalles Kaviar, Grebbestads, Klädesholmen. Preferred over `Fisk` because it also covers kaviar, musslor and tonfisk, and Orkla itself calls the Kungshamn plant its `sjömatsanläggning`. |
-| `Friluftsutrustning, Tält` | Hilleberg | Tentipi, and any other tent maker. |
-
-> **Spelling defect for the normalization pass:** the live data holds **`Friluftutrustning, Campingkök`** (Trangia) with the `s` missing from `Friluftsutrustning`. The correct spelling already has precedent in `Skor, Friluftsutrustning`, so `Friluftsutrustning, Tält` was written correctly rather than matched to the typo. **Do not propagate a misspelling for consistency's sake** — two wrong strings are worse than one, and the pass can fix Trangia in isolation.
-
-> **Prefer a qualifier over a bare base when a cluster of siblings is coming.** A one-off brand can take the bare string; a category about to receive half a dozen siblings should get the qualifier on the *first* brand, so the normalization pass has less to undo. `Textil, Linne` already existed from Ekelund Linneväveri and was reused verbatim for Klässbols rather than inventing a `Hemtextil` — **query first, the string you need often already exists.**
+Rules:
+- **Query first.** Run `array::unique(*[_type=="brand"].kategori)` with `perspective: "published"` before choosing. The string you need almost always exists.
+- **Prefer a bare main category** over a new qualifier. Only add a qualifier when there are, or soon will be, several siblings (e.g. office furniture: `Möbler, Kontorsmöbler` for Källemo, Offecct, Abstracta, EFG, Materia, Skandiform).
+- **Food takes a qualifier only for the listed product types.** Dairy, juice, seafood, plant-based, ready meals and protein products were deliberately folded back into bare `Mat och Dryck`; do not reintroduce `Mejeri`, `Juice`, `Sjömat`, `Växtbaserat`, `Färdigmat` or `Proteinprodukter`.
+- **Never lead with a qualifier** (`Jeans, Kläder`) and never chain two (`Möbler, Inredning, Bygg`). Sorting by category compares the whole string, so the main category must come first.
+- A genuinely new main category needs a short, Swedish, plural-where-natural name, and this table must be updated in the same change.
 
 ---
 
@@ -409,7 +424,7 @@ Require exactly this shape back, or the batch report can't be assembled consiste
 ### Scope discipline
 
 - **In scope:** sources, verification date, fact corrections the research contradicts, structural defects (broken enums, fake/self-referential entities, wrong country codes, placeholder owners).
-- **Out of scope:** `kategori`. It is free-text multi-value in the live data (`"Verktyg, Handsågar"`) and has drifted from §5's canonical list. Normalizing one letter-group at a time would leave the database *more* inconsistent, not less — it needs one dedicated full-database pass.
+- **Out of scope:** re-categorizing. `kategori` was normalized database-wide on 2026-10-09; a sweep should only flag a brand whose string is not in the §5 table, not invent new ones.
 - **Never downgrade good data on weak evidence.** Flag "uncertain" and carry it as a watch item. A field that was right yesterday and is now blank is a regression.
 - **A search-result title is NOT evidence a site is live — fetch it.** A search hit rendered as "Nocs Design – high-end speakers. Latest launch Braque." and I reported the site as live on that basis; both `nocs.se` and `nocsdesign.com` actually return **HTTP 402** with Shopify's *"This store is currently unavailable"*. Search indexes serve cached titles long after a store goes dark. This applies to every citation: the rule that each `kallor` URL must be fetched before staging covers snippets too.
 - **A suspended storefront is a finding, not a fetch failure.** `HTTP 402 Payment Required` on a Shopify domain means the store is frozen, not that you were bot-blocked — and `r.jina.ai` will render the actual message so you can tell the difference. A brand whose shop is offline while the registry still says *aktivt* changes no field on its own, but it belongs in the report and as a high-priority watch item.
@@ -497,7 +512,7 @@ Reading the two `array::unique` dumps is what catches **new** defect classes. `"
 Work that is real but must not be done one letter-group at a time, because doing half the database leaves it *more* inconsistent than leaving it alone. Each needs its own dedicated pass:
 
 - [ ] **`kallor` label dashes.** All **325** labels use the `"Claim – detail"` convention with an en dash, which the house style in §2 bans for brand copy. Not a find-and-replace: **64** labels already contain a colon in the detail (a blanket `–` → `:` swap gives them two colons and reads worse than the dash), and **35** use a *second* dash as genuine prose inside the detail, which is the actual violation. Do it in three parts: (1) clear the 35 prose dashes, defensible on their own and worth doing even if the rest is skipped; (2) swap the 261 clean separators to a colon; (3) reword the 64 double-colon cases individually. §9's `"Claim – detail"` convention changes with it. Count them with `count(*[_type=="brand"].kallor[length(string::split(label, " – ")) > 1])`.
-- [ ] **`kategori` normalization.** Free-text multi-value in the live data (`"Verktyg, Handsågar"`), drifted from §5's canonical list. See "Scope discipline" above. Also carries legacy values that are no longer true, e.g. Gustavsberg still lists "Hushållsporslin".
+- [x] **`kategori` normalization.** Done 2026-10-09: 108 brands rewritten to the `<Huvudkategori>[, <Underkategori>]` format in §5, 88 → 57 distinct strings. Gustavsberg's stale "Hushållsporslin" is now `Badrum`.
 - [ ] **`moderbolag` convention reconciliation.** The database is inconsistent about whether the field holds the Swedish operating entity or the real foreign parent. Decided per brand so far (Marabou and Pripps keep the Swedish entity because it is the declared supplier; Gense and Resteröds hold the foreign parent). One pass should pick a rule and apply it everywhere, or document the split deliberately.
 - [ ] **Placeholder `agare` — the final work list is four documents.** With the sweep finished, `koncern_platshallare` is down from 17 to **four live cases**: `koncern-a-day-s-march-ab`, `koncern-acne-studios-ab` and `koncern-all-blues-ab` (all from `A`, verified before these criteria existed, all with a self-referential `moderbolag` as well) plus **`koncern-stutterheim-ab`**, whose `moderbolag` "Aktiebolaget Svenska Regn" is genuine and correct while `agare` was never filled in. The other five hits are **orphaned** koncerns with 0 brands (Byarums Bruk, Jeansverket, Kasthall, Kero Försäljning, Steel by Lundbergs) — leave them. `& Other Stories` and `ARKET`, the other early-group casualties, were retrofitted at `I`+`J`.
 - [ ] **Two `Delvis` brands name only Sweden.** `Sätila of Sweden` and `Skultuna Messingsbruk` are `Delvis` with `["Sverige"]`, i.e. the Kosta Boda honest gap applied to the *status* field rather than the country list: production abroad is asserted (Sätila's sewing partners "in northern Europe") but no country can be named. They are **expected** `delvis_ett_land` hits alongside the three expected `tom_landlista` ones, not regressions. Revisit only if either company ever names a country.
@@ -571,7 +586,7 @@ Five brands published 2026-08-12, 146 → 151, chosen for koncern leverage rathe
 
 - **A listed minority holder that does not consolidate is still `Nej`.** Bridgepoint Group plc is LSE-listed and retains a significant minority of Vitamin Well Group, while control passed to unlisted Cinven in 2024. §3's PE clause resolves this without a judgement call, but all three sibling brands must be decided **once and identically**, or the koncern acquires an internal contradiction.
 - **`hitta.se` runs one deal behind on private-equity chains.** It still printed the Bridgepoint-era `Rixile 3 AB` / `Rixile Holding 2 AB` from Dec-2024 data, while the Cinven acquisition vehicle `Vital Holdco AB` (reg. 2024-07-18, same box address) is the current group parent. When a registry parent belongs to the *previous* owner's structure, the chain is stale, not wrong. Same class as the §1 staleness trap, but the tell is the vehicle's registration date sitting *after* the deal.
-- **One koncern can legitimately carry three different `kategori` qualifiers.** Vitamin Well (`Funktionsdryck`), NOCCO (`Energidryck`) and Barebells (`Proteinprodukter`) share `koncern-vital-holdco-ab`. Sharing a parent constrains ownership fields only, never taxonomy.
+- **One koncern can legitimately carry different `kategori` values.** Vitamin Well and NOCCO (`Mat och Dryck, Energidryck`) and Barebells (bare `Mat och Dryck`) share `koncern-vital-holdco-ab`. Sharing a parent constrains ownership fields only, never taxonomy.
 
 **Manufacturing and the verdict:**
 
