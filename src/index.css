@@ -557,6 +557,9 @@ body {
 
 /* Data Table */
 .data-table {
+  /* Shared basis for the four data columns: an exact quarter of what the
+     48px expand column leaves, so cells never grow or shrink. */
+  --table-col-basis: calc((100% - 48px) / 4);
   width: 100%;
   border-collapse: collapse;
 }
@@ -569,7 +572,8 @@ body {
 }
 
 .table-header-cell {
-  flex: 1;
+  flex: 1 1 var(--table-col-basis);
+  min-width: 0;
   width: 100%;
   padding: 16px;
   border: 0;
@@ -584,11 +588,15 @@ body {
 }
 
 /* Wraps a sortable header's inner <button class="table-header-cell">; the
-   <th> carries the flex sizing so it lines up with the <td> columns below,
-   while the button inside carries the padding/typography, unchanged from
-   when this was a single clickable div. */
+   <th> carries the flex sizing while the button inside carries the
+   padding/typography. Header and body cells line up only because they share
+   --table-col-basis: with border-box that basis includes padding, so a padded
+   <td> and an unpadded <th> get the same width, and since the bases sum to the
+   row width there is no grow/shrink (which is weighted by content size, not
+   padding). A zero basis (flex: 1) would floor each cell at its own padding
+   and drift the columns. */
 .table-header-th {
-  flex: 1;
+  flex: 1 1 var(--table-col-basis);
   min-width: 0;
 }
 
@@ -672,7 +680,8 @@ body {
 }
 
 .table-cell {
-  flex: 1;
+  flex: 1 1 var(--table-col-basis);
+  min-width: 0;
   padding: 16px;
   font-size: 16px;
   font-weight: 400;
