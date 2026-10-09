@@ -478,9 +478,6 @@ body {
   cursor: pointer;
   padding: 0;
   color: var(--color-text-danger);
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1;
   transition: background-color 0.2s;
   /* Touch target minimum. Held at every breakpoint, and sized to sit entirely
      inside the chip border so it never overlaps a neighbouring chip. */

@@ -108,7 +108,9 @@ export default function Search({
                 aria-label={`Ta bort sökning: ${tag}`}
                 type="button"
               >
-                ×
+                <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true">
+                  <path d="M1.5 1.5l9 9M10.5 1.5l-9 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                </svg>
               </button>
             </div>
           ))}
