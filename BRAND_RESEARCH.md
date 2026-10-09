@@ -23,6 +23,8 @@ Before starting any brand research, verify that the Sanity MCP server is authent
 
 Skipping this check risks completing full research and then being unable to write to Sanity.
 
+> **`brand-researcher` subagents have no Sanity MCP tools (confirmed 2026-10-09).** Every dispatch that ran this check stopped immediately as "blocked". Dispatch researchers in **research-only mode**: tell them to skip this check, make no Sanity calls, and return the full field payload plus a koncern proposal. The main session runs `whoami`, the §5 koncern dedup, and all writes (the §11 pattern). The 2026-10-09 batch of eleven (TePe, Kappahl, Lindex, J.Lindeberg, Doro, Kalles Kaviar, Houdini, Lammhults, IsaDora, Grumme, Edblad; 154 → 165) went through this way without problems.
+
 ## 1. Research Sources (priority order)
 
 ### Ownership & company structure
