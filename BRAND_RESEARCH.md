@@ -212,7 +212,7 @@ Seen repeatedly; check for these whenever you touch a koncern:
 | `Badrum` | none |
 | `Barnprodukter` | none |
 | `Elektronik` | `Datorer`, `Kameror`, `Ljud` |
-| `Fordon` | none, `Lastbilar` |
+| `Fordon` | none, `Cyklar`, `Lastbilar` |
 | `Friluftsutrustning` | none |
 | `Hushåll` | `Bestick`, `Borstar`, `Köksmaskiner`, `Köksredskap och kökstillbehör`, `Städprodukter`, `Vitvaror` |
 | `Hälsa` | none |
