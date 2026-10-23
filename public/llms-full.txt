@@ -4,26 +4,35 @@
 
 brandsfrom.se is an independent transparency project by Maximilian that helps consumers understand where Swedish brands truly produce their goods. Brands are categorized as Yes, Partially, or No based on whether production takes place in Sweden.
 
-The database covers 135+ brands across categories including clothing, furniture, electronics, food and beverages, vehicles, and jewelry. Data is sourced from annual reports, allabolag.se, the Swedish Companies Registration Office (Bolagsverket), and company websites.
+The database covers 160+ brands and manufacturers across categories including clothing, furniture, home and kitchen, interior design, electronics, food and beverages, vehicles, tools, and beauty. Data is sourced from annual reports, allabolag.se, the Swedish Companies Registration Office (Bolagsverket), and company websites.
 
 ---
 
 ## The Database (Home page)
 
-The home page contains a searchable and sortable table of all brands. Visitors can:
+The home page contains a searchable and sortable table of all brands and manufacturers. Visitors can:
 
 - Search by brand name, category, or manufacturing status
 - Filter with multiple search tags (AND logic -- all tags must match)
 - Sort by brand name (alphabetical), category, or manufacturing status
-- Expand a row to see corporate structure, owner, parent company, manufacturing countries, and a short brand description
+- Expand a row to see more details about the brand
+- Propose a new brand ("Föreslå märke") or suggest a correction to an existing one ("Föreslå ändring"); submissions are reviewed manually before anything is published
 
 Each brand entry shows:
 - Brand name
-- Category (e.g. Clothing, Furniture, Electronics)
+- Category (e.g. Kläder, Möbler, Mat och Dryck)
 - Manufacturing status (Yes / Partially / No)
 - Country flag for the brand's home country
 
-Categories in the database: Jewelry (Smycken), Gloves (Handskar), Outdoor Clothing (Friluftsklaeder), Underwear (Underklader), Vehicles (Fordon), Food and Beverages (Mat och Dryck), Furniture (Mobler), Clothing (Klader), Electronics (Elektronik), Cleaning Products (Stadprodukter).
+The expanded row shows:
+- Corporate structure (koncernstruktur): brand, parent company, and owner, each with its country
+- Whether the company is publicly traded
+- Manufacturing countries
+- A short description of the brand, its sustainability focus where relevant, and a link to its website
+- Sources for the information
+
+Categories follow the format "<Main category>" or "<Main category>, <Subcategory>". Main categories in the database (Swedish name, English meaning):
+Accessoarer (accessories: eyewear, gloves, headwear, watches, ties, bags), Badrum (bathroom), Barnprodukter (children's products), Elektronik (electronics: computers, cameras, audio), Fordon (vehicles: bicycles, trucks), Friluftsutrustning (outdoor equipment), Hushåll (household: cutlery, brushes, kitchen appliances, kitchenware, cleaning products, white goods), Hälsa (health), Industri (industrial), Inredning (interior design: lighting, glass, porcelain, textiles), Kläder (clothing: workwear, children's clothing, outdoor clothing, jeans, rainwear, shirts, sportswear, underwear), Knivar (knives), Leksaker (toys), Läder (leather goods), Mat och Dryck (food and beverages: bread, cider, energy drinks, sweets, coffee, spices, spirits, beer), Möbler (furniture, incl. office furniture), Skor (shoes), Skönhet (beauty), Smycken (jewelry), Teknik (technology), Trädgård (garden), Verktyg (tools, incl. axes).
 
 ---
 
@@ -40,7 +49,7 @@ Some brands manufacture everything in Sweden. Others have moved production abroa
 ### Status definitions
 
 **Yes (Ja)**
-Products are manufactured primarily in Sweden. This may mean all production takes place here, or that the most critical components and assembly are done in Sweden.
+Products are manufactured primarily in Sweden. This may mean all production takes place here, or that the most critical components and assembly are done in Sweden. A Yes requires positive evidence, such as a product label, a factory location, or an explicit claim from the company.
 
 **Partially (Delvis)**
 Part of the production takes place in Sweden, but significant portions are done abroad. This may mean some product lines are manufactured in Sweden while others are not, or that components come from different countries.
@@ -57,7 +66,7 @@ Information is collected from:
 - allabolag.se and Bolagsverket (ownership and corporate structure)
 - Public sources and product labels
 
-The database aims to keep information current and accurate. Manufacturing information can change over time -- if you notice something is wrong, please get in touch.
+The database aims to keep information current and accurate. Manufacturing information can change over time -- if you notice something is wrong, use "Föreslå ändring" on the brand's row or get in touch.
 
 ### Transparency and limitations
 

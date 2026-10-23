@@ -4,11 +4,11 @@
 
 brandsfrom.se is an independent transparency project by Maximilian that helps consumers understand where Swedish brands truly produce their goods. Brands are categorized as **Yes**, **Partially**, or **No** based on whether production takes place in Sweden.
 
-The database covers 135+ brands across categories including clothing, furniture, electronics, food and beverages, vehicles, and jewelry. Data is sourced from annual reports, allabolag.se, the Swedish Companies Registration Office (Bolagsverket), and company websites.
+The database covers 160+ brands and manufacturers across categories including clothing, furniture, home and kitchen, interior design, electronics, food and beverages, vehicles, tools, and beauty. Data is sourced from annual reports, allabolag.se, the Swedish Companies Registration Office (Bolagsverket), and company websites.
 
 ## Pages
 
-- [The Database](https://brandsfrom.se/): Searchable and sortable database of all brands -- filter by name, category, or manufacturing status.
+- [The Database](https://brandsfrom.se/): Searchable and sortable database of all brands -- filter by name, category, or manufacturing status. Each row expands to show ownership, corporate structure, manufacturing countries, a short description, and sources. Visitors can propose a new brand or suggest a correction directly on the page.
 - [About the project](https://brandsfrom.se/om): Explains the status definitions (Yes/Partially/No), the project's purpose and limitations, and how to report inaccuracies.
 
 ## Status definitions
