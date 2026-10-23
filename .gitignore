@@ -460,3 +460,6 @@ lerna-debug.log*
 
 # Local-only research notes
 BRAND_QUEUE.local.md
+
+# Saved web pages used as research evidence (local scratch)
+tmp-sites/
